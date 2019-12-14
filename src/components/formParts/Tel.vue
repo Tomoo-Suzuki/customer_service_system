@@ -4,10 +4,12 @@
     <dd>
       <input
         type="text"
-        v-model.number="tel"
+        name="tel"
+        :value="tel"
         required
         placeholder="09021334566"
         pattern="\d{2,4}-?\d{3,4}-?\d{3,4}"
+        @change="formUpdate"
       />
       <p>{{ tel }}</p>
     </dd>
@@ -19,6 +21,11 @@ export default {
     tel: {
       type: String,
       default: null
+    }
+  },
+  methods: {
+    formUpdate(e) {
+      this.$emit("formUpdate", e);
     }
   }
 };

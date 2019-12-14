@@ -2,11 +2,25 @@
   <dl>
     <dt>会社名・所属</dt>
     <dd>
-      <input type="text" v-model.lazy="company" required placeholder="ソフトバンド" />
+      <input
+        type="text"
+        name="company"
+        :value="company"
+        required
+        placeholder="ソフトバンド"
+        @change="formUpdate"
+      />
       <p>{{ company }}</p>
     </dd>
     <dd>
-      <input type="text" v-model.lazy="section" required placeholder="開発" />
+      <input
+        type="text"
+        name="section"
+        :value="section"
+        required
+        placeholder="開発"
+        @change="formUpdate"
+      />
       <p>{{ section }}</p>
     </dd>
   </dl>
@@ -21,6 +35,11 @@ export default {
     section: {
       type: String,
       default: null
+    }
+  },
+  methods: {
+    formUpdate(e) {
+      this.$emit("formUpdate", e);
     }
   }
 };

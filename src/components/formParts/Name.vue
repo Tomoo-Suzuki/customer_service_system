@@ -3,11 +3,25 @@
     <dt>お名前</dt>
     <dd>
       <div>
-        <input type="text" name="lastName" v-model.lazy="lastName" required placeholder="山田" />
+        <input
+          type="text"
+          name="lastName"
+          :value="lastName"
+          @change="formUpdate"
+          required
+          placeholder="山田"
+        />
         <p>{{ lastName }}</p>
       </div>
       <div>
-        <input type="text" name="firstName" v-model.lazy="firstName" required placeholder="京子" />
+        <input
+          type="text"
+          name="firstName"
+          :value="firstName"
+          required
+          placeholder="京子"
+          @change="formUpdate"
+        />
         <p>{{ firstName }}</p>
       </div>
     </dd>
@@ -23,6 +37,11 @@ export default {
     firstName: {
       type: String,
       default: null
+    }
+  },
+  methods: {
+    formUpdate(e) {
+      this.$emit("formUpdate", e);
     }
   }
 };

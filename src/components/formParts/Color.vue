@@ -2,8 +2,8 @@
   <dl>
     <dt>色</dt>
     <dd>
-      <select v-model="color" required>
-        <option v-for="color in colors" :key="color" required>
+      <select required name="color">
+        <option v-for="color in colors" :key="color" required @change="formUpdate">
           {{
           color
           }}
@@ -19,6 +19,15 @@ export default {
     color: {
       type: String,
       default: null
+    },
+    colors: {
+      type: Object,
+      default: null
+    }
+  },
+  methods: {
+    formUpdate(e) {
+      this.$emit("formUpdate", e);
     }
   }
 };

@@ -2,7 +2,7 @@
   <dl>
     <dt>品番</dt>
     <dd>
-      <select v-model="productNumber" required>
+      <select name="productNumber" :value="productNumber" required @change="formUpdate">
         <option v-for="productNumber in productNumbers" :key="productNumber" required>
           {{
           productNumber
@@ -19,6 +19,15 @@ export default {
     productNumber: {
       type: String,
       default: null
+    },
+    productNumbers: {
+      type: Object,
+      default: null
+    }
+  },
+  methods: {
+    formUpdate(e) {
+      this.$emit("formUpdate", e);
     }
   }
 };

@@ -6,11 +6,12 @@
         <input
           type="text"
           name="lastNameKana"
-          v-model.lazy="lastNameKana"
+          :value="lastNameKana"
           required
           pattern="[ァ-ヴー/s ]+"
           placeholder="ヤマダ"
           title="カタカナを入力してください"
+          @change="formUpdate"
         />
         <p>{{ lastNameKana }}</p>
       </div>
@@ -18,11 +19,12 @@
         <input
           type="text"
           name="firstNameKana"
-          v-model.lazy="firstNameKana"
+          :value="firstNameKana"
           required
           pattern="[ァ-ヴー/s ]+"
           placeholder="キョウコ"
           title="カタカナを入力してください"
+          @change="formUpdate"
         />
         <p>{{ firstNameKana }}</p>
       </div>
@@ -39,6 +41,11 @@ export default {
     firstNameKana: {
       type: String,
       default: null
+    }
+  },
+  methods: {
+    formUpdate(e) {
+      this.$emit("formUpdate", e);
     }
   }
 };

@@ -1,27 +1,39 @@
 <template>
   <div>
-    {{properties}}
+    {{ properties }}
     <form action="/" enctype="multipart/form-data" type="POST">
-      -->
       <Address
         :zip="properties.zip"
         :prefecture="properties.prefecture"
         :address="properties.address"
         :building="properties.building"
+        @formUpdate="formUpdate"
       />
 
-      <Name :firstName="properties.firstName" :lastName="properties.lastName" />
-      <NameKana :firstNameKana="properties.firstNameKana" :lastNameKana="properties.lastNameKana" />
+      <Name
+        :firstName="properties.firstName"
+        :lastName="properties.lastName"
+        @formUpdate="formUpdate"
+      />
+      <NameKana
+        :firstNameKana="properties.firstNameKana"
+        :lastNameKana="properties.lastNameKana"
+        @formUpdate="formUpdate"
+      />
       <ReceptionDate :questionaryData="properties" />
-      <Company :company="properties.company" :section="properties.section" />
-      <CustomerType :CustomerType="properties.CustomerType" />
-      <Email :mail="properties.mail" />
-      <Tel :tel="properties.tel" />
-      <Color :color="properties.color" />
-      <Detail :detail="properties.detail" />
-      <File :file="properties.file" />
-      <Size :size="properties.size" />
-      <ProductNumber :productNumber="properties.productNumber" />
+      <Company
+        :company="properties.company"
+        :section="properties.section"
+        @formUpdate="formUpdate"
+      />
+      <CustomerType :CustomerType="properties.CustomerType" @formUpdate="formUpdate" />
+      <Email :mail="properties.mail" @formUpdate="formUpdate" />
+      <Tel :tel="properties.tel" @formUpdate="formUpdate" />
+      <Color :color="properties.color" @formUpdate="formUpdate" />
+      <Detail :detail="properties.detail" @formUpdate="formUpdate" />
+      <File :file="properties.file" @formUpdate="formUpdate" />
+      <Size :size="properties.size" @formUpdate="formUpdate" />
+      <ProductNumber :productNumber="properties.productNumber" @formUpdate="formUpdate" />
       <button>送信する</button>
     </form>
   </div>
@@ -61,14 +73,19 @@ export default {
   props: {
     properties: {
       type: Object,
-      default: null
+      default: () => ({})
     }
   },
-  data() {
-    return {};
+  methods: {
+    formUpdate(e) {
+      e.preventDefault();
+      const name = e.target.name;
+      const val = e.target.value;
+      console.log(name);
+      this.properties[name] = val;
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

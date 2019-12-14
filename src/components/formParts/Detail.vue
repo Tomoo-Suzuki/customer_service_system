@@ -2,7 +2,7 @@
   <dl>
     <dt>お困りの内容</dt>
     <dd>
-      <textarea col="30" rows="10" v-model.trim="detail"></textarea>
+      <textarea col="30" rows="10" name="detail" :value="detail" @click="formUpdate"></textarea>
     </dd>
   </dl>
 </template>
@@ -12,6 +12,11 @@ export default {
     detail: {
       type: String,
       default: null
+    }
+  },
+  methods: {
+    formUpdate(e) {
+      this.$emit("formUpdate", e);
     }
   }
 };

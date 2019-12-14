@@ -4,13 +4,15 @@
     <dd>
       <input
         type="email"
-        v-model.number="mail"
+        name="mail"
+        :value="mail"
         required
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
         placeholder="09021334566"
         title="メールアドレス"
+        @change="formUpdate"
       />
-      <p>{{ tel }}</p>
+      <p>{{ mail }}</p>
     </dd>
   </dl>
 </template>
@@ -20,6 +22,11 @@ export default {
     mail: {
       type: String,
       default: null
+    }
+  },
+  methods: {
+    formUpdate(e) {
+      this.$emit("formUpdate", e);
     }
   }
 };

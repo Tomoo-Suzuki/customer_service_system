@@ -4,27 +4,45 @@
     <dd>
       <input
         type="text"
-        v-model.lazy="zip"
-        placeholder="1230000"
-        pattern="\d{3}-?\d{4}"
-        title="郵便番号"
+        name="zip"
+        :value="zip"
+        required
+        placeholder="117-2345"
+        @change="formUpdate"
       />
-      <p>{{ }}</p>
-    </dd>
-    <dd>
-      <input type="text" v-model.lazy="zip" required placeholder="117-2345" />
       <p>{{ zip }}</p>
     </dd>
     <dd>
-      <input type="text" v-model.lazy="prefecture" required placeholder="東京都" />
+      <input
+        type="text"
+        name="prefecture"
+        :value="prefecture"
+        required
+        placeholder="東京都"
+        @change="formUpdate"
+      />
       <p>{{ prefecture }}</p>
     </dd>
     <dd>
-      <input type="text" v-model.lazy="address" required placeholder="豊島区池袋3-7-18" />
+      <input
+        type="text"
+        name="address"
+        :value="address"
+        required
+        placeholder="豊島区池袋3-7-18"
+        @change="formUpdate"
+      />
       <p>{{ address }}</p>
     </dd>
     <dd>
-      <input type="text" v-model.lazy="building" required placeholder="ブルジュファリハ" />
+      <input
+        type="text"
+        name="building"
+        :value="building"
+        required
+        placeholder="ブルジュファリハ"
+        @change="formUpdate"
+      />
       <p>{{ building }}</p>
     </dd>
   </dl>
@@ -47,6 +65,11 @@ export default {
     building: {
       type: String,
       default: null
+    }
+  },
+  methods: {
+    formUpdate(e) {
+      this.$emit("formUpdate", e);
     }
   }
 };
