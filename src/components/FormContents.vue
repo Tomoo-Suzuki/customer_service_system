@@ -1,45 +1,50 @@
 <template>
   <div>
     {{ properties }}
-    <form action="/" enctype="multipart/form-data" type="POST">
-      <Address
-        :zip="properties.zip"
-        :prefecture="properties.prefecture"
-        :address="properties.address"
-        :building="properties.building"
-        @formUpdate="formUpdate"
-      />
+    <Address
+      :zip="properties.zip"
+      :prefecture="properties.prefecture"
+      :address="properties.address"
+      :building="properties.building"
+      @formUpdate="formUpdate"
+    />
 
-      <Name
-        :firstName="properties.firstName"
-        :lastName="properties.lastName"
-        @formUpdate="formUpdate"
-      />
-      <NameKana
-        :firstNameKana="properties.firstNameKana"
-        :lastNameKana="properties.lastNameKana"
-        @formUpdate="formUpdate"
-      />
-      <ReceptionDate :questionaryData="properties" />
-      <Company
-        :company="properties.company"
-        :section="properties.section"
-        @formUpdate="formUpdate"
-      />
-      <CustomerType :CustomerType="properties.CustomerType" @formUpdate="formUpdate" />
-      <Email :mail="properties.mail" @formUpdate="formUpdate" />
-      <Tel :tel="properties.tel" @formUpdate="formUpdate" />
-      <Color :color="properties.color" @formUpdate="formUpdate" />
-      <Detail :detail="properties.detail" @formUpdate="formUpdate" />
-      <File :file="properties.file" @formUpdate="formUpdate" />
-      <Size :size="properties.size" @formUpdate="formUpdate" />
-      <ProductNumber :productNumber="properties.productNumber" @formUpdate="formUpdate" />
-      <button>送信する</button>
-    </form>
+    <Name
+      :firstName="properties.firstName"
+      :lastName="properties.lastName"
+      @formUpdate="formUpdate"
+    />
+    <NameKana
+      :firstNameKana="properties.firstNameKana"
+      :lastNameKana="properties.lastNameKana"
+      @formUpdate="formUpdate"
+    />
+    <ReceptionDate :questionaryData="properties" />
+    <Company
+      :company="properties.company"
+      :section="properties.section"
+      @formUpdate="formUpdate"
+    />
+    <CustomerType
+      :CustomerType="properties.CustomerType"
+      @formUpdate="formUpdate"
+    />
+    <Email :mail="properties.mail" @formUpdate="formUpdate" />
+    <Tel :tel="properties.tel" @formUpdate="formUpdate" />
+    <Color :color="properties.color" @formUpdate="formUpdate" />
+    <Detail :detail="properties.detail" @formUpdate="formUpdate" />
+    <File :file="properties.file" @formUpdate="formUpdate" />
+    <Size :size="properties.size" @formUpdate="formUpdate" />
+    <ProductNumber
+      :productNumber="properties.productNumber"
+      @formUpdate="formUpdate"
+    />
+    <button @click="postData">送信する</button>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import Address from "./formParts/Address.vue";
 import Name from "./formParts/Name.vue";
 import NameKana from "./formParts/NameKana.vue";
@@ -70,6 +75,20 @@ export default {
     Size,
     ProductNumber
   },
+  data() {
+    return {
+      formData: {
+        fields: {
+          firstName: {
+            stringValue: this.properties.firstName
+          },
+          lastName: {
+            stringValue: this.properties.lastName
+          }
+        }
+      }
+    };
+  },
   props: {
     properties: {
       type: Object,
@@ -81,8 +100,17 @@ export default {
       e.preventDefault();
       const name = e.target.name;
       const val = e.target.value;
-      console.log(name);
       this.properties[name] = val;
+    },
+    postData() {
+      const url =
+        "https://firestore.googleapis.com/v1/projects/customer-service-7805c/databases/(default)/documents/properties";
+      axios
+        .post(url, this.formData)
+        .then(function(res) {
+          console.log(res);
+        })
+        .catch();
     }
   }
 };
