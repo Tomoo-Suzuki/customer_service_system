@@ -10,7 +10,6 @@
         placeholder="ソフトバンド"
         @change="formUpdate"
       />
-      <p>{{ company }}</p>
     </dd>
     <dd>
       <input
@@ -21,7 +20,6 @@
         placeholder="開発"
         @change="formUpdate"
       />
-      <p>{{ section }}</p>
     </dd>
   </dl>
 </template>

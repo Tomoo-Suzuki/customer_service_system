@@ -13,7 +13,6 @@
           title="カタカナを入力してください"
           @change="formUpdate"
         />
-        <p>{{ lastNameKana }}</p>
       </div>
       <div>
         <input
@@ -26,7 +25,6 @@
           title="カタカナを入力してください"
           @change="formUpdate"
         />
-        <p>{{ firstNameKana }}</p>
       </div>
     </dd>
   </dl>

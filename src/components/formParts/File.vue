@@ -4,7 +4,6 @@
     <dd>
       <label for="a">a</label>
       <input id="a" name="file" type="file" value="file" @change="formUpdate" />
-      <p>{{ file }}</p>
     </dd>
   </dl>
 </template>

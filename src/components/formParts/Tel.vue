@@ -11,7 +11,6 @@
         pattern="\d{2,4}-?\d{3,4}-?\d{3,4}"
         @change="formUpdate"
       />
-      <p>{{ tel }}</p>
     </dd>
   </dl>
 </template>

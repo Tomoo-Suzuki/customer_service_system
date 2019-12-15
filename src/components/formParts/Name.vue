@@ -11,7 +11,6 @@
           required
           placeholder="山田"
         />
-        <p>{{ lastName }}</p>
       </div>
       <div>
         <input
@@ -22,7 +21,6 @@
           placeholder="京子"
           @change="formUpdate"
         />
-        <p>{{ firstName }}</p>
       </div>
     </dd>
   </dl>

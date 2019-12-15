@@ -12,7 +12,6 @@
         title="メールアドレス"
         @change="formUpdate"
       />
-      <p>{{ mail }}</p>
     </dd>
   </dl>
 </template>

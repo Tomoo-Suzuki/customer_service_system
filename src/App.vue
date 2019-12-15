@@ -1,16 +1,25 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <FormContents :properties="questionaryData"></FormContents>
+  <div class="wrapper">
+    <Header />
+    <div class="contents">
+      <div class="contents-inner">
+        <FormContents :properties="questionaryData"></FormContents>
+      </div>
+    </div>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from "./components/Header";
 import FormContents from "./components/FormContents";
+import Footer from "./components/Footer";
 
 export default {
   components: {
-    FormContents
+    Header,
+    FormContents,
+    Footer
   },
   data() {
     return {
@@ -40,5 +49,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "./scss/reset";
+@import "./scss/common";
 </style>

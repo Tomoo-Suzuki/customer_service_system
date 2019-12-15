@@ -10,7 +10,6 @@
         placeholder="117-2345"
         @change="formUpdate"
       />
-      <p>{{ zip }}</p>
     </dd>
     <dd>
       <input
@@ -21,7 +20,6 @@
         placeholder="東京都"
         @change="formUpdate"
       />
-      <p>{{ prefecture }}</p>
     </dd>
     <dd>
       <input
@@ -32,7 +30,6 @@
         placeholder="豊島区池袋3-7-18"
         @change="formUpdate"
       />
-      <p>{{ address }}</p>
     </dd>
     <dd>
       <input
@@ -43,7 +40,6 @@
         placeholder="ブルジュファリハ"
         @change="formUpdate"
       />
-      <p>{{ building }}</p>
     </dd>
   </dl>
 </template>

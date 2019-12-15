@@ -1,6 +1,5 @@
 <template>
-  <div>
-    {{ properties }}
+  <main class="form-customer-service">
     <Address
       :zip="properties.zip"
       :prefecture="properties.prefecture"
@@ -40,7 +39,7 @@
       @formUpdate="formUpdate"
     />
     <button @click="postData">送信する</button>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -116,4 +115,24 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../scss/form_reset";
+@import "../scss/common";
+/deep/input,
+/deep/textarea {
+  border: solid #eeeeee 1px;
+}
+.form-customer-service {
+  width: 756px;
+  margin: 7.2rem auto;
+  font-size: 1.4rem;
+  /deep/ > dl {
+    margin-bottom: 2.4rem;
+    display: table;
+    /deep/ dt,
+    /deep/ dd {
+      display: table-cell;
+    }
+  }
+}
+</style>
