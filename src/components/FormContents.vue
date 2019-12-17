@@ -19,25 +19,15 @@
       @formUpdate="formUpdate"
     />
     <ReceptionDate :questionaryData="properties" />
-    <Company
-      :company="properties.company"
-      :section="properties.section"
-      @formUpdate="formUpdate"
-    />
-    <CustomerType
-      :CustomerType="properties.CustomerType"
-      @formUpdate="formUpdate"
-    />
+    <Company :company="properties.company" :section="properties.section" @formUpdate="formUpdate" />
+    <CustomerType :CustomerType="properties.CustomerType" @formUpdate="formUpdate" />
     <Email :mail="properties.mail" @formUpdate="formUpdate" />
     <Tel :tel="properties.tel" @formUpdate="formUpdate" />
     <Color :color="properties.color" @formUpdate="formUpdate" />
     <Detail :detail="properties.detail" @formUpdate="formUpdate" />
     <File :file="properties.file" @formUpdate="formUpdate" />
     <Size :size="properties.size" @formUpdate="formUpdate" />
-    <ProductNumber
-      :productNumber="properties.productNumber"
-      @formUpdate="formUpdate"
-    />
+    <ProductNumber :productNumber="properties.productNumber" @formUpdate="formUpdate" />
     <button @click="postData">送信する</button>
   </main>
 </template>
@@ -123,7 +113,7 @@ export default {
   border: solid #eeeeee 1px;
 }
 .form-customer-service {
-  width: 756px;
+  width: 75.6rem;
   margin: 7.2rem auto;
   font-size: 1.4rem;
   /deep/ > dl {
@@ -132,6 +122,29 @@ export default {
     /deep/ dt,
     /deep/ dd {
       display: table-cell;
+      /deep/input {
+        display: inline-block;
+        border: #eeeeee solid 1px;
+        border-radius: 3px;
+        width: 12rem;
+        padding: 4px;
+        height: 2rem;
+      }
+    }
+    /deep/ dt {
+      width: 16rem;
+      vertical-align: top;
+    }
+    /deep/ dd {
+      width: 59.6rem;
+      > div,
+      > span,
+      > div > span {
+        margin-right: 1.6rem;
+      }
+      > div {
+        margin-bottom: 1.6rem;
+      }
     }
   }
 }

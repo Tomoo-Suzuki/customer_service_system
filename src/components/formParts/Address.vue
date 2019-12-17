@@ -1,45 +1,49 @@
 <template>
   <dl>
     <dt>ご住所</dt>
-    <dd>
-      <input
-        type="text"
-        name="zip"
-        :value="zip"
-        required
-        placeholder="117-2345"
-        @change="formUpdate"
-      />
-    </dd>
-    <dd>
-      <input
-        type="text"
-        name="prefecture"
-        :value="prefecture"
-        required
-        placeholder="東京都"
-        @change="formUpdate"
-      />
-    </dd>
-    <dd>
-      <input
-        type="text"
-        name="address"
-        :value="address"
-        required
-        placeholder="豊島区池袋3-7-18"
-        @change="formUpdate"
-      />
-    </dd>
-    <dd>
-      <input
-        type="text"
-        name="building"
-        :value="building"
-        required
-        placeholder="ブルジュファリハ"
-        @change="formUpdate"
-      />
+    <dd class="adress-data-wrap">
+      <div>
+        <input
+          type="text"
+          name="zip"
+          :value="zip"
+          required
+          placeholder="117-2345"
+          @change="formUpdate"
+        />
+      </div>
+      <div>
+        <span>
+          <input
+            type="text"
+            name="prefecture"
+            :value="prefecture"
+            required
+            placeholder="東京都"
+            @change="formUpdate"
+          />
+        </span>
+        <span>
+          <input
+            type="text"
+            name="address"
+            :value="address"
+            required
+            placeholder="豊島区池袋3-7-18"
+            @change="formUpdate"
+          />
+        </span>
+        <span>
+          <input
+            type="text"
+            name="building"
+            :value="building"
+            required
+            placeholder="ブルジュファリハ"
+            @change="formUpdate"
+          />
+        </span>
+      </div>
     </dd>
   </dl>
 </template>
@@ -70,4 +74,10 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.adress-data-wrap {
+  > span {
+    display: inline-block;
+  }
+}
+</style>

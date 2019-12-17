@@ -2,7 +2,7 @@
   <dl>
     <dt>フリガナ</dt>
     <dd>
-      <div>
+      <span>
         <input
           type="text"
           name="lastNameKana"
@@ -13,8 +13,8 @@
           title="カタカナを入力してください"
           @change="formUpdate"
         />
-      </div>
-      <div>
+      </span>
+      <span>
         <input
           type="text"
           name="firstNameKana"
@@ -25,7 +25,7 @@
           title="カタカナを入力してください"
           @change="formUpdate"
         />
-      </div>
+      </span>
     </dd>
   </dl>
 </template>

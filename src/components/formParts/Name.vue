@@ -2,7 +2,7 @@
   <dl>
     <dt>お名前</dt>
     <dd>
-      <div>
+      <span>
         <input
           type="text"
           name="lastName"
@@ -11,8 +11,8 @@
           required
           placeholder="山田"
         />
-      </div>
-      <div>
+      </span>
+      <span>
         <input
           type="text"
           name="firstName"
@@ -21,7 +21,7 @@
           placeholder="京子"
           @change="formUpdate"
         />
-      </div>
+      </span>
     </dd>
   </dl>
 </template>

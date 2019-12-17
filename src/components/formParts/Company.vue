@@ -2,24 +2,26 @@
   <dl>
     <dt>会社名・所属</dt>
     <dd>
-      <input
-        type="text"
-        name="company"
-        :value="company"
-        required
-        placeholder="ソフトバンド"
-        @change="formUpdate"
-      />
-    </dd>
-    <dd>
-      <input
-        type="text"
-        name="section"
-        :value="section"
-        required
-        placeholder="開発"
-        @change="formUpdate"
-      />
+      <div>
+        <input
+          type="text"
+          name="company"
+          :value="company"
+          required
+          placeholder="ソフトバンド"
+          @change="formUpdate"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          name="section"
+          :value="section"
+          required
+          placeholder="開発"
+          @change="formUpdate"
+        />
+      </div>
     </dd>
   </dl>
 </template>
