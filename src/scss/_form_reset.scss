@@ -19,7 +19,10 @@
 
 /deep/input[type='checkbox'],
 /deep/input[type='radio'] {
-    display: none;
+    //display: none;
+    border-radius: 50%;
+
+
 }
 
 /deep/input[type='submit'],

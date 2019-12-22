@@ -3,13 +3,17 @@
     <dt>サイズ</dt>
     <dd>
       <select name="size" :value="size" required @change="formUpdate">
-        <option v-for="size in allSize" :key="size" required>
+        <option
+          v-for="(data,val) in allSize"
+          :key="val"
+          :selected="(data.size==='選択してください')?true:false"
+          required
+        >
           {{
-          room
+          data.size
           }}
         </option>
       </select>
-      <p>{{ size }}</p>
     </dd>
   </dl>
 </template>
