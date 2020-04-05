@@ -1,16 +1,21 @@
 <template>
   <dl>
-    <dt>イラストの画像</dt>
+    <dt>小説</dt>
     <dd>
-      <label for="a">a</label>
-      <input id="a" name="file" type="file" value="file" @change="formUpdate" />
+      <textarea
+        col="30"
+        rows="10"
+        name="detail"
+        :value="detail"
+        @click="formUpdate"
+      ></textarea>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    file: {
+    detail: {
       type: String,
       default: null,
     },

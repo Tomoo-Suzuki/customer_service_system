@@ -1,16 +1,21 @@
 <template>
   <dl>
-    <dt>イラストの画像</dt>
+    <dt>配信日</dt>
     <dd>
-      <label for="a">a</label>
-      <input id="a" name="file" type="file" value="file" @change="formUpdate" />
+      <input
+        type="date"
+        name="receptionDate"
+        :value="receptionDate"
+        @change="formUpdate"
+      />
+      <p>{{ receptionDate }}</p>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    file: {
+    receptionDate: {
       type: String,
       default: null,
     },

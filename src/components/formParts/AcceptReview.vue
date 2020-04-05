@@ -1,6 +1,6 @@
 <template>
   <dl>
-    <dt>個人・法人のお客様</dt>
+    <dt>レビューの受付</dt>
     <dd>
       <input
         id="type"
@@ -24,14 +24,14 @@ export default {
   props: {
     customerType: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

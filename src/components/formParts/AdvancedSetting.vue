@@ -1,6 +1,6 @@
 <template>
   <dl>
-    <dt>ご住所</dt>
+    <dt>詳細設定</dt>
     <dd class="adress-data-wrap">
       <div>
         <input
@@ -62,26 +62,26 @@ export default {
   props: {
     zip: {
       type: String,
-      default: null
+      default: null,
     },
     prefecture: {
       type: String,
-      default: null
+      default: null,
     },
     address: {
       type: String,
-      default: null
+      default: null,
     },
     building: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

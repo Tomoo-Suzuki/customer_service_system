@@ -1,47 +1,47 @@
 <template>
   <dl>
-    <dt>会社名・所属</dt>
+    <dt>作者名</dt>
     <dd>
-      <div>
+      <span>
         <input
           type="text"
-          name="company"
-          :value="company"
-          required
-          placeholder="ソフトバンド"
+          name="lastName"
+          :value="lastName"
           @change="formUpdate"
+          required
+          placeholder="山田"
         />
-      </div>
-      <div>
+      </span>
+      <span>
         <input
           type="text"
-          name="section"
-          :value="section"
+          name="firstName"
+          :value="firstName"
           required
-          placeholder="開発"
+          placeholder="京子"
           @change="formUpdate"
         />
-      </div>
+      </span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    company: {
+    lastName: {
       type: String,
-      default: null
+      default: null,
     },
-    section: {
+    firstName: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <dl>
-    <dt>お電話番号</dt>
+    <dt>小説名</dt>
     <dd>
       <input
         type="text"
@@ -19,14 +19,14 @@ export default {
   props: {
     tel: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

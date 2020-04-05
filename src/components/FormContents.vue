@@ -1,32 +1,22 @@
 <template>
-  <main class="form-book">
-    <ReceptionDate :questionaryData="properties" />
-    <Name
-      :firstName="properties.firstName"
-      :lastName="properties.lastName"
+  <main class="form-customer-service">
+    <TitleMain :titleMain="properties.titleMain" @formUpdate="formUpdate" />
+    <AutherName :AutherName="properties.AutherName" @formUpdate="formUpdate" />
+    <Genre :genre="properties.genre" @formUpdate="formUpdate" />
+    <Keywords :Keywords="properties.Keywords" @formUpdate="formUpdate" />
+    <AdvancedSetting
+      :AcceptRating="properties.AcceptRating"
+      :AcceptImpressions="properties.AcceptImpressions"
+      :AcceptReviews="properties.AcceptReviews"
+      :PublishEvaluation="properties.PublishEvaluation"
+      :AcceptTypoReports="properties.AcceptTypoReports"
+      :DisclosureSettings="properties.DisclosureSettings"
       @formUpdate="formUpdate"
     />
-    <NameKana
-      :firstNameKana="properties.firstNameKana"
-      :lastNameKana="properties.lastNameKana"
-      @formUpdate="formUpdate"
-    />
-    <Address
-      :zip="properties.zip"
-      :prefecture="properties.prefecture"
-      :address1="properties.address1"
-      :address2="properties.address2"
-      :building="properties.building"
-      @formUpdate="formUpdate"
-    />
-    <Tel :tel="properties.tel" @formUpdate="formUpdate" />
-    <Email :mail="properties.mail" :mail2="properties.mail2" @formUpdate="formUpdate" />
-    <Company :company="properties.company" :section="properties.section" @formUpdate="formUpdate" />
-    <CustomerType :CustomerType="properties.CustomerType" @formUpdate="formUpdate" />
-    <Color :color="properties.color" @formUpdate="formUpdate" />
-    <Size :size="properties.size" :all-size="allSize" @formUpdate="formUpdate" />
-    <ProductNumber :productNumber="properties.productNumber" @formUpdate="formUpdate" />
-    <Detail :detail="properties.detail" @formUpdate="formUpdate" />
+
+    <Title :title="properties.title" @formUpdate="formUpdate" />
+    <UploadedDate :uploadedDate="properties.uploadedDate" />
+    <LastModifyDate :lastModifyDate="properties.lastModifyDate" />
     <File :file="properties.file" @formUpdate="formUpdate" />
     <button @click="postData">送信する</button>
   </main>
@@ -34,47 +24,39 @@
 
 <script>
 import axios from "axios";
-import Address from "./formParts/Address.vue";
-import Name from "./formParts/Name.vue";
-import NameKana from "./formParts/NameKana.vue";
-import ReceptionDate from "./formParts/ReceptionDate.vue";
-import Company from "./formParts/Company.vue";
-import CustomerType from "./formParts/CustomerType.vue";
-import Email from "./formParts/Email.vue";
-import Tel from "./formParts/Tel.vue";
-import Color from "./formParts/Color.vue";
-import Detail from "./formParts/Detail.vue";
+import TitleMain from "./formParts/TitleMain.vue";
+import Title from "./formParts/Title.vue";
+import AutherName from "./formParts/AutherName.vue";
+import Genre from "./formParts/Genre.vue";
+import UploadedDate from "./formParts/UploadedDate.vue";
+import LastModifyDate from "./formParts/LastModifyDate.vue";
 import File from "./formParts/File.vue";
-import Size from "./formParts/Size.vue";
-import ProductNumber from "./formParts/ProductNumber.vue";
+import Keywords from "./formParts/Keywords.vue";
+import AdvancedSetting from "./formParts/AdvancedSetting.vue";
 
 export default {
   components: {
-    Address,
-    Name,
-    NameKana,
-    ReceptionDate,
-    Company,
-    CustomerType,
-    Email,
-    Tel,
-    Color,
-    Detail,
+    TitleMain,
+    Title,
+    AutherName,
+    Genre,
+    UploadedDate,
+    LastModifyDate,
+    Keywords,
     File,
-    Size,
-    ProductNumber
+    AdvancedSetting,
   },
   data() {
     return {
       formData: {
         fields: {
           firstName: {
-            stringValue: this.properties.firstName
+            stringValue: this.properties.firstName,
           },
           lastName: {
-            stringValue: this.properties.lastName
-          }
-        }
+            stringValue: this.properties.lastName,
+          },
+        },
       },
       allSize: [
         { size: "選択してください", value: "選択してください" },
@@ -122,15 +104,15 @@ export default {
         { size: "31.0", value: "42" },
         { size: "31.5", value: "43" },
         { size: "32.0", value: "44" },
-        { size: "32.5", value: "45" }
-      ]
+        { size: "32.5", value: "45" },
+      ],
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   methods: {
     formUpdate(e) {
@@ -144,39 +126,33 @@ export default {
         "https://firestore.googleapis.com/v1/projects/customer-service-7805c/databases/(default)/documents/properties";
       axios
         .post(url, this.formData)
-        .then(function(res) {
+        .then(function (res) {
           console.log(res);
         })
         .catch();
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/reset";
-@import "../scss/form_reset";
-@import "../scss/common";
-// @import "../scss/form";
-/deep/ input,
-/deep/ textarea {
+@import "../scss/_form_reset.scss";
+// @import "~/assets/scss/common.scss";
+/deep/input,
+/deep/textarea {
   border: solid #eeeeee 1px;
 }
-
-.form-book {
+.form-customer-service {
   width: 75.6rem;
   margin: 7.2rem auto;
   font-size: 1.4rem;
-
-  /deep/ dl {
+  /deep/ > dl {
     margin-bottom: 2.4rem;
     display: table;
-
     /deep/ dt,
     /deep/ dd {
       display: table-cell;
-
-      /deep/ input {
+      /deep/input {
         display: inline-block;
         border: #eeeeee solid 1px;
         border-radius: 3px;
@@ -185,22 +161,18 @@ export default {
         height: 2rem;
       }
     }
-
     /deep/ dt {
       width: 16rem;
       vertical-align: top;
     }
-
     /deep/ dd {
       width: 59.6rem;
-
-      /deep/ > div,
-      /deep/ > span,
-      /deep/ > div > span {
+      > div,
+      > span,
+      > div > span {
         margin-right: 1.6rem;
       }
-
-      /deep/ > div {
+      > div {
         margin-bottom: 1.6rem;
       }
     }
