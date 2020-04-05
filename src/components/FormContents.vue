@@ -1,13 +1,6 @@
 <template>
-  <main class="form-customer-service">
-    <Address
-      :zip="properties.zip"
-      :prefecture="properties.prefecture"
-      :address="properties.address"
-      :building="properties.building"
-      @formUpdate="formUpdate"
-    />
-
+  <main class="form-book">
+    <ReceptionDate :questionaryData="properties" />
     <Name
       :firstName="properties.firstName"
       :lastName="properties.lastName"
@@ -18,16 +11,23 @@
       :lastNameKana="properties.lastNameKana"
       @formUpdate="formUpdate"
     />
-    <ReceptionDate :questionaryData="properties" />
+    <Address
+      :zip="properties.zip"
+      :prefecture="properties.prefecture"
+      :address1="properties.address1"
+      :address2="properties.address2"
+      :building="properties.building"
+      @formUpdate="formUpdate"
+    />
+    <Tel :tel="properties.tel" @formUpdate="formUpdate" />
+    <Email :mail="properties.mail" :mail2="properties.mail2" @formUpdate="formUpdate" />
     <Company :company="properties.company" :section="properties.section" @formUpdate="formUpdate" />
     <CustomerType :CustomerType="properties.CustomerType" @formUpdate="formUpdate" />
-    <Email :mail="properties.mail" @formUpdate="formUpdate" />
-    <Tel :tel="properties.tel" @formUpdate="formUpdate" />
     <Color :color="properties.color" @formUpdate="formUpdate" />
-    <Detail :detail="properties.detail" @formUpdate="formUpdate" />
-    <File :file="properties.file" @formUpdate="formUpdate" />
     <Size :size="properties.size" :all-size="allSize" @formUpdate="formUpdate" />
     <ProductNumber :productNumber="properties.productNumber" @formUpdate="formUpdate" />
+    <Detail :detail="properties.detail" @formUpdate="formUpdate" />
+    <File :file="properties.file" @formUpdate="formUpdate" />
     <button @click="postData">送信する</button>
   </main>
 </template>
@@ -154,23 +154,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/reset";
 @import "../scss/form_reset";
 @import "../scss/common";
-/deep/input,
-/deep/textarea {
+// @import "../scss/form";
+/deep/ input,
+/deep/ textarea {
   border: solid #eeeeee 1px;
 }
-.form-customer-service {
+
+.form-book {
   width: 75.6rem;
   margin: 7.2rem auto;
   font-size: 1.4rem;
-  /deep/ > dl {
+
+  /deep/ dl {
     margin-bottom: 2.4rem;
     display: table;
+
     /deep/ dt,
     /deep/ dd {
       display: table-cell;
-      /deep/input {
+
+      /deep/ input {
         display: inline-block;
         border: #eeeeee solid 1px;
         border-radius: 3px;
@@ -179,18 +185,22 @@ export default {
         height: 2rem;
       }
     }
+
     /deep/ dt {
       width: 16rem;
       vertical-align: top;
     }
+
     /deep/ dd {
       width: 59.6rem;
-      > div,
-      > span,
-      > div > span {
+
+      /deep/ > div,
+      /deep/ > span,
+      /deep/ > div > span {
         margin-right: 1.6rem;
       }
-      > div {
+
+      /deep/ > div {
         margin-bottom: 1.6rem;
       }
     }

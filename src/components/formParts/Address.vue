@@ -26,10 +26,20 @@
         <span>
           <input
             type="text"
-            name="address"
-            :value="address"
+            name="address1"
+            :value="address1"
             required
-            placeholder="豊島区池袋3-7-18"
+            placeholder="豊島区池袋"
+            @change="formUpdate"
+          />
+        </span>
+        <span>
+          <input
+            type="text"
+            name="address2"
+            :value="addres2"
+            required
+            placeholder="3-7-18"
             @change="formUpdate"
           />
         </span>
