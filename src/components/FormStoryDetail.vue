@@ -6,24 +6,32 @@
     <Genre :genre="properties.genre" @formUpdate="formUpdate" />
     <CatchCopy :genre="properties.catchCopy" @formUpdate="formUpdate" />
     <Synopsis :genre="properties.Synopsis" @formUpdate="formUpdate" />
-
     <Keywords :Keywords="properties.Keywords" @formUpdate="formUpdate" />
-    <UploadedDate :uploadedDate="properties.uploadedDate" />
-    <LastModifyDate :uploadedDate="properties.lastModifyDate" />
-
     <ExtremeDepiction :uploadedDate="properties.ExtremeDepiction" />
+    <ColorType :Keywords="properties.ColorType" @formUpdate="formUpdate" />
+    <ReceptionDate :ReceptionDate="properties.ReceptionDate" />
+    <LastModifyDate :uploadedDate="properties.lastModifyDate" />
     <Advertisement :uploadedDate="properties.Advertisement" />
-
-    <AcceptRating :AcceptRating="properties.AcceptRating" @formUpdate="formUpdate" />
-    <AcceptImpressions :AcceptImpressions="properties.AcceptImpressions" @formUpdate="formUpdate" />
-    <AcceptReviews :AcceptReviews="properties.AcceptReviews" @formUpdate="formUpdate" />
-    <PublishEvaluation :PublishEvaluation="properties.PublishEvaluation" @formUpdate="formUpdate" />
-    <AcceptTypoReports :AcceptTypoReports="properties.AcceptTypoReports" @formUpdate="formUpdate" />
-    <DisclosureSettings
-      :DisclosureSettings="properties.DisclosureSettings"
+    <AcceptRating
+      :AcceptRating="properties.AcceptRating"
       @formUpdate="formUpdate"
     />
-
+    <AcceptImpressions
+      :AcceptImpressions="properties.AcceptImpressions"
+      @formUpdate="formUpdate"
+    />
+    <AcceptReviews
+      :AcceptReviews="properties.AcceptReviews"
+      @formUpdate="formUpdate"
+    />
+    <PublishEvaluation
+      :PublishEvaluation="properties.PublishEvaluation"
+      @formUpdate="formUpdate"
+    />
+    <AcceptTypoReports
+      :AcceptTypoReports="properties.AcceptTypoReports"
+      @formUpdate="formUpdate"
+    />
     <button @click="postData">送信する</button>
   </main>
 </template>
@@ -37,14 +45,17 @@ import Genre from "./formParts/Genre.vue";
 import CatchCopy from "./formParts/CatchCopy.vue";
 import Synopsis from "./formParts/Synopsis.vue";
 import Advertisement from "./formParts/Advertisement.vue";
-import UploadedDate from "./formParts/UploadedDate.vue";
+import ReceptionDate from "./formParts/ReceptionDate.vue";
+import LastModifyDate from "./formParts/LastModifyDate.vue";
+
+import ExtremeDepiction from "./formParts/ExtremeDepiction.vue";
+import ColorType from "./formParts/ColorType.vue";
 import Keywords from "./formParts/Keywords.vue";
 import AcceptRating from "./formParts/AcceptRating.vue";
 import AcceptImpressions from "./formParts/AcceptImpressions.vue";
 import AcceptReviews from "./formParts/AcceptReviews.vue";
 import PublishEvaluation from "./formParts/PublishEvaluation.vue";
 import AcceptTypoReports from "./formParts/AcceptTypoReports.vue";
-import DisclosureSettings from "./formParts/DisclosureSettings.vue";
 
 export default {
   components: {
@@ -55,26 +66,28 @@ export default {
     CatchCopy,
     Synopsis,
     Advertisement,
-    UploadedDate,
+    ReceptionDate,
+    LastModifyDate,
+    ExtremeDepiction,
     Keywords,
+    ColorType,
     AcceptRating,
     AcceptImpressions,
     AcceptReviews,
     PublishEvaluation,
     AcceptTypoReports,
-    DisclosureSettings
   },
   data() {
     return {
       formData: {
         fields: {
           firstName: {
-            stringValue: this.properties.firstName
+            stringValue: this.properties.firstName,
           },
           lastName: {
-            stringValue: this.properties.lastName
-          }
-        }
+            stringValue: this.properties.lastName,
+          },
+        },
       },
       allSize: [
         { size: "選択してください", value: "選択してください" },
@@ -122,15 +135,15 @@ export default {
         { size: "31.0", value: "42" },
         { size: "31.5", value: "43" },
         { size: "32.0", value: "44" },
-        { size: "32.5", value: "45" }
-      ]
+        { size: "32.5", value: "45" },
+      ],
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   methods: {
     formUpdate(e) {
@@ -144,12 +157,12 @@ export default {
         "https://firestore.googleapis.com/v1/projects/customer-service-7805c/databases/(default)/documents/properties";
       axios
         .post(url, this.formData)
-        .then(function(res) {
+        .then(function (res) {
           console.log(res);
         })
         .catch();
-    }
-  }
+    },
+  },
 };
 </script>
 

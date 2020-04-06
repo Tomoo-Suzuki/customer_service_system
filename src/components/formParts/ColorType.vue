@@ -1,9 +1,9 @@
 <template>
   <dl>
-    <dt>レビューの受付</dt>
+    <dt>カラータイプ</dt>
     <dd>
       <label>
-        <span>受け付ける</span>
+        <span>青</span>
         <input
           id="type"
           type="radio"
@@ -13,7 +13,17 @@
         />
       </label>
       <label>
-        <span>受け付けない</span>
+        <span>赤</span>
+        <input
+          id="type"
+          type="radio"
+          name="Advertisement"
+          :value="customerType"
+          @change="formUpdate"
+        />
+      </label>
+      <label>
+        <span>ダーク</span>
         <input
           id="type"
           type="radio"
@@ -30,14 +40,14 @@ export default {
   props: {
     customerType: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

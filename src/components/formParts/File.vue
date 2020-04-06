@@ -2,7 +2,6 @@
   <dl>
     <dt>イラストの画像</dt>
     <dd>
-      <label for="a">a</label>
       <input id="a" name="file" type="file" value="file" @change="formUpdate" />
     </dd>
   </dl>

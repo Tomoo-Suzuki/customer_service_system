@@ -2,6 +2,8 @@
   <dl>
     <dt>評価の公開</dt>
     <dd>
+      <span>公開する</span>
+
       <input
         id="type"
         type="radio"
@@ -9,6 +11,8 @@
         :value="customerType"
         @change="formUpdate"
       />
+      <span>公開しない</span>
+
       <input
         id="type"
         type="radio"

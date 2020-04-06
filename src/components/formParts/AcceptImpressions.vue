@@ -2,16 +2,26 @@
   <dl>
     <dt>感想の受付</dt>
     <dd>
-      <select name="size" :value="size" required @change="formUpdate">
-        <option
-          v-for="(data, val) in allSize"
-          :key="val"
-          :selected="data.size === '選択してください' ? true : false"
-          required
-        >
-          {{ data.size }}
-        </option>
-      </select>
+      <label>
+        <span>受け付ける</span>
+        <input
+          id="type"
+          type="radio"
+          name="Advertisement"
+          :value="customerType"
+          @change="formUpdate"
+        />
+      </label>
+      <label>
+        <span>受け付けない</span>
+        <input
+          id="type"
+          type="radio"
+          name="Advertisement"
+          :value="customerType"
+          @change="formUpdate"
+        />
+      </label>
     </dd>
   </dl>
 </template>
@@ -20,18 +30,18 @@ export default {
   props: {
     size: {
       type: String,
-      default: null,
+      default: null
     },
     allSize: {
       type: Array,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

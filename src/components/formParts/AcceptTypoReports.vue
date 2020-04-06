@@ -1,19 +1,27 @@
 <template>
   <dl>
-    <dt>サイズ</dt>
+    <dt>誤字の報告</dt>
     <dd>
-      <select name="size" :value="size" required @change="formUpdate">
-        <option
-          v-for="(data,val) in allSize"
-          :key="val"
-          :selected="(data.size==='選択してください')?true:false"
-          required
-        >
-          {{
-          data.size
-          }}
-        </option>
-      </select>
+      <label>
+        <span>受け付ける</span>
+        <input
+          id="type"
+          type="radio"
+          name="Advertisement"
+          :value="customerType"
+          @change="formUpdate"
+        />
+      </label>
+      <label>
+        <span>受け付けない</span>
+        <input
+          id="type"
+          type="radio"
+          name="Advertisement"
+          :value="customerType"
+          @change="formUpdate"
+        />
+      </label>
     </dd>
   </dl>
 </template>

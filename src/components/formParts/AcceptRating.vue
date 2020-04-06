@@ -2,16 +2,26 @@
   <dl>
     <dt>評価の受付</dt>
     <dd>
-      <select required name="color">
-        <option
-          v-for="color in colors"
-          :key="color"
-          required
+      <label>
+        <span>受け付ける</span>
+        <input
+          id="type"
+          type="radio"
+          name="Advertisement"
+          :value="customerType"
           @change="formUpdate"
-        >
-          {{ color }}
-        </option>
-      </select>
+        />
+      </label>
+      <label>
+        <span>受け付けない</span>
+        <input
+          id="type"
+          type="radio"
+          name="Advertisement"
+          :value="customerType"
+          @change="formUpdate"
+        />
+      </label>
     </dd>
   </dl>
 </template>
@@ -20,18 +30,18 @@ export default {
   props: {
     color: {
       type: String,
-      default: null,
+      default: null
     },
     colors: {
       type: Object,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

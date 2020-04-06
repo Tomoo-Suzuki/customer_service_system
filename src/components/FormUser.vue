@@ -1,27 +1,23 @@
 <template>
   <main class="form-customer-service">
-    <Title :title="properties.title" @formUpdate="formUpdate" />
-    <Story :file="properties.story" @formUpdate="formUpdate" />
-    <UploadedDate :uploadedDate="properties.uploadedDate" />
-    <File :file="properties.file" @formUpdate="formUpdate" />
-
+    <Email :email="properties.email" @formUpdate="formUpdate" />
+    <UserId :password="properties.UserId" @formUpdate="formUpdate" />
+    <Password :password="properties.password" @formUpdate="formUpdate" />
     <button @click="postData">送信する</button>
   </main>
 </template>
 
 <script>
 import axios from "axios";
-import Title from "./formParts/Title.vue";
-import Story from "./formParts/UploadedDate.vue";
-import UploadedDate from "./formParts/Story.vue";
-import File from "./formParts/File.vue";
+import Email from "./formParts/Email.vue";
+import UserId from "./formParts/UserId.vue";
+import Password from "./formParts/Password.vue";
 
 export default {
   components: {
-    Title,
-    Story,
-    UploadedDate,
-    File,
+    Email,
+    UserId,
+    Password,
   },
   data() {
     return {

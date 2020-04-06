@@ -3,8 +3,7 @@
     <Header />
     <div class="contents">
       <div class="contents-inner">
-        <FormPost :properties="questionaryData"></FormPost>
-        <FormStoryDetail :properties="questionaryData"></FormStoryDetail>
+        <router-view></router-view>
       </div>
     </div>
     <Footer />
@@ -13,16 +12,12 @@
 
 <script>
 import Header from "./components/Header";
-import FormPost from "./components/FormPost";
-import FormStoryDetail from "./components/FormStoryDetail";
 import Footer from "./components/Footer";
 
 export default {
   components: {
     Header,
-    FormPost,
-    FormStoryDetail,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -45,10 +40,10 @@ export default {
         size: "23.5",
         detail:
           "ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー",
-        file: ""
-      }
+        file: "",
+      },
     };
-  }
+  },
 };
 </script>
 
