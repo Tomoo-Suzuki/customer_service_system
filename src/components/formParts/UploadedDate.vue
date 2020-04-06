@@ -2,29 +2,24 @@
   <dl>
     <dt>配信日</dt>
     <dd>
-      <input
-        type="date"
-        name="receptionDate"
-        :value="receptionDate"
-        @change="formUpdate"
-      />
-      <p>{{ receptionDate }}</p>
+      <input type="date" name="uploadedDate" :value="uploadedDate" @change="formUpdate" />
+      <p>{{ uploadedDate }}</p>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    receptionDate: {
+    uploadedDate: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

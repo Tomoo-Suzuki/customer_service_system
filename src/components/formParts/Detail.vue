@@ -1,15 +1,15 @@
 <template>
   <dl>
-    <dt>小説</dt>
+    <dt>お困りの内容</dt>
     <dd>
-      <textarea col="30" rows="10" name="story" :value="story" @click="formUpdate"></textarea>
+      <textarea col="30" rows="10" name="detail" :value="detail" @click="formUpdate"></textarea>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    story: {
+    detail: {
       type: String,
       default: null
     }

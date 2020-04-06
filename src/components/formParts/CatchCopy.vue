@@ -1,24 +1,24 @@
 <template>
   <dl>
-    <dt>タイトル</dt>
+    <dt>キャッチコピー</dt>
     <dd>
-      <div>
+      <span>
         <input
           type="text"
-          name="title"
-          :value="title"
-          required
-          placeholder="境界の国"
+          name="catchCopy"
+          :value="catchCopy"
           @change="formUpdate"
+          required
+          placeholder="前には夢が、隣には仲間が。"
         />
-      </div>
+      </span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    title: {
+    catchCopy: {
       type: String,
       default: null
     }

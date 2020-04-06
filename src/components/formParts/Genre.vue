@@ -3,31 +3,54 @@
     <dl>
       <dt>ジャンル</dt>
       <dd>
-        <input
-          type="email"
-          name="mail"
-          :value="mail"
-          required
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-          placeholder="09021334566"
-          title="メールアドレス"
-          @change="formUpdate"
-        />
-      </dd>
-    </dl>
-    <dl>
-      <dt>メール(確認用)</dt>
-      <dd>
-        <input
-          type="email2"
-          name="mail2"
-          :value="mail2"
-          required
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-          placeholder="09021334566"
-          title="メールアドレス確認"
-          @change="formUpdate"
-        />
+        <label>
+          <span>異世界ファンタジー</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>現代ファンタジー</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>SF</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>恋愛</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>ラブコメ</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>現代ドラマ</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>ホラー</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>ミステリー</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>エッセイ・ノンフィクション</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>歴史・時代・伝記</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>創作論・評論</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
+        <label>
+          <span>詩・童話・その他</span>
+          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+        </label>
       </dd>
     </dl>
   </span>
@@ -37,14 +60,14 @@ export default {
   props: {
     mail: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

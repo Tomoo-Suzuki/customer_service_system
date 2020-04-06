@@ -3,7 +3,8 @@
     <Header />
     <div class="contents">
       <div class="contents-inner">
-        <FormContents :properties="questionaryData"></FormContents>
+        <FormPost :properties="questionaryData"></FormPost>
+        <FormStoryDetail :properties="questionaryData"></FormStoryDetail>
       </div>
     </div>
     <Footer />
@@ -12,13 +13,15 @@
 
 <script>
 import Header from "./components/Header";
-import FormContents from "./components/FormContents";
+import FormPost from "./components/FormPost";
+import FormStoryDetail from "./components/FormStoryDetail";
 import Footer from "./components/Footer";
 
 export default {
   components: {
     Header,
-    FormContents,
+    FormPost,
+    FormStoryDetail,
     Footer
   },
   data() {

@@ -1,15 +1,16 @@
 <template>
   <dl>
-    <dt>小説</dt>
+    <dt>お受付日</dt>
     <dd>
-      <textarea col="30" rows="10" name="story" :value="story" @click="formUpdate"></textarea>
+      <input type="date" name="receptionDate" :value="receptionDate" @change="formUpdate" />
+      <p>{{ receptionDate }}</p>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    story: {
+    receptionDate: {
       type: String,
       default: null
     }

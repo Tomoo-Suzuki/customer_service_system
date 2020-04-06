@@ -1,24 +1,15 @@
 <template>
   <dl>
-    <dt>タイトル</dt>
+    <dt>あらすじ</dt>
     <dd>
-      <div>
-        <input
-          type="text"
-          name="title"
-          :value="title"
-          required
-          placeholder="境界の国"
-          @change="formUpdate"
-        />
-      </div>
+      <textarea col="30" rows="10" name="synopsis" :value="synopsi" @click="formUpdate"></textarea>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    title: {
+    synopsi: {
       type: String,
       default: null
     }

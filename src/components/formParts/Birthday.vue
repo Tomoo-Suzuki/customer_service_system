@@ -1,31 +1,30 @@
 <template>
   <dl>
-    <dt>作者名</dt>
+    <dt>配信日</dt>
     <dd>
       <input
-        type="text"
-        name="autherName"
-        :value="autherName"
+        type="date"
+        name="receptionDate"
+        :value="receptionDate"
         @change="formUpdate"
-        required
-        placeholder="jota(イオタ)"
       />
+      <p>{{ receptionDate }}</p>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    autherName: {
+    receptionDate: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

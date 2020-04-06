@@ -1,24 +1,23 @@
 <template>
   <dl>
-    <dt>タイトル</dt>
+    <dt>お電話番号</dt>
     <dd>
-      <div>
-        <input
-          type="text"
-          name="title"
-          :value="title"
-          required
-          placeholder="境界の国"
-          @change="formUpdate"
-        />
-      </div>
+      <input
+        type="text"
+        name="tel"
+        :value="tel"
+        required
+        placeholder="09021334566"
+        pattern="\d{2,4}-?\d{3,4}-?\d{3,4}"
+        @change="formUpdate"
+      />
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    title: {
+    tel: {
       type: String,
       default: null
     }

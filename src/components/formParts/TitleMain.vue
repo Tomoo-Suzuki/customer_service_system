@@ -4,11 +4,10 @@
     <dd>
       <input
         type="text"
-        name="tel"
-        :value="tel"
+        name="titleMain"
+        :value="titleMain"
         required
-        placeholder="09021334566"
-        pattern="\d{2,4}-?\d{3,4}-?\d{3,4}"
+        placeholder="トリスタンの皇帝"
         @change="formUpdate"
       />
     </dd>
@@ -17,16 +16,16 @@
 <script>
 export default {
   props: {
-    tel: {
+    titleMain: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

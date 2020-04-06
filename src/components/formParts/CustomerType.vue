@@ -1,14 +1,20 @@
 <template>
   <dl>
-    <dt>作者名</dt>
+    <dt>個人・法人のお客様</dt>
     <dd>
       <input
-        type="text"
-        name="autherName"
-        :value="autherName"
+        id="type"
+        type="radio"
+        name="customerType"
+        :value="customerType"
         @change="formUpdate"
-        required
-        placeholder="jota(イオタ)"
+      />
+      <input
+        id="type"
+        type="radio"
+        name="customerType"
+        :value="customerType"
+        @change="formUpdate"
       />
     </dd>
   </dl>
@@ -16,7 +22,7 @@
 <script>
 export default {
   props: {
-    autherName: {
+    customerType: {
       type: String,
       default: null
     }
