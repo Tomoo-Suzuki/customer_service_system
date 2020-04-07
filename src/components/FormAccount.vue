@@ -115,7 +115,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_form_reset.scss";
+// @import "../scss/_form_reset.scss";
 // @import "~/assets/scss/common.scss";
 /deep/input,
 /deep/textarea {

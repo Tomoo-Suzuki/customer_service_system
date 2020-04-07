@@ -127,9 +127,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_reset.scss";
-@import "../scss/_common.scss";
-@import "../scss/_form_reset.scss";
+// @import "../scss/_reset.scss";
+// @import "../scss/_common.scss";
+// @import "../scss/_form_reset.scss";
 /deep/input,
 /deep/textarea {
   border: solid #eeeeee 1px;

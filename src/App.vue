@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/uiParts/Header";
+import Footer from "./components/uiParts/Footer";
 
 export default {
   components: {
@@ -80,9 +80,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import "./scss/reset";
-@import "./scss/common";
+<style lang="scss" scoped>
+@import "./scss/index";
+// @import "./scss/common";
 .nav_temp {
   > div {
     color: cadetblue;
