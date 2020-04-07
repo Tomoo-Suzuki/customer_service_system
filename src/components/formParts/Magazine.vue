@@ -1,21 +1,21 @@
 <template>
   <dl>
-    <dt>生年月日</dt>
+    <dt>メールマガジンを受けとる</dt>
     <dd>
       <input
-        type="date"
-        name="receptionDate"
-        :value="receptionDate"
+        type="checkbox"
+        name="magazine"
+        :value="magazine"
         @change="formUpdate"
       />
-      <p>{{ receptionDate }}</p>
+      <p>旬の情報やメルマガ限定コンテンツを運営よりお届けします。</p>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    receptionDate: {
+    magazine: {
       type: String,
       default: null,
     },

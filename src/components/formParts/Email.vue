@@ -5,8 +5,8 @@
       <dd>
         <input
           type="email"
-          name="mail"
-          :value="mail"
+          name="email"
+          :value="email"
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
           placeholder="09021334566"
@@ -20,8 +20,8 @@
       <dd>
         <input
           type="email2"
-          name="mail2"
-          :value="mail2"
+          name="email2"
+          :value="email2"
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
           placeholder="09021334566"
@@ -29,22 +29,30 @@
           @change="formUpdate"
         />
       </dd>
+      <dd>
+        運営よりメールでご連絡する場合があります。普段利用されているメールアドレスを入力してください。
+        確実にメールを受信するために、携帯電話でのみ受信可能なメールアドレスを避け、パソコン等でも受信できるメールアドレスをお使いいただくことをお勧めします。
+      </dd>
     </dl>
   </span>
 </template>
 <script>
 export default {
   props: {
-    mail: {
+    email: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
+    email2: {
+      type: String,
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

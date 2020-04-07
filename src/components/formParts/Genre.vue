@@ -5,51 +5,101 @@
       <dd>
         <label>
           <span>異世界ファンタジー</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>現代ファンタジー</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>SF</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>恋愛</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>ラブコメ</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>現代ドラマ</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>ホラー</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>ミステリー</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>エッセイ・ノンフィクション</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>歴史・時代・伝記</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>創作論・評論</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
-        </label>
-        <label>
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
           <span>詩・童話・その他</span>
-          <input id="type" type="radio" name="genre" :value="genre" @change="formUpdate" />
+          <input
+            id="type"
+            type="radio"
+            name="genre"
+            :value="genre"
+            @change="formUpdate"
+          />
         </label>
       </dd>
     </dl>
@@ -58,16 +108,16 @@
 <script>
 export default {
   props: {
-    mail: {
+    genre: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

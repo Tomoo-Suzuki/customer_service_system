@@ -1,33 +1,25 @@
 <template>
   <dl>
-    <dt>キーワード</dt>
+    <dt>パスワード</dt>
     <dd>
-      <select
-        name="productNumber"
-        :value="productNumber"
+      <input
+        type="text"
+        name="password"
+        :value="password"
         required
+        placeholder="tsex90876"
         @change="formUpdate"
-      >
-        <option
-          v-for="productNumber in productNumbers"
-          :key="productNumber"
-          required
-        >
-          {{ productNumber }}
-        </option>
-      </select>
-      <p>{{ productNumber }}</p>
+      />
+    </dd>
+    <dd>
+      8文字以上。半角英数字、半角記号が使えます。
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    productNumber: {
-      type: String,
-      default: null,
-    },
-    productNumbers: {
+    password: {
       type: Object,
       default: null,
     },

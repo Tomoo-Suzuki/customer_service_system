@@ -8,27 +8,31 @@
           id="type"
           type="checkbox"
           name="ExtremeDepiction"
-          :value="genre"
+          :value="ExtremeDepiction"
           @change="formUpdate"
         />
-      </label>
-      <label>
         <span>性的な描写</span>
         <input
           id="type"
           type="checkbox"
           name="ExtremeDepiction"
-          :value="genre"
+          :value="ExtremeDepiction"
           @change="formUpdate"
         />
-      </label>
-      <label>
+        <span>暴力的な描写</span>
+        <input
+          id="type"
+          type="checkbox"
+          name="ExtremeDepiction"
+          :value="ExtremeDepiction"
+          @change="formUpdate"
+        />
         <span>グロテスクな描写</span>
         <input
           id="type"
           type="checkbox"
           name="ExtremeDepiction"
-          :value="genre"
+          :value="ExtremeDepiction"
           @change="formUpdate"
         />
       </label>
@@ -40,14 +44,14 @@ export default {
   props: {
     ExtremeDepiction: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

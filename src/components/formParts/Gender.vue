@@ -1,21 +1,44 @@
 <template>
   <dl>
-    <dt>配信日</dt>
+    <dt>ジェンダー</dt>
     <dd>
-      <input
-        type="date"
-        name="receptionDate"
-        :value="receptionDate"
-        @change="formUpdate"
-      />
-      <p>{{ receptionDate }}</p>
+      <label>
+        <span>男性</span>
+        <input
+          id="type"
+          type="radio"
+          name="gender"
+          :value="gender"
+          @change="formUpdate"
+        />
+      </label>
+      <label>
+        <span>女性</span>
+        <input
+          id="type"
+          type="radio"
+          name="gender"
+          :value="gender"
+          @change="formUpdate"
+        />
+      </label>
+      <label>
+        <span>その他</span>
+        <input
+          id="type"
+          type="radio"
+          name="gender"
+          :value="gender"
+          @change="formUpdate"
+        />
+      </label>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    receptionDate: {
+    gender: {
       type: String,
       default: null,
     },

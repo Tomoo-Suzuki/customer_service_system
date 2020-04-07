@@ -1,33 +1,25 @@
 <template>
   <dl>
-    <dt>キーワード</dt>
+    <dt>ユーザーID</dt>
     <dd>
-      <select
-        name="productNumber"
-        :value="productNumber"
+      <input
+        type="text"
+        name="useId"
+        :value="useId"
         required
+        placeholder="tsex90876"
         @change="formUpdate"
-      >
-        <option
-          v-for="productNumber in productNumbers"
-          :key="productNumber"
-          required
-        >
-          {{ productNumber }}
-        </option>
-      </select>
-      <p>{{ productNumber }}</p>
+      />
+    </dd>
+    <dd>
+      3文字以上。半角の英数字、ハイフン、アンダースコアが使えます。ユーザーIDは一般に公開され、登録後の変更はできません。
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    productNumber: {
-      type: String,
-      default: null,
-    },
-    productNumbers: {
+    useId: {
       type: Object,
       default: null,
     },

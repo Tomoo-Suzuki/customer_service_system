@@ -1,9 +1,23 @@
 <template>
   <main class="form-customer-service">
-    <Email :email="properties.email" @formUpdate="formUpdate" />
+    <div>■プログレストラッカー</div>
+    <h2>新規ユーザー登録</h2>
+
+    <Email
+      :email="properties.email"
+      :email2="properties.email2"
+      @formUpdate="formUpdate"
+    />
     <UserId :password="properties.UserId" @formUpdate="formUpdate" />
     <Password :password="properties.password" @formUpdate="formUpdate" />
-    <button @click="postData">送信する</button>
+    <p>
+      ユーザー登録を行うには「利用規約」および「ガイドライン」へ同意いただく必要があります。
+      ユーザー登録を完了するためのメールを、登録いただいたメールアドレスへ送信します。
+    </p>
+    <Magazine :password="properties.password" @formUpdate="formUpdate" />
+    <AgreeToTerms :password="properties.password" @formUpdate="formUpdate" />
+    <p>reCapture導入</p>
+    <button @click="postData">ユーザー登録</button>
   </main>
 </template>
 
@@ -12,12 +26,16 @@ import axios from "axios";
 import Email from "./formParts/Email.vue";
 import UserId from "./formParts/UserId.vue";
 import Password from "./formParts/Password.vue";
+import Magazine from "./formParts/Magazine.vue";
+import AgreeToTerms from "./formParts/AgreeToTerms.vue";
 
 export default {
   components: {
     Email,
     UserId,
     Password,
+    Magazine,
+    AgreeToTerms,
   },
   data() {
     return {
@@ -109,8 +127,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/_reset.scss";
+@import "../scss/_common.scss";
 @import "../scss/_form_reset.scss";
-// @import "~/assets/scss/common.scss";
 /deep/input,
 /deep/textarea {
   border: solid #eeeeee 1px;

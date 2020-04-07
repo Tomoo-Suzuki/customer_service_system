@@ -7,8 +7,8 @@
         <input
           id="type"
           type="radio"
-          name="Advertisement"
-          :value="customerType"
+          name="acceptTypoReports"
+          :value="acceptTypoReports"
           @change="formUpdate"
         />
       </label>
@@ -17,8 +17,8 @@
         <input
           id="type"
           type="radio"
-          name="Advertisement"
-          :value="customerType"
+          name="acceptTypoReports"
+          :value="acceptTypoReports"
           @change="formUpdate"
         />
       </label>
@@ -28,20 +28,16 @@
 <script>
 export default {
   props: {
-    size: {
-      type: String,
-      default: null
-    },
-    allSize: {
+    acceptTypoReports: {
       type: Array,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

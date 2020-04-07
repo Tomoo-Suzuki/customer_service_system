@@ -13,7 +13,7 @@
     <LastModifyDate :uploadedDate="properties.lastModifyDate" />
     <Advertisement :uploadedDate="properties.Advertisement" />
     <AcceptRating
-      :AcceptRating="properties.AcceptRating"
+      :acceptRating="properties.acceptRating"
       @formUpdate="formUpdate"
     />
     <AcceptImpressions
