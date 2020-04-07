@@ -3,6 +3,39 @@
     <Header />
     <div class="contents">
       <div class="contents-inner">
+        <nav class="nav_temp">
+          <router-link to="/" tag="div" active-class="link_active" exact
+            >Home</router-link
+          >
+          <router-link
+            to="/form-user"
+            tag="div"
+            active-class="link_active"
+            exact
+            >User</router-link
+          >
+          <router-link
+            to="/form-post"
+            tag="div"
+            active-class="link_active"
+            exact
+            >Story Upload</router-link
+          >
+          <router-link
+            to="/form-story"
+            tag="div"
+            active-class="link_active"
+            exact
+            >Story Detail</router-link
+          >
+          <router-link
+            to="/form-account"
+            tag="div"
+            active-class="link_active"
+            exact
+            >Account</router-link
+          >
+        </nav>
         <router-view></router-view>
       </div>
     </div>
@@ -50,4 +83,15 @@ export default {
 <style lang="scss">
 @import "./scss/reset";
 @import "./scss/common";
+.nav_temp {
+  > div {
+    color: cadetblue;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .link_active {
+    color: blue;
+    text-decoration: underline;
+  }
+}
 </style>
