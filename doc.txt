@@ -1,0 +1,9 @@
+docker build -t book-upload:fst .
+
+docker run -d -p 8080:8080 -v :/app --rm --name upload-container1 book-upload:fst
+
+docker exec 736640c53fa0 sh
+
+■下記はosx用のモジュール。TODO:削除
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.12 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.12: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
