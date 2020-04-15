@@ -3,18 +3,20 @@
     <ToTop />
     <NavFooter />
     <MenuFooter />
-    <div>copyright</div>
+    <Copyright />
   </footer>
 </template>
 <script>
 import ToTop from "../atoms/ToTop.vue";
 import NavFooter from "../atoms/NavFooter.vue";
 import MenuFooter from "../atoms/MenuFooter.vue";
+import Copyright from "../atoms/Copyright.vue";
 export default {
   components: {
     ToTop,
     NavFooter,
-    MenuFooter
+    MenuFooter,
+    Copyright
   },
   props: {}
 };

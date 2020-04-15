@@ -1,8 +1,8 @@
-<template></template>
+<template><div>copyright</div></template>
 <script>
 export default {
   props: {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss" scoped></style>
