@@ -4,37 +4,11 @@
     <div class="contents">
       <div class="contents-inner">
         <nav class="nav_temp">
-          <router-link to="/" tag="div" active-class="link_active" exact
-            >Home</router-link
-          >
-          <router-link
-            to="/form-user"
-            tag="div"
-            active-class="link_active"
-            exact
-            >User</router-link
-          >
-          <router-link
-            to="/form-post"
-            tag="div"
-            active-class="link_active"
-            exact
-            >Story Upload</router-link
-          >
-          <router-link
-            to="/form-story"
-            tag="div"
-            active-class="link_active"
-            exact
-            >Story Detail</router-link
-          >
-          <router-link
-            to="/form-account"
-            tag="div"
-            active-class="link_active"
-            exact
-            >Account</router-link
-          >
+          <router-link to="/" tag="div" active-class="link_active" exact>Home</router-link>
+          <router-link to="/form-user" tag="div" active-class="link_active" exact>User</router-link>
+          <router-link to="/form-post" tag="div" active-class="link_active" exact>Story Upload</router-link>
+          <router-link to="/form-story" tag="div" active-class="link_active" exact>Story Detail</router-link>
+          <router-link to="/form-account" tag="div" active-class="link_active" exact>Account</router-link>
         </nav>
         <router-view></router-view>
       </div>
@@ -44,13 +18,13 @@
 </template>
 
 <script>
-import Header from "./components/uiParts/Header";
-import Footer from "./components/uiParts/Footer";
+import Header from "./components/organisms/Header";
+import Footer from "./components/organisms/Footer";
 
 export default {
   components: {
     Header,
-    Footer,
+    Footer
   },
   data() {
     return {
@@ -73,10 +47,10 @@ export default {
         size: "23.5",
         detail:
           "ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー",
-        file: "",
-      },
+        file: ""
+      }
     };
-  },
+  }
 };
 </script>
 

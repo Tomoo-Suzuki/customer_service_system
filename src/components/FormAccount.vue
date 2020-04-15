@@ -13,29 +13,29 @@
 
 <script>
 import axios from "axios";
-import Name from "./formParts/Name.vue";
-import NameKana from "./formParts/NameKana.vue";
-import Gender from "./formParts/Gender.vue";
-import Birthday from "./formParts/Birthday.vue";
+import Name from "./atoms/formParts/Name.vue";
+import NameKana from "./atoms/formParts/NameKana.vue";
+import Gender from "./atoms/formParts/Gender.vue";
+import Birthday from "./atoms/formParts/Birthday.vue";
 
 export default {
   components: {
     Name,
     NameKana,
     Gender,
-    Birthday,
+    Birthday
   },
   data() {
     return {
       formData: {
         fields: {
           firstName: {
-            stringValue: this.properties.firstName,
+            stringValue: this.properties.firstName
           },
           lastName: {
-            stringValue: this.properties.lastName,
-          },
-        },
+            stringValue: this.properties.lastName
+          }
+        }
       },
       allSize: [
         { size: "選択してください", value: "選択してください" },
@@ -83,15 +83,15 @@ export default {
         { size: "31.0", value: "42" },
         { size: "31.5", value: "43" },
         { size: "32.0", value: "44" },
-        { size: "32.5", value: "45" },
-      ],
+        { size: "32.5", value: "45" }
+      ]
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   methods: {
     formUpdate(e) {
@@ -105,12 +105,12 @@ export default {
         "https://firestore.googleapis.com/v1/projects/customer-service-7805c/databases/(default)/documents/properties";
       axios
         .post(url, this.formData)
-        .then(function (res) {
+        .then(function(res) {
           console.log(res);
         })
         .catch();
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -3,11 +3,7 @@
     <div>■プログレストラッカー</div>
     <h2>新規ユーザー登録</h2>
 
-    <Email
-      :email="properties.email"
-      :email2="properties.email2"
-      @formUpdate="formUpdate"
-    />
+    <Email :email="properties.email" :email2="properties.email2" @formUpdate="formUpdate" />
     <UserId :password="properties.UserId" @formUpdate="formUpdate" />
     <Password :password="properties.password" @formUpdate="formUpdate" />
     <p>
@@ -23,11 +19,11 @@
 
 <script>
 import axios from "axios";
-import Email from "./formParts/Email.vue";
-import UserId from "./formParts/UserId.vue";
-import Password from "./formParts/Password.vue";
-import Magazine from "./formParts/Magazine.vue";
-import AgreeToTerms from "./formParts/AgreeToTerms.vue";
+import Email from "./atoms/formParts/Email.vue";
+import UserId from "./atoms/formParts/UserId.vue";
+import Password from "./atoms/formParts/Password.vue";
+import Magazine from "./atoms/formParts/Magazine.vue";
+import AgreeToTerms from "./atoms/formParts/AgreeToTerms.vue";
 
 export default {
   components: {
@@ -35,19 +31,19 @@ export default {
     UserId,
     Password,
     Magazine,
-    AgreeToTerms,
+    AgreeToTerms
   },
   data() {
     return {
       formData: {
         fields: {
           firstName: {
-            stringValue: this.properties.firstName,
+            stringValue: this.properties.firstName
           },
           lastName: {
-            stringValue: this.properties.lastName,
-          },
-        },
+            stringValue: this.properties.lastName
+          }
+        }
       },
       allSize: [
         { size: "選択してください", value: "選択してください" },
@@ -95,15 +91,15 @@ export default {
         { size: "31.0", value: "42" },
         { size: "31.5", value: "43" },
         { size: "32.0", value: "44" },
-        { size: "32.5", value: "45" },
-      ],
+        { size: "32.5", value: "45" }
+      ]
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   methods: {
     formUpdate(e) {
@@ -117,12 +113,12 @@ export default {
         "https://firestore.googleapis.com/v1/projects/customer-service-7805c/databases/(default)/documents/properties";
       axios
         .post(url, this.formData)
-        .then(function (res) {
+        .then(function(res) {
           console.log(res);
         })
         .catch();
-    },
-  },
+    }
+  }
 };
 </script>
 
