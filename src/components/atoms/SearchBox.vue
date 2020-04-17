@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="searchBox">
     <label>
       <input type="text" />
       <button>検索</button>
@@ -9,7 +9,31 @@
 <script>
 export default {
   props: {},
-  methods: {},
+  methods: {}
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.searchBox {
+  > label {
+    > input {
+      display: inline-flex;
+      border: solid 1px #e6e6e6;
+      width: 30rem;
+      height: 2.8rem;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    > button {
+      background: #019c96;
+      color: #ffffff;
+      font-weight: bold;
+      width: 3rem;
+      text-align: center;
+      height: 3rem;
+      line-height: 3rem;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+}
+</style>

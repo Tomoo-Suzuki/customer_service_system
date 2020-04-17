@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="nav_header">
     <ul>
       <li>異世界ファンタジー</li>
       <li>現代ファンタジー</li>
@@ -19,7 +19,27 @@
 <script>
 export default {
   props: {},
-  methods: {},
+  methods: {}
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.nav_header {
+  > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 98%;
+    margin: auto;
+    max-width: calc(98% - 40px);
+    overflow-x: scroll;
+    > li {
+      margin: 0 0.5rem;
+      padding: 0.3rem 1rem;
+      white-space: nowrap;
+      color: #ffffff;
+      background: #019c96;
+      border-radius: 2px;
+    }
+  }
+}
+</style>

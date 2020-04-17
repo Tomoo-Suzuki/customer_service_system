@@ -1,8 +1,14 @@
-<template><div>copyright</div></template>
+<template>
+  <div class="copyright">©1996-2020, BookMa.com</div>
+</template>
 <script>
 export default {
   props: {},
-  methods: {},
+  methods: {}
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.copyright {
+  text-align: right;
+}
+</style>

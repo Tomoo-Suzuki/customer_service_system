@@ -1,11 +1,21 @@
 <template>
-  <nav>
+  <nav class="menuFooter">
     <ul>
-      <li>ご利用規約</li>
-      <li>個人情報保護方針</li>
-      <li>特定商取引法に基づく表記</li>
-      <li>企業情報（採用）</li>
-      <li>ヘルプ・お問い合わせ</li>
+      <li>
+        <a href>ご利用規約</a>
+      </li>
+      <li>
+        <a href>個人情報保護方針</a>
+      </li>
+      <li>
+        <a href>特定商取引法に基づく表記</a>
+      </li>
+      <li>
+        <a href>企業情報（採用）</a>
+      </li>
+      <li>
+        <a href>ヘルプ・お問い合わせ</a>
+      </li>
     </ul>
   </nav>
 </template>
@@ -15,4 +25,22 @@ export default {
   methods: {}
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.menuFooter {
+  margin: 5rem 0;
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    > li {
+      margin: 0 5rem 0 0;
+      > a {
+        color: #ffffff;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+</style>
