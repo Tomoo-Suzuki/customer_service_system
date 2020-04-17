@@ -1,5 +1,5 @@
 <template>
-  <div>Topへ戻る</div>
+  <div class="toTop">Topへ戻る</div>
 </template>
 <script>
 export default {
@@ -7,4 +7,13 @@ export default {
   methods: {}
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.toTop {
+  text-align: center;
+  color: #019c96;
+  font-weight: bold;
+  //background: #88b83e;
+  background: #d6d6d6;
+  padding: 0.8rem 0;
+}
+</style>

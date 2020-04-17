@@ -36,7 +36,7 @@ export default {
 <style lang="scss" scoped>
 .imgWrap {
   > img {
-    width: 7.2rem;
+    width: 12rem;
   }
 }
 </style>

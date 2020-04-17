@@ -2,7 +2,7 @@
   <header class="headerBook">
     <div class="headerBook_inner">
       <div class="headerBook_inner_upper">
-        <Logo :logoType="'0'" />
+        <Logo :logoType="'1'" />
         <SearchBox />
         <MenuHeader />
         <SiteSwitcher />
@@ -35,6 +35,7 @@ export default {
 .headerBook {
   width: 100%;
   font-size: 1.6rem;
+  margin-top: 30px;
   .headerBook_inner {
     padding: 10px;
     width: 100%;

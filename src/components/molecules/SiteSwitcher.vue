@@ -1,6 +1,6 @@
 <template>
   <nav class="nav_siteSwicher">
-    <Logo :logoType="'1'" />
+    <Logo :logoType="'0'" />
     <Logo :logoType="'2'" />
   </nav>
 </template>
