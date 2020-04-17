@@ -1,20 +1,22 @@
 <template>
-  <footer>
+  <footer class="footerBook">
     <ToTop />
-    <NavFooter />
-    <MenuFooter />
-    <Copyright />
+    <div class="footerBook_inner">
+      <SiteSwitcherFooter />
+      <MenuFooter />
+      <Copyright />
+    </div>
   </footer>
 </template>
 <script>
 import ToTop from "../atoms/ToTop.vue";
-import NavFooter from "../atoms/NavFooter.vue";
+import SiteSwitcherFooter from "../molecules/SiteSwitcherFooter.vue";
 import MenuFooter from "../atoms/MenuFooter.vue";
 import Copyright from "../atoms/Copyright.vue";
 export default {
   components: {
     ToTop,
-    NavFooter,
+    SiteSwitcherFooter,
     MenuFooter,
     Copyright
   },
@@ -22,6 +24,16 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// @import "../../scss/reset";
-// @import "../../scss/common";
+.footerBook {
+  width: 100%;
+  font-size: 1.4rem;
+  color: #ffffff;
+  background: #019c96;
+  padding-bottom: 3rem;
+  .footerBook_inner {
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+  }
+}
 </style>
