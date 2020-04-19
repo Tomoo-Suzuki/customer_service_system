@@ -1,36 +1,25 @@
 <template>
   <dl>
     <dt>ジェンダー</dt>
-    <dd>
+    <dd class="radioAndCheckbox">
       <label>
         <span>男性</span>
         <input
+          v-model="gender"
           id="type"
           type="radio"
           name="gender"
-          :value="gender"
+          :value="man"
           @change="formUpdate"
         />
       </label>
       <label>
         <span>女性</span>
-        <input
-          id="type"
-          type="radio"
-          name="gender"
-          :value="gender"
-          @change="formUpdate"
-        />
+        <input id="type" type="radio" name="gender" :value="woman" @change="formUpdate" />
       </label>
       <label>
         <span>その他</span>
-        <input
-          id="type"
-          type="radio"
-          name="gender"
-          :value="gender"
-          @change="formUpdate"
-        />
+        <input id="type" type="radio" name="gender" :value="lgbt" @change="formUpdate" />
       </label>
     </dd>
   </dl>
@@ -40,14 +29,14 @@ export default {
   props: {
     gender: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

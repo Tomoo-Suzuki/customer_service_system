@@ -2,12 +2,7 @@
   <dl>
     <dt>メールマガジンを受けとる</dt>
     <dd>
-      <input
-        type="checkbox"
-        name="magazine"
-        :value="magazine"
-        @change="formUpdate"
-      />
+      <input type="checkbox" name="magazine" value="1" @change="formUpdate" />
       <p>旬の情報やメルマガ限定コンテンツを運営よりお届けします。</p>
     </dd>
   </dl>
@@ -17,14 +12,14 @@ export default {
   props: {
     magazine: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>
