@@ -1,26 +1,14 @@
 <template>
   <dl>
     <dt>レビューの受付</dt>
-    <dd>
+    <dd class="radioAndCheckbox">
       <label>
         <span>受け付ける</span>
-        <input
-          id="type"
-          type="radio"
-          name="Advertisement"
-          :value="customerType"
-          @change="formUpdate"
-        />
+        <input type="radio" name="acceptReviews" :value="0" @change="formUpdate" />
       </label>
       <label>
         <span>受け付けない</span>
-        <input
-          id="type"
-          type="radio"
-          name="Advertisement"
-          :value="customerType"
-          @change="formUpdate"
-        />
+        <input type="radio" name="acceptReviews" :value="1" @change="formUpdate" />
       </label>
     </dd>
   </dl>
@@ -28,7 +16,7 @@
 <script>
 export default {
   props: {
-    customerType: {
+    acceptReviews: {
       type: String,
       default: null
     }

@@ -9,7 +9,7 @@
           :value="email"
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-          placeholder="09021334566"
+          placeholder="xxxx@aaa.co.jp"
           title="メールアドレス"
           @change="formUpdate"
         />
@@ -24,7 +24,7 @@
           :value="emailConfirm"
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-          placeholder="09021334566"
+          placeholder="xxxx@aaa.co.jp"
           title="メールアドレス確認"
           @change="formUpdate"
         />

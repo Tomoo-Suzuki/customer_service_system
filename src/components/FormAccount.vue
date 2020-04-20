@@ -1,5 +1,5 @@
 <template>
-  <main class="form-customer-service">
+  <main class="form-book">
     <form name="formUser">
       <p>ID</p>
       <p>AutherName</p>
@@ -11,24 +11,27 @@
       <NameKana :LastNameKana="properties.lastNameKana" @formUpdate="formUpdate" />
       <Gender :gender="properties.gender" @formUpdate="formUpdate" />
       <Birthday :birthday="properties.birthday" @formUpdate="formUpdate" />
-      <p>メールアドレス</p>
+      <Email />
       <button @click="postData">送信する</button>
     </form>
   </main>
 </template>
-
 <script>
 import axios from "axios";
 import Name from "./atoms/formParts/Name.vue";
 import NameKana from "./atoms/formParts/NameKana.vue";
 import Gender from "./atoms/formParts/Gender.vue";
 import Birthday from "./atoms/formParts/Birthday.vue";
+import Email from "./atoms/formParts/Email.vue";
+
+import "../scss/_form.scss";
 
 export default {
   components: {
     Name,
     NameKana,
     Gender,
+    Email,
     Birthday
   },
   data() {
@@ -49,6 +52,14 @@ export default {
       const val = e.target.value;
       //this.properties[name] = val;
       this.values[name] = val;
+    },
+    formUpdate_radio(name, val) {
+      //   e.preventDefault();
+      //   const name = e.target.name;
+      //   const val = e.target.value;
+      this.properties[name] = val;
+      console.log(this.properties);
+      //this.values[name] = val;
     },
     postData() {
       const thisForm = document.formUser;
@@ -73,7 +84,7 @@ export default {
 /deep/textarea {
   border: solid #eeeeee 1px;
 }
-.form-customer-service {
+.form-book {
   width: 75.6rem;
   margin: 7.2rem auto;
   font-size: 1.4rem;

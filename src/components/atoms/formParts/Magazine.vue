@@ -1,8 +1,11 @@
 <template>
   <dl>
     <dt>メールマガジンを受けとる</dt>
-    <dd>
-      <input type="checkbox" name="magazine" value="1" @change="formUpdate" />
+    <dd class="radioAndCheckbox">
+      <label>
+        <span>メールマガジンを受けとる</span>
+        <input type="checkbox" name="magazine" value="1" @change="formUpdate" />
+      </label>
       <p>旬の情報やメルマガ限定コンテンツを運営よりお届けします。</p>
     </dd>
   </dl>

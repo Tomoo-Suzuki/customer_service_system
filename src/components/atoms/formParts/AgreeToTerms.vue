@@ -1,13 +1,12 @@
 <template>
   <dl>
-    <dt>
-      <span class="ui-checkbox">
+    <dt>規約に同意する</dt>
+    <dd class="radioAndCheckbox">
+      <label>
+        <span>規約に同意する</span>
         <input type="checkbox" name="agreement" id="agreement" val="1" @change="formUpdate" />
-        <span class="ui-checkbox-alternate"></span>
-      </span>
-      <label class="ui-checkbox-label" for="agreement"></label>
-    </dt>
-    <dd>
+      </label>
+
       <a href="/legal/tos" target="_blank">
         利用規約
         <i class="icon-newWindow"></i>

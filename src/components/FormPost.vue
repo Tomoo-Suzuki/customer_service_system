@@ -1,5 +1,5 @@
 <template>
-  <main class="form-customer-service">
+  <main class="form-book">
     <form name="formPost">
       <Title :title="properties.title" @formUpdate="formUpdate" />
       <Story :story="properties.story" @formUpdate="formUpdate" />
@@ -16,6 +16,8 @@ import Title from "./atoms/formParts/Title.vue";
 import Story from "./atoms/formParts/UploadedDate.vue";
 import File from "./atoms/formParts/File.vue";
 import UploadedDate from "./atoms/formParts/Story.vue";
+
+import "../scss/_form.scss";
 
 export default {
   components: {
@@ -65,7 +67,7 @@ export default {
 /deep/textarea {
   border: solid #eeeeee 1px;
 }
-.form-customer-service {
+.form-book {
   width: 75.6rem;
   margin: 7.2rem auto;
   font-size: 1.4rem;

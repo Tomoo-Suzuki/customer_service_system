@@ -1,36 +1,18 @@
 <template>
   <dl>
     <dt>カラータイプ</dt>
-    <dd>
+    <dd class="radioAndCheckbox">
       <label>
         <span>青</span>
-        <input
-          id="type"
-          type="radio"
-          name="Advertisement"
-          :value="customerType"
-          @change="formUpdate"
-        />
+        <input type="radio" name="colorType" :value="'blue'" @change="formUpdate" />
       </label>
       <label>
         <span>赤</span>
-        <input
-          id="type"
-          type="radio"
-          name="Advertisement"
-          :value="customerType"
-          @change="formUpdate"
-        />
+        <input type="radio" name="colorType" :value="'red'" @change="formUpdate" />
       </label>
       <label>
         <span>ダーク</span>
-        <input
-          id="type"
-          type="radio"
-          name="Advertisement"
-          :value="customerType"
-          @change="formUpdate"
-        />
+        <input type="radio" name="colorType" :value="'dark'" @change="formUpdate" />
       </label>
     </dd>
   </dl>
@@ -38,16 +20,16 @@
 <script>
 export default {
   props: {
-    customerType: {
+    colorType: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

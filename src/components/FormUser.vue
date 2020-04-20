@@ -1,5 +1,5 @@
 <template>
-  <main class="form-customer-service">
+  <main class="form-book">
     <form name="formUser">
       <div>■プログレストラッカー</div>
       <h2>新規ユーザー登録</h2>
@@ -30,6 +30,8 @@ import UserId from "./atoms/formParts/UserId.vue";
 import Password from "./atoms/formParts/Password.vue";
 import Magazine from "./atoms/formParts/Magazine.vue";
 import AgreeToTerms from "./atoms/formParts/AgreeToTerms.vue";
+
+import "../scss/_form.scss";
 
 export default {
   components: {
@@ -75,47 +77,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "../scss/_reset.scss";
-// @import "../scss/_common.scss";
-// @import "../scss/_form_reset.scss";
-/deep/input,
-/deep/textarea {
-  border: solid #eeeeee 1px;
-}
-.form-customer-service {
-  width: 75.6rem;
-  margin: 7.2rem auto;
-  font-size: 1.4rem;
-  /deep/ > dl {
-    margin-bottom: 2.4rem;
-    display: table;
-    /deep/ dt,
-    /deep/ dd {
-      display: table-cell;
-      /deep/input {
-        display: inline-block;
-        border: #eeeeee solid 1px;
-        border-radius: 3px;
-        width: 12rem;
-        padding: 4px;
-        height: 2rem;
-      }
-    }
-    /deep/ dt {
-      width: 16rem;
-      vertical-align: top;
-    }
-    /deep/ dd {
-      width: 59.6rem;
-      > div,
-      > span,
-      > div > span {
-        margin-right: 1.6rem;
-      }
-      > div {
-        margin-bottom: 1.6rem;
-      }
-    }
-  }
-}
+@import "../scss/_form.scss";
 </style>
