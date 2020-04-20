@@ -3,7 +3,6 @@
     <dt>最終更新日</dt>
     <dd>
       <input type="date" name="lastModifyDate" :value="lastModifyDate" @change="formUpdate" />
-      <p>{{ lastModifyDate }}</p>
     </dd>
   </dl>
 </template>

@@ -2,14 +2,14 @@
   <dl>
     <dt>あらすじ</dt>
     <dd>
-      <textarea col="30" rows="10" name="synopsis" :value="synopsi" @click="formUpdate"></textarea>
+      <textarea col="30" rows="10" name="synopsis" :value="synopsis" @click="formUpdate"></textarea>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    synopsi: {
+    synopsis: {
       type: String,
       default: null
     }

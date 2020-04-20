@@ -1,123 +1,45 @@
 <template>
-  <span>
-    <dl>
-      <dt>ジャンル</dt>
-      <dd>
-        <label>
-          <span>異世界ファンタジー</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>現代ファンタジー</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>SF</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>恋愛</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>ラブコメ</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>現代ドラマ</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>ホラー</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>ミステリー</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>エッセイ・ノンフィクション</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>歴史・時代・伝記</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>創作論・評論</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-          <span>詩・童話・その他</span>
-          <input
-            id="type"
-            type="radio"
-            name="genre"
-            :value="genre"
-            @change="formUpdate"
-          />
-        </label>
-      </dd>
-    </dl>
-  </span>
+  <dl>
+    <dt>ジャンル</dt>
+    <dd class="radioAndCheckbox">
+      <label v-for="(genre,i) in allGenre" :key="i">
+        <span>{{genre}}</span>
+        <input type="radio" name="genre" :value="i" @change="formUpdate" />
+      </label>
+    </dd>
+  </dl>
 </template>
 <script>
 export default {
+  data: function() {
+    return {
+      allGenre: [
+        "異世界ファンタジー",
+        "現代ファンタジー",
+        "SF",
+        "恋愛",
+        "ラブコメ",
+        "現代ドラマ",
+        "ホラー",
+        "ミステリー",
+        "エッセイ・ノンフィクション",
+        "歴史・時代・伝記",
+        "創作論・評論",
+        "詩・童話・その他"
+      ]
+    };
+  },
   props: {
     genre: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

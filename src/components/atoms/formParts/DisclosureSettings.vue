@@ -1,21 +1,25 @@
 <template>
   <dl>
     <dt>公開設定</dt>
-    <dd>
-      <input
-        id="type"
-        type="radio"
-        name="customerType"
-        :value="customerType"
-        @change="formUpdate"
-      />
-      <input
-        id="type"
-        type="radio"
-        name="customerType"
-        :value="customerType"
-        @change="formUpdate"
-      />
+    <dd class="radioAndCheckbox">
+      <label>
+        <input
+          id="type"
+          type="radio"
+          name="customerType"
+          :value="customerType"
+          @change="formUpdate"
+        />
+      </label>
+      <label>
+        <input
+          id="type"
+          type="radio"
+          name="customerType"
+          :value="customerType"
+          @change="formUpdate"
+        />
+      </label>
     </dd>
   </dl>
 </template>
@@ -24,14 +28,14 @@ export default {
   props: {
     customerType: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

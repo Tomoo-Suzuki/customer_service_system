@@ -1,26 +1,14 @@
 <template>
   <dl>
     <dt>誤字の報告</dt>
-    <dd>
+    <dd class="radioAndCheckbox">
       <label>
         <span>受け付ける</span>
-        <input
-          id="type"
-          type="radio"
-          name="acceptTypoReports"
-          :value="acceptTypoReports"
-          @change="formUpdate"
-        />
+        <input type="radio" name="acceptTypoReports" :value="0" @change="formUpdate" />
       </label>
       <label>
         <span>受け付けない</span>
-        <input
-          id="type"
-          type="radio"
-          name="acceptTypoReports"
-          :value="acceptTypoReports"
-          @change="formUpdate"
-        />
+        <input type="radio" name="acceptTypoReports" :value="1" @change="formUpdate" />
       </label>
     </dd>
   </dl>
@@ -29,15 +17,15 @@
 export default {
   props: {
     acceptTypoReports: {
-      type: Array,
-      default: null,
-    },
+      type: String,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

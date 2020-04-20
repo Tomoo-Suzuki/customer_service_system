@@ -1,39 +1,16 @@
 <template>
   <dl>
+    {{extremeDepictionData}}
     <dt>過激な描写</dt>
-    <dd>
-      <label>
-        <span>残酷な描写</span>
+    <dd class="radioAndCheckbox">
+      <label v-for="(label,i) in labels" :key="i">
+        <span>{{label}}</span>
         <input
-          id="type"
           type="checkbox"
-          name="ExtremeDepiction"
-          :value="ExtremeDepiction"
-          @change="formUpdate"
-        />
-        <span>性的な描写</span>
-        <input
-          id="type"
-          type="checkbox"
-          name="ExtremeDepiction"
-          :value="ExtremeDepiction"
-          @change="formUpdate"
-        />
-        <span>暴力的な描写</span>
-        <input
-          id="type"
-          type="checkbox"
-          name="ExtremeDepiction"
-          :value="ExtremeDepiction"
-          @change="formUpdate"
-        />
-        <span>グロテスクな描写</span>
-        <input
-          id="type"
-          type="checkbox"
-          name="ExtremeDepiction"
-          :value="ExtremeDepiction"
-          @change="formUpdate"
+          name="extremeDepiction"
+          :value="i"
+          @change="formUpdate_array"
+          v-model="extremeDepictionData"
         />
       </label>
     </dd>
@@ -41,17 +18,26 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      extremeDepictionData: [],
+      labels: ["残酷な描写", "性的な描写", "暴力的な描写", "グロテスクな描写"]
+    };
+  },
   props: {
-    ExtremeDepiction: {
-      type: Object,
-      default: null,
-    },
+    extremeDepiction: {
+      type: Array,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
     },
-  },
+    formUpdate_array(e) {
+      this.$emit("formUpdate_array", e.target.name, this.extremeDepictionData);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

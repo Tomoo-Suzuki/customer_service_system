@@ -1,14 +1,14 @@
 <template>
   <dl>
     <dt>完結</dt>
-    <dd>
+    <dd class="radioAndCheckbox">
       <label>
         <span>完結</span>
-        <input id="type" type="radio" name="isComplete" :value="customerType" @change="formUpdate" />
+        <input type="radio" name="isComplete" :value="1" @change="formUpdate" />
       </label>
       <label>
         <span>執筆中</span>
-        <input id="type" type="radio" name="isComplete" :value="customerType" @change="formUpdate" />
+        <input type="radio" name="isComplete" :value="0" @change="formUpdate" />
       </label>
     </dd>
   </dl>
@@ -16,7 +16,7 @@
 <script>
 export default {
   props: {
-    customerType: {
+    isComplete: {
       type: String,
       default: null
     }
