@@ -1,41 +1,33 @@
 <template>
   <dl>
     <dt>評価の公開</dt>
-    <dd>
-      <span>公開する</span>
+    <dd class="radioAndCheckbox">
+      <label>
+        <span>公開する</span>
 
-      <input
-        id="type"
-        type="radio"
-        name="customerType"
-        :value="customerType"
-        @change="formUpdate"
-      />
-      <span>公開しない</span>
+        <input type="radio" name="publishEvaluation" :value="0" @change="formUpdate" />
+      </label>
+      <label>
+        <span>公開しない</span>
 
-      <input
-        id="type"
-        type="radio"
-        name="customerType"
-        :value="customerType"
-        @change="formUpdate"
-      />
+        <input type="radio" name="publishEvaluation" :value="1" @change="formUpdate" />
+      </label>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    customerType: {
+    publishEvaluation: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

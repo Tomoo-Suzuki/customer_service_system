@@ -1,41 +1,38 @@
 <template>
   <dl>
-    <dt>メールマガジンを受けとる</dt>
-    <dd>
-      <span class="ui-checkbox">
-        <input
-          type="checkbox"
-          name="agreement"
-          id="input-agreement"
-          tabindex="4"
-        />
-        <span class="ui-checkbox-alternate"></span> </span
-      ><label class="ui-checkbox-label" for="input-agreement"
-        ><a href="/legal/tos" target="_blank"
-          >利用規約 <i class="icon-newWindow"></i
-        ></a>
-        および
-        <a href="/legal/guideline" target="_blank"
-          >ガイドライン <i class="icon-newWindow"></i
-        ></a>
-        に同意する</label
-      >
+    <dt>規約に同意する</dt>
+    <dd class="radioAndCheckbox">
+      <label>
+        <span>規約に同意する</span>
+        <input type="checkbox" name="agreement" id="agreement" val="1" @change="formUpdate" />
+      </label>
+
+      <a href="/legal/tos" target="_blank">
+        利用規約
+        <i class="icon-newWindow"></i>
+      </a>
+      および
+      <a href="/legal/guideline" target="_blank">
+        ガイドライン
+        <i class="icon-newWindow"></i>
+      </a>
+      に同意する
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    magazine: {
+    agreement: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

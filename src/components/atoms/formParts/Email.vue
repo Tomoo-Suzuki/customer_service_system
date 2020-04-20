@@ -9,7 +9,7 @@
           :value="email"
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-          placeholder="09021334566"
+          placeholder="xxxx@aaa.co.jp"
           title="メールアドレス"
           @change="formUpdate"
         />
@@ -19,12 +19,12 @@
       <dt>メール(確認用)</dt>
       <dd>
         <input
-          type="email2"
-          name="email2"
-          :value="email2"
+          type="email"
+          name="emailConfirm"
+          :value="emailConfirm"
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-          placeholder="09021334566"
+          placeholder="xxxx@aaa.co.jp"
           title="メールアドレス確認"
           @change="formUpdate"
         />
@@ -41,18 +41,18 @@ export default {
   props: {
     email: {
       type: String,
-      default: null,
+      default: null
     },
-    email2: {
+    emailConfirm: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

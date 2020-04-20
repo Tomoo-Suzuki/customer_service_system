@@ -1,23 +1,41 @@
 <template>
-  <main class="form-customer-service">
-    <TitleMain :titleMain="properties.titleMain" @formUpdate="formUpdate" />
-    <AutherName :AutherName="properties.AutherName" @formUpdate="formUpdate" />
-    <IsComplete :genre="properties.IsComplete" @formUpdate="formUpdate" />
-    <Genre :genre="properties.genre" @formUpdate="formUpdate" />
-    <CatchCopy :genre="properties.catchCopy" @formUpdate="formUpdate" />
-    <Synopsis :genre="properties.Synopsis" @formUpdate="formUpdate" />
-    <Keywords :Keywords="properties.Keywords" @formUpdate="formUpdate" />
-    <ExtremeDepiction :uploadedDate="properties.ExtremeDepiction" />
-    <ColorType :Keywords="properties.ColorType" @formUpdate="formUpdate" />
-    <ReceptionDate :ReceptionDate="properties.ReceptionDate" />
-    <LastModifyDate :uploadedDate="properties.lastModifyDate" />
-    <Advertisement :uploadedDate="properties.Advertisement" />
-    <AcceptRating :acceptRating="properties.acceptRating" @formUpdate="formUpdate" />
-    <AcceptImpressions :AcceptImpressions="properties.AcceptImpressions" @formUpdate="formUpdate" />
-    <AcceptReviews :AcceptReviews="properties.AcceptReviews" @formUpdate="formUpdate" />
-    <PublishEvaluation :PublishEvaluation="properties.PublishEvaluation" @formUpdate="formUpdate" />
-    <AcceptTypoReports :AcceptTypoReports="properties.AcceptTypoReports" @formUpdate="formUpdate" />
-    <button @click="postData">送信する</button>
+  <main class="form-book">
+    {{properties}}
+    <form name="formStoryDetail">
+      <TitleMain :titleMain="properties.titleMain" @formUpdate="formUpdate" />
+      <AutherName :autherName="properties.autherName" @formUpdate="formUpdate" />
+      <IsComplete :isComplet="properties.isComplete" @formUpdate="formUpdate" />
+      <Genre :genre="properties.genre" @formUpdate="formUpdate" />
+      <CatchCopy :catchCopy="properties.catchCopy" @formUpdate="formUpdate" />
+      <Synopsis :synopsis="properties.synopsis" @formUpdate="formUpdate" />
+      <Keywords :keyword="properties.keywords" @formUpdate="formUpdate" />
+
+      <ExtremeDepiction
+        :extremeDepictio="properties.extremeDepiction"
+        @formUpdate_array="formUpdate_array"
+      />
+
+      <ColorType :colorType="properties.colorType" @formUpdate="formUpdate" />
+      <ReceptionDate :receptionDate="properties.receptionDate" @formUpdate="formUpdate" />
+      <LastModifyDate :lastModifyDate="properties.lastModifyDate" @formUpdate="formUpdate" />
+      <Advertisement :advertisement="properties.advertisement" @formUpdate="formUpdate" />
+      <AcceptRating :acceptRating="properties.acceptRating" @formUpdate="formUpdate" />
+      <AcceptReviews :acceptReviews="properties.acceptReviews" @formUpdate="formUpdate" />
+      <AcceptImpressions
+        :acceptImpressions="properties.acceptImpressions"
+        @formUpdate="formUpdate"
+      />
+      <AcceptReviews :acceptReviews="properties.acceptReviews" @formUpdate="formUpdate" />
+      <PublishEvaluation
+        :publishEvaluation="properties.publishEvaluation"
+        @formUpdate="formUpdate"
+      />
+      <AcceptTypoReports
+        :acceptTypoReports="properties.acceptTypoReports"
+        @formUpdate="formUpdate"
+      />
+      <button @click="postData">送信する</button>
+    </form>
   </main>
 </template>
 
@@ -42,6 +60,8 @@ import AcceptReviews from "./atoms/formParts/AcceptReviews.vue";
 import PublishEvaluation from "./atoms/formParts/PublishEvaluation.vue";
 import AcceptTypoReports from "./atoms/formParts/AcceptTypoReports.vue";
 
+import "../scss/_form.scss";
+
 export default {
   components: {
     TitleMain,
@@ -64,64 +84,7 @@ export default {
   },
   data() {
     return {
-      formData: {
-        fields: {
-          firstName: {
-            stringValue: this.properties.firstName
-          },
-          lastName: {
-            stringValue: this.properties.lastName
-          }
-        }
-      },
-      allSize: [
-        { size: "選択してください", value: "選択してください" },
-        { size: "10.0", value: "1" },
-        { size: "10.5", value: "2" },
-        { size: "11.0", value: "3" },
-        { size: "11.5", value: "4" },
-        { size: "12.0", value: "5" },
-        { size: "12.5", value: "6" },
-        { size: "13.0", value: "7" },
-        { size: "13.5", value: "8" },
-        { size: "14.0", value: "9" },
-        { size: "14.5", value: "10" },
-        { size: "15.0", value: "11" },
-        { size: "15.5", value: "12" },
-        { size: "16.0", value: "13" },
-        { size: "16.5", value: "14" },
-        { size: "17.0", value: "15" },
-        { size: "17.5", value: "16" },
-        { size: "18.0", value: "17" },
-        { size: "18.5", value: "18" },
-        { size: "19.0", value: "19" },
-        { size: "19.5", value: "20" },
-        { size: "20.0", value: "21" },
-        { size: "20.5", value: "22" },
-        { size: "21.0", value: "23" },
-        { size: "21.5", value: "24" },
-        { size: "22.0", value: "25" },
-        { size: "22.5", value: "26" },
-        { size: "23.0", value: "27" },
-        { size: "23.5", value: "28" },
-        { size: "24.0", value: "29" },
-        { size: "24.5", value: "30" },
-        { size: "25.0", value: "31" },
-        { size: "25.5", value: "32" },
-        { size: "26.0", value: "33" },
-        { size: "26.5", value: "34" },
-        { size: "27.0", value: "35" },
-        { size: "27.5", value: "36" },
-        { size: "28.0", value: "37" },
-        { size: "28.5", value: "38" },
-        { size: "29.0", value: "39" },
-        { size: "30.0", value: "40" },
-        { size: "30.5", value: "41" },
-        { size: "31.0", value: "42" },
-        { size: "31.5", value: "43" },
-        { size: "32.0", value: "44" },
-        { size: "32.5", value: "45" }
-      ]
+      values: this.properties
     };
   },
   props: {
@@ -135,13 +98,19 @@ export default {
       e.preventDefault();
       const name = e.target.name;
       const val = e.target.value;
-      this.properties[name] = val;
+      this.$set(this.properties, name, val);
     },
-    postData() {
+    formUpdate_array(name, val) {
+      this.$set(this.properties, name, val);
+    },
+    postData(e) {
+      e.preventDefault();
+      const thisForm = document.formStoryDetail;
+      const fd = new FormData(thisForm);
       const url =
         "https://firestore.googleapis.com/v1/projects/customer-service-7805c/databases/(default)/documents/properties";
       axios
-        .post(url, this.formData)
+        .post(url, fd)
         .then(function(res) {
           console.log(res);
         })
@@ -152,46 +121,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "../scss/_form_reset.scss";
-// @import "~/assets/scss/common.scss";
-/deep/input,
-/deep/textarea {
-  border: solid #eeeeee 1px;
-}
-.form-customer-service {
-  width: 75.6rem;
-  margin: 7.2rem auto;
-  font-size: 1.4rem;
-  /deep/ > dl {
-    margin-bottom: 2.4rem;
-    display: table;
-    /deep/ dt,
-    /deep/ dd {
-      display: table-cell;
-      /deep/input {
-        display: inline-block;
-        border: #eeeeee solid 1px;
-        border-radius: 3px;
-        width: 12rem;
-        padding: 4px;
-        height: 2rem;
-      }
-    }
-    /deep/ dt {
-      width: 16rem;
-      vertical-align: top;
-    }
-    /deep/ dd {
-      width: 59.6rem;
-      > div,
-      > span,
-      > div > span {
-        margin-right: 1.6rem;
-      }
-      > div {
-        margin-bottom: 1.6rem;
-      }
-    }
-  }
-}
+@import "../scss/_form.scss";
 </style>

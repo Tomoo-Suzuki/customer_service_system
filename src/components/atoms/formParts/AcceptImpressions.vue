@@ -1,26 +1,14 @@
 <template>
   <dl>
     <dt>感想の受付</dt>
-    <dd>
+    <dd class="radioAndCheckbox">
       <label>
         <span>受け付ける</span>
-        <input
-          id="type"
-          type="radio"
-          name="advertisement"
-          :value="advertisement"
-          @change="formUpdate"
-        />
+        <input type="radio" name="acceptImpressions" :value="0" @change="formUpdate" />
       </label>
       <label>
         <span>受け付けない</span>
-        <input
-          id="type"
-          type="radio"
-          name="advertisement"
-          :value="advertisement"
-          @change="formUpdate"
-        />
+        <input type="radio" name="acceptImpressions" :value="1" @change="formUpdate" />
       </label>
     </dd>
   </dl>
@@ -28,16 +16,16 @@
 <script>
 export default {
   props: {
-    advertisement: {
-      type: Array,
-      default: null,
-    },
+    acceptImpressions: {
+      type: String,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>
