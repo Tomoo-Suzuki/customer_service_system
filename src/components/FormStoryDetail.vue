@@ -25,7 +25,6 @@
         :acceptImpressions="properties.acceptImpressions"
         @formUpdate="formUpdate"
       />
-      <AcceptReviews :acceptReviews="properties.acceptReviews" @formUpdate="formUpdate" />
       <PublishEvaluation
         :publishEvaluation="properties.publishEvaluation"
         @formUpdate="formUpdate"
