@@ -21,12 +21,12 @@ export default {
         'query{user(id:"00001"){password,user_type,magazine,agree_to_terms,date_reception}}';
       const url = "http://localhost:7777/graphql";
       axios
-        .post(url, query)
+        .post(url, { query: query })
         .then(function(res) {
           console.log(res);
         })
         .catch(function(e) {
-          console.log("反映テストその２");
+          console.log("反映テスト８");
           console.log(e);
         });
     }
