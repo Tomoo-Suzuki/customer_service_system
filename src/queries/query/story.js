@@ -1,53 +1,21 @@
-export const story = {
-  id: {
-    type: GraphQLID
-  },
-  id_story: {
-    type: GraphQLID
-  },
-  title_main: {
-    type: GraphQLString
-  },
-  auther_name: {
-    type: GraphQLString
-  },
-  is_complete: {
-    type: GraphQLBoolean
-  },
-  genre: {
-    type: GraphQLInt
-  },
-  catch_copy: {
-    type: GraphQLString
-  },
-  synopsis: {
-    type: GraphQLString
-  },
-  keywords: {
-    type: GraphQLString
-  },
-  extreme_depiction: {
-    type: GraphQLString
-  },
-  color_type: {
-    type: GraphQLInt
-  },
-  accept_advertisement: {
-    type: GraphQLBoolean
-  },
-  accept_rating: {
-    type: GraphQLBoolean
-  },
-  accept_reviews: {
-    type: GraphQLBoolean
-  },
-  accept_impression: {
-    type: GraphQLBoolean
-  },
-  publish_evaluation: {
-    type: GraphQLBoolean
-  },
-  accept_typo_reports: {
-    type: GraphQLBoolean
+export const story = `query{
+  story(id:"00001"){
+    id,
+  id_story,
+  title_main,
+  auther_name,
+  is_complete,
+  genre,
+  catch_copy,
+  synopsis,
+  keywords,
+  extreme_depiction,
+  color_type,
+  accept_advertisement,
+  accept_rating,
+  accept_reviews,
+  accept_impression,
+  publish_evaluation,
+  accept_typo_reports
   }
-}
+}`
