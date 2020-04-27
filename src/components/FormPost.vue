@@ -2,35 +2,49 @@
   <main class="form-book">
     {{ getData }}
     <form name="formPost">
+      <input type="hidden" name="id_story" value="dr00005" />
+      <input type="hidden" name="id_post" value="dr000050003" />
+      <TitleChapter
+        :title_chapter="properties.title_chapter"
+        @formUpdate="formUpdate"
+      />
+      <HasChapter
+        :has_chapter="properties.has_chapter"
+        @formUpdate="formUpdate"
+      />
       <Title :title="properties.title" @formUpdate="formUpdate" />
       <Story :story="properties.story" @formUpdate="formUpdate" />
-      <File :file="properties.file" @formUpdate="formUpdate" />
+      <!-- <File :file="properties.file" @formUpdate="formUpdate" /> -->
       <UploadedDate
         :uploadedDate="properties.uploadedDate"
         @formUpdate="formUpdate"
       />
-      <button @click="postData">送信</button>
+      <button @click="submitFormData">送信</button>
     </form>
   </main>
 </template>
 
 <script>
-import axios from "axios";
+import TitleChapter from "./atoms/formParts/TitleChapter.vue";
+import HasChapter from "./atoms/formParts/HasChapter.vue";
 import Title from "./atoms/formParts/Title.vue";
 import Story from "./atoms/formParts/UploadedDate.vue";
-import File from "./atoms/formParts/File.vue";
+// import File from "./atoms/formParts/File.vue";
 import UploadedDate from "./atoms/formParts/Story.vue";
 
 import { post } from "../queries/query/post.js";
+import { addPost } from "../queries/mutation/addPost";
 import request from "../lib/request";
 
 import "../scss/_form.scss";
 
 export default {
   components: {
+    TitleChapter,
+    HasChapter,
     Title,
     Story,
-    File,
+    // File,
     UploadedDate,
   },
   data() {
@@ -60,17 +74,15 @@ export default {
     formUpdate_array(name, val) {
       this.$set(this.properties, name, val);
     },
-    postData() {
-      const thisForm = document.formUser;
-      const fd = new FormData(thisForm);
-      const url =
-        "https://firestore.googleapis.com/v1/projects/customer-service-7805c/databases/(default)/documents/properties";
-      axios
-        .post(url, fd)
-        .then(function(res) {
-          console.log(res);
-        })
-        .catch();
+    submitFormData(e) {
+      e.preventDefault();
+      const postForm = document.formPost;
+      const formData = new FormData(postForm);
+      let tempHash = {};
+      for (let item of formData) {
+        tempHash[item[0]] = item[1];
+      }
+      request(addPost(tempHash), 1);
     },
   },
 };
