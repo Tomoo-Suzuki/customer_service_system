@@ -1,20 +1,10 @@
-export const user = {
-  id: {
-    type: GraphQLID
-  },
-  password: {
-    type: GraphQLString
-  },
-  user_type: {
-    type: GraphQLInt
-  },
-  magazine: {
-    type: GraphQLBoolean
-  },
-  agree_to_terms: {
-    type: GraphQLBoolean
-  },
-  date_reception: {
-    type: GraphQLString
+export const user = `query{
+  user(id:"00001") {
+    id,
+    password,
+    user_type,
+    magazine,
+    agree_to_terms,
+    date_reception
   }
-}
+}`

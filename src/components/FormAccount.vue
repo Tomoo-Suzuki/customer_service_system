@@ -1,5 +1,6 @@
 <template>
   <main class="form-book">
+    {{ getData }}
     <form name="formUser">
       <p>ID</p>
       <p>AutherName</p>
@@ -8,7 +9,10 @@
         :firstName="properties.firstName"
         @formUpdate="formUpdate"
       />
-      <NameKana :LastNameKana="properties.lastNameKana" @formUpdate="formUpdate" />
+      <NameKana
+        :LastNameKana="properties.lastNameKana"
+        @formUpdate="formUpdate"
+      />
       <Gender :gender="properties.gender" @formUpdate="formUpdate" />
       <Birthday :birthday="properties.birthday" @formUpdate="formUpdate" />
       <Email />
@@ -24,6 +28,9 @@ import Gender from "./atoms/formParts/Gender.vue";
 import Birthday from "./atoms/formParts/Birthday.vue";
 import Email from "./atoms/formParts/Email.vue";
 
+import { account } from "../queries/query/account.js";
+import request from "../lib/request";
+
 import "../scss/_form.scss";
 
 export default {
@@ -32,20 +39,30 @@ export default {
     NameKana,
     Gender,
     Email,
-    Birthday
+    Birthday,
   },
   data() {
     return {
-      values: this.properties
+      account: account,
+      values: this.properties,
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
+  },
+  computed: {
+    getData() {
+      return request(account, 0);
+    },
   },
   methods: {
+    // getData1() {
+    //   console.log(account);
+    //   request(account, 0);
+    // },
     formUpdate(e) {
       e.preventDefault();
       const name = e.target.name;
@@ -72,8 +89,8 @@ export default {
           console.log(res);
         })
         .catch();
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,38 +1,19 @@
-export const account = {
-  id: {
-    type: GraphQLID
-  },
-  last_name: {
-    type: GraphQLString
-  },
-  first_name: {
-    type: GraphQLString
-  },
-  last_name_kana: {
-    type: GraphQLString
-  },
-  first_name_kana: {
-    type: GraphQLString
-  },
-  birthday: {
-    type: GraphQLString
-  },
-  zip: {
-    type: GraphQLString
-  },
-  prefecture: {
-    type: GraphQLString
-  },
-  city: {
-    type: GraphQLString
-  },
-  address3: {
-    type: GraphQLString
-  },
-  building: {
-    type: GraphQLString
-  },
-  purpose: {
-    type: GraphQLString
+export const account = `{
+  account(id:"00001") {
+    id,
+    last_name,
+    first_name,
+    last_name_kana,
+    first_name_kana,
+    birthday,
+    zip,
+    prefecture,
+    city,
+    address3,
+    building,
+    purpose
   }
-}
+}`
+
+
+// export const account = 'query {account(id:"00001"){id,last_name,first_name,last_name_kana,first_name_kana,birthday,zip,prefecture,city,address3,building,purpose}}';

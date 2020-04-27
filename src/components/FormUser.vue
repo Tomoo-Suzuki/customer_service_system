@@ -1,9 +1,10 @@
 <template>
   <main class="form-book">
+    {{ getData }}
     <form name="formUser">
       <div>■プログレストラッカー</div>
       <h2>新規ユーザー登録</h2>
-      {{this.properties}}
+      {{ this.properties }}
       <Email
         :email="properties.email"
         :emailConfirm="properties.emailConfirm"
@@ -16,7 +17,10 @@
         ユーザー登録を完了するためのメールを、登録いただいたメールアドレスへ送信します。
       </p>
       <Magazine :magazine="properties.magazine" @formUpdate="formUpdate" />
-      <AgreeToTerms :agreement="properties.agreement" @formUpdate="formUpdate" />
+      <AgreeToTerms
+        :agreement="properties.agreement"
+        @formUpdate="formUpdate"
+      />
       <p>reCapture導入</p>
       <button @click="postData">ユーザー登録</button>
     </form>
@@ -31,6 +35,9 @@ import Password from "./atoms/formParts/Password.vue";
 import Magazine from "./atoms/formParts/Magazine.vue";
 import AgreeToTerms from "./atoms/formParts/AgreeToTerms.vue";
 
+import { user } from "../queries/query/user";
+import request from "../lib/request";
+
 import "../scss/_form.scss";
 
 export default {
@@ -39,18 +46,24 @@ export default {
     UserId,
     Password,
     Magazine,
-    AgreeToTerms
+    AgreeToTerms,
   },
   data() {
     return {
-      values: this.properties
+      values: this.properties,
     };
   },
+  computed: {
+    getData() {
+      return request(user, 0);
+    },
+  },
+
   props: {
     properties: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   methods: {
     formUpdate(e) {
@@ -71,8 +84,8 @@ export default {
           console.log(res);
         })
         .catch();
-    }
-  }
+    },
+  },
 };
 </script>
 

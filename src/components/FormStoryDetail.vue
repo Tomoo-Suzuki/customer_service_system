@@ -1,9 +1,13 @@
 <template>
   <main class="form-book">
-    {{properties}}
+    {{ getData }}
+    {{ properties }}
     <form name="formStoryDetail">
       <TitleMain :titleMain="properties.titleMain" @formUpdate="formUpdate" />
-      <AutherName :autherName="properties.autherName" @formUpdate="formUpdate" />
+      <AutherName
+        :autherName="properties.autherName"
+        @formUpdate="formUpdate"
+      />
       <IsComplete :isComplet="properties.isComplete" @formUpdate="formUpdate" />
       <Genre :genre="properties.genre" @formUpdate="formUpdate" />
       <CatchCopy :catchCopy="properties.catchCopy" @formUpdate="formUpdate" />
@@ -16,11 +20,26 @@
       />
 
       <ColorType :colorType="properties.colorType" @formUpdate="formUpdate" />
-      <ReceptionDate :receptionDate="properties.receptionDate" @formUpdate="formUpdate" />
-      <LastModifyDate :lastModifyDate="properties.lastModifyDate" @formUpdate="formUpdate" />
-      <Advertisement :advertisement="properties.advertisement" @formUpdate="formUpdate" />
-      <AcceptRating :acceptRating="properties.acceptRating" @formUpdate="formUpdate" />
-      <AcceptReviews :acceptReviews="properties.acceptReviews" @formUpdate="formUpdate" />
+      <ReceptionDate
+        :receptionDate="properties.receptionDate"
+        @formUpdate="formUpdate"
+      />
+      <LastModifyDate
+        :lastModifyDate="properties.lastModifyDate"
+        @formUpdate="formUpdate"
+      />
+      <Advertisement
+        :advertisement="properties.advertisement"
+        @formUpdate="formUpdate"
+      />
+      <AcceptRating
+        :acceptRating="properties.acceptRating"
+        @formUpdate="formUpdate"
+      />
+      <AcceptReviews
+        :acceptReviews="properties.acceptReviews"
+        @formUpdate="formUpdate"
+      />
       <AcceptImpressions
         :acceptImpressions="properties.acceptImpressions"
         @formUpdate="formUpdate"
@@ -59,6 +78,9 @@ import AcceptReviews from "./atoms/formParts/AcceptReviews.vue";
 import PublishEvaluation from "./atoms/formParts/PublishEvaluation.vue";
 import AcceptTypoReports from "./atoms/formParts/AcceptTypoReports.vue";
 
+import { story } from "../queries/query/story.js";
+import request from "../lib/request";
+
 import "../scss/_form.scss";
 
 export default {
@@ -79,19 +101,25 @@ export default {
     AcceptImpressions,
     AcceptReviews,
     PublishEvaluation,
-    AcceptTypoReports
+    AcceptTypoReports,
   },
   data() {
     return {
-      values: this.properties
+      values: this.properties,
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
+  computed: {
+    getData() {
+      return request(story, 0);
+    },
+  },
+
   methods: {
     formUpdate(e) {
       e.preventDefault();
@@ -114,8 +142,8 @@ export default {
           console.log(res);
         })
         .catch();
-    }
-  }
+    },
+  },
 };
 </script>
 

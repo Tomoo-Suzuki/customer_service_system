@@ -1,10 +1,14 @@
 <template>
   <main class="form-book">
+    {{ getData }}
     <form name="formPost">
       <Title :title="properties.title" @formUpdate="formUpdate" />
       <Story :story="properties.story" @formUpdate="formUpdate" />
       <File :file="properties.file" @formUpdate="formUpdate" />
-      <UploadedDate :uploadedDate="properties.uploadedDate" @formUpdate="formUpdate" />
+      <UploadedDate
+        :uploadedDate="properties.uploadedDate"
+        @formUpdate="formUpdate"
+      />
       <button @click="postData">送信</button>
     </form>
   </main>
@@ -17,6 +21,9 @@ import Story from "./atoms/formParts/UploadedDate.vue";
 import File from "./atoms/formParts/File.vue";
 import UploadedDate from "./atoms/formParts/Story.vue";
 
+import { post } from "../queries/query/post.js";
+import request from "../lib/request";
+
 import "../scss/_form.scss";
 
 export default {
@@ -24,18 +31,24 @@ export default {
     Title,
     Story,
     File,
-    UploadedDate
+    UploadedDate,
   },
   data() {
     return {
-      values: this.properties
+      values: this.properties,
     };
   },
+  computed: {
+    getData() {
+      return request(post, 0);
+    },
+  },
+
   props: {
     properties: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   methods: {
     formUpdate(e) {
@@ -55,8 +68,8 @@ export default {
           console.log(res);
         })
         .catch();
-    }
-  }
+    },
+  },
 };
 </script>
 
