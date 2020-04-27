@@ -4,8 +4,8 @@
     <dd>
       <input
         type="text"
-        name="autherName"
-        :value="autherName"
+        name="auther_name"
+        :value="auther_name"
         @change="formUpdate"
         required
         placeholder="jota(イオタ)"
@@ -16,16 +16,16 @@
 <script>
 export default {
   props: {
-    autherName: {
+    auther_name: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

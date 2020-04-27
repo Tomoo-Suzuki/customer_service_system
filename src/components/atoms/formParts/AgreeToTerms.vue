@@ -4,7 +4,13 @@
     <dd class="radioAndCheckbox">
       <label>
         <span>規約に同意する</span>
-        <input type="checkbox" name="agreement" id="agreement" val="1" @change="formUpdate" />
+        <input
+          type="checkbox"
+          name="agreement"
+          id="agreement"
+          val="1"
+          @change="formUpdate"
+        />
       </label>
 
       <a href="/legal/tos" target="_blank">
@@ -25,14 +31,14 @@ export default {
   props: {
     agreement: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

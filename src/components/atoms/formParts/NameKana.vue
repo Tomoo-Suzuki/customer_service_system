@@ -5,8 +5,8 @@
       <span>
         <input
           type="text"
-          name="lastNameKana"
-          :value="lastNameKana"
+          name="last_name_kana"
+          :value="last_name_kana"
           required
           pattern="[ァ-ヴー/s ]+"
           placeholder="ヤマダ"
@@ -17,8 +17,8 @@
       <span>
         <input
           type="text"
-          name="firstNameKana"
-          :value="firstNameKana"
+          name="first_name_kana"
+          :value="first_name_kana"
           required
           pattern="[ァ-ヴー/s ]+"
           placeholder="キョウコ"
@@ -32,20 +32,20 @@
 <script>
 export default {
   props: {
-    lastNameKana: {
+    last_name_kana: {
       type: String,
-      default: null
+      default: null,
     },
-    firstNameKana: {
+    first_name_kana: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

@@ -5,8 +5,8 @@
       <span>
         <input
           type="text"
-          name="catchCopy"
-          :value="catchCopy"
+          name="catch_copy"
+          :value="catch_copy"
           @change="formUpdate"
           required
           placeholder="前には夢が、隣には仲間が。"
@@ -18,16 +18,16 @@
 <script>
 export default {
   props: {
-    catchCopy: {
+    catch_copy: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

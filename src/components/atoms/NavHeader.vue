@@ -19,7 +19,7 @@
 <script>
 export default {
   props: {},
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>
@@ -37,7 +37,7 @@ export default {
       padding: 0.3rem 1rem;
       white-space: nowrap;
       color: #ffffff;
-      background: #019c96;
+      background: #3cb2b4;
       border-radius: 2px;
     }
   }

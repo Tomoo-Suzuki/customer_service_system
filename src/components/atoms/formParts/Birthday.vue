@@ -4,18 +4,18 @@
     <dd>
       <input
         type="date"
-        name="receptionDate"
-        :value="receptionDate"
+        name="birthday"
+        :value="birthday"
         @change="formUpdate"
       />
-      <p>{{ receptionDate }}</p>
+      <p>{{ birthday }}</p>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    receptionDate: {
+    birthday: {
       type: String,
       default: null,
     },

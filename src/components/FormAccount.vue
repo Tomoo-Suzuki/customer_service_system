@@ -1,27 +1,27 @@
 <template>
   <main class="form-book">
     {{ getData }}
-    <form name="formUser">
+    <form name="formAccount">
+      <input type="hidden" name="id" value="00005" />
       <p>ID</p>
       <p>AutherName</p>
       <Name
-        :lastName="properties.lastName"
-        :firstName="properties.firstName"
+        :last_name="properties.last_name"
+        :first_name="properties.first_name"
         @formUpdate="formUpdate"
       />
       <NameKana
-        :LastNameKana="properties.lastNameKana"
+        :Last_name_kana="properties.last_name_kana"
         @formUpdate="formUpdate"
       />
       <Gender :gender="properties.gender" @formUpdate="formUpdate" />
       <Birthday :birthday="properties.birthday" @formUpdate="formUpdate" />
       <Email />
-      <button @click="postData">送信する</button>
+      <button @click="submitFormData">送信する</button>
     </form>
   </main>
 </template>
 <script>
-import axios from "axios";
 import Name from "./atoms/formParts/Name.vue";
 import NameKana from "./atoms/formParts/NameKana.vue";
 import Gender from "./atoms/formParts/Gender.vue";
@@ -29,6 +29,7 @@ import Birthday from "./atoms/formParts/Birthday.vue";
 import Email from "./atoms/formParts/Email.vue";
 
 import { account } from "../queries/query/account.js";
+import { addAccountStory } from "../queries/mutation/addAccountStory";
 import request from "../lib/request";
 
 import "../scss/_form.scss";
@@ -70,25 +71,28 @@ export default {
       //this.properties[name] = val;
       this.values[name] = val;
     },
-    formUpdate_radio(name, val) {
-      //   e.preventDefault();
-      //   const name = e.target.name;
-      //   const val = e.target.value;
-      this.properties[name] = val;
-      console.log(this.properties);
-      //this.values[name] = val;
+    // formUpdate_radio(name, val) {
+    //   //   e.preventDefault();
+    //   //   const name = e.target.name;
+    //   //   const val = e.target.value;
+    //   this.properties[name] = val;
+    //   console.log(this.properties);
+    //   //this.values[name] = val;
+    // },
+    formUpdate_array(name, val) {
+      this.$set(this.properties, name, val);
     },
-    postData() {
-      const thisForm = document.formUser;
-      const fd = new FormData(thisForm);
-      const url =
-        "https://firestore.googleapis.com/v1/projects/customer-service-7805c/databases/(default)/documents/properties";
-      axios
-        .post(url, fd)
-        .then(function(res) {
-          console.log(res);
-        })
-        .catch();
+    submitFormData(e) {
+      e.preventDefault();
+      const accountForm = document.formAccount;
+      const formData = new FormData(accountForm);
+      let tempHash = {};
+      for (let item of formData) {
+        console.log([item[0]]);
+        console.log([item[1]]);
+        tempHash[item[0]] = item[1];
+      }
+      request(addAccountStory(tempHash), 1);
     },
   },
 };

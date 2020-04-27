@@ -5,8 +5,8 @@
       <span>
         <input
           type="text"
-          name="lastName"
-          :value="lastName"
+          name="last_name"
+          :value="last_name"
           @change="formUpdate"
           required
           placeholder="山田"
@@ -15,8 +15,8 @@
       <span>
         <input
           type="text"
-          name="firstName"
-          :value="firstName"
+          name="first_name"
+          :value="first_name"
           required
           placeholder="京子"
           @change="formUpdate"
@@ -28,20 +28,20 @@
 <script>
 export default {
   props: {
-    lastName: {
+    last_name: {
       type: String,
-      default: null
+      default: null,
     },
-    firstName: {
+    first_name: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

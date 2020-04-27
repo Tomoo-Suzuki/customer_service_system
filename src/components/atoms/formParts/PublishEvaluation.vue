@@ -5,12 +5,22 @@
       <label>
         <span>公開する</span>
 
-        <input type="radio" name="publishEvaluation" :value="0" @change="formUpdate" />
+        <input
+          type="radio"
+          name="publish_evaluation"
+          :value="true"
+          @change="formUpdate"
+        />
       </label>
       <label>
         <span>公開しない</span>
 
-        <input type="radio" name="publishEvaluation" :value="1" @change="formUpdate" />
+        <input
+          type="radio"
+          name="publish_evaluation"
+          :value="false"
+          @change="formUpdate"
+        />
       </label>
     </dd>
   </dl>
@@ -18,16 +28,16 @@
 <script>
 export default {
   props: {
-    publishEvaluation: {
+    publish_evaluation: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

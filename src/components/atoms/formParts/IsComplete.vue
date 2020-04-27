@@ -4,11 +4,21 @@
     <dd class="radioAndCheckbox">
       <label>
         <span>完結</span>
-        <input type="radio" name="isComplete" :value="1" @change="formUpdate" />
+        <input
+          type="radio"
+          name="is_complete"
+          :value="true"
+          @change="formUpdate"
+        />
       </label>
       <label>
         <span>執筆中</span>
-        <input type="radio" name="isComplete" :value="0" @change="formUpdate" />
+        <input
+          type="radio"
+          name="is_complete"
+          :value="false"
+          @change="formUpdate"
+        />
       </label>
     </dd>
   </dl>
@@ -16,16 +26,16 @@
 <script>
 export default {
   props: {
-    isComplete: {
+    is_complete: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

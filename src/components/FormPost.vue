@@ -57,6 +57,9 @@ export default {
       const val = e.target.value;
       this.values[name] = val;
     },
+    formUpdate_array(name, val) {
+      this.$set(this.properties, name, val);
+    },
     postData() {
       const thisForm = document.formUser;
       const fd = new FormData(thisForm);

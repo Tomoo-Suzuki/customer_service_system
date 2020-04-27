@@ -4,8 +4,8 @@
     <dd>
       <input
         type="text"
-        name="titleMain"
-        :value="titleMain"
+        name="title_main"
+        :value="title_main"
         required
         placeholder="トリスタンの皇帝"
         @change="formUpdate"
@@ -16,16 +16,16 @@
 <script>
 export default {
   props: {
-    titleMain: {
+    title_main: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>
