@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>小説</dt>
     <dd>
       <textarea col="30" rows="10" name="story" :value="story" @click="formUpdate"></textarea>

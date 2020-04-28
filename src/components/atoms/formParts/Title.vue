@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>タイトル</dt>
     <dd>
       <div>

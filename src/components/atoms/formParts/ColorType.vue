@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>カラータイプ</dt>
     <dd class="radioAndCheckbox">
       <label>
@@ -22,14 +22,14 @@ export default {
   props: {
     color_type: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

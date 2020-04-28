@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     {{ extreme_depiction_data }}
     <dt>過激な描写</dt>
     <dd class="radioAndCheckbox">
@@ -21,14 +21,14 @@ export default {
   data() {
     return {
       extreme_depiction_data: [],
-      labels: ["残酷な描写", "性的な描写", "暴力的な描写", "グロテスクな描写"],
+      labels: ["残酷な描写", "性的な描写", "暴力的な描写", "グロテスクな描写"]
     };
   },
   props: {
     extreme_depiction: {
       type: Array,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
@@ -40,8 +40,8 @@ export default {
         e.target.name,
         this.extreme_depiction_data
       );
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

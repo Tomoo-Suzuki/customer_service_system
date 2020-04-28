@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>小説名</dt>
     <dd>
       <input
@@ -18,14 +18,14 @@ export default {
   props: {
     title_main: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

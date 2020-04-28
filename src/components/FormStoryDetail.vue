@@ -7,14 +7,8 @@
       <input type="hidden" name="id_story" value="lc00003" />
 
       <TitleMain :title_main="properties.title_main" @formUpdate="formUpdate" />
-      <AutherName
-        :auther_name="properties.auther_name"
-        @formUpdate="formUpdate"
-      />
-      <IsComplete
-        :is_complete="properties.is_complete"
-        @formUpdate="formUpdate"
-      />
+      <AutherName :auther_name="properties.auther_name" @formUpdate="formUpdate" />
+      <IsComplete :is_complete="properties.is_complete" @formUpdate="formUpdate" />
       <Genre :genre="properties.genre" @formUpdate="formUpdate" />
       <CatchCopy :catch_copy="properties.catch_copy" @formUpdate="formUpdate" />
       <Synopsis :synopsis="properties.synopsis" @formUpdate="formUpdate" />
@@ -26,26 +20,14 @@
       />
 
       <ColorType :color_type="properties.color_type" @formUpdate="formUpdate" />
-      <ReceptionDate
-        :reception_date="properties.reception_date"
-        @formUpdate="formUpdate"
-      />
-      <LastModifyDate
-        :last_modify_date="properties.last_modify_date"
-        @formUpdate="formUpdate"
-      />
+      <ReceptionDate :reception_date="properties.reception_date" @formUpdate="formUpdate" />
+      <LastModifyDate :last_modify_date="properties.last_modify_date" @formUpdate="formUpdate" />
       <Advertisement
         :accept_advertisement="properties.accept_advertisement"
         @formUpdate="formUpdate"
       />
-      <AcceptRating
-        :accept_rating="properties.accept_rating"
-        @formUpdate="formUpdate"
-      />
-      <AcceptReviews
-        :accept_reviews="properties.accept_reviews"
-        @formUpdate="formUpdate"
-      />
+      <AcceptRating :accept_rating="properties.accept_rating" @formUpdate="formUpdate" />
+      <AcceptReviews :accept_reviews="properties.accept_reviews" @formUpdate="formUpdate" />
       <AcceptImpressions
         :accept_impressions="properties.accept_impressions"
         @formUpdate="formUpdate"
@@ -58,7 +40,11 @@
         :accept_typo_report="properties.accept_typo_report"
         @formUpdate="formUpdate"
       />
-      <button @click="submitFormData">送信する</button>
+      <div class="btnWrap">
+        <div class="btn">
+          <button @click="submitFormData">送信する</button>
+        </div>
+      </div>
     </form>
   </main>
 </template>
@@ -107,23 +93,23 @@ export default {
     AcceptImpressions,
     AcceptReviews,
     PublishEvaluation,
-    AcceptTypoReports,
+    AcceptTypoReports
   },
   data() {
     return {
-      values: this.properties,
+      values: this.properties
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   computed: {
     getData() {
       return request(story, 0);
-    },
+    }
   },
 
   methods: {
@@ -145,11 +131,12 @@ export default {
         tempHash[item[0]] = item[1];
       }
       request(addStory(tempHash), 1);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../scss/_form.scss";
+@import "../scss/atoms/submitBtn/_btnPost.scss";
 </style>

@@ -1,14 +1,13 @@
 <template>
-  <dl>
-    <dt>メールマガジンを受けとる</dt>
-    <dd class="radioAndCheckbox">
+  <div>
+    <div class="radioAndCheckbox">
       <label>
         <span>メールマガジンを受けとる</span>
         <input type="checkbox" name="magazine" value="1" @change="formUpdate" />
       </label>
       <p>旬の情報やメルマガ限定コンテンツを運営よりお届けします。</p>
-    </dd>
-  </dl>
+    </div>
+  </div>
 </template>
 <script>
 export default {

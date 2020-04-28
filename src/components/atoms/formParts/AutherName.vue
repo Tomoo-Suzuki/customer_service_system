@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>作者名</dt>
     <dd>
       <input
@@ -18,14 +18,14 @@ export default {
   props: {
     auther_name: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require has_tooltip">
     <dt>ユーザーID</dt>
     <dd>
       <input
@@ -10,9 +10,7 @@
         placeholder="tsex90876"
         @change="formUpdate"
       />
-    </dd>
-    <dd>
-      3文字以上。半角の英数字、ハイフン、アンダースコアが使えます。ユーザーIDは一般に公開され、登録後の変更はできません。
+      <span class="tooltip">3文字以上。半角の英数字、ハイフン、アンダースコアが使えます。ユーザーIDは一般に公開され、登録後の変更はできません。</span>
     </dd>
   </dl>
 </template>
@@ -21,14 +19,16 @@ export default {
   props: {
     useId: {
       type: Object,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../../scss/atoms/tooltip";
+</style>

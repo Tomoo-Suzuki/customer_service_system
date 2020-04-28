@@ -4,22 +4,17 @@
     <form name="formPost">
       <input type="hidden" name="id_story" value="dr00005" />
       <input type="hidden" name="id_post" value="dr000050003" />
-      <TitleChapter
-        :title_chapter="properties.title_chapter"
-        @formUpdate="formUpdate"
-      />
-      <HasChapter
-        :has_chapter="properties.has_chapter"
-        @formUpdate="formUpdate"
-      />
+      <TitleChapter :title_chapter="properties.title_chapter" @formUpdate="formUpdate" />
+      <HasChapter :has_chapter="properties.has_chapter" @formUpdate="formUpdate" />
       <Title :title="properties.title" @formUpdate="formUpdate" />
       <Story :story="properties.story" @formUpdate="formUpdate" />
       <!-- <File :file="properties.file" @formUpdate="formUpdate" /> -->
-      <UploadedDate
-        :uploadedDate="properties.uploadedDate"
-        @formUpdate="formUpdate"
-      />
-      <button @click="submitFormData">送信</button>
+      <UploadedDate :uploadedDate="properties.uploadedDate" @formUpdate="formUpdate" />
+      <div class="btnWrap">
+        <div class="btn">
+          <button @click="submitFormData">送信</button>
+        </div>
+      </div>
     </form>
   </main>
 </template>
@@ -36,8 +31,6 @@ import { post } from "../queries/query/post.js";
 import { addPost } from "../queries/mutation/addPost";
 import request from "../lib/request";
 
-import "../scss/_form.scss";
-
 export default {
   components: {
     TitleChapter,
@@ -45,24 +38,24 @@ export default {
     Title,
     Story,
     // File,
-    UploadedDate,
+    UploadedDate
   },
   data() {
     return {
-      values: this.properties,
+      values: this.properties
     };
   },
   computed: {
     getData() {
       return request(post, 0);
-    },
+    }
   },
 
   props: {
     properties: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   methods: {
     formUpdate(e) {
@@ -83,14 +76,14 @@ export default {
         tempHash[item[0]] = item[1];
       }
       request(addPost(tempHash), 1);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-// @import "../scss/_form_reset.scss";
-// @import "~/assets/scss/common.scss";
+@import "../scss/_form.scss";
+@import "../scss/atoms/submitBtn/_btnPost.scss";
 /deep/input,
 /deep/textarea {
   border: solid #eeeeee 1px;

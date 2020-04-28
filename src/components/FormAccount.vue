@@ -10,14 +10,15 @@
         :first_name="properties.first_name"
         @formUpdate="formUpdate"
       />
-      <NameKana
-        :Last_name_kana="properties.last_name_kana"
-        @formUpdate="formUpdate"
-      />
+      <NameKana :Last_name_kana="properties.last_name_kana" @formUpdate="formUpdate" />
       <Gender :gender="properties.gender" @formUpdate="formUpdate" />
       <Birthday :birthday="properties.birthday" @formUpdate="formUpdate" />
       <Email />
-      <button @click="submitFormData">送信する</button>
+      <div class="btnWrap">
+        <div class="btn">
+          <button @click="submitFormData">送信する</button>
+        </div>
+      </div>
     </form>
   </main>
 </template>
@@ -32,32 +33,30 @@ import { account } from "../queries/query/account.js";
 import { addAccountStory } from "../queries/mutation/addAccountStory";
 import request from "../lib/request";
 
-import "../scss/_form.scss";
-
 export default {
   components: {
     Name,
     NameKana,
     Gender,
     Email,
-    Birthday,
+    Birthday
   },
   data() {
     return {
       account: account,
-      values: this.properties,
+      values: this.properties
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   computed: {
     getData() {
       return request(account, 0);
-    },
+    }
   },
   methods: {
     // getData1() {
@@ -93,14 +92,15 @@ export default {
         tempHash[item[0]] = item[1];
       }
       request(addAccountStory(tempHash), 1);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-// @import "../scss/_form_reset.scss";
-// @import "~/assets/scss/common.scss";
+@import "../scss/_form.scss";
+@import "../scss/atoms/submitBtn/_btnPost.scss";
+
 /deep/input,
 /deep/textarea {
   border: solid #eeeeee 1px;

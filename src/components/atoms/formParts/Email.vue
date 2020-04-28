@@ -1,6 +1,6 @@
 <template>
   <span>
-    <dl>
+    <dl class="require">
       <dt>メール</dt>
       <dd>
         <input
@@ -15,9 +15,9 @@
         />
       </dd>
     </dl>
-    <dl>
+    <dl class="require">
       <dt>メール(確認用)</dt>
-      <dd>
+      <dd class="has_tooltip">
         <input
           type="email"
           name="emailConfirm"
@@ -28,10 +28,10 @@
           title="メールアドレス確認"
           @change="formUpdate"
         />
-      </dd>
-      <dd>
-        運営よりメールでご連絡する場合があります。普段利用されているメールアドレスを入力してください。
-        確実にメールを受信するために、携帯電話でのみ受信可能なメールアドレスを避け、パソコン等でも受信できるメールアドレスをお使いいただくことをお勧めします。
+        <span class="tooltip">
+          運営よりメールでご連絡する場合があります。普段利用されているメールアドレスを入力してください。
+          確実にメールを受信するために、携帯電話でのみ受信可能なメールアドレスを避け、パソコン等でも受信できるメールアドレスをお使いいただくことをお勧めします。
+        </span>
       </dd>
     </dl>
   </span>
@@ -55,4 +55,6 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../../scss/atoms/tooltip";
+</style>

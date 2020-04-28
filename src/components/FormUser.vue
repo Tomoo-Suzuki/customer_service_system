@@ -18,12 +18,13 @@
         ユーザー登録を完了するためのメールを、登録いただいたメールアドレスへ送信します。
       </p>
       <Magazine :magazine="properties.magazine" @formUpdate="formUpdate" />
-      <AgreeToTerms
-        :agreement="properties.agreement"
-        @formUpdate="formUpdate"
-      />
+      <AgreeToTerms :agreement="properties.agreement" @formUpdate="formUpdate" />
       <p>reCapture導入</p>
-      <button @click="submitFormData">ユーザー登録</button>
+      <div class="btnWrap">
+        <div class="btn">
+          <button @click="submitFormData">ユーザー登録</button>
+        </div>
+      </div>
     </form>
   </main>
 </template>
@@ -39,32 +40,30 @@ import { user } from "../queries/query/user";
 import { addUser } from "../queries/mutation/addUser";
 import request from "../lib/request";
 
-import "../scss/_form.scss";
-
 export default {
   components: {
     Email,
     UserId,
     Password,
     Magazine,
-    AgreeToTerms,
+    AgreeToTerms
   },
   data() {
     return {
-      values: this.properties,
+      values: this.properties
     };
   },
   computed: {
     getData() {
       return request(user, 0);
-    },
+    }
   },
 
   props: {
     properties: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   methods: {
     formUpdate(e) {
@@ -85,11 +84,12 @@ export default {
         tempHash[item[0]] = item[1];
       }
       request(addUser(tempHash), 1);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../scss/_form.scss";
+@import "../scss/atoms/submitBtn/btnPost";
 </style>

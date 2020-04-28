@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>ジャンル</dt>
     <dd class="radioAndCheckbox">
       <label v-for="(genre,i) in allGenre" :key="i">
