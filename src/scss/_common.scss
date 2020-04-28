@@ -10,6 +10,8 @@
     box-sizing: border-box;
 
     .contents {
+        min-height: 480px;
+
         .contents-inner {
             width: 940px;
             margin: 7.2rem auto;

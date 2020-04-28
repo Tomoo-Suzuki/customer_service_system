@@ -22,13 +22,20 @@ textarea {
 
             input[type='text'],
             input[type='email'],
-            input[type='tel'] {
+            input[type='tel'],
+            input[type='date'] {
                 display: inline-block;
                 border: #eeeeee solid 1px;
                 border-radius: 3px;
                 width: 12rem;
                 padding: 4px;
                 height: 2rem;
+            }
+
+            select {
+                background: $upload_blue_dark;
+                color: #ffffff;
+
             }
         }
 
@@ -98,6 +105,32 @@ textarea {
 
             >div {
                 margin-bottom: 1.6rem;
+            }
+
+            /deep/ .selectCustome {
+                position: relative;
+
+                /deep/ select {
+                    display: inline-block;
+                    background: $sell_green_dark;
+                    color: #ffffff;
+                    border-radius: 3px;
+                    width: 12rem;
+                    padding: 4px;
+                    height: 3rem;
+                    line-height: 2rem;
+                }
+
+                /deep/ &:after {
+                    content: "▾";
+                    color: #ffffff;
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    display: block;
+                    top: 0;
+                    right: 3px;
+                }
             }
         }
 
