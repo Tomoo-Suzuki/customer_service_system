@@ -4,13 +4,15 @@
 <script>
 export default {
   props: {},
-  methods: {},
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>
+@import "../../scss/_color.scss";
+
 .toTop {
   text-align: center;
-  color: #3cb2b4;
+  color: $upload_blue_dark;
   font-weight: bold;
   //background: #88b83e;
   background: #d6d6d6;

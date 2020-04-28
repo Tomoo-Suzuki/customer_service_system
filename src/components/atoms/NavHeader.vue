@@ -19,10 +19,13 @@
 <script>
 export default {
   props: {},
-  methods: {},
+  methods: {}
 };
 </script>
+
 <style lang="scss" scoped>
+@import "../../scss/_color.scss";
+
 .nav_header {
   > ul {
     display: flex;
@@ -37,7 +40,7 @@ export default {
       padding: 0.3rem 1rem;
       white-space: nowrap;
       color: #ffffff;
-      background: #3cb2b4;
+      background: $upload_blue_dark;
       border-radius: 2px;
     }
   }
