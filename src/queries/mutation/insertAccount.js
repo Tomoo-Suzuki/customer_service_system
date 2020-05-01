@@ -1,11 +1,11 @@
-export const addAccountStory = (
+export const insertAccountStory = (
   hash
 ) => {
   console.log(hash.last_name);
 
   return (
     `mutation{
-  addAccount(id:"` + hash.id + `",
+  insertAccount(id:"` + hash.id + `",
           last_name:"` + hash.last_name + `",
           first_name:"` + hash.first_name + `",
           last_name_kana:"` + hash.last_name_kana + `",

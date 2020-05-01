@@ -29,8 +29,8 @@ import Gender from "./atoms/formParts/Gender.vue";
 import Birthday from "./atoms/formParts/Birthday.vue";
 import Email from "./atoms/formParts/Email.vue";
 
-import { account } from "../queries/query/account.js";
-import { addAccountStory } from "../queries/mutation/addAccountStory";
+import { selectAccount } from "../queries/query/selectAccount.js";
+import { insertAccount } from "../queries/mutation/insertAccount";
 import request from "../lib/request";
 
 export default {
@@ -43,7 +43,7 @@ export default {
   },
   data() {
     return {
-      account: account,
+      selectAccount: selectAccount,
       values: this.properties
     };
   },
@@ -58,7 +58,7 @@ export default {
       return this.$store.state.account;
     },
     getData() {
-      return request(account, 0);
+      return request(selectAccount, 0);
     }
   },
   methods: {
@@ -94,7 +94,7 @@ export default {
         console.log([item[1]]);
         tempHash[item[0]] = item[1];
       }
-      request(addAccountStory(tempHash), 1);
+      request(insertAccount(tempHash), 1);
     }
   }
 };

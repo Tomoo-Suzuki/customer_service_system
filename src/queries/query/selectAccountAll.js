@@ -1,6 +1,6 @@
-export const accountAll = 'query{accountAll{id,last_name,first_name,last_name_kana,first_name_kana,birthday,zip,prefecture,city,address3,building,purpose}}';
+export const selectAccountAll = 'query{selectAccountAll{id,last_name,first_name,last_name_kana,first_name_kana,birthday,zip,prefecture,city,address3,building,purpose}}';
 // export const accountAll = `query {
-//   accountAll {
+//   selectAccountAll {
 //     id,
 //     last_name,
 //     first_name,

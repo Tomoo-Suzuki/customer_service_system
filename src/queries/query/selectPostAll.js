@@ -1,5 +1,5 @@
-const postAll = `query{
-  postAll{
+const selectPostAll = `query{
+  selectPostAll{
   id_story,
   id_post,
   has_chapter,
