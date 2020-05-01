@@ -54,6 +54,9 @@ export default {
     };
   },
   computed: {
+    user() {
+      return this.$store.state.user;
+    },
     getData() {
       return request(user, 0);
     }

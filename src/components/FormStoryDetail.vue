@@ -107,6 +107,9 @@ export default {
     }
   },
   computed: {
+    story() {
+      return this.$store.state.story;
+    },
     getData() {
       return request(story, 0);
     }

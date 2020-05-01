@@ -54,6 +54,9 @@ export default {
     }
   },
   computed: {
+    accountg() {
+      return this.$store.state.account;
+    },
     getData() {
       return request(account, 0);
     }
