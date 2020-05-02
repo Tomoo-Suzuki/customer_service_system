@@ -27,8 +27,8 @@ import Story from "./atoms/formParts/UploadedDate.vue";
 // import File from "./atoms/formParts/File.vue";
 import UploadedDate from "./atoms/formParts/Story.vue";
 
-import { post } from "../queries/query/post.js";
-import { addPost } from "../queries/mutation/addPost";
+import { selectPost } from "../queries/query/selectPost.js";
+import { insertPost } from "../queries/mutation/insertPost";
 import request from "../lib/request";
 
 export default {
@@ -50,7 +50,7 @@ export default {
       return this.$store.state.user;
     },
     getData() {
-      return request(post, 0);
+      return request(selectPost, 0);
     }
   },
 
@@ -78,7 +78,7 @@ export default {
       for (let item of formData) {
         tempHash[item[0]] = item[1];
       }
-      request(addPost(tempHash), 1);
+      request(insertPost(tempHash), 1);
     }
   }
 };

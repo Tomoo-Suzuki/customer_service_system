@@ -1,10 +1,10 @@
-export const addPost = (
+export const insertPost = (
   hash
 ) => {
   console.log(hash)
   return (
     `mutation{
-          addPost(
+          insertPost(
             id_story:"` + hash.id_story + `",
             id_post:"` + hash.id_post + `",
             has_chapter:` + Boolean(hash.has_chapter) + `,

@@ -69,8 +69,8 @@ import AcceptReviews from "./atoms/formParts/AcceptReviews.vue";
 import PublishEvaluation from "./atoms/formParts/PublishEvaluation.vue";
 import AcceptTypoReports from "./atoms/formParts/AcceptTypoReports.vue";
 
-import { story } from "../queries/query/story.js";
-import { addStory } from "../queries/mutation/addStory";
+import { selectStory } from "../queries/query/selectStory.js";
+import { insertStory } from "../queries/mutation/insertStory";
 import request from "../lib/request";
 
 import "../scss/_form.scss";
@@ -111,7 +111,7 @@ export default {
       return this.$store.state.story;
     },
     getData() {
-      return request(story, 0);
+      return request(selectStory, 0);
     }
   },
 
@@ -133,7 +133,7 @@ export default {
       for (let item of formData) {
         tempHash[item[0]] = item[1];
       }
-      request(addStory(tempHash), 1);
+      request(insertStory(tempHash), 1);
     }
   }
 };

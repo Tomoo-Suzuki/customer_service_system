@@ -1,5 +1,5 @@
-export const post = `query{
-  post(id_post:"sf000001000"){
+export const selectPost = `query{
+  selectPost(id_post:"sf000001000"){
   id_story,
   id_post,
   has_chapter,

@@ -36,8 +36,8 @@ import Password from "./atoms/formParts/Password.vue";
 import Magazine from "./atoms/formParts/Magazine.vue";
 import AgreeToTerms from "./atoms/formParts/AgreeToTerms.vue";
 
-import { user } from "../queries/query/user";
-import { addUser } from "../queries/mutation/addUser";
+import { selectUser } from "../queries/query/selectUser";
+import { insertUser } from "../queries/mutation/insertUser";
 import request from "../lib/request";
 
 export default {
@@ -58,7 +58,7 @@ export default {
       return this.$store.state.user;
     },
     getData() {
-      return request(user, 0);
+      return request(selectUser, 0);
     }
   },
 
@@ -69,6 +69,9 @@ export default {
     }
   },
   methods: {
+    toMutationDispatch(res) {
+      this.$state.dispatch("updateUser", res);
+    },
     formUpdate(e) {
       e.preventDefault();
       const name = e.target.name;
@@ -80,13 +83,8 @@ export default {
     },
     submitFormData(e) {
       e.preventDefault();
-      const useForm = document.formUser;
-      const formData = new FormData(useForm);
-      let tempHash = {};
-      for (let item of formData) {
-        tempHash[item[0]] = item[1];
-      }
-      request(addUser(tempHash), 1);
+      const thisFrom = document.forms.formUser;
+      insertUser(thisFrom, this.toMutationDispatch);
     }
   }
 };

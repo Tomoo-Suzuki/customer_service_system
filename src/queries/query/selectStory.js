@@ -1,5 +1,5 @@
-export const story = `query{
-  story(id:"00001"){
+export const selectStory = `query{
+  selectStory(id:"00001"){
     id,
   id_story,
   title_main,

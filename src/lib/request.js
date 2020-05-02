@@ -1,31 +1,24 @@
 import axios from "axios";
-export default function request(que, type) {
-  const url = "http://localhost:7777/graphql";
-  if (type === 1) {
-    console.log(que)
-    axios
-      .post(url, {
-        query: que
-      })
-      .then(function (res) {
-        console.log(res);
-      })
-      .catch(function (e) {
-        console.log("反映テスト01");
-        console.log(e);
-      });
+// import Vue from 'vue';
+// import Vuex from 'vuex';
+// Vue.use(Vuex);
 
-  } else {
-    axios
-      .post(url, {
-        query: que
-      })
-      .then(function (res) {
-        console.log(res);
-      })
-      .catch(function (e) {
-        console.log("反映テスト00");
-        console.log(e);
-      });
-  }
+
+
+export default async function request(que, key, dispatch) {
+  const url = "http://localhost:7777/graphql";
+  axios
+    .post(url, {
+      query: que
+    })
+    .then(function (res) {
+      console.log(res)
+      const hash = res.data.data[key];
+      // console.log(hash)
+      dispatch(hash);
+    })
+    .catch(function (e) {
+      console.log("反映テスト01");
+      console.log(e);
+    });
 }

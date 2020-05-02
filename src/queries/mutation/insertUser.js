@@ -1,9 +1,9 @@
-export const addUser = (
+export const insertUser = (
   hash
 ) => {
   return (
     `mutation{
-      addUser(id:"` + hash.id + `",
+      insertUser(id:"` + hash.id + `",
       password:"` + hash.password + `",
       user_type:"` + hash.user_type + `",
       magazine:"` + hash.magazine + `",
