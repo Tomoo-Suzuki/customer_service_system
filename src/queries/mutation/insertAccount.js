@@ -1,9 +1,12 @@
-export const insertAccountStory = (
-  hash
-) => {
-  console.log(hash.last_name);
+import formDataToHash from "../../lib/formDataToHash";
+import request from "../../lib/request";
 
-  return (
+export const insertAccount = (
+  form, dispatch
+) => {
+  const hash = formDataToHash(form);
+  const query =
+
     `mutation{
   insertAccount(id:"` + hash.id + `",
           last_name:"` + hash.last_name + `",
@@ -19,5 +22,7 @@ export const insertAccountStory = (
           first_name_kana,
           birthday
   }
-}`)
+}`;
+  request(query, 'insertAccount', dispatch);
+
 };

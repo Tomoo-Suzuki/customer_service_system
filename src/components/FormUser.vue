@@ -69,6 +69,9 @@ export default {
     }
   },
   methods: {
+    toMutationDispatch(res) {
+      this.$state.dispatch("updateUser", res);
+    },
     formUpdate(e) {
       e.preventDefault();
       const name = e.target.name;
@@ -80,13 +83,8 @@ export default {
     },
     submitFormData(e) {
       e.preventDefault();
-      const useForm = document.formUser;
-      const formData = new FormData(useForm);
-      let tempHash = {};
-      for (let item of formData) {
-        tempHash[item[0]] = item[1];
-      }
-      request(insertUser(tempHash), 1);
+      const thisFrom = document.forms.formUser;
+      insertUser(thisFrom, this.toMutationDispatch);
     }
   }
 };

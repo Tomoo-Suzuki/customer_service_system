@@ -1,8 +1,8 @@
 <template>
   <main class="form-book">
-    {{ getData }}
+    {{ getData() }}
     <form name="formAccount">
-      <input type="hidden" name="id" value="00005" />
+      <input type="hidden" name="id" value="00101" />
       <p>ID</p>
       <p>AutherName</p>
       <Name
@@ -30,8 +30,7 @@ import Birthday from "./atoms/formParts/Birthday.vue";
 import Email from "./atoms/formParts/Email.vue";
 
 import { selectAccount } from "../queries/query/selectAccount.js";
-import { insertAccount } from "../queries/mutation/insertAccount";
-import request from "../lib/request";
+import { insertAccount } from "../queries/mutation/insertAccount.js";
 
 export default {
   components: {
@@ -56,45 +55,28 @@ export default {
   computed: {
     accountg() {
       return this.$store.state.account;
-    },
-    getData() {
-      return request(selectAccount, 0);
     }
   },
   methods: {
-    // getData1() {
-    //   console.log(account);
-    //   request(account, 0);
-    // },
+    toMutationDispatch(res) {
+      this.$store.dispatch("updateAccount", res);
+    },
     formUpdate(e) {
       e.preventDefault();
       const name = e.target.name;
       const val = e.target.value;
-      //this.properties[name] = val;
       this.values[name] = val;
     },
-    // formUpdate_radio(name, val) {
-    //   //   e.preventDefault();
-    //   //   const name = e.target.name;
-    //   //   const val = e.target.value;
-    //   this.properties[name] = val;
-    //   console.log(this.properties);
-    //   //this.values[name] = val;
-    // },
     formUpdate_array(name, val) {
       this.$set(this.properties, name, val);
     },
+    getData() {
+      selectAccount("00001", this.toMutationDispatch);
+    },
     submitFormData(e) {
       e.preventDefault();
-      const accountForm = document.formAccount;
-      const formData = new FormData(accountForm);
-      let tempHash = {};
-      for (let item of formData) {
-        console.log([item[0]]);
-        console.log([item[1]]);
-        tempHash[item[0]] = item[1];
-      }
-      request(insertAccount(tempHash), 1);
+      const thisFrom = document.formAccount;
+      insertAccount(thisFrom, this.toMutationDispatch);
     }
   }
 };

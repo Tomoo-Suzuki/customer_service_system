@@ -1,7 +1,18 @@
 export default {
-  updateMessage({
+  updateAccount(context, newAccount) {
+    context.commit("updateAccount", newAccount);
+  },
+  updateLogin(context, newLogin) {
+    context.commit("updateLogin", newLogin);
+  },
+  updateStory({
     commit
-  }, newMessage) {
-    commit("updateMessage", newMessage);
+  }, newStory) {
+    commit("updateStory", newStory);
+  },
+  updatePost({
+    commit
+  }, newPost) {
+    commit("updatePost", newPost);
   }
 };
