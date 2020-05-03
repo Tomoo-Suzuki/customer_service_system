@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from './components/Home.vue'
-import FormUser from './components/FormUser.vue'
+import FormLogin from './components/FormLogin.vue'
+import FormRegistration from './components/FormRegistration.vue'
 import FormStory from './components/FormStoryDetail.vue'
 import FormPost from './components/FormPost.vue'
 import FormAccount from './components/FormAccount.vue'
@@ -17,8 +18,11 @@ export default new Router({
     path: '/',
     component: Home
   }, {
-    path: '/form-user',
-    component: FormUser
+    path: '/form-login',
+    component: FormLogin
+  }, {
+    path: '/form-registration',
+    component: FormRegistration
   }, {
     path: '/form-story',
     component: FormStory
