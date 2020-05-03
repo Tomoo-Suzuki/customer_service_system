@@ -1,6 +1,5 @@
 <template>
   <main class="form-book">
-    {{ getData() }}
     <form name="formAccount">
       <input type="hidden" name="id" value="00101" />
       <p>ID</p>
@@ -40,6 +39,14 @@ export default {
     Email,
     Birthday
   },
+  created() {
+    const thisForm = document.forms.formUser;
+    const id = thisForm.id.value;
+    console.log("created");
+    console.log(id);
+    selectAccount(id, this.toMutationDispatch);
+  },
+
   data() {
     return {
       selectAccount: selectAccount,

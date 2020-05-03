@@ -1,11 +1,8 @@
 <template>
   <main class="form-book">
-    {{ getData }}
-    <form name="formUser">
-      <div>■プログレストラッカー</div>
+    <form name="formRegistry">
       <h2>新規ユーザー登録</h2>
-      <input type="hidden" name="id" value="00003" />
-      {{ this.properties }}
+      <input type="hidden" name="date_reception" :value="{}" />
       <Email
         :email="properties.email"
         :emailConfirm="properties.email_confirm"
@@ -36,9 +33,7 @@ import Password from "./atoms/formParts/Password.vue";
 import Magazine from "./atoms/formParts/Magazine.vue";
 import AgreeToTerms from "./atoms/formParts/AgreeToTerms.vue";
 
-import { selectUser } from "../queries/query/selectUser";
-import { insertUser } from "../queries/mutation/insertUser";
-import request from "../lib/request";
+import { insertRegistry } from "../queries/mutation/insertRegistry";
 
 export default {
   components: {
@@ -48,20 +43,17 @@ export default {
     Magazine,
     AgreeToTerms
   },
+  computed: {
+    today() {
+      const d = new Date();
+      return d.toString;
+    }
+  },
   data() {
     return {
       values: this.properties
     };
   },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    },
-    getData() {
-      return request(selectUser, 0);
-    }
-  },
-
   props: {
     properties: {
       type: Object,
@@ -70,7 +62,7 @@ export default {
   },
   methods: {
     toMutationDispatch(res) {
-      this.$state.dispatch("updateUser", res);
+      this.$store.dispatch("updateAccount", res);
     },
     formUpdate(e) {
       e.preventDefault();
@@ -83,8 +75,8 @@ export default {
     },
     submitFormData(e) {
       e.preventDefault();
-      const thisFrom = document.forms.formUser;
-      insertUser(thisFrom, this.toMutationDispatch);
+      const thisFrom = document.forms.formRegistry;
+      insertRegistry(thisFrom, this.toMutationDispatch);
     }
   }
 };

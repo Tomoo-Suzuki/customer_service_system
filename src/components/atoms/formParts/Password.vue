@@ -9,6 +9,7 @@
           :value="password"
           required
           placeholder="tsex90876"
+          autocomplete="current-password"
           @change="formUpdate"
         />
         <span class="tooltip">8文字以上。半角英数字、半角記号が使えます。</span>

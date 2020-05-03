@@ -3,7 +3,7 @@ export const insertUser = (
 ) => {
   return (
     `mutation{
-      insertUser(id:"` + hash.id + `",
+      insertRegistry(id:"` + hash.id + `",
       password:"` + hash.password + `",
       user_type:"` + hash.user_type + `",
       magazine:"` + hash.magazine + `",

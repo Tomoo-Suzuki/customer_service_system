@@ -20,8 +20,8 @@
       <dd class="has_tooltip">
         <input
           type="email"
-          name="emailConfirm"
-          :value="emailConfirm"
+          name="email_confirm"
+          :value="email_confirm"
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
           placeholder="xxxx@aaa.co.jp"
@@ -43,7 +43,7 @@ export default {
       type: String,
       default: null
     },
-    emailConfirm: {
+    email_confirm: {
       type: String,
       default: null
     }
