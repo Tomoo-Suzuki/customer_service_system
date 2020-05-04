@@ -8,7 +8,6 @@
         :value="birthday"
         @change="formUpdate"
       />
-      <p>{{ birthday }}</p>
     </dd>
   </dl>
 </template>
