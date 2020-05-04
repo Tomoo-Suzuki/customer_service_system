@@ -4,7 +4,6 @@ export const selectAccountU = (email, dispatch) => {
 
   const query = `{
     selectAccountU(email:"` + email + `") {
-        id,
         last_name,
         first_name,
         last_name_kana,

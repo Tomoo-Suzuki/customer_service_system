@@ -2,7 +2,7 @@
   <main class="form-book">
     <form name="formPost">
       <input type="hidden" name="id_story" value="sf000001" />
-      <input type="hidden" name="id_post" value="sf000001001" />
+      <input type="hidden" name="id_post" value="sf000001003" />
       <TitleChapter
         :title_chapter="values.title_chapter"
         @formUpdate="formUpdate"

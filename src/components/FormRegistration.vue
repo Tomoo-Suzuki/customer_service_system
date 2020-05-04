@@ -15,7 +15,10 @@
         ユーザー登録を完了するためのメールを、登録いただいたメールアドレスへ送信します。
       </p>
       <Magazine :magazine="properties.magazine" @formUpdate="formUpdate" />
-      <AgreeToTerms :agreement="properties.agreement" @formUpdate="formUpdate" />
+      <AgreeToTerms
+        :agreement="properties.agreement"
+        @formUpdate="formUpdate"
+      />
       <p>reCapture導入</p>
       <div class="btnWrap">
         <div class="btn">
@@ -41,44 +44,45 @@ export default {
     UserId,
     Password,
     Magazine,
-    AgreeToTerms
+    AgreeToTerms,
   },
   computed: {
     today() {
       const d = new Date();
       return d.toString();
-    }
+    },
   },
   data() {
     return {
-      values: this.properties
+      values: this.properties,
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   methods: {
     toMutationDispatch(res) {
       this.$store.dispatch("updateAccount", res);
     },
-    formUpdate(e) {
+    formUpdate(type, e, name, val) {
       e.preventDefault();
-      const name = e.target.name;
-      const val = e.target.value;
-      this.values[name] = val;
-    },
-    formUpdate_array(name, val) {
-      this.$set(this.properties, name, val);
+      if (type === 1) {
+        this.$set(this.properties, name, val);
+      } else {
+        const name = e.target.name;
+        const val = e.target.value;
+        this.$set(this.properties, name, val);
+      }
     },
     submitFormData(e) {
       e.preventDefault();
       const thisFrom = document.forms.formRegistry;
       insertRegistry(thisFrom, this.toMutationDispatch);
-    }
-  }
+    },
+  },
 };
 </script>
 

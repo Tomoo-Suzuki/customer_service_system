@@ -2,11 +2,6 @@ import formDataToHash from "../../lib/formDataToHash";
 import request from "../../lib/request";
 export const insertRegistry = (form, dispatch) => {
   const hash = formDataToHash(form);
-  console.log(hash.email);
-  console.log(hash.email_confirm);
-  console.log(hash.id_user);
-  console.log(hash.password);
-  console.log(hash.date_reception);
   const query =
     `mutation{
       insertRegistry(
