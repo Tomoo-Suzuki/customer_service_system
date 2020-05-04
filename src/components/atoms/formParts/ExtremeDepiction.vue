@@ -9,7 +9,7 @@
           type="checkbox"
           name="extreme_depiction"
           :value="i"
-          @change="formUpdate_array"
+          @change="formUpdate"
           v-model="extreme_depiction_data"
         />
       </label>
@@ -21,27 +21,27 @@ export default {
   data() {
     return {
       extreme_depiction_data: [],
-      labels: ["残酷な描写", "性的な描写", "暴力的な描写", "グロテスクな描写"]
+      labels: ["残酷な描写", "性的な描写", "暴力的な描写", "グロテスクな描写"],
     };
   },
   props: {
     extreme_depiction: {
       type: Array,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
+    //type, e, name, val
     formUpdate(e) {
-      this.$emit("formUpdate", e);
-    },
-    formUpdate_array(e) {
       this.$emit(
-        "formUpdate_array",
+        "formUpdate",
+        1,
+        e,
         e.target.name,
         this.extreme_depiction_data
       );
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

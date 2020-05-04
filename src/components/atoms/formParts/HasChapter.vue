@@ -9,6 +9,7 @@
           name="has_chapter"
           :value="true"
           @change="formUpdate"
+          :checked="has_chapter==true"
         />
       </label>
       <label>
@@ -18,6 +19,7 @@
           name="has_chapter"
           :value="false"
           @change="formUpdate"
+          :checked="has_chapter==false"
         />
       </label>
     </dd>
@@ -26,16 +28,16 @@
 <script>
 export default {
   props: {
-    isComplete: {
-      type: String,
-      default: null,
-    },
+    has_chapter: {
+      type: Boolean,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
-    },
-  },
+      this.$emit("formUpdate", 0, e);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

@@ -4,39 +4,60 @@
     <dd class="radioAndCheckbox">
       <label>
         <span>男性</span>
-        <input id="man" type="radio" name="gender" value="man" @change="formUpdate" />
+        <input
+          id="man"
+          type="radio"
+          name="gender"
+          :value="0"
+          :checked="gender === 0"
+          @change="formUpdate"
+        />
       </label>
       <label>
         <span>女性</span>
-        <input id="woman" type="radio" name="gender" value="woman" @change="formUpdate" />
+        <input
+          id="woman"
+          type="radio"
+          name="gender"
+          :value="1"
+          :checked="gender === 1"
+          @change="formUpdate"
+        />
       </label>
       <label>
         <span>その他</span>
-        <input id="lgbt" type="radio" name="gender" value="lgbt" @change="formUpdate" />
+        <input
+          id="lgbt"
+          type="radio"
+          name="gender"
+          :value="2"
+          :checked="gender === 2"
+          @change="formUpdate"
+        />
       </label>
     </dd>
   </dl>
 </template>
 <script>
 export default {
-  data: function() {
-    return {
-      genderData: this.gender
-    };
-  },
+  //   data: function() {
+  //     return {
+  //       genderData: this.gender,
+  //     };
+  //   },
   props: {
     gender: {
-      type: String,
-      default: null
-    }
+      type: Number,
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
       this.genderData = e.target.value;
       console.log(this.genderData);
-      this.$emit("formUpdate_array", e.targetname, this.genderData);
-    }
-  }
+      this.$emit("formUpdate", 1, e, e.targetname, this.genderData);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

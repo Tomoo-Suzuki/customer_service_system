@@ -4,10 +4,11 @@
     <dd>
       <input
         type="text"
-        name="useId"
-        :value="useId"
+        name="id_user"
+        :value="id_user"
         required
         placeholder="tsex90876"
+        autocomplete="userid"
         @change="formUpdate"
       />
       <span class="tooltip">3文字以上。半角の英数字、ハイフン、アンダースコアが使えます。ユーザーIDは一般に公開され、登録後の変更はできません。</span>
@@ -17,7 +18,7 @@
 <script>
 export default {
   props: {
-    useId: {
+    id_user: {
       type: Object,
       default: null
     }

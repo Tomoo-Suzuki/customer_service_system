@@ -2,7 +2,13 @@
   <dl>
     <dt>あらすじ</dt>
     <dd>
-      <textarea col="30" rows="10" name="synopsis" :value="synopsis" @click="formUpdate"></textarea>
+      <textarea
+        col="30"
+        rows="10"
+        name="synopsis"
+        :value="synopsis"
+        @click="formUpdate"
+      ></textarea>
     </dd>
   </dl>
 </template>
@@ -11,14 +17,14 @@ export default {
   props: {
     synopsis: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
-    }
-  }
+      this.$emit("formUpdate", 0, e);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

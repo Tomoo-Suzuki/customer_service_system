@@ -1,9 +1,9 @@
-export const insertPost = (
-  hash
-) => {
-  console.log(hash)
-  return (
-    `mutation{
+import formDataToHash from "../../lib/formDataToHash";
+import request from "../../lib/request";
+
+export const insertPost = (form, dispatch) => {
+  const hash = formDataToHash(form);
+  const query = `mutation{
           insertPost(
             id_story:"` + hash.id_story + `",
             id_post:"` + hash.id_post + `",
@@ -20,5 +20,10 @@ export const insertPost = (
           story,
           date_last_modify
           }
-        }`)
+        }`;
+  return request(query, 'insertPost').then(
+    (res) => {
+      dispatch(res)
+    }
+  );
 };

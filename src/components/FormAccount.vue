@@ -1,18 +1,24 @@
 <template>
   <main class="form-book">
     <form name="formAccount">
-      <input type="hidden" name="id" value="00101" />
-      <p>ID</p>
-      <p>AutherName</p>
+      <input type="hidden" name="email_id" value="aryuusei_y@gmail.com" />
       <Name
-        :last_name="properties.last_name"
-        :first_name="properties.first_name"
+        :last_name="values.last_name"
+        :first_name="values.first_name"
         @formUpdate="formUpdate"
       />
-      <NameKana :Last_name_kana="properties.last_name_kana" @formUpdate="formUpdate" />
-      <Gender :gender="properties.gender" @formUpdate="formUpdate" />
-      <Birthday :birthday="properties.birthday" @formUpdate="formUpdate" />
-      <Email />
+      <NameKana
+        :Last_name_kana="values.last_name_kana"
+        :first_name_kana="values.first_name_kana"
+        @formUpdate="formUpdate"
+      />
+      <Gender :gender="values.gender" @formUpdate="formUpdate" />
+      <Birthday :birthday="values.birthday" @formUpdate="formUpdate" />
+      <Email
+        :email="values.email"
+        :email_confirm="values.email_confirm"
+        @formUpdate="formUpdate"
+      />
       <div class="btnWrap">
         <div class="btn">
           <button @click="submitFormData">送信する</button>
@@ -28,8 +34,8 @@ import Gender from "./atoms/formParts/Gender.vue";
 import Birthday from "./atoms/formParts/Birthday.vue";
 import Email from "./atoms/formParts/Email.vue";
 
-import { selectAccount } from "../queries/query/selectAccount.js";
-import { insertAccount } from "../queries/mutation/insertAccount.js";
+import { selectAccountU } from "../queries/query/selectAccountU.js";
+import { insertAccountU } from "../queries/mutation/insertAccountU.js";
 
 export default {
   components: {
@@ -37,55 +43,48 @@ export default {
     NameKana,
     Gender,
     Email,
-    Birthday
+    Birthday,
   },
-  created() {
-    const thisForm = document.forms.formUser;
-    const id = thisForm.id.value;
-    console.log("created");
-    console.log(id);
-    selectAccount(id, this.toMutationDispatch);
-  },
-
-  data() {
-    return {
-      selectAccount: selectAccount,
-      values: this.properties
-    };
+  mounted() {
+    const thisForm = document.forms.formAccount;
+    const email = thisForm.email_id.value;
+    if (!email) return;
+    const promise = selectAccountU(email, this.toMutationDispatch);
+    promise.then(() => {
+      this.values = this.$store.getters.account || {};
+    });
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
-  computed: {
-    accountg() {
-      return this.$store.state.account;
-    }
+  data() {
+    return {
+      values: this.properties,
+    };
   },
   methods: {
     toMutationDispatch(res) {
       this.$store.dispatch("updateAccount", res);
     },
-    formUpdate(e) {
+    formUpdate(type, e, name, val) {
       e.preventDefault();
-      const name = e.target.name;
-      const val = e.target.value;
-      this.values[name] = val;
-    },
-    formUpdate_array(name, val) {
-      this.$set(this.properties, name, val);
-    },
-    getData() {
-      selectAccount("00001", this.toMutationDispatch);
+      if (type === 1) {
+        this.$set(this.properties, name, val);
+      } else {
+        const name = e.target.name;
+        const val = e.target.value;
+        this.$set(this.properties, name, val);
+      }
     },
     submitFormData(e) {
       e.preventDefault();
       const thisFrom = document.formAccount;
-      insertAccount(thisFrom, this.toMutationDispatch);
-    }
-  }
+      insertAccountU(thisFrom, this.toMutationDispatch);
+    },
+  },
 };
 </script>
 

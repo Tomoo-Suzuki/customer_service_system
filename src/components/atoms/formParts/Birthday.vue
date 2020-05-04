@@ -8,7 +8,6 @@
         :value="birthday"
         @change="formUpdate"
       />
-      <p>{{ birthday }}</p>
     </dd>
   </dl>
 </template>
@@ -22,7 +21,7 @@ export default {
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", 0, e);
     },
   },
 };

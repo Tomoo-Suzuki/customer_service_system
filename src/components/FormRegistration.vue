@@ -2,13 +2,13 @@
   <main class="form-book">
     <form name="formRegistry">
       <h2>新規ユーザー登録</h2>
-      <input type="hidden" name="date_reception" :value="{}" />
+      <input type="hidden" name="date_reception" :value="today" />
       <Email
         :email="properties.email"
         :emailConfirm="properties.email_confirm"
         @formUpdate="formUpdate"
       />
-      <UserId :user_id="properties.user_id" @formUpdate="formUpdate" />
+      <UserId :id_user="properties.id_user" @formUpdate="formUpdate" />
       <Password :password="properties.password" @formUpdate="formUpdate" />
       <p>
         ユーザー登録を行うには「利用規約」および「ガイドライン」へ同意いただく必要があります。
@@ -46,7 +46,7 @@ export default {
   computed: {
     today() {
       const d = new Date();
-      return d.toString;
+      return d.toString();
     }
   },
   data() {
