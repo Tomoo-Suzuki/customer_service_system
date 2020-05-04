@@ -1,9 +1,9 @@
-export const insertStory = (
-  hash
-) => {
-  console.log(hash)
-  return (
-    `mutation{
+import formDataToHash from "../../lib/formDataToHash";
+import request from "../../lib/request";
+
+export const insertStory = (form, dispatch) => {
+  const hash = formDataToHash(form);
+  const query = `mutation{
           insertStory(
             id:"` + hash.id + `",
             id_story:"` + hash.id_story + `",
@@ -41,5 +41,10 @@ export const insertStory = (
             publish_evaluation,
             accept_typo_reports
           }
-        }`)
+        }`;
+  return request(query, 'insertPost').then(
+    (res) => {
+      dispatch(res)
+    }
+  );
 };

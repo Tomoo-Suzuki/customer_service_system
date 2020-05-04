@@ -2,7 +2,12 @@
   <dl>
     <dt>キーワード</dt>
     <dd>
-      <input type="text" name="keywords" value @change="formUpdate" />
+      <input
+        type="text"
+        name="keywords"
+        :value="keywords"
+        @change="formUpdate"
+      />
       <!-- <input type="text" name="keywords0" value @change="formUpdate" />
       <input type="text" name="keywords1" value @change="formUpdate" />
       <input type="text" name="keywords2" value @change="formUpdate" />
@@ -66,7 +71,7 @@ export default {
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", 0, e);
     },
   },
 };

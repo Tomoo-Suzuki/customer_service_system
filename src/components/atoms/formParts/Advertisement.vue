@@ -4,11 +4,23 @@
     <dd class="radioAndCheckbox">
       <label>
         <span>表示しない</span>
-        <input type="radio" name="accept_advertisement" :value="false" @change="formUpdate" />
+        <input
+          type="radio"
+          name="accept_advertisement"
+          :value="false"
+          :checked="accept_advertisement === false"
+          @change="formUpdate"
+        />
       </label>
       <label>
         <span>表示する</span>
-        <input type="radio" name="accept_advertisement" :value="true" @change="formUpdate" />
+        <input
+          type="radio"
+          name="accept_advertisement"
+          :value="true"
+          :checked="accept_advertisement === true"
+          @change="formUpdate"
+        />
       </label>
     </dd>
   </dl>
@@ -17,15 +29,15 @@
 export default {
   props: {
     accept_advertisement: {
-      type: String,
-      default: null
-    }
+      type: Boolean,
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
-    }
-  }
+      this.$emit("formUpdate", 0, e);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

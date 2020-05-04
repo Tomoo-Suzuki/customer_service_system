@@ -1,10 +1,8 @@
 <template>
   <main class="form-book">
-    <!-- {{properties}} -->
     <form name="formPost">
       <input type="hidden" name="id_story" value="sf000001" />
       <input type="hidden" name="id_post" value="sf000001001" />
-      {{ values.title_chapter }}
       <TitleChapter
         :title_chapter="values.title_chapter"
         @formUpdate="formUpdate"

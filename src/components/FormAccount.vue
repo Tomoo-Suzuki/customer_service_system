@@ -9,7 +9,10 @@
         :first_name="properties.first_name"
         @formUpdate="formUpdate"
       />
-      <NameKana :Last_name_kana="properties.last_name_kana" @formUpdate="formUpdate" />
+      <NameKana
+        :Last_name_kana="properties.last_name_kana"
+        @formUpdate="formUpdate"
+      />
       <Gender :gender="properties.gender" @formUpdate="formUpdate" />
       <Birthday :birthday="properties.birthday" @formUpdate="formUpdate" />
       <Email />
@@ -37,32 +40,34 @@ export default {
     NameKana,
     Gender,
     Email,
-    Birthday
+    Birthday,
   },
-  created() {
-    const thisForm = document.forms.formUser;
-    const id_user = thisForm.id_user.value;
-    console.log("created");
-    console.log(id_user);
-    selectAccount(id_user, this.toMutationDispatch);
+  mounted() {
+    const thisForm = document.forms.formAccount;
+    const id_post = thisForm.id_post.value;
+    if (!id_post) return;
+    const promise = selectAccount(id_post, this.toMutationDispatch);
+    promise.then(() => {
+      this.values = this.$store.getters.post || {};
+    });
   },
 
   data() {
     return {
       selectAccount: selectAccount,
-      values: this.properties
+      values: this.properties,
     };
   },
   props: {
     properties: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   computed: {
     accountg() {
       return this.$store.state.account;
-    }
+    },
   },
   methods: {
     toMutationDispatch(res) {
@@ -84,8 +89,8 @@ export default {
       e.preventDefault();
       const thisFrom = document.formAccount;
       insertAccount(thisFrom, this.toMutationDispatch);
-    }
-  }
+    },
+  },
 };
 </script>
 

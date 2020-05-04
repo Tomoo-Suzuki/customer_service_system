@@ -18,14 +18,14 @@ export default {
   props: {
     title_main: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
-    }
-  }
+      this.$emit("formUpdate", 0, e);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

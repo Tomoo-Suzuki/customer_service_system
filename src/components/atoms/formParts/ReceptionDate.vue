@@ -20,8 +20,9 @@ export default {
     },
   },
   methods: {
+    //type, e, name, val
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", 0, e);
     },
   },
 };

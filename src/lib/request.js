@@ -12,7 +12,7 @@ export default function request(que, key /*, dispatch*/ ) {
       query: que
     })
     .then(function (res) {
-      // console.log(res)
+      console.log(res)
       const hash = res.data.data[key];
       // console.log(hash)
       //dispatch(hash);

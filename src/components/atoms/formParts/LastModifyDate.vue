@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e, 0);
+      this.$emit("formUpdate", 0, e);
     },
   },
   //   filters: {
