@@ -35,7 +35,7 @@ import Birthday from "./atoms/formParts/Birthday.vue";
 import Email from "./atoms/formParts/Email.vue";
 
 import { selectAccountU } from "../queries/query/selectAccountU.js";
-import { insertAccount } from "../queries/mutation/insertAccount.js";
+import { insertAccountU } from "../queries/mutation/insertAccountU.js";
 
 export default {
   components: {
@@ -82,7 +82,7 @@ export default {
     submitFormData(e) {
       e.preventDefault();
       const thisFrom = document.formAccount;
-      insertAccount(thisFrom, this.toMutationDispatch);
+      insertAccountU(thisFrom, this.toMutationDispatch);
     },
   },
 };
