@@ -4,8 +4,8 @@
     <dd>
       <input
         type="text"
-        name="useId"
-        :value="useId"
+        name="id_user"
+        :value="id_user"
         required
         placeholder="tsex90876"
         @change="formUpdate"
@@ -17,7 +17,7 @@
 <script>
 export default {
   props: {
-    useId: {
+    id_user: {
       type: Object,
       default: null
     }

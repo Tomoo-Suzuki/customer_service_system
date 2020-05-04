@@ -41,10 +41,10 @@ export default {
   },
   created() {
     const thisForm = document.forms.formUser;
-    const id = thisForm.id.value;
+    const id_user = thisForm.id_user.value;
     console.log("created");
-    console.log(id);
-    selectAccount(id, this.toMutationDispatch);
+    console.log(id_user);
+    selectAccount(id_user, this.toMutationDispatch);
   },
 
   data() {
