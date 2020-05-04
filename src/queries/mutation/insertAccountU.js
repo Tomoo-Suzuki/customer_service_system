@@ -7,7 +7,7 @@ export const insertAccountU = (
   const hash = formDataToHash(form);
   const query =
     `mutation{
-      insertAccountU(id:"` + hash.id + `",
+      insertAccountU(id_user:"` + hash.id + `",
               last_name:"` + hash.last_name + `",
               first_name:"` + hash.first_name + `",
               last_name_kana:"` + hash.last_name_kana + `",
@@ -16,7 +16,7 @@ export const insertAccountU = (
               email:"` + hash.email + `",
               email_confirm:"` + hash.email_confirm + `"
               ){
-              id,
+              id_user,
               last_name,
               first_name,
               last_name_kana,
@@ -26,6 +26,9 @@ export const insertAccountU = (
               email_confirm
           }
     }`;
-  request(query, 'insertAccount', dispatch);
-
+  return request(query, 'insertAccountU').then(
+    (res) => {
+      dispatch(res)
+    }
+  );
 };

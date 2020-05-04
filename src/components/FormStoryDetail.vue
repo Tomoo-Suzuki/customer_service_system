@@ -2,7 +2,7 @@
   <main class="form-book">
     <form name="formStory">
       <input type="hidden" name="id" value="00003" />
-      <input type="hidden" name="id_story" value="sf00002" />
+      <input type="hidden" name="id_story" value="sf00005" />
 
       <TitleMain :title_main="values.title_main" @formUpdate="formUpdate" />
       <AutherName :auther_name="values.auther_name" @formUpdate="formUpdate" />
