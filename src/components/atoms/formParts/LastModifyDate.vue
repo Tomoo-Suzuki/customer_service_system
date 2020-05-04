@@ -2,28 +2,29 @@
   <dl>
     <dt>最終更新日</dt>
     <dd>
-      <input
-        type="date"
-        name="last_modify_date"
-        :value="last_modify_date"
-        @change="formUpdate"
-      />
+      <!-- {{ $moment(timestamp).fromNow() }} -->
+      <input type="hidden" name="date_last_modify" :value="today" />
     </dd>
   </dl>
 </template>
 <script>
 export default {
-  props: {
-    last_modify_date: {
-      type: String,
-      default: null,
+  computed: {
+    today() {
+      const d = new Date();
+      return d;
     },
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", e, 0);
     },
   },
+  //   filters: {
+  //     moment(value, format) {
+  //       return moment(value).format(format);
+  //     },
+  //   },
 };
 </script>
 <style lang="scss" scoped></style>

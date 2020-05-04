@@ -6,7 +6,7 @@
         <input
           type="text"
           name="title_chapter"
-          :value="title_chapter"
+          :value="title_chapter?title_chapter:''"
           required
           placeholder="境界の国"
           @change="formUpdate"
@@ -20,14 +20,15 @@ export default {
   props: {
     title_chapter: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
+    //type, e, name, val
     formUpdate(e) {
-      this.$emit("formUpdate", e);
-    },
-  },
+      this.$emit("formUpdate", 0, e);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

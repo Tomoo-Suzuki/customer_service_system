@@ -5,17 +5,18 @@ import axios from "axios";
 
 
 
-export default async function request(que, key, dispatch) {
+export default function request(que, key /*, dispatch*/ ) {
   const url = "http://localhost:7777/graphql";
-  axios
+  return axios
     .post(url, {
       query: que
     })
     .then(function (res) {
-      console.log(res)
+      // console.log(res)
       const hash = res.data.data[key];
       // console.log(hash)
-      dispatch(hash);
+      //dispatch(hash);
+      return hash
     })
     .catch(function (e) {
       console.log("反映テスト01");

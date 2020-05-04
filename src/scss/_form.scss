@@ -1,11 +1,11 @@
 @import 'color';
 
-/deep/input[type='text'],
-/deep/input[type='email'],
-/deep/input[type='tel'],
-/deep/input[type='date'],
-/deep/input[type='password'],
-/deep/textarea {
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='date'],
+input[type='password'],
+textarea {
     border: solid #eeeeee 1px;
 }
 

@@ -1,7 +1,7 @@
 <template>
   <main class="form-book">
     <form name="formAccount">
-      <input type="hidden" name="id" value="00101" />
+      <input type="hidden" name="id_user" value="00101" />
       <p>ID</p>
       <p>AutherName</p>
       <Name
@@ -68,6 +68,9 @@ export default {
     toMutationDispatch(res) {
       this.$store.dispatch("updateAccount", res);
     },
+    getData() {
+      selectAccount("00001", this.toMutationDispatch);
+    },
     formUpdate(e) {
       e.preventDefault();
       const name = e.target.name;
@@ -76,9 +79,6 @@ export default {
     },
     formUpdate_array(name, val) {
       this.$set(this.properties, name, val);
-    },
-    getData() {
-      selectAccount("00001", this.toMutationDispatch);
     },
     submitFormData(e) {
       e.preventDefault();
