@@ -17,14 +17,18 @@ export default {
 
 .searchBox {
   > label {
+    display: inline-block;
+    width: 100%;
+
     > input {
-      display: inline-flex;
+      display: inline-block;
+      width: calc(100% - 7rem);
       border: solid 1px #e6e6e6;
-      width: 30rem;
       height: 2.8rem;
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px;
     }
+
     > button {
       background: $upload_blue_dark;
       color: #ffffff;

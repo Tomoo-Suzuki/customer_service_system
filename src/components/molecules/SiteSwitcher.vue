@@ -20,7 +20,10 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  > div:nth-of-type(1) {
+  > .logo {
+    width: 11rem;
+  }
+  > .logo:nth-of-type(1) {
     margin-right: 1.5rem;
   }
 }
