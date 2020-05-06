@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     {{ extreme_depiction_data }}
     <dt>過激な描写</dt>
     <dd class="radioAndCheckbox">
@@ -9,7 +9,7 @@
           type="checkbox"
           name="extreme_depiction"
           :value="i"
-          @change="formUpdate_array"
+          @change="formUpdate"
           v-model="extreme_depiction_data"
         />
       </label>
@@ -31,12 +31,12 @@ export default {
     },
   },
   methods: {
+    //type, e, name, val
     formUpdate(e) {
-      this.$emit("formUpdate", e);
-    },
-    formUpdate_array(e) {
       this.$emit(
-        "formUpdate_array",
+        "formUpdate",
+        1,
+        e,
         e.target.name,
         this.extreme_depiction_data
       );

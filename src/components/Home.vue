@@ -5,6 +5,43 @@
     <button @click="toEachPage('/form-post')">Story Upload</button>
     <button @click="toEachPage('/form-story')">Story Detail</button>
     <button @click="toEachPage('/form-account')">Account</button>
+    <div>
+      <section>
+        <h2>注目の作品</h2>
+      </section>
+      <section>
+        <h3>ユーザー登録</h3>
+      </section>
+      <section>
+        <h4>特集</h4>
+      </section>
+      <section>
+        <h5>おすすめレビュー</h5>
+      </section>
+      <section>
+        <h2>新着小説</h2>
+      </section>
+      <section>
+        <h3>コンテスト</h3>
+      </section>
+      <section>
+        <h4>ランキング</h4>
+      </section>
+      <section>
+        <h5>ランキング</h5>
+      </section>
+    </div>
+    <div>
+      <section>
+        <h2>累計ランキング</h2>
+      </section>
+      <section>
+        <h3>自主企画の新着</h3>
+      </section>
+      <section>
+        <h3>二次創作の新着</h3>
+      </section>
+    </div>
     <button @click="getData">GQL</button>
   </main>
 </template>

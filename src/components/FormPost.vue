@@ -1,25 +1,25 @@
 <template>
   <main class="form-book">
-    {{ getData }}
     <form name="formPost">
-      <input type="hidden" name="id_story" value="dr00005" />
-      <input type="hidden" name="id_post" value="dr000050003" />
+      <input type="hidden" name="id_story" value="sf000001" />
+      <input type="hidden" name="id_post" value="sf000001003" />
       <TitleChapter
-        :title_chapter="properties.title_chapter"
+        :title_chapter="values.title_chapter"
         @formUpdate="formUpdate"
       />
-      <HasChapter
-        :has_chapter="properties.has_chapter"
-        @formUpdate="formUpdate"
-      />
-      <Title :title="properties.title" @formUpdate="formUpdate" />
-      <Story :story="properties.story" @formUpdate="formUpdate" />
+      <HasChapter :has_chapter="values.has_chapter" @formUpdate="formUpdate" />
+      <Title :title="values.title" @formUpdate="formUpdate" />
+      <Story :story="values.story" @formUpdate="formUpdate" />
       <!-- <File :file="properties.file" @formUpdate="formUpdate" /> -->
-      <UploadedDate
-        :uploadedDate="properties.uploadedDate"
+      <LastModifyDate
+        :date_last_modify="values.date_last_modify"
         @formUpdate="formUpdate"
       />
-      <button @click="submitFormData">送信</button>
+      <div class="btnWrap">
+        <div class="btn">
+          <button @click="submitFormData">送信</button>
+        </div>
+      </div>
     </form>
   </main>
 </template>
@@ -28,15 +28,12 @@
 import TitleChapter from "./atoms/formParts/TitleChapter.vue";
 import HasChapter from "./atoms/formParts/HasChapter.vue";
 import Title from "./atoms/formParts/Title.vue";
-import Story from "./atoms/formParts/UploadedDate.vue";
+import LastModifyDate from "./atoms/formParts/LastModifyDate.vue";
 // import File from "./atoms/formParts/File.vue";
-import UploadedDate from "./atoms/formParts/Story.vue";
+import Story from "./atoms/formParts/Story.vue";
 
-import { post } from "../queries/query/post.js";
-import { addPost } from "../queries/mutation/addPost";
-import request from "../lib/request";
-
-import "../scss/_form.scss";
+import { selectPost } from "../queries/query/selectPost.js";
+import { insertPost } from "../queries/mutation/insertPost";
 
 export default {
   components: {
@@ -45,52 +42,54 @@ export default {
     Title,
     Story,
     // File,
-    UploadedDate,
+    LastModifyDate,
   },
-  data() {
-    return {
-      values: this.properties,
-    };
+  mounted() {
+    const thisForm = document.forms.formPost;
+    const id_post = thisForm.id_post.value;
+    if (!id_post) return;
+    const promise = selectPost(id_post, this.toMutationDispatch);
+    promise.then(() => {
+      this.values = this.$store.getters.post || {};
+    });
   },
-  computed: {
-    getData() {
-      return request(post, 0);
-    },
-  },
-
   props: {
     properties: {
       type: Object,
       default: () => ({}),
     },
   },
+  data() {
+    return {
+      values: this.properties,
+    };
+  },
   methods: {
-    formUpdate(e) {
-      e.preventDefault();
-      const name = e.target.name;
-      const val = e.target.value;
-      this.values[name] = val;
+    toMutationDispatch(res) {
+      this.$store.dispatch("updatePost", res);
     },
-    formUpdate_array(name, val) {
-      this.$set(this.properties, name, val);
+    formUpdate(type, e, name, val) {
+      e.preventDefault();
+      if (type === 1) {
+        this.$set(this.properties, name, val);
+      } else {
+        const name = e.target.name;
+        const val = e.target.value;
+        this.$set(this.properties, name, val);
+      }
     },
     submitFormData(e) {
       e.preventDefault();
-      const postForm = document.formPost;
-      const formData = new FormData(postForm);
-      let tempHash = {};
-      for (let item of formData) {
-        tempHash[item[0]] = item[1];
-      }
-      request(addPost(tempHash), 1);
+      const thisFrom = document.forms.formPost;
+      insertPost(thisFrom, this.toMutationDispatch);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-// @import "../scss/_form_reset.scss";
-// @import "~/assets/scss/common.scss";
+@import "../scss/_form.scss";
+@import "../scss/atoms/submitBtn/_btnPost.scss";
 /deep/input,
 /deep/textarea {
   border: solid #eeeeee 1px;

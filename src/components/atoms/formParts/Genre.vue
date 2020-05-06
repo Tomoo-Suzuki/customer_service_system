@@ -1,10 +1,16 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>ジャンル</dt>
     <dd class="radioAndCheckbox">
-      <label v-for="(genre,i) in allGenre" :key="i">
-        <span>{{genre}}</span>
-        <input type="radio" name="genre" :value="i" @change="formUpdate" />
+      <label v-for="(genreName, i) in allGenre" :key="i">
+        <span>{{ genreName }}</span>
+        <input
+          type="radio"
+          name="genre"
+          :value="i"
+          @change="formUpdate"
+          :checked="genre == i"
+        />
       </label>
     </dd>
   </dl>
@@ -25,21 +31,21 @@ export default {
         "エッセイ・ノンフィクション",
         "歴史・時代・伝記",
         "創作論・評論",
-        "詩・童話・その他"
-      ]
+        "詩・童話・その他",
+      ],
     };
   },
   props: {
     genre: {
-      type: String,
-      default: null
-    }
+      type: Number,
+      default: null,
+    },
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
-    }
-  }
+      this.$emit("formUpdate", 0, e);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

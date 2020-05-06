@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>感想の受付</dt>
     <dd class="radioAndCheckbox">
       <label>
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", 0, e);
     },
   },
 };

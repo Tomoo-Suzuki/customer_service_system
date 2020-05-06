@@ -1,7 +1,9 @@
 <template>
-  <div class="imgWrap">
-    <img :src="require(`../../assets/img/logo_${logoTxt}.svg`)" :alt="'bookma logo '+logoTxt" />
-  </div>
+  <router-link to="/" class="logo" tag="a" active-class="active" exact>
+    <div class="imgWrap">
+      <img :src="require(`../../assets/img/logo_${logoTxt}.svg`)" :alt="'bookma logo '+logoTxt" />
+    </div>
+  </router-link>
 </template>
 <script>
 export default {
@@ -34,9 +36,14 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.imgWrap {
-  > img {
-    width: 12rem;
+.logo {
+  display: block;
+  margin-right: 1rem;
+
+  .imgWrap {
+    > img {
+      width: 100%;
+    }
   }
 }
 </style>

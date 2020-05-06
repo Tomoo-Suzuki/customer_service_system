@@ -18,17 +18,19 @@ export default {
     ToTop,
     SiteSwitcherFooter,
     MenuFooter,
-    Copyright,
+    Copyright
   },
-  props: {},
+  props: {}
 };
 </script>
 <style lang="scss" scoped>
+@import "../../scss/_color.scss";
+
 .footerBook {
   width: 100%;
   font-size: 1.4rem;
   color: #ffffff;
-  background: #3cb2b4;
+  background: $upload_blue_dark;
   padding-bottom: 3rem;
   .footerBook_inner {
     width: 100%;

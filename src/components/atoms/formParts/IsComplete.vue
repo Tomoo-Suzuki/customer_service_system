@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>完結</dt>
     <dd class="radioAndCheckbox">
       <label>
@@ -9,6 +9,7 @@
           name="is_complete"
           :value="true"
           @change="formUpdate"
+          :checked="is_complete === true"
         />
       </label>
       <label>
@@ -18,6 +19,7 @@
           name="is_complete"
           :value="false"
           @change="formUpdate"
+          :checked="is_complete === false"
         />
       </label>
     </dd>
@@ -27,13 +29,13 @@
 export default {
   props: {
     is_complete: {
-      type: String,
+      type: Boolean,
       default: null,
     },
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", 0, e);
     },
   },
 };

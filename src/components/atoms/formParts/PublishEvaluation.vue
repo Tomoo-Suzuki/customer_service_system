@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>評価の公開</dt>
     <dd class="radioAndCheckbox">
       <label>
@@ -9,6 +9,7 @@
           type="radio"
           name="publish_evaluation"
           :value="true"
+          :checked="publish_evaluation === true"
           @change="formUpdate"
         />
       </label>
@@ -19,6 +20,7 @@
           type="radio"
           name="publish_evaluation"
           :value="false"
+          :checked="publish_evaluation === false"
           @change="formUpdate"
         />
       </label>
@@ -29,13 +31,13 @@
 export default {
   props: {
     publish_evaluation: {
-      type: String,
+      type: Boolean,
       default: null,
     },
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", 0, e);
     },
   },
 };

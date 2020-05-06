@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>作者名</dt>
     <dd>
       <input
@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", 0, e);
     },
   },
 };

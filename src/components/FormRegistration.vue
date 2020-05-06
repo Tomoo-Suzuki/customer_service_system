@@ -1,17 +1,14 @@
 <template>
   <main class="form-book">
-    {{ getData }}
-    <form name="formUser">
-      <div>■プログレストラッカー</div>
+    <form name="formRegistry">
       <h2>新規ユーザー登録</h2>
-      <input type="hidden" name="id" value="00003" />
-      {{ this.properties }}
+      <input type="hidden" name="date_reception" :value="today" />
       <Email
         :email="properties.email"
         :emailConfirm="properties.email_confirm"
         @formUpdate="formUpdate"
       />
-      <UserId :user_id="properties.user_id" @formUpdate="formUpdate" />
+      <UserId :id_user="properties.id_user" @formUpdate="formUpdate" />
       <Password :password="properties.password" @formUpdate="formUpdate" />
       <p>
         ユーザー登録を行うには「利用規約」および「ガイドライン」へ同意いただく必要があります。
@@ -23,7 +20,11 @@
         @formUpdate="formUpdate"
       />
       <p>reCapture導入</p>
-      <button @click="submitFormData">ユーザー登録</button>
+      <div class="btnWrap">
+        <div class="btn">
+          <button @click="submitFormData">ユーザー登録</button>
+        </div>
+      </div>
     </form>
   </main>
 </template>
@@ -35,11 +36,7 @@ import Password from "./atoms/formParts/Password.vue";
 import Magazine from "./atoms/formParts/Magazine.vue";
 import AgreeToTerms from "./atoms/formParts/AgreeToTerms.vue";
 
-import { user } from "../queries/query/user";
-import { addUser } from "../queries/mutation/addUser";
-import request from "../lib/request";
-
-import "../scss/_form.scss";
+import { insertRegistry } from "../queries/mutation/insertRegistry";
 
 export default {
   components: {
@@ -49,17 +46,17 @@ export default {
     Magazine,
     AgreeToTerms,
   },
+  computed: {
+    today() {
+      const d = new Date();
+      return d.toString();
+    },
+  },
   data() {
     return {
       values: this.properties,
     };
   },
-  computed: {
-    getData() {
-      return request(user, 0);
-    },
-  },
-
   props: {
     properties: {
       type: Object,
@@ -67,24 +64,23 @@ export default {
     },
   },
   methods: {
-    formUpdate(e) {
-      e.preventDefault();
-      const name = e.target.name;
-      const val = e.target.value;
-      this.values[name] = val;
+    toMutationDispatch(res) {
+      this.$store.dispatch("updateAccount", res);
     },
-    formUpdate_array(name, val) {
-      this.$set(this.properties, name, val);
+    formUpdate(type, e, name, val) {
+      e.preventDefault();
+      if (type === 1) {
+        this.$set(this.properties, name, val);
+      } else {
+        const name = e.target.name;
+        const val = e.target.value;
+        this.$set(this.properties, name, val);
+      }
     },
     submitFormData(e) {
       e.preventDefault();
-      const useForm = document.formUser;
-      const formData = new FormData(useForm);
-      let tempHash = {};
-      for (let item of formData) {
-        tempHash[item[0]] = item[1];
-      }
-      request(addUser(tempHash), 1);
+      const thisFrom = document.forms.formRegistry;
+      insertRegistry(thisFrom, this.toMutationDispatch);
     },
   },
 };
@@ -92,4 +88,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/_form.scss";
+@import "../scss/atoms/submitBtn/btnPost";
 </style>

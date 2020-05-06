@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>レビューの受付</dt>
     <dd class="radioAndCheckbox">
       <label>
@@ -8,6 +8,7 @@
           type="radio"
           name="accept_reviews"
           :value="true"
+          :checked="accept_reviews === true"
           @change="formUpdate"
         />
       </label>
@@ -17,6 +18,7 @@
           type="radio"
           name="accept_reviews"
           :value="false"
+          :checked="accept_reviews === false"
           @change="formUpdate"
         />
       </label>
@@ -27,13 +29,13 @@
 export default {
   props: {
     accept_reviews: {
-      type: String,
+      type: Boolean,
       default: null,
     },
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", 0, e);
     },
   },
 };

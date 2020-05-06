@@ -1,23 +1,29 @@
 <template>
   <main class="form-book">
-    {{ getData }}
     <form name="formAccount">
-      <input type="hidden" name="id" value="00005" />
-      <p>ID</p>
-      <p>AutherName</p>
+      <input type="hidden" name="email_id" value="aryuusei_y@gmail.com" />
       <Name
-        :last_name="properties.last_name"
-        :first_name="properties.first_name"
+        :last_name="values.last_name"
+        :first_name="values.first_name"
         @formUpdate="formUpdate"
       />
       <NameKana
-        :Last_name_kana="properties.last_name_kana"
+        :Last_name_kana="values.last_name_kana"
+        :first_name_kana="values.first_name_kana"
         @formUpdate="formUpdate"
       />
-      <Gender :gender="properties.gender" @formUpdate="formUpdate" />
-      <Birthday :birthday="properties.birthday" @formUpdate="formUpdate" />
-      <Email />
-      <button @click="submitFormData">送信する</button>
+      <Gender :gender="values.gender" @formUpdate="formUpdate" />
+      <Birthday :birthday="values.birthday" @formUpdate="formUpdate" />
+      <Email
+        :email="values.email"
+        :email_confirm="values.email_confirm"
+        @formUpdate="formUpdate"
+      />
+      <div class="btnWrap">
+        <div class="btn">
+          <button @click="submitFormData">送信する</button>
+        </div>
+      </div>
     </form>
   </main>
 </template>
@@ -28,11 +34,8 @@ import Gender from "./atoms/formParts/Gender.vue";
 import Birthday from "./atoms/formParts/Birthday.vue";
 import Email from "./atoms/formParts/Email.vue";
 
-import { account } from "../queries/query/account.js";
-import { addAccountStory } from "../queries/mutation/addAccountStory";
-import request from "../lib/request";
-
-import "../scss/_form.scss";
+import { selectAccountU } from "../queries/query/selectAccountU.js";
+import { insertAccountU } from "../queries/mutation/insertAccountU.js";
 
 export default {
   components: {
@@ -42,11 +45,14 @@ export default {
     Email,
     Birthday,
   },
-  data() {
-    return {
-      account: account,
-      values: this.properties,
-    };
+  mounted() {
+    const thisForm = document.forms.formAccount;
+    const email = thisForm.email_id.value;
+    if (!email) return;
+    const promise = selectAccountU(email, this.toMutationDispatch);
+    promise.then(() => {
+      this.values = this.$store.getters.account || {};
+    });
   },
   props: {
     properties: {
@@ -54,53 +60,38 @@ export default {
       default: () => ({}),
     },
   },
-  computed: {
-    getData() {
-      return request(account, 0);
-    },
+  data() {
+    return {
+      values: this.properties,
+    };
   },
   methods: {
-    // getData1() {
-    //   console.log(account);
-    //   request(account, 0);
-    // },
-    formUpdate(e) {
-      e.preventDefault();
-      const name = e.target.name;
-      const val = e.target.value;
-      //this.properties[name] = val;
-      this.values[name] = val;
+    toMutationDispatch(res) {
+      this.$store.dispatch("updateAccount", res);
     },
-    // formUpdate_radio(name, val) {
-    //   //   e.preventDefault();
-    //   //   const name = e.target.name;
-    //   //   const val = e.target.value;
-    //   this.properties[name] = val;
-    //   console.log(this.properties);
-    //   //this.values[name] = val;
-    // },
-    formUpdate_array(name, val) {
-      this.$set(this.properties, name, val);
+    formUpdate(type, e, name, val) {
+      e.preventDefault();
+      if (type === 1) {
+        this.$set(this.properties, name, val);
+      } else {
+        const name = e.target.name;
+        const val = e.target.value;
+        this.$set(this.properties, name, val);
+      }
     },
     submitFormData(e) {
       e.preventDefault();
-      const accountForm = document.formAccount;
-      const formData = new FormData(accountForm);
-      let tempHash = {};
-      for (let item of formData) {
-        console.log([item[0]]);
-        console.log([item[1]]);
-        tempHash[item[0]] = item[1];
-      }
-      request(addAccountStory(tempHash), 1);
+      const thisFrom = document.formAccount;
+      insertAccountU(thisFrom, this.toMutationDispatch);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-// @import "../scss/_form_reset.scss";
-// @import "~/assets/scss/common.scss";
+@import "../scss/_form.scss";
+@import "../scss/atoms/submitBtn/_btnPost.scss";
+
 /deep/input,
 /deep/textarea {
   border: solid #eeeeee 1px;

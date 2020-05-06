@@ -1,5 +1,5 @@
-export const user = `query{
-  user(id:"00001") {
+export const selectUser = `query{
+  selectUser(id:"00001") {
     id,
     password,
     user_type,

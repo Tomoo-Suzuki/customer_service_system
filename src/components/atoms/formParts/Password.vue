@@ -1,19 +1,22 @@
 <template>
-  <dl>
-    <dt>パスワード</dt>
-    <dd>
-      <input
-        :type="pwType"
-        name="password"
-        :value="password"
-        required
-        placeholder="tsex90876"
-        @change="formUpdate"
-      />
-      <button @click="togglePwDesplay">表示</button>
-    </dd>
-    <dd>8文字以上。半角英数字、半角記号が使えます。</dd>
-  </dl>
+  <div>
+    <dl class="require has_tooltip">
+      <dt>パスワード</dt>
+      <dd>
+        <input
+          :type="pwType"
+          name="password"
+          :value="password"
+          required
+          placeholder="tsex90876"
+          autocomplete="current-password"
+          @change="formUpdate"
+        />
+        <span class="tooltip">8文字以上。半角英数字、半角記号が使えます。</span>
+      </dd>
+    </dl>
+    <button @click="togglePwDesplay" class="btn_password">表示</button>
+  </div>
 </template>
 <script>
 export default {
@@ -33,7 +36,8 @@ export default {
     formUpdate(e) {
       this.$emit("formUpdate", e);
     },
-    togglePwDesplay() {
+    togglePwDesplay(e) {
+      e.preventDefault();
       if (this.pwDisplay === false) {
         this.pwType = "text";
         this.pwDisplay = true;
@@ -45,4 +49,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../../scss/atoms/tooltip";
+@import "../../../scss/atoms/submitBtn/btnPassword";
+</style>

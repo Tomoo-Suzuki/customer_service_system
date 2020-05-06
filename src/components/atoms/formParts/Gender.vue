@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>ジェンダー</dt>
     <dd class="radioAndCheckbox">
       <label>
@@ -8,7 +8,8 @@
           id="man"
           type="radio"
           name="gender"
-          value="man"
+          :value="0"
+          :checked="gender === 0"
           @change="formUpdate"
         />
       </label>
@@ -18,7 +19,8 @@
           id="woman"
           type="radio"
           name="gender"
-          value="woman"
+          :value="1"
+          :checked="gender === 1"
           @change="formUpdate"
         />
       </label>
@@ -28,7 +30,8 @@
           id="lgbt"
           type="radio"
           name="gender"
-          value="lgbt"
+          :value="2"
+          :checked="gender === 2"
           @change="formUpdate"
         />
       </label>
@@ -37,14 +40,14 @@
 </template>
 <script>
 export default {
-  data: function() {
-    return {
-      genderData: this.gender,
-    };
-  },
+  //   data: function() {
+  //     return {
+  //       genderData: this.gender,
+  //     };
+  //   },
   props: {
     gender: {
-      type: String,
+      type: Number,
       default: null,
     },
   },
@@ -52,7 +55,7 @@ export default {
     formUpdate(e) {
       this.genderData = e.target.value;
       console.log(this.genderData);
-      this.$emit("formUpdate_array", e.targetname, this.genderData);
+      this.$emit("formUpdate", 1, e, e.targetname, this.genderData);
     },
   },
 };

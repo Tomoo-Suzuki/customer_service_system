@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl class="require">
     <dt>タイトル</dt>
     <dd>
       <div>
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", e);
+      this.$emit("formUpdate", 0, e);
     }
   }
 };
