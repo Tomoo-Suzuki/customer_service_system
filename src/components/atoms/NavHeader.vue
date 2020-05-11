@@ -41,14 +41,20 @@ export default {
 @import "../../scss/_color.scss";
 
 .nav_header {
+  height: 3.2rem;
+  border-bottom: dashed 1px $upload_blue_light;
+  border-left: dotted 1px #efefef;
+  border-right: solid 1px #efefef;
+
   > ul {
+    height: 3.2rem;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    width: 98%;
+    width: 100%;
     margin: auto;
-    max-width: calc(98% - 40px);
     overflow-x: scroll;
+
     > li {
       margin: 0 0.5rem;
       padding: 0.3rem 1rem;
@@ -56,6 +62,8 @@ export default {
       color: #ffffff;
       background: $upload_blue_dark;
       border-radius: 2px;
+      height: 1.6rem;
+
       > a {
         color: #ffffff;
         font-weight: normal;
