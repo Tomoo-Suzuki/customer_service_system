@@ -42,7 +42,6 @@
         <H3 text="二次創作の新着 " />
       </section>
     </div>
-    <button @click="getData">GQL</button>
   </main>
 </template>
 
@@ -59,20 +58,6 @@ export default {
     toEachPage(path) {
       this.$router.push(path);
     }
-    // getData() {
-    //   const query =
-    //     'query{user(id:"00001"){password,user_type,magazine,agree_to_terms,date_reception}}';
-    //   const url = "http://localhost:7777/graphql";
-    //   axios
-    //     .post(url, { query: query })
-    //     .then(function(res) {
-    //       console.log(res);
-    //     })
-    //     .catch(function(e) {
-    //       console.log("反映テスト８");
-    //       console.log(e);
-    //     });
-    // }
   }
 };
 </script>
