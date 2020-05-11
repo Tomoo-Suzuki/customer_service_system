@@ -7,39 +7,39 @@
     <button @click="toEachPage('/form-account')">Account</button>
     <div>
       <section>
-        <h2>注目の作品</h2>
+        <H2 text="注目の作品" />
       </section>
       <section>
-        <h3>ユーザー登録</h3>
+        <H3 text="ユーザー登録" />
       </section>
       <section>
-        <h4>特集</h4>
+        <H4 text="{特集}" />
       </section>
       <section>
-        <h5>おすすめレビュー</h5>
+        <H5 text="{おすすめレビュー}" />
       </section>
       <section>
-        <h2>新着小説</h2>
+        <H2 text="新着小説" />
       </section>
       <section>
-        <h3>コンテスト</h3>
+        <H3 text="コンテスト" />
       </section>
       <section>
-        <h4>ランキング</h4>
+        <H4 text="{ランキング}" />
       </section>
       <section>
-        <h5>ランキング</h5>
+        <H5 text="{ランキング}" />
       </section>
     </div>
     <div>
       <section>
-        <h2>累計ランキング</h2>
+        <H2 text="累計ランキング" />
       </section>
       <section>
-        <h3>自主企画の新着</h3>
+        <H3 text="自主企画の新着 " />
       </section>
       <section>
-        <h3>二次創作の新着</h3>
+        <H3 text="二次創作の新着 " />
       </section>
     </div>
     <button @click="getData">GQL</button>
@@ -47,26 +47,32 @@
 </template>
 
 <script>
-import axios from "axios";
+import H2 from "./atoms/H2.vue";
+import H3 from "./atoms/H3.vue";
+
 export default {
+  components: {
+    H2,
+    H3
+  },
   methods: {
     toEachPage(path) {
       this.$router.push(path);
-    },
-    getData() {
-      const query =
-        'query{user(id:"00001"){password,user_type,magazine,agree_to_terms,date_reception}}';
-      const url = "http://localhost:7777/graphql";
-      axios
-        .post(url, { query: query })
-        .then(function(res) {
-          console.log(res);
-        })
-        .catch(function(e) {
-          console.log("反映テスト８");
-          console.log(e);
-        });
     }
+    // getData() {
+    //   const query =
+    //     'query{user(id:"00001"){password,user_type,magazine,agree_to_terms,date_reception}}';
+    //   const url = "http://localhost:7777/graphql";
+    //   axios
+    //     .post(url, { query: query })
+    //     .then(function(res) {
+    //       console.log(res);
+    //     })
+    //     .catch(function(e) {
+    //       console.log("反映テスト８");
+    //       console.log(e);
+    //     });
+    // }
   }
 };
 </script>

@@ -1,12 +1,9 @@
 <template>
   <main class="form-book">
+    <h2 class="ttl_h2">アカウント登録</h2>
     <form name="formAccount">
       <input type="hidden" name="email_id" value="aryuusei_y@gmail.com" />
-      <Name
-        :last_name="values.last_name"
-        :first_name="values.first_name"
-        @formUpdate="formUpdate"
-      />
+      <Name :last_name="values.last_name" :first_name="values.first_name" @formUpdate="formUpdate" />
       <NameKana
         :Last_name_kana="values.last_name_kana"
         :first_name_kana="values.first_name_kana"
@@ -14,11 +11,7 @@
       />
       <Gender :gender="values.gender" @formUpdate="formUpdate" />
       <Birthday :birthday="values.birthday" @formUpdate="formUpdate" />
-      <Email
-        :email="values.email"
-        :email_confirm="values.email_confirm"
-        @formUpdate="formUpdate"
-      />
+      <Email :email="values.email" :email_confirm="values.email_confirm" @formUpdate="formUpdate" />
       <div class="btnWrap">
         <div class="btn">
           <button @click="submitFormData">送信する</button>
@@ -43,7 +36,7 @@ export default {
     NameKana,
     Gender,
     Email,
-    Birthday,
+    Birthday
   },
   mounted() {
     const thisForm = document.forms.formAccount;
@@ -57,12 +50,12 @@ export default {
   props: {
     properties: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   data() {
     return {
-      values: this.properties,
+      values: this.properties
     };
   },
   methods: {
@@ -83,8 +76,8 @@ export default {
       e.preventDefault();
       const thisFrom = document.formAccount;
       insertAccountU(thisFrom, this.toMutationDispatch);
-    },
-  },
+    }
+  }
 };
 </script>
 
