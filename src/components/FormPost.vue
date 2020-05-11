@@ -1,26 +1,34 @@
 <template>
   <main class="form-book">
-    <form name="formPost">
-      <input type="hidden" name="id_story" value="sf000001" />
-      <input type="hidden" name="id_post" value="sf000001003" />
-      <TitleChapter
-        :title_chapter="values.title_chapter"
-        @formUpdate="formUpdate"
-      />
-      <HasChapter :has_chapter="values.has_chapter" @formUpdate="formUpdate" />
-      <Title :title="values.title" @formUpdate="formUpdate" />
-      <Story :story="values.story" @formUpdate="formUpdate" />
-      <!-- <File :file="properties.file" @formUpdate="formUpdate" /> -->
-      <LastModifyDate
-        :date_last_modify="values.date_last_modify"
-        @formUpdate="formUpdate"
-      />
-      <div class="btnWrap">
-        <div class="btn">
-          <button @click="submitFormData">送信</button>
+    <H2 text="小説の投稿" />
+    <div v-if="status===0||status===1">
+      <form name="formPost">
+        <input type="hidden" name="id_story" value="sf000001" />
+        <input type="hidden" name="id_post" value="sf000001000" />
+        <TitleChapter
+          :title_chapter="values.title_chapter"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <HasChapter :has_chapter="values.has_chapter" :status="status" @formUpdate="formUpdate" />
+        <Title :title="values.title" :status="status" @formUpdate="formUpdate" />
+        <Story :story="values.story" :status="status" @formUpdate="formUpdate" />
+        <!-- <File :file="properties.file" @formUpdate="formUpdate" /> -->
+        <LastModifyDate :date_last_modify="values.date_last_modify" @formUpdate="formUpdate" />
+        <div class="btnWrap">
+          <div v-if="status===0" class="btn">
+            <span @click="progressStatus(1),setFormDataToState">確認する</span>
+          </div>
+          <div v-if="status===1" class="btn">
+            <span @click="progressStatus(0)">戻る</span>
+            <button @click="submitFormData, progressStatus(2)">送信する</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
+    <div v-if="status===2">
+      <div>ご登録ありがとうございました。</div>
+    </div>
   </main>
 </template>
 
@@ -32,6 +40,10 @@ import LastModifyDate from "./atoms/formParts/LastModifyDate.vue";
 // import File from "./atoms/formParts/File.vue";
 import Story from "./atoms/formParts/Story.vue";
 
+import H2 from "./atoms/H2.vue";
+
+import formDataToHash from "../lib/formDataToHash";
+
 import { selectPost } from "../queries/query/selectPost.js";
 import { insertPost } from "../queries/mutation/insertPost";
 
@@ -41,8 +53,9 @@ export default {
     HasChapter,
     Title,
     Story,
-    // File,
     LastModifyDate,
+    H2
+    // File,
   },
   mounted() {
     const thisForm = document.forms.formPost;
@@ -53,15 +66,10 @@ export default {
       this.values = this.$store.getters.post || {};
     });
   },
-  props: {
-    properties: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
   data() {
     return {
-      values: this.properties,
+      values: this.$store.getters.post || {},
+      status: 0
     };
   },
   methods: {
@@ -78,12 +86,21 @@ export default {
         this.$set(this.properties, name, val);
       }
     },
+    progressStatus(num) {
+      this.status = num;
+    },
+    setFormDataToState() {
+      const thisForm = document.forms.formPost;
+      const thisFormData = formDataToHash(thisForm);
+      this.$store.dispatch("updatePost", thisFormData);
+      this.values = this.$store.getters.post;
+    },
     submitFormData(e) {
       e.preventDefault();
       const thisFrom = document.forms.formPost;
       insertPost(thisFrom, this.toMutationDispatch);
-    },
-  },
+    }
+  }
 };
 </script>
 

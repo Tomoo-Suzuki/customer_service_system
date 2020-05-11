@@ -1,7 +1,7 @@
 <template>
   <dl>
     <dt>章の設定</dt>
-    <dd class="radioAndCheckbox">
+    <dd v-if="status==0" class="radioAndCheckbox">
       <label>
         <span>あり</span>
         <input
@@ -23,6 +23,9 @@
         />
       </label>
     </dd>
+    <dd v-if="status===1">
+      <span>{{has_chapter}}</span>
+    </dd>
   </dl>
 </template>
 <script>
@@ -30,6 +33,10 @@ export default {
   props: {
     has_chapter: {
       type: Boolean,
+      default: null
+    },
+    status: {
+      type: Number,
       default: null
     }
   },

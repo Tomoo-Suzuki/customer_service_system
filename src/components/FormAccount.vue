@@ -1,7 +1,7 @@
 <template>
   <main class="form-book">
+    <H2 text="アカウント登録" />
     <div v-if="status===0||status===1">
-      <H2 text="アカウント登録" />
       {{values}}
       {{this.$store.getters.account}}
       <form name="formAccount">
@@ -38,7 +38,6 @@
       </form>
     </div>
     <div v-if="status===2">
-      <H2 text="アカウント登録" />
       <div>ご登録ありがとうございました。</div>
     </div>
   </main>
@@ -89,6 +88,10 @@ export default {
       e.preventDefault();
       if (type === 1) {
         this.$set(this.values, name, val);
+      } else if (type === 2) {
+        const name = e.target.name;
+        const val = Boolean(e.target.value);
+        this.$set(this.values, name, val);
       } else {
         const name = e.target.name;
         const val = e.target.value;
@@ -99,7 +102,6 @@ export default {
       this.status = num;
     },
     setFormDataToState() {
-      console.log("Caaaaaaaaleeeeeeeeee");
       const thisForm = document.forms.formAccount;
       const thisFormData = formDataToHash(thisForm);
       this.$store.dispatch("updateAccount", thisFormData);

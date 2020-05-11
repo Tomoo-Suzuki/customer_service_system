@@ -43,11 +43,6 @@
 </template>
 <script>
 export default {
-  //   data: function() {
-  //     return {
-  //       genderData: this.gender,
-  //     };
-  //   },
   props: {
     gender: {
       type: Number,

@@ -1,17 +1,21 @@
 <template>
   <dl class="require">
     <dt>タイトル</dt>
-    <dd>
+    <dd v-if="status==0">
       <div>
         <input
           type="text"
           name="title"
           :value="title"
+          :status="status"
           required
           placeholder="境界の国"
           @change="formUpdate"
         />
       </div>
+    </dd>
+    <dd v-if="status===1">
+      <span>{{title}}</span>
     </dd>
   </dl>
 </template>
@@ -20,6 +24,10 @@ export default {
   props: {
     title: {
       type: String,
+      default: null
+    },
+    status: {
+      type: Number,
       default: null
     }
   },

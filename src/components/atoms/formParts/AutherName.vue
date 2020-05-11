@@ -1,7 +1,7 @@
 <template>
   <dl class="require">
     <dt>作者名</dt>
-    <dd>
+    <dd v-if="status==0">
       <input
         type="text"
         name="auther_name"
@@ -11,6 +11,9 @@
         placeholder="jota(イオタ)"
       />
     </dd>
+    <dd v-if="status===1">
+      <span>{{auther_name}}</span>
+    </dd>
   </dl>
 </template>
 <script>
@@ -18,14 +21,18 @@ export default {
   props: {
     auther_name: {
       type: String,
-      default: null,
+      default: null
     },
+    status: {
+      type: Number,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", 0, e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

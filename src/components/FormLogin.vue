@@ -57,11 +57,15 @@ export default {
     formUpdate(type, e, name, val) {
       e.preventDefault();
       if (type === 1) {
-        this.$set(this.properties, name, val);
+        this.$set(this.values, name, val);
+      } else if (type === 2) {
+        const name = e.target.name;
+        const val = Boolean(e.target.value);
+        this.$set(this.values, name, val);
       } else {
         const name = e.target.name;
         const val = e.target.value;
-        this.$set(this.properties, name, val);
+        this.$set(this.values, name, val);
       }
     },
     submitFormData(e) {
