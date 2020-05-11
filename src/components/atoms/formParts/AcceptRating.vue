@@ -1,7 +1,7 @@
 <template>
   <dl class="require">
     <dt>評価の受付</dt>
-    <dd class="radioAndCheckbox">
+    <dd v-if="status==0" class="radioAndCheckbox">
       <label>
         <span>受け付ける</span>
         <input
@@ -23,6 +23,9 @@
         />
       </label>
     </dd>
+    <dd v-if="status===1">
+      <span>{{accept_rating}}</span>
+    </dd>
   </dl>
 </template>
 <script>
@@ -30,14 +33,18 @@ export default {
   props: {
     accept_rating: {
       type: Boolean,
-      default: null,
+      default: null
     },
+    status: {
+      type: Number,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", 0, e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

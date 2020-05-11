@@ -4,7 +4,9 @@
     text-align: center;
 
     .btn {
-        >button {
+
+        >button,
+        >span {
             background: $upload_blue_dark;
             color: #ffffff;
             display: inline-block;
@@ -12,6 +14,10 @@
             width: 16rem;
             padding: 4px;
             height: 3rem;
+            line-height: 2.2rem;
+            box-sizing: border-box;
+            font-size: 1.4rem;
+            cursor: pointer;
 
             &:hover {
                 opacity: 0.5;

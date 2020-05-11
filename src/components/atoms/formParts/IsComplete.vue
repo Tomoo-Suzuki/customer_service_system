@@ -1,7 +1,7 @@
 <template>
   <dl class="require">
     <dt>完結</dt>
-    <dd class="radioAndCheckbox">
+    <dd v-if="status==0" class="radioAndCheckbox">
       <label>
         <span>完結</span>
         <input
@@ -23,6 +23,9 @@
         />
       </label>
     </dd>
+    <dd v-if="status===1">
+      <span>{{is_complete}}</span>
+    </dd>
   </dl>
 </template>
 <script>
@@ -30,14 +33,18 @@ export default {
   props: {
     is_complete: {
       type: Boolean,
-      default: null,
+      default: null
     },
+    status: {
+      type: Number,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", 0, e);
-    },
-  },
+      this.$emit("formUpdate", 2, e);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

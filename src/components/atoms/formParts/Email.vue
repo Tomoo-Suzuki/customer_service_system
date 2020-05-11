@@ -2,7 +2,7 @@
   <span>
     <dl class="require">
       <dt>メール</dt>
-      <dd>
+      <dd v-if="status===0">
         <input
           type="email"
           name="email"
@@ -14,10 +14,13 @@
           @change="formUpdate"
         />
       </dd>
+      <dd v-if="status===1">
+        <span>{{email}}</span>
+      </dd>
     </dl>
     <dl class="require">
       <dt>メール(確認用)</dt>
-      <dd class="has_tooltip">
+      <dd v-if="status===0" class="has_tooltip">
         <input
           type="email"
           name="email_confirm"
@@ -33,6 +36,9 @@
           確実にメールを受信するために、携帯電話でのみ受信可能なメールアドレスを避け、パソコン等でも受信できるメールアドレスをお使いいただくことをお勧めします。
         </span>
       </dd>
+      <dd v-if="status===1">
+        <span>{{email_confirm}}</span>
+      </dd>
     </dl>
   </span>
 </template>
@@ -41,18 +47,22 @@ export default {
   props: {
     email: {
       type: String,
-      default: null,
+      default: null
     },
     email_confirm: {
       type: String,
-      default: null,
+      default: null
     },
+    status: {
+      type: Number,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", 0, e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

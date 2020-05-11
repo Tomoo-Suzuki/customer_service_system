@@ -4,5 +4,8 @@ export default {
   story: state => state.story,
   post: function (state) {
     return state.post;
+  },
+  formData: function (state) {
+    return state.formData;
   }
 };

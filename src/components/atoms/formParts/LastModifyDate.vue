@@ -1,11 +1,8 @@
 <template>
-  <dl>
-    <dt>最終更新日</dt>
-    <dd>
-      <!-- {{ $moment(timestamp).fromNow() }} -->
-      <input type="hidden" name="date_last_modify" :value="today" />
-    </dd>
-  </dl>
+  <span>
+    <!-- {{ $moment(timestamp).fromNow() }} -->
+    <input type="hidden" name="date_last_modify" :value="today" />
+  </span>
 </template>
 <script>
 export default {
@@ -13,13 +10,13 @@ export default {
     today() {
       const d = new Date();
       return d;
-    },
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", 0, e);
-    },
-  },
+    }
+  }
   //   filters: {
   //     moment(value, format) {
   //       return moment(value).format(format);

@@ -1,7 +1,7 @@
 <template>
   <dl>
     <dt>章のタイトル</dt>
-    <dd>
+    <dd v-if="status==0">
       <div>
         <input
           type="text"
@@ -13,6 +13,9 @@
         />
       </div>
     </dd>
+    <dd v-if="status===1">
+      <span>{{title_chapter}}</span>
+    </dd>
   </dl>
 </template>
 <script>
@@ -20,6 +23,10 @@ export default {
   props: {
     title_chapter: {
       type: String,
+      default: null
+    },
+    status: {
+      type: Number,
       default: null
     }
   },

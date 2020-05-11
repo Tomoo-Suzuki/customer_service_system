@@ -1,61 +1,80 @@
 <template>
   <main class="form-book">
-    <form name="formStory">
-      <input type="hidden" name="id" value="00003" />
-      <input type="hidden" name="id_story" value="sf00005" />
+    <H2 text="小説の設定" />
+    <div v-if="status===0||status===1">
+      <form name="formStory">
+        <input type="hidden" name="id" value="00003" />
+        <input type="hidden" name="id_story" value="sf00001" />
 
-      <TitleMain :title_main="values.title_main" @formUpdate="formUpdate" />
-      <AutherName :auther_name="values.auther_name" @formUpdate="formUpdate" />
-      <IsComplete :is_complete="values.is_complete" @formUpdate="formUpdate" />
-      <Genre :genre="values.genre" @formUpdate="formUpdate" />
-      <CatchCopy :catch_copy="values.catch_copy" @formUpdate="formUpdate" />
-      <Synopsis :synopsis="values.synopsis" @formUpdate="formUpdate" />
-      <Keywords :keywords="values.keywords" @formUpdate="formUpdate" />
+        <TitleMain :title_main="values.title_main" :status="status" @formUpdate="formUpdate" />
+        <AutherName :auther_name="values.auther_name" :status="status" @formUpdate="formUpdate" />
+        <IsComplete :is_complete="values.is_complete" :status="status" @formUpdate="formUpdate" />
+        <Genre :genre="values.genre" :status="status" @formUpdate="formUpdate" />
+        <CatchCopy :catch_copy="values.catch_copy" :status="status" @formUpdate="formUpdate" />
+        <Synopsis :synopsis="values.synopsis" :status="status" @formUpdate="formUpdate" />
+        <Keywords :keywords="values.keywords" :status="status" @formUpdate="formUpdate" />
 
-      <ExtremeDepiction
-        :extreme_depiction="values.extreme_depiction"
-        @formUpdate="formUpdate"
-      />
+        <ExtremeDepiction
+          :extreme_depiction="values.extreme_depiction"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
 
-      <ColorType :color_type="values.color_type" @formUpdate="formUpdate" />
-      <ReceptionDate
-        :reception_date="values.reception_date"
-        @formUpdate="formUpdate"
-      />
-      <LastModifyDate
-        :last_modify_date="values.last_modify_date"
-        @formUpdate="formUpdate"
-      />
-      <Advertisement
-        :accept_advertisement="values.accept_advertisement"
-        @formUpdate="formUpdate"
-      />
-      <AcceptRating
-        :accept_rating="values.accept_rating"
-        @formUpdate="formUpdate"
-      />
-      <AcceptReviews
-        :accept_reviews="values.accept_reviews"
-        @formUpdate="formUpdate"
-      />
-      <AcceptImpressions
-        :accept_impressions="values.accept_impressions"
-        @formUpdate="formUpdate"
-      />
-      <PublishEvaluation
-        :publish_evaluation="values.publish_evaluation"
-        @formUpdate="formUpdate"
-      />
-      <AcceptTypoReports
-        :accept_typo_report="values.accept_typo_report"
-        @formUpdate="formUpdate"
-      />
-      <div class="btnWrap">
-        <div class="btn">
-          <button @click="submitFormData">送信する</button>
+        <ColorType :color_type="values.color_type" :status="status" @formUpdate="formUpdate" />
+        <ReceptionDate
+          :reception_date="values.reception_date"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <LastModifyDate
+          :last_modify_date="values.last_modify_date"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <Advertisement
+          :accept_advertisement="values.accept_advertisement"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <AcceptRating
+          :accept_rating="values.accept_rating"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <AcceptReviews
+          :accept_reviews="values.accept_reviews"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <AcceptImpressions
+          :accept_impression="values.accept_impression"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <PublishEvaluation
+          :publish_evaluation="values.publish_evaluation"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <AcceptTypoReports
+          :accept_typo_reports="values.accept_typo_reports"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <div class="btnWrap">
+          <div v-if="status===0" class="btn">
+            <span @click="progressStatus(1),setFormDataToState">確認する</span>
+          </div>
+          <div v-if="status===1" class="btn">
+            <span @click="progressStatus(0)">戻る</span>
+            <button @click="submitFormData, progressStatus(2)">送信する</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
+    <div v-if="status===2">
+      <div>ご登録ありがとうございました。</div>
+    </div>
   </main>
 </template>
 
@@ -78,6 +97,10 @@ import AcceptImpressions from "./atoms/formParts/AcceptImpressions.vue";
 import AcceptReviews from "./atoms/formParts/AcceptReviews.vue";
 import PublishEvaluation from "./atoms/formParts/PublishEvaluation.vue";
 import AcceptTypoReports from "./atoms/formParts/AcceptTypoReports.vue";
+
+import H2 from "./atoms/H2.vue";
+
+import formDataToHash from "../lib/formDataToHash";
 
 import { selectStory } from "../queries/query/selectStory.js";
 import { insertStory } from "../queries/mutation/insertStory";
@@ -103,6 +126,7 @@ export default {
     AcceptReviews,
     PublishEvaluation,
     AcceptTypoReports,
+    H2
   },
   mounted() {
     const thisForm = document.forms.formStory;
@@ -113,15 +137,10 @@ export default {
       this.values = this.$store.getters.story || {};
     });
   },
-  props: {
-    properties: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
   data() {
     return {
-      values: this.properties,
+      values: this.$store.getters.story || {},
+      status: 0
     };
   },
   methods: {
@@ -131,19 +150,32 @@ export default {
     formUpdate(type, e, name, val) {
       e.preventDefault();
       if (type === 1) {
-        this.$set(this.properties, name, val);
+        this.$set(this.values, name, val);
+      } else if (type === 2) {
+        const name = e.target.name;
+        const val = Boolean(e.target.value);
+        this.$set(this.values, name, val);
       } else {
         const name = e.target.name;
         const val = e.target.value;
-        this.$set(this.properties, name, val);
+        this.$set(this.values, name, val);
       }
+    },
+    progressStatus(num) {
+      this.status = num;
+    },
+    setFormDataToState() {
+      const thisForm = document.forms.formPost;
+      const thisFormData = formDataToHash(thisForm);
+      this.$store.dispatch("updateStory", thisFormData);
+      this.values = this.$store.getters.story;
     },
     submitFormData(e) {
       e.preventDefault();
       const thisFrom = document.forms.formStory;
       insertStory(thisFrom, this.toMutationDispatch);
-    },
-  },
+    }
+  }
 };
 </script>
 

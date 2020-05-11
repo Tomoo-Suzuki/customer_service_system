@@ -20,6 +20,10 @@ export default {
     tel: {
       type: String,
       default: null
+    },
+    status: {
+      type: Number,
+      default: null
     }
   },
   methods: {

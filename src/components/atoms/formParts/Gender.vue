@@ -1,7 +1,7 @@
 <template>
   <dl class="require">
     <dt>ジェンダー</dt>
-    <dd class="radioAndCheckbox">
+    <dd v-if="status==0" class="radioAndCheckbox">
       <label>
         <span>男性</span>
         <input
@@ -36,28 +36,30 @@
         />
       </label>
     </dd>
+    <dd v-if="status===1">
+      <span>{{gender}}</span>
+    </dd>
   </dl>
 </template>
 <script>
 export default {
-  //   data: function() {
-  //     return {
-  //       genderData: this.gender,
-  //     };
-  //   },
   props: {
     gender: {
       type: Number,
-      default: null,
+      default: null
     },
+    status: {
+      type: Number,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
-      this.genderData = e.target.value;
+      this.genderData = Number(e.target.value);
       console.log(this.genderData);
-      this.$emit("formUpdate", 1, e, e.targetname, this.genderData);
-    },
-  },
+      this.$emit("formUpdate", 1, e, e.target.name, this.genderData);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <dl class="require">
     <dt>カラータイプ</dt>
-    <dd class="radioAndCheckbox">
+    <dd v-if="status==0" class="radioAndCheckbox">
       <label>
         <span>青</span>
         <input
@@ -33,6 +33,9 @@
         />
       </label>
     </dd>
+    <dd v-if="status===1">
+      <span>{{color_type}}</span>
+    </dd>
   </dl>
 </template>
 <script>
@@ -40,14 +43,18 @@ export default {
   props: {
     color_type: {
       type: Number,
-      default: null,
+      default: null
     },
+    status: {
+      type: Number,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", 0, e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

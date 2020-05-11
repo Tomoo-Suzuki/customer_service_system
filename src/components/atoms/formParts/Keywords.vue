@@ -1,13 +1,8 @@
 <template>
   <dl>
     <dt>キーワード</dt>
-    <dd>
-      <input
-        type="text"
-        name="keywords"
-        :value="keywords"
-        @change="formUpdate"
-      />
+    <dd v-if="status==0">
+      <input type="text" name="keywords" :value="keywords" @change="formUpdate" />
       <!-- <input type="text" name="keywords0" value @change="formUpdate" />
       <input type="text" name="keywords1" value @change="formUpdate" />
       <input type="text" name="keywords2" value @change="formUpdate" />
@@ -17,7 +12,10 @@
       <input type="text" name="keywords6" value @change="formUpdate" />
       <input type="text" name="keywords7" value @change="formUpdate" />
       <input type="text" name="keywords8" value @change="formUpdate" />
-      <input type="text" name="keywords9" value @change="formUpdate" /> -->
+      <input type="text" name="keywords9" value @change="formUpdate" />-->
+    </dd>
+    <dd v-if="status===1">
+      <span>{{keywords}}</span>
     </dd>
   </dl>
 </template>
@@ -26,54 +24,58 @@ export default {
   props: {
     keywords: {
       type: String,
-      default: null,
+      default: null
     },
     keywords0: {
       type: String,
-      default: null,
+      default: null
     },
     keywords1: {
       type: String,
-      default: null,
+      default: null
     },
     keywords2: {
       type: String,
-      default: null,
+      default: null
     },
     keywords3: {
       type: String,
-      default: null,
+      default: null
     },
     keywords4: {
       type: String,
-      default: null,
+      default: null
     },
     keywords5: {
       type: String,
-      default: null,
+      default: null
     },
     keywords6: {
       type: String,
-      default: null,
+      default: null
     },
     keywords7: {
       type: String,
-      default: null,
+      default: null
     },
     keywords8: {
       type: String,
-      default: null,
+      default: null
     },
     keywords9: {
       type: String,
-      default: null,
+      default: null
     },
+    status: {
+      type: Number,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", 0, e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>
