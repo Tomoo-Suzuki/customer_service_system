@@ -11,7 +11,8 @@ export default new Vuex.Store({
     login: {},
     account: {},
     story: {},
-    post: {}
+    post: {},
+    formData: {}
   },
   getters,
   mutations,

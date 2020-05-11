@@ -1,23 +1,46 @@
 <template>
   <main class="form-book">
-    <h2 class="ttl_h2">アカウント登録</h2>
-    <form name="formAccount">
-      <input type="hidden" name="email_id" value="aryuusei_y@gmail.com" />
-      <Name :last_name="values.last_name" :first_name="values.first_name" @formUpdate="formUpdate" />
-      <NameKana
-        :Last_name_kana="values.last_name_kana"
-        :first_name_kana="values.first_name_kana"
-        @formUpdate="formUpdate"
-      />
-      <Gender :gender="values.gender" @formUpdate="formUpdate" />
-      <Birthday :birthday="values.birthday" @formUpdate="formUpdate" />
-      <Email :email="values.email" :email_confirm="values.email_confirm" @formUpdate="formUpdate" />
-      <div class="btnWrap">
-        <div class="btn">
-          <button @click="submitFormData">送信する</button>
+    <div v-if="status===0||status===1">
+      <H2 text="アカウント登録" />
+      {{values}}
+      {{this.$store.getters.account}}
+      <form name="formAccount">
+        <input type="hidden" name="email_id" value="rryuusei_y@gmail.com" />
+        <Name
+          :last_name="values.last_name"
+          :first_name="values.first_name"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <NameKana
+          :last_name_kana="values.last_name_kana"
+          :first_name_kana="values.first_name_kana"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <Gender :gender="values.gender" :status="status" @formUpdate="formUpdate" />
+        <Birthday :birthday="values.birthday" :status="status" @formUpdate="formUpdate" />
+        <Email
+          :email="values.email"
+          :email_confirm="values.email_confirm"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <div class="btnWrap">
+          <div v-if="status===0" class="btn">
+            <span @click="progressStatus(1),setFormDataToState">確認する</span>
+          </div>
+          <div v-if="status===1" class="btn">
+            <span @click="progressStatus(0)">戻る</span>
+            <button @click="submitFormData, progressStatus(2)">送信する</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
+    <div v-if="status===2">
+      <H2 text="アカウント登録" />
+      <div>ご登録ありがとうございました。</div>
+    </div>
   </main>
 </template>
 <script>
@@ -26,6 +49,10 @@ import NameKana from "./atoms/formParts/NameKana.vue";
 import Gender from "./atoms/formParts/Gender.vue";
 import Birthday from "./atoms/formParts/Birthday.vue";
 import Email from "./atoms/formParts/Email.vue";
+
+import H2 from "./atoms/H2.vue";
+
+import formDataToHash from "../lib/formDataToHash";
 
 import { selectAccountU } from "../queries/query/selectAccountU.js";
 import { insertAccountU } from "../queries/mutation/insertAccountU.js";
@@ -36,7 +63,8 @@ export default {
     NameKana,
     Gender,
     Email,
-    Birthday
+    Birthday,
+    H2
   },
   mounted() {
     const thisForm = document.forms.formAccount;
@@ -47,15 +75,10 @@ export default {
       this.values = this.$store.getters.account || {};
     });
   },
-  props: {
-    properties: {
-      type: Object,
-      default: () => ({})
-    }
-  },
   data() {
     return {
-      values: this.properties
+      values: this.$store.getters.account || {},
+      status: 0
     };
   },
   methods: {
@@ -65,12 +88,22 @@ export default {
     formUpdate(type, e, name, val) {
       e.preventDefault();
       if (type === 1) {
-        this.$set(this.properties, name, val);
+        this.$set(this.values, name, val);
       } else {
         const name = e.target.name;
         const val = e.target.value;
-        this.$set(this.properties, name, val);
+        this.$set(this.values, name, val);
       }
+    },
+    progressStatus(num) {
+      this.status = num;
+    },
+    setFormDataToState() {
+      console.log("Caaaaaaaaleeeeeeeeee");
+      const thisForm = document.forms.formAccount;
+      const thisFormData = formDataToHash(thisForm);
+      this.$store.dispatch("updateAccount", thisFormData);
+      this.values = this.$store.getters.account;
     },
     submitFormData(e) {
       e.preventDefault();

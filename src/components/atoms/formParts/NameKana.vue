@@ -1,7 +1,7 @@
 <template>
   <dl>
     <dt>フリガナ</dt>
-    <dd>
+    <dd v-if="status===0">
       <span>
         <input
           type="text"
@@ -27,6 +27,10 @@
         />
       </span>
     </dd>
+    <dd v-if="status===1">
+      <span>{{last_name_kana}}</span>
+      <span>{{first_name_kana}}</span>
+    </dd>
   </dl>
 </template>
 <script>
@@ -34,18 +38,22 @@ export default {
   props: {
     last_name_kana: {
       type: String,
-      default: null,
+      default: null
     },
     first_name_kana: {
       type: String,
-      default: null,
+      default: null
     },
+    status: {
+      type: Number,
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", 0, e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

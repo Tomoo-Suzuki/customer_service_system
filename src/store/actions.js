@@ -14,5 +14,10 @@ export default {
     commit
   }, newPost) {
     commit("updatePost", newPost);
+  },
+  memoryForm({
+    commit
+  }, fromData) {
+    commit("memoryForm", fromData);
   }
 };

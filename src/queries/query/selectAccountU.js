@@ -16,7 +16,6 @@ export const selectAccountU = (email, dispatch) => {
   }`;
   return request(query, 'selectAccountU').then(
     (res) => {
-      console.log(res)
       dispatch(res)
     }
   );

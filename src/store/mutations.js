@@ -10,5 +10,8 @@ export default {
   },
   updatePost(state, newPost) {
     state.post = newPost;
+  },
+  memoryForm(state, fromData) {
+    state.formData = fromData;
   }
 };
