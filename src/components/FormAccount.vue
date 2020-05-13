@@ -5,7 +5,7 @@
       {{values}}
       {{this.$store.getters.account}}
       <form name="formAccount">
-        <input type="hidden" name="email_id" value="rryuusei_y@gmail.com" />
+        <input type="hidden" name="email_id" value="ryuusei_y@gmail.com" />
         <Name
           :last_name="values.last_name"
           :first_name="values.first_name"

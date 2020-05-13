@@ -1,6 +1,8 @@
 <template>
   <main>
     <H2 text="マイページ" />
+    <BtnLink link="/form-account" text="アカウントの更新" />
+
     <!-- <button @click="toEachPage('/form-user')">User</button>
     <button @click="toEachPage('/form-post')">Story Upload</button>
     <button @click="toEachPage('/form-story')">Story Detail</button>
@@ -11,10 +13,12 @@
 
 <script>
 import H2 from "./atoms/H2.vue";
+import BtnLink from "./atoms/BtnLink.vue";
 
 export default {
   components: {
-    H2
+    H2,
+    BtnLink
   },
   methods: {
     toEachPage(path) {

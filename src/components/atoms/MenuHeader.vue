@@ -22,9 +22,9 @@ export default {
         { text: "マイページ", link: "/mypage" },
         { text: "閲覧履歴", link: "/history" },
         { text: "アクセス解析", link: "/analysis" },
-        { text: "小説情報", link: "/story-information" },
-        { text: "初めての方へ", link: "/support" },
-        { text: "本棚", link: "/bookshelf" }
+        { text: "ログイン", link: "/form-login" },
+        { text: "新規ご登録", link: "/form-registration" },
+        { text: "初めての方へ", link: "/support" }
       ]
     };
   },
