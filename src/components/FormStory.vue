@@ -129,11 +129,13 @@ export default {
     H2
   },
   mounted() {
+    console.log("mouted!!!!!!!!!");
     // const thisForm = document.forms.formStory;
     // const id_story = thisForm.id_story.value;
     const id_story = this.id_story;
     console.log(id_story);
     if (!id_story) return;
+    if (id_story === "new") return;
     const promise = selectStory(id_story, this.toMutationDispatch);
     promise.then(() => {
       this.values = this.$store.getters.story || {};

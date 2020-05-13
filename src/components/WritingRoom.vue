@@ -7,7 +7,7 @@
     <div>ブックマーク</div>
     <div>いいね・コメント</div>
     <div>評価</div>-->
-    <BtnLink link="/form-story" text="新規book作成" />
+    <BtnLink link="/form-story/new" text="新規book作成" />
     <BtnLink link="/form-post" text="storyの追加" />
     <section class="section_writingroom">
       <H3 text="小説一覧" />
