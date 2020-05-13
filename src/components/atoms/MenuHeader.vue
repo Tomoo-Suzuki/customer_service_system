@@ -18,12 +18,12 @@ export default {
   data() {
     return {
       menuHeaderLists: [
-        { text: "ブックマーク", link: "/mypage/bookmark" },
+        { text: "ブックマーク", link: "/bookmark" },
         { text: "マイページ", link: "/mypage" },
-        { text: "閲覧履歴", link: "/mypage/history" },
-        { text: "アクセス解析", link: "/analisys" },
+        { text: "閲覧履歴", link: "/history" },
+        { text: "アクセス解析", link: "/analysis" },
         { text: "小説情報", link: "/story-information" },
-        { text: "初めての方へ", link: "/help" },
+        { text: "初めての方へ", link: "/support" },
         { text: "本棚", link: "/bookshelf" }
       ]
     };

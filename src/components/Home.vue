@@ -1,10 +1,10 @@
 <template>
   <main>
     <h1>home</h1>
-    <button @click="toEachPage('/form-user')">User</button>
+    <!-- <button @click="toEachPage('/form-user')">User</button>
     <button @click="toEachPage('/form-post')">Story Upload</button>
     <button @click="toEachPage('/form-story')">Story Detail</button>
-    <button @click="toEachPage('/form-account')">Account</button>
+    <button @click="toEachPage('/form-account')">Account</button>-->
     <div>
       <section>
         <H2 text="注目の作品" />
@@ -13,10 +13,10 @@
         <H3 text="ユーザー登録" />
       </section>
       <section>
-        <H4 text="{特集}" />
+        <H4 text="特集" />
       </section>
       <section>
-        <H5 text="{おすすめレビュー}" />
+        <H5 text="おすすめレビュー" />
       </section>
       <section>
         <H2 text="新着小説" />
@@ -25,10 +25,10 @@
         <H3 text="コンテスト" />
       </section>
       <section>
-        <H4 text="{ランキング}" />
+        <H4 text="ランキング" />
       </section>
       <section>
-        <H5 text="{ランキング}" />
+        <H5 text="ランキング" />
       </section>
     </div>
     <div>
@@ -42,7 +42,6 @@
         <H3 text="二次創作の新着 " />
       </section>
     </div>
-    <button @click="getData">GQL</button>
   </main>
 </template>
 
@@ -59,20 +58,6 @@ export default {
     toEachPage(path) {
       this.$router.push(path);
     }
-    // getData() {
-    //   const query =
-    //     'query{user(id:"00001"){password,user_type,magazine,agree_to_terms,date_reception}}';
-    //   const url = "http://localhost:7777/graphql";
-    //   axios
-    //     .post(url, { query: query })
-    //     .then(function(res) {
-    //       console.log(res);
-    //     })
-    //     .catch(function(e) {
-    //       console.log("反映テスト８");
-    //       console.log(e);
-    //     });
-    // }
   }
 };
 </script>

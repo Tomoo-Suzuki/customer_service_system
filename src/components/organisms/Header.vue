@@ -11,6 +11,7 @@
       </div>
       <div class="headerBook_inner_lower">
         <NavHeader />
+        <BtnPriority />
       </div>
     </div>
   </header>
@@ -21,6 +22,7 @@ import SearchBox from "../atoms/SearchBox.vue";
 import SiteSwitcher from "../molecules/SiteSwitcher.vue";
 import MenuHeader from "../atoms/MenuHeader.vue";
 import NavHeader from "../atoms/NavHeader.vue";
+import BtnPriority from "../atoms/BtnPriority.vue";
 
 export default {
   components: {
@@ -28,7 +30,8 @@ export default {
     SearchBox,
     SiteSwitcher,
     MenuHeader,
-    NavHeader
+    NavHeader,
+    BtnPriority
   },
   props: {}
 };
@@ -58,6 +61,9 @@ export default {
           width: 15rem;
         }
       }
+    }
+    .headerBook_inner_lower {
+      position: relative;
     }
   }
 }
