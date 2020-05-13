@@ -31,7 +31,7 @@ export default new Router({
       path: '/form-registration',
       component: FormRegistration
     }, {
-      path: '/form-story',
+      path: '/form-story/:id_story',
       component: FormStory
     }, {
       path: '/form-post',

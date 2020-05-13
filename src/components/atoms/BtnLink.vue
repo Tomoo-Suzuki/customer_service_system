@@ -25,13 +25,14 @@ export default {
 @import "../../scss/_color.scss";
 .btn_link {
   color: #ffffff;
-  border: $sell_green_dark solid 1px;
-  background: $sell_green_dark;
+  border: $upload_blue_dark solid 1px;
+  background: $upload_blue_dark;
   border-radius: 0.3rem;
   font-size: 1.4rem;
   padding: 0.5rem 1rem;
   margin-right: 1rem;
   cursor: pointer;
+  display: inline-block;
   &:hover {
     opacity: 0.5;
   }
