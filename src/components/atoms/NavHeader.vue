@@ -20,7 +20,7 @@ export default {
         { text: "ランキング", link: "/ranking", index: 0 },
         { text: "公式連載", link: "/public-series", index: 1 },
         { text: "書籍化作品", link: "/book-publication", index: 2 },
-        { text: "コンテスト・企画", link: "/analisys", index: 3 },
+        { text: "コンテスト・企画", link: "/contest", index: 3 },
         { text: "小説を探す", link: "/search", index: 4 },
         { text: "異世界", link: "/genre/diffrent-world", index: 5 },
         { text: "超能力", link: "/genre/Supernatural power", index: 6 },

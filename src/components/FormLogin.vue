@@ -3,11 +3,26 @@
     <form name="formUser">
       <h2 class="ttl_h2">ログイン</h2>
       <input type="hidden" name="id" value="00003" />
-      <UserId :user_id="properties.user_id" @formUpdate="formUpdate" />
-      <Password :password="properties.password" @formUpdate="formUpdate" />
-      <router-link to="/form-registration" tag="a" active-class="link_active" exact>ご登録がお済みでない方はこちら。</router-link>
-      <br />
-      <router-link to="/form-registration" tag="a" active-class="link_active" exact>パスワードの再発行はこちら。</router-link>
+      <UserId :user_id="values.user_id" :status="status" @formUpdate="formUpdate" />
+      <Password :password="values.password" :status="status" @formUpdate="formUpdate" />
+      <div>
+        <router-link
+          to="/form-registration"
+          tag="a"
+          class="link_login"
+          active-class="link_active"
+          exact
+        >ご登録がお済みでない方はこちら。</router-link>
+      </div>
+      <div>
+        <router-link
+          to="/form-registration"
+          tag="a"
+          class="link_login"
+          active-class="link_active"
+          exact
+        >パスワードの再発行はこちら。</router-link>
+      </div>
       <div class="btnWrap">
         <div class="btn">
           <button @click="submitFormData">ログイン</button>
@@ -32,7 +47,8 @@ export default {
   },
   data() {
     return {
-      values: this.properties
+      values: this.$store.getters.story || {},
+      status: 0
     };
   },
   computed: {
@@ -80,4 +96,25 @@ export default {
 <style lang="scss" scoped>
 @import "../scss/_form.scss";
 @import "../scss/atoms/submitBtn/btnPost";
+.link_login {
+  display: inline-block;
+  margin: 2rem 0 0 0;
+  position: relative;
+  &::before {
+    position: absolute;
+    top: 0.4rem;
+    left: -1.2rem;
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: $upload_blue_dark;
+  }
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.btnWrap {
+  margin-top: 5rem;
+}
 </style>

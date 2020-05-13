@@ -5,19 +5,19 @@
       <form name="formRegistry">
         <input type="hidden" name="date_reception" :value="today" />
         <Email
-          :email="properties.email"
-          :emailConfirm="properties.email_confirm"
+          :email="values.email"
+          :emailConfirm="values.email_confirm"
           :status="status"
           @formUpdate="formUpdate"
         />
-        <UserId :id_user="properties.id_user" :status="status" @formUpdate="formUpdate" />
-        <Password :password="properties.password" :status="status" @formUpdate="formUpdate" />
+        <UserId :id_user="values.id_user" :status="status" @formUpdate="formUpdate" />
+        <Password :password="values.password" :status="status" @formUpdate="formUpdate" />
         <p>
           ユーザー登録を行うには「利用規約」および「ガイドライン」へ同意いただく必要があります。
           ユーザー登録を完了するためのメールを、登録いただいたメールアドレスへ送信します。
         </p>
-        <Magazine :magazine="properties.magazine" :status="status" @formUpdate="formUpdate" />
-        <AgreeToTerms :agreement="properties.agreement" :status="status" @formUpdate="formUpdate" />
+        <Magazine :magazine="values.magazine" :status="status" @formUpdate="formUpdate" />
+        <AgreeToTerms :agreement="values.agreement" :status="status" @formUpdate="formUpdate" />
         <p>reCapture導入</p>
         <div class="btnWrap">
           <div v-if="status===0" class="btn">
