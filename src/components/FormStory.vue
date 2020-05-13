@@ -3,7 +3,7 @@
     <H2 text="小説の設定" />
     <div v-if="status===0||status===1">
       <form name="formStory">
-        <input type="hidden" name="id" value="00003" />
+        <input type="hidden" name="id_user" value="00003" />
         <input type="hidden" name="id_story" value="sf00001" />
 
         <TitleMain :title_main="values.title_main" :status="status" @formUpdate="formUpdate" />
@@ -129,8 +129,10 @@ export default {
     H2
   },
   mounted() {
-    const thisForm = document.forms.formStory;
-    const id_story = thisForm.id_story.value;
+    // const thisForm = document.forms.formStory;
+    // const id_story = thisForm.id_story.value;
+    const id_story = this.id_story;
+    console.log(id_story);
     if (!id_story) return;
     const promise = selectStory(id_story, this.toMutationDispatch);
     promise.then(() => {
@@ -140,7 +142,8 @@ export default {
   data() {
     return {
       values: this.$store.getters.story || {},
-      status: 0
+      status: 0,
+      id_story: this.$route.params.id_story
     };
   },
   methods: {

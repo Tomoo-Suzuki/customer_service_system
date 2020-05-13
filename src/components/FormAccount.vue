@@ -1,9 +1,7 @@
 <template>
   <main class="form-book">
-    <H2 text="アカウント登録" />
+    <H2 text="アカウント設定" />
     <div v-if="status===0||status===1">
-      {{values}}
-      {{this.$store.getters.account}}
       <form name="formAccount">
         <input type="hidden" name="email_id" value="ryuusei_y@gmail.com" />
         <Name

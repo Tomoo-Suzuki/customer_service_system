@@ -1,9 +1,9 @@
 import request from "../../lib/request";
 
-export const selectStory = (id_story, dispatch) => {
+export const selectStoryUser = (id_user, dispatch) => {
 
   const query = `query{
-  selectStory(id_story:"` + id_story + `"){
+  selectStoryUser(id_user:"` + id_user + `"){
     id_user,
     id_story,
     title_main,
@@ -23,7 +23,7 @@ export const selectStory = (id_story, dispatch) => {
     accept_typo_reports
     }
   }`;
-  return request(query, 'selectStory').then(
+  return request(query, 'selectStoryUser').then(
     (res) => {
       console.log(res)
 
