@@ -34,7 +34,8 @@ export default new Router({
       path: '/form-story/:id_story',
       component: FormStory
     }, {
-      path: '/form-post',
+      path: '/form-post/',
+      name: 'post-view',
       component: FormPost
     }, {
       path: '/form-account',
@@ -57,7 +58,7 @@ export default new Router({
       component: Support
     },
     {
-      path: '/story-information',
+      path: '/story-information/:id_story',
       component: StoryInfomation
     },
     {

@@ -1,9 +1,10 @@
 <template>
   <main class="form-book">
+    {{this.$route.params}}
     <H2 text="小説の投稿" />
     <div v-if="status===0||status===1">
       <form name="formPost">
-        <input type="hidden" name="id_story" value="sf000001" />
+        <input type="hidden" name="id_story" value="sf00001" />
         <input type="hidden" name="id_post" value="sf000001000" />
         <TitleChapter
           :title_chapter="values.title_chapter"
@@ -58,16 +59,20 @@ export default {
     // File,
   },
   mounted() {
-    const thisForm = document.forms.formPost;
-    const id_post = thisForm.id_post.value;
-    if (!id_post) return;
-    const promise = selectPost(id_post, this.toMutationDispatch);
+    // const thisForm = document.forms.formPost;
+    // const id_post = thisForm.id_post.value;
+    console.log(this.id_story);
+    console.log(this.id_post);
+    if (!this.id_post) return;
+    const promise = selectPost(this.id_post, this.toMutationDispatch);
     promise.then(() => {
       this.values = this.$store.getters.post || {};
     });
   },
   data() {
     return {
+      id_story: this.$route.params.id_story,
+      id_post: this.$route.params.id_post,
       values: this.$store.getters.post || {},
       status: 0
     };
