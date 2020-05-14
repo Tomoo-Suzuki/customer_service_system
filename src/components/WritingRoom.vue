@@ -1,21 +1,44 @@
 <template>
   <main>
     <H2 text="書斎" />
-    <!-- <div>小説一覧</div>
-    <div>アクセス解析</div>
-    <div>閲覧履歴</div>
-    <div>ブックマーク</div>
-    <div>いいね・コメント</div>
-    <div>評価</div>-->
-    <BtnLink link="/form-story/new" text="新規book作成" />
-    <BtnLink link="/form-post" text="storyの追加" />
+    <BtnLink link="/form-story/new" btn_style="btn_link" text="新規book作成" />
+    <BtnLink link="/form-post" btn_style="btn_link" text="storyの追加" />
+
+    <BtnLink link="/analysis" btn_style="btn_link4" text="アクセス解析" />
+    <BtnLink link="/history" btn_style="btn_link4" text="閲覧履歴" />
+    <BtnLink link="/bookmark" btn_style="btn_link4" text="ブックマーク" />
+    <BtnLink link="/" btn_style="btn_link4" text="評価・コメント" />
+
     <section class="section_writingroom">
       <H3 text="小説一覧" />
       <dl v-for="(item,index) in values" :key="index">
         <dt>{{index+1}}</dt>
         <dd>{{item.id_story }}</dd>
-        <dd>{{item.title_main }}</dd>
+        <dd>
+          <router-link
+            :to="`/story-information/`+item.id_story"
+            tag="div"
+            class="link_story"
+            active-class="link_active"
+            exact
+          >{{item.title_main }}</router-link>
+        </dd>
         <dd>{{isComplete(item.is_complete)}}</dd>
+        <dd>
+          <router-link
+            :to="{
+                name:'post-view',
+                params:{
+                    id_story:item.id_story,
+                    id_post:'new'
+                }
+            }"
+            tag="div"
+            class="btn_edit"
+            active-class="link_active"
+            exact
+          >story追加</router-link>
+        </dd>
         <dd>
           <router-link
             :to="`/form-story/`+item.id_story"
@@ -23,7 +46,7 @@
             class="btn_edit"
             active-class="link_active"
             exact
-          >編集</router-link>
+          >book編集</router-link>
         </dd>
       </dl>
     </section>
@@ -104,7 +127,7 @@ export default {
         text-align: center;
       }
       &:nth-of-type(2) {
-        width: calc(100% - 27rem);
+        width: calc(100% - 42rem);
         text-align: left;
       }
       &:nth-of-type(3) {
@@ -112,19 +135,34 @@ export default {
         text-align: left;
       }
       &:nth-of-type(4) {
-        width: 5rem;
+        width: 10rem;
+        text-align: left;
+      }
+      &:nth-of-type(5) {
+        width: 10rem;
         text-align: left;
       }
     }
   }
 }
+.link_story {
+  color: $upload_blue_dark;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
+}
 .btn_edit {
+  box-sizing: border-box;
   background: $upload_blue_dark;
   text-align: center;
   color: #ffffff;
-  padding: 0.3rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1.2rem;
   border-radius: 0.3rem;
+  width: 80%;
   cursor: pointer;
   &:hover {
     opacity: 0.5;
