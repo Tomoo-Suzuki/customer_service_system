@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     formUpdate(e) {
-      this.$emit("formUpdate", 0, e);
+      this.$emit("formUpdate", 2, e);
     }
   }
 };

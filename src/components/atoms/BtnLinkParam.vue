@@ -1,0 +1,102 @@
+<template>
+  <router-link
+    :to="linkObject"
+    tag="span"
+    :class="btn_style"
+    active-class="link_active"
+    exact
+  >{{text}}</router-link>
+</template>
+<script>
+export default {
+  props: {
+    text: {
+      type: String,
+      default: null
+    },
+    linkObject: {
+      type: Object,
+      default: () => ({})
+    },
+    btn_style: {
+      type: String,
+      default: null
+    }
+  },
+  data: function() {
+    return {};
+  },
+  methods: {},
+  computed: {}
+};
+</script>
+
+<style lang="scss" scoped>
+@import "../../scss/_color.scss";
+%btn_style {
+  border-radius: 0.3rem;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  display: inline-block;
+  color: #ffffff;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.btn_link {
+  @extend %btn_style;
+  border: $upload_blue_dark solid 1px !important;
+  background: $upload_blue_dark !important;
+}
+.btn_link2 {
+  @extend %btn_style;
+  border: $upload_blue solid 1px !important;
+  background: $upload_blue !important;
+}
+
+.btn_link3 {
+  @extend %btn_style;
+  border: $upload_blue_light solid 1px !important;
+  background: $upload_blue_light !important;
+}
+
+.btn_link4 {
+  @extend %btn_style;
+  border: $sell_green_dark solid 1px !important;
+  background: $sell_green_dark !important;
+}
+.btn_link5 {
+  @extend %btn_style;
+  border: $sell_green solid 1px !important;
+  background: $sell_green !important;
+}
+.btn_link6 {
+  @extend %btn_style;
+  border: $sell_green_light solid 1px !important;
+  background: $sell_green_light !important;
+}
+
+.btn_link7 {
+  @extend %btn_style;
+  border: $read_orange_dark solid 1px !important;
+  background: $read_orange_dark !important;
+}
+.btn_link8 {
+  @extend %btn_style;
+  border: $read_orange solid 1px !important;
+  background: $read_orange !important;
+}
+.btn_link9 {
+  @extend %btn_style;
+  border: $read_orange_light solid 1px !important;
+  background: $read_orange_light !important;
+}
+.btn_link10 {
+  @extend %btn_style;
+  border: #a4a4a4 solid 1px !important;
+  background: #a4a4a4 !important;
+}
+</style>

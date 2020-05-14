@@ -42,6 +42,7 @@ export default new Router({
       component: FormAccount
     }, {
       path: '/writing-room',
+      name: 'writing-room-view',
       component: WritingRoom
     }, {
       path: '/analysis',

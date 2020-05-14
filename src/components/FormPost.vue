@@ -18,6 +18,8 @@
         <LastModifyDate :date_last_modify="values.date_last_modify" @formUpdate="formUpdate" />
         <div class="btnWrap">
           <div v-if="status===0" class="btn">
+            <BtnLinkParam btn_style="btn_link9" text="戻る" :linkObject="linkObject" />
+
             <span @click="progressStatus(1),setFormDataToState">確認する</span>
           </div>
           <div v-if="status===1" class="btn">
@@ -43,10 +45,13 @@ import Story from "./atoms/formParts/Story.vue";
 
 import H2 from "./atoms/H2.vue";
 
+import BtnLinkParam from "./atoms/BtnLinkParam.vue";
+
 import formDataToHash from "../lib/formDataToHash";
 
 import { selectPost } from "../queries/query/selectPost.js";
 import { insertPost } from "../queries/mutation/insertPost";
+import { updatePost } from "../queries/mutation/updatePost";
 
 export default {
   components: {
@@ -55,7 +60,8 @@ export default {
     Title,
     Story,
     LastModifyDate,
-    H2
+    H2,
+    BtnLinkParam
     // File,
   },
   mounted() {
@@ -69,12 +75,20 @@ export default {
       this.values = this.$store.getters.post || {};
     });
   },
+
   data() {
     return {
       id_story: this.$route.params.id_story,
       id_post: this.$route.params.id_post,
       values: this.$store.getters.post || {},
-      status: 0
+      status: 0,
+      linkObject: {
+        name: "writing-room-view",
+        params: {
+          id_story: this.id_story,
+          id_post: this.id_post
+        }
+      }
     };
   },
   methods: {
@@ -102,8 +116,16 @@ export default {
     },
     submitFormData(e) {
       e.preventDefault();
-      const thisFrom = document.forms.formPost;
-      insertPost(thisFrom, this.toMutationDispatch);
+      //   const thisFrom = document.forms.formPost;
+      if (this.id_post === "new") {
+        console.log("pass insert");
+        //insertPost(thisFrom, this.toMutationDispatch);
+        insertPost(this.values, this.toMutationDispatch);
+      } else {
+        console.log("pass update");
+        //updatePost(thisFrom, this.toMutationDispatch);
+        updatePost(this.values, this.toMutationDispatch);
+      }
     }
   }
 };
