@@ -9,18 +9,22 @@
         <TitleMain :title_main="values.title_main" :status="status" @formUpdate="formUpdate" />
         <AutherName :auther_name="values.auther_name" :status="status" @formUpdate="formUpdate" />
         <IsComplete :is_complete="values.is_complete" :status="status" @formUpdate="formUpdate" />
-        <Genre :genre="values.genre" :status="status" @formUpdate="formUpdate" />
+        <Genre :genre="Number(values.genre)" :status="status" @formUpdate="formUpdate" />
         <CatchCopy :catch_copy="values.catch_copy" :status="status" @formUpdate="formUpdate" />
         <Synopsis :synopsis="values.synopsis" :status="status" @formUpdate="formUpdate" />
         <Keywords :keywords="values.keywords" :status="status" @formUpdate="formUpdate" />
 
         <ExtremeDepiction
-          :extreme_depiction="values.extreme_depiction"
+          :extreme_depiction="parse_props(values.extreme_depiction)"
           :status="status"
           @formUpdate="formUpdate"
         />
 
-        <ColorType :color_type="values.color_type" :status="status" @formUpdate="formUpdate" />
+        <ColorType
+          :color_type="Number(values.color_type)"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
         <ReceptionDate
           :reception_date="values.reception_date"
           :status="status"
@@ -68,7 +72,7 @@
           </div>
           <div v-if="status===1" class="btn">
             <span @click="progressStatus(0)">戻る</span>
-            <button @click="submitFormData, progressStatus(2)">送信する</button>
+            <span @click="submitFormData(), progressStatus(2)">送信する</span>
           </div>
         </div>
       </form>
@@ -107,6 +111,7 @@ import formDataToHash from "../lib/formDataToHash";
 
 import { selectStory } from "../queries/query/selectStory.js";
 import { insertStory } from "../queries/mutation/insertStory";
+import { updateStory } from "../queries/mutation/updateStory";
 
 import "../scss/_form.scss";
 
@@ -133,9 +138,6 @@ export default {
     BtnLinkParam
   },
   mounted() {
-    console.log("mouted!!!!!!!!!");
-    // const thisForm = document.forms.formStory;
-    // const id_story = thisForm.id_story.value;
     const id_story = this.id_story;
     console.log(id_story);
     if (!id_story) return;
@@ -159,6 +161,14 @@ export default {
       }
     };
   },
+  computed: {
+    parse_props() {
+      return item => {
+        if (!item) return;
+        return item.split(",");
+      };
+    }
+  },
   methods: {
     toMutationDispatch(res) {
       this.$store.dispatch("updateStory", res);
@@ -166,6 +176,8 @@ export default {
     formUpdate(type, e, name, val) {
       e.preventDefault();
       if (type === 1) {
+        console.log(name);
+        console.log(typeof val);
         this.$set(this.values, name, val);
       } else if (type === 2) {
         const name = e.target.name;
@@ -177,6 +189,7 @@ export default {
         this.$set(this.values, name, val);
       }
     },
+
     progressStatus(num) {
       this.status = num;
     },
@@ -186,10 +199,19 @@ export default {
       this.$store.dispatch("updateStory", thisFormData);
       this.values = this.$store.getters.story;
     },
-    submitFormData(e) {
-      e.preventDefault();
-      const thisFrom = document.forms.formStory;
-      insertStory(thisFrom, this.toMutationDispatch);
+    submitFormData() {
+      //   e.preventDefault();
+      //   const thisFrom = document.forms.formStory;
+      console.log(this.id_story);
+      if (this.id_story === "new") {
+        console.log("pass insert");
+        //insertStory(thisFrom, this.toMutationDispatch);
+        insertStory(this.values, this.toMutationDispatch);
+      } else {
+        console.log("pass update");
+        //updateStory(thisFrom, this.toMutationDispatch);
+        updateStory(this.values, this.toMutationDispatch);
+      }
     }
   }
 };

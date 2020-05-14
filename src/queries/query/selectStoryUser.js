@@ -25,8 +25,6 @@ export const selectStoryUser = (id_user, dispatch) => {
   }`;
   return request(query, 'selectStoryUser').then(
     (res) => {
-      console.log(res)
-
       dispatch(res)
     }
   );

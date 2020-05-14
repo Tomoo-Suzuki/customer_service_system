@@ -51,6 +51,7 @@ import formDataToHash from "../lib/formDataToHash";
 
 import { selectPost } from "../queries/query/selectPost.js";
 import { insertPost } from "../queries/mutation/insertPost";
+import { updatePost } from "../queries/mutation/updatePost";
 
 export default {
   components: {
@@ -115,8 +116,16 @@ export default {
     },
     submitFormData(e) {
       e.preventDefault();
-      const thisFrom = document.forms.formPost;
-      insertPost(thisFrom, this.toMutationDispatch);
+      //   const thisFrom = document.forms.formPost;
+      if (this.id_post === "new") {
+        console.log("pass insert");
+        //insertPost(thisFrom, this.toMutationDispatch);
+        insertPost(this.values, this.toMutationDispatch);
+      } else {
+        console.log("pass update");
+        //updatePost(thisFrom, this.toMutationDispatch);
+        updatePost(this.values, this.toMutationDispatch);
+      }
     }
   }
 };

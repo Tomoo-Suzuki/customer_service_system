@@ -25,8 +25,6 @@ export const selectStory = (id_story, dispatch) => {
   }`;
   return request(query, 'selectStory').then(
     (res) => {
-      console.log(res)
-
       dispatch(res)
     }
   );

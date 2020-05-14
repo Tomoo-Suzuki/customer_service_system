@@ -1,12 +1,11 @@
 // import formDataToHash from "../../lib/formDataToHash";
 import request from "../../lib/request";
 
-export const insertStory = (hash, dispatch) => {
+export const updateStory = (hash, dispatch) => {
   // const hash = formDataToHash(form);
+  console.log(JSON.stringify(hash))
   const query = `mutation{
-          insertStory(
-            id_user:"` + hash.id_user + `",
-            id_story:"` + hash.id_story + `",
+          updateStory(id_story:"` + hash.id_story + `",
             title_main:"` + hash.title_main + `",
             auther_name:"` + hash.auther_name + `",
             is_complete:` + Boolean(hash.is_complete) + `,
@@ -23,7 +22,6 @@ export const insertStory = (hash, dispatch) => {
             publish_evaluation:` + Boolean(hash.publish_evaluation) + `,
             accept_typo_reports:` + Boolean(hash.accept_typo_reports) + `
           ){
-            id_user,
             id_story,
             title_main,
             auther_name,
@@ -42,7 +40,7 @@ export const insertStory = (hash, dispatch) => {
             accept_typo_reports
           }
         }`;
-  return request(query, 'insertPost').then(
+  return request(query, 'updateStory').then(
     (res) => {
       dispatch(res)
     }

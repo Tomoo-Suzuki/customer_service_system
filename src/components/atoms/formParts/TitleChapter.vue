@@ -6,7 +6,7 @@
         <input
           type="text"
           name="title_chapter"
-          :value="title_chapter?title_chapter:''"
+          :value="title_chapter"
           required
           placeholder="境界の国"
           @change="formUpdate"
