@@ -63,6 +63,7 @@
         />
         <div class="btnWrap">
           <div v-if="status===0" class="btn">
+            <BtnLinkParam btn_style="btn_link9" text="戻る" :linkObject="linkObject" />
             <span @click="progressStatus(1),setFormDataToState">確認する</span>
           </div>
           <div v-if="status===1" class="btn">
@@ -98,6 +99,8 @@ import AcceptReviews from "./atoms/formParts/AcceptReviews.vue";
 import PublishEvaluation from "./atoms/formParts/PublishEvaluation.vue";
 import AcceptTypoReports from "./atoms/formParts/AcceptTypoReports.vue";
 
+import BtnLinkParam from "./atoms/BtnLinkParam.vue";
+
 import H2 from "./atoms/H2.vue";
 
 import formDataToHash from "../lib/formDataToHash";
@@ -126,7 +129,8 @@ export default {
     AcceptReviews,
     PublishEvaluation,
     AcceptTypoReports,
-    H2
+    H2,
+    BtnLinkParam
   },
   mounted() {
     console.log("mouted!!!!!!!!!");
@@ -145,7 +149,14 @@ export default {
     return {
       values: this.$store.getters.story || {},
       status: 0,
-      id_story: this.$route.params.id_story
+      id_story: this.$route.params.id_story,
+      linkObject: {
+        name: "writing-room-view",
+        params: {
+          id_story: this.id_story,
+          id_post: "new"
+        }
+      }
     };
   },
   methods: {
