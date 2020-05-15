@@ -38,4 +38,21 @@ export default {
     margin: auto;
   }
 }
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 900px) {
+  .footerBook {
+    width: 100%;
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+    .footerBook_inner {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 413px) {
+}
 </style>

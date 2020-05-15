@@ -187,4 +187,12 @@ export default {
     }
   }
 }
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 900px) {
+}
+
+@media screen and (max-width: 413px) {
+}
 </style>

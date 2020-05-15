@@ -29,4 +29,22 @@
     opacity: 0.5;
   }
 }
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 900px) {
+  .btn_priority {
+    position: absolute;
+    bottom: -3.5rem;
+    right: 0;
+    border-radius: 0.4rem;
+    color: #ffffff;
+    padding: 0.5rem 3rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 413px) {
+}
 </style>

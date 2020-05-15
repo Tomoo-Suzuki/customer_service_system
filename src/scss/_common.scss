@@ -87,3 +87,76 @@ html {
         left: 0.6rem;
     }
 }
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 900px) {
+    .wrapper {
+        box-sizing: border-box;
+
+        .contents {
+            min-height: 480px;
+
+            .contents-inner {
+                width: 100%;
+                margin: 3rem auto;
+            }
+        }
+    }
+
+    /deep/.ttl_h2 {
+        font-size: 1.6rem;
+        color: $black;
+        background: url(/img/h2.svg)left top no-repeat;
+        padding-left: 2.5rem;
+        padding-bottom: 0.8rem;
+        background-size: 2rem;
+        border-bottom: dashed 2px $upload_blue_dark;
+        margin-bottom: 4rem;
+    }
+
+    /deep/.ttl_h3 {
+        font-size: 1.4rem;
+        color: $black;
+        padding-left: 2.4rem;
+        padding-bottom: 0.8rem;
+        background-size: 2.6rem;
+        border-bottom: solid 1px $upload_blue_dark;
+        margin-bottom: 1.4rem;
+
+        &:before {
+            content: '';
+            background: $sell_green_dark;
+            width: .8rem;
+            height: .8rem;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 1.2rem;
+        }
+
+        &:after {
+            content: '';
+            background: $upload_blue_dark;
+            width: .8rem;
+            height: .8rem;
+            display: block;
+            position: absolute;
+            top: 1rem;
+            left: 0.6rem;
+        }
+    }
+
+
+}
+
+@media screen and (max-width: 413px) {}
+
+// @media screen and (max-width: 1024px) {
+// }
+
+// @media screen and (max-width: 900px) {
+// }
+
+// @media screen and (max-width: 413px) {
+// }

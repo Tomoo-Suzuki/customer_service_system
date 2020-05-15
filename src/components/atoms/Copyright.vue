@@ -11,4 +11,15 @@ export default {
 .copyright {
   text-align: right;
 }
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 900px) {
+  .copyright {
+    margin-right: 1rem;
+  }
+}
+
+@media screen and (max-width: 413px) {
+}
 </style>
