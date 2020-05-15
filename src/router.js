@@ -59,7 +59,8 @@ export default new Router({
       component: Support
     },
     {
-      path: '/story-information/:id_story',
+      path: '/story-information/',
+      name: 'view-story-information',
       component: StoryInfomation
     },
     {

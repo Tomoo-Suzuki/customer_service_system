@@ -1,6 +1,8 @@
 <template>
   <main>
     <H2 text="小説情報" />
+    {{"params"}}
+    {{this.$route.params.id_story}}
     <BtnLink link="/form-post" btn_style="btn_link" text="storyの追加" />
 
     <BtnLink link="/analysis" btn_style="btn_link4" text="アクセス解析" />
@@ -55,9 +57,7 @@ export default {
     BtnLinkParam
   },
   mounted() {
-    // const thisForm = document.forms.formStory;
-    // const id_story = thisForm.id_user.value;
-    //const id_story = "00001";
+    console.log("mounted");
     if (!this.id_story) return;
     console.log(this.id_story);
     const promise = selectPostStory(this.id_story, this.toMutationDispatch);

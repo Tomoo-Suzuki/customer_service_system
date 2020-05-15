@@ -16,7 +16,7 @@
         <dd>{{item.id_story }}</dd>
         <dd>
           <router-link
-            :to="`/story-information/`+item.id_story"
+            :to="{name: 'view-story-information', params: {id_story: item.id_story}}"
             tag="div"
             class="link_story"
             active-class="link_active"

@@ -18,7 +18,7 @@
         <LastModifyDate :date_last_modify="values.date_last_modify" @formUpdate="formUpdate" />
         <div class="btnWrap">
           <div v-if="status===0" class="btn">
-            <BtnLinkParam btn_style="btn_link9" text="戻る" :linkObject="linkObject" />
+            <BtnLinkParam btn_style="btn_link9" text="bookに戻る" :linkObject="linkObject" />
             <span @click="progressStatus(1),setFormDataToState">確認する</span>
           </div>
           <div v-if="status===1" class="btn">
@@ -64,8 +64,8 @@ export default {
     // File,
   },
   mounted() {
-    console.log(this.id_story);
-    console.log(this.id_post);
+    // console.log(this.id_story);
+    // console.log(this.id_post);
     if (!this.id_post) return;
     const promise = selectPost(this.id_post, this.toMutationDispatch);
     promise.then(() => {
@@ -91,10 +91,9 @@ export default {
       values: this.$store.getters.post || {},
       status: 0,
       linkObject: {
-        name: "writing-room-view",
+        name: "view-story-information",
         params: {
-          id_story: this.id_story,
-          id_post: this.id_post
+          id_story: this.$route.params.id_story
         }
       }
     };
