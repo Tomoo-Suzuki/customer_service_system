@@ -2,7 +2,6 @@
 import request from "../../lib/request";
 
 export const insertStory = (hash, dispatch) => {
-  console.log(JSON.stringify(hash))
   // const hash = formDataToHash(form);
   const query = `mutation{
           insertStory(
@@ -43,6 +42,8 @@ export const insertStory = (hash, dispatch) => {
             accept_typo_reports
           }
         }`;
+  console.log(query)
+
   return request(query, 'insertPost').then(
     (res) => {
       dispatch(res)
