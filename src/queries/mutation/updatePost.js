@@ -2,6 +2,7 @@
 import request from "../../lib/request";
 
 export const updatePost = (hash, dispatch) => {
+  //console.log(JSON.stringify(hash))
   // const hash = formDataToHash(form);
   const query = `mutation{
           updatePost(id_post:"` + hash.id_post + `",
@@ -19,6 +20,7 @@ export const updatePost = (hash, dispatch) => {
           date_last_modify
           }
         }`;
+  console.log(query)
   return request(query, 'updatePost').then(
     (res) => {
       dispatch(res)

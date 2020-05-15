@@ -1,7 +1,7 @@
 <template>
   <main>
     <H2 text="小説情報" />
-    <BtnLink link="/form-post" btn_style="btn_link" text="storyの追加" />
+    <BtnLinkParam btn_style="btn_link" text="storyの追加" :linkObject="linkObjectNew" />
 
     <BtnLink link="/analysis" btn_style="btn_link4" text="アクセス解析" />
     <BtnLink link="/history" btn_style="btn_link4" text="閲覧履歴" />
@@ -14,7 +14,6 @@
         <dt>{{index+1}}</dt>
         <dd>{{item.id_post }}</dd>
         <dd>{{item.title }}</dd>
-        <dd>{{isComplete(item.is_complete)}}</dd>
         <dd>
           <router-link
             :to="{
@@ -42,10 +41,9 @@
 import H2 from "./atoms/H2.vue";
 import H3 from "./atoms/H3.vue";
 import BtnLink from "./atoms/BtnLink.vue";
+import BtnLinkParam from "./atoms/BtnLinkParam.vue";
 
 import { selectPostStory } from "../queries/query/selectPostStory.js";
-
-import BtnLinkParam from "./atoms/BtnLinkParam.vue";
 
 export default {
   components: {
@@ -55,9 +53,7 @@ export default {
     BtnLinkParam
   },
   mounted() {
-    // const thisForm = document.forms.formStory;
-    // const id_story = thisForm.id_user.value;
-    //const id_story = "00001";
+    console.log("mounted");
     if (!this.id_story) return;
     console.log(this.id_story);
     const promise = selectPostStory(this.id_story, this.toMutationDispatch);
@@ -85,8 +81,15 @@ export default {
       linkObject: {
         name: "writing-room-view",
         params: {
-          id_story: this.id_story,
+          id_story: this.$route.params.id_story,
           id_post: this.id_post
+        }
+      },
+      linkObjectNew: {
+        name: "post-view",
+        params: {
+          id_story: this.$route.params.id_story,
+          id_post: "new"
         }
       }
     };
@@ -104,6 +107,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../scss/_color.scss";
+//@import "../scss/_writing_room.scss";
 
 .section_writingroom {
   margin-top: 4rem;
@@ -162,5 +166,86 @@ export default {
     line-height: 2.2rem;
     font-size: 1.4rem;
   }
+}
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 900px) {
+  .section_writingroom {
+    margin-top: 4rem;
+
+    > dl {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: $upload_blue_dark 1px dotted;
+
+      > dt,
+      > dd {
+        display: inline-block;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        vertical-align: top;
+      }
+
+      > dt {
+        width: 2rem;
+        text-align: center;
+      }
+
+      > dd {
+        &:nth-of-type(1) {
+          width: 9rem;
+          text-align: left;
+        }
+
+        &:nth-of-type(2) {
+          width: calc(100% - 19.5rem);
+          text-align: left;
+
+          > div {
+            line-height: 1.4;
+            text-decoration: none;
+          }
+        }
+
+        &:nth-of-type(3) {
+          width: 8rem;
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  .link_story {
+    color: $upload_blue_dark;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .btn_edit {
+    box-sizing: border-box;
+    background: $upload_blue_dark;
+    text-align: center;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 0.3rem;
+    width: 80%;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+@media screen and (max-width: 413px) {
 }
 </style>

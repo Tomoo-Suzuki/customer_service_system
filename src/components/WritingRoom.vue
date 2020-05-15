@@ -16,7 +16,7 @@
         <dd>{{item.id_story }}</dd>
         <dd>
           <router-link
-            :to="`/story-information/`+item.id_story"
+            :to="{name: 'view-story-information', params: {id_story: item.id_story}}"
             tag="div"
             class="link_story"
             active-class="link_active"
@@ -106,6 +106,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../scss/_color.scss";
+// @import "../scss/_writing_room.scss";
 
 .section_writingroom {
   margin-top: 4rem;
@@ -167,5 +168,85 @@ export default {
   &:hover {
     opacity: 0.5;
   }
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 900px) {
+  .section_writingroom {
+    margin-top: 4rem;
+    > dl {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: $upload_blue_dark 1px dotted;
+      > dt,
+      > dd {
+        display: inline-block;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        vertical-align: top;
+      }
+      > dt {
+        width: 2rem;
+        text-align: center;
+      }
+      > dd {
+        &:nth-of-type(1) {
+          width: 6rem;
+          text-align: left;
+        }
+        &:nth-of-type(2) {
+          width: calc(100% - 8.5rem);
+          text-align: left;
+
+          > div {
+            line-height: 1.4;
+            text-decoration: none;
+          }
+        }
+        &:nth-of-type(3) {
+          width: 10rem;
+          text-align: center;
+        }
+        &:nth-of-type(4) {
+          width: 10rem;
+          text-align: left;
+        }
+        &:nth-of-type(5) {
+          width: 10rem;
+          text-align: left;
+        }
+      }
+    }
+  }
+  .link_story {
+    color: $upload_blue_dark;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .btn_edit {
+    box-sizing: border-box;
+    background: $upload_blue_dark;
+    text-align: center;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 0.3rem;
+    width: 80%;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+@media screen and (max-width: 413px) {
 }
 </style>

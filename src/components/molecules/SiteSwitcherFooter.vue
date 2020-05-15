@@ -39,4 +39,20 @@ export default {
     }
   }
 }
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 900px) {
+  .siteSwitcher_footer {
+    font-size: 1rem;
+    width: 95%;
+    margin: auto;
+    > div > ul > li > a {
+      text-decoration: none;
+    }
+  }
+}
+
+@media screen and (max-width: 413px) {
+}
 </style>

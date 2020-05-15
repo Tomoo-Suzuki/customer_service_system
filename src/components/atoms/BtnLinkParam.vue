@@ -99,4 +99,26 @@ export default {
   border: #a4a4a4 solid 1px !important;
   background: #a4a4a4 !important;
 }
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 900px) {
+  .btn_link,
+  .btn_link2,
+  .btn_link3,
+  .btn_link4,
+  .btn_link5,
+  .btn_link6,
+  .btn_link7,
+  .btn_link8,
+  .btn_link9,
+  .btn_link10 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 413px) {
+}
 </style>
