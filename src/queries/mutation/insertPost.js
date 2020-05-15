@@ -2,6 +2,7 @@
 import request from "../../lib/request";
 
 export const insertPost = (hash, dispatch) => {
+  console.log(hash)
   // const hash = formDataToHash(form);
   const query = `mutation{
           insertPost(

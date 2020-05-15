@@ -4,8 +4,8 @@
     <H2 text="storyの投稿" />
     <div v-if="status===0||status===1">
       <form name="formPost">
-        <input type="hidden" name="id_story" value="sf00001" />
-        <input type="hidden" name="id_post" value="sf000001000" />
+        <input type="hidden" name="id_story" :value="id_story" />
+        <input type="hidden" name="id_post" :value="idPostMaker" />
         <TitleChapter
           :title_chapter="values.title_chapter"
           :status="status"
@@ -19,7 +19,6 @@
         <div class="btnWrap">
           <div v-if="status===0" class="btn">
             <BtnLinkParam btn_style="btn_link9" text="戻る" :linkObject="linkObject" />
-
             <span @click="progressStatus(1),setFormDataToState">確認する</span>
           </div>
           <div v-if="status===1" class="btn">
@@ -65,8 +64,6 @@ export default {
     // File,
   },
   mounted() {
-    // const thisForm = document.forms.formPost;
-    // const id_post = thisForm.id_post.value;
     console.log(this.id_story);
     console.log(this.id_post);
     if (!this.id_post) return;
@@ -74,6 +71,17 @@ export default {
     promise.then(() => {
       this.values = this.$store.getters.post || {};
     });
+  },
+  computed: {
+    idPostMaker() {
+      if (this.id_post === "new" || this.id_post === undefined) {
+        const d = new Date();
+        const new_id_post = this.id_story + d.toString;
+        return new_id_post;
+      } else {
+        return this.id_post;
+      }
+    }
   },
 
   data() {

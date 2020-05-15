@@ -3,8 +3,8 @@
     <H2 text="小説の設定" />
     <div v-if="status===0||status===1">
       <form name="formStory">
-        <input type="hidden" name="id_user" value="00003" />
-        <input type="hidden" name="id_story" value="sf00001" />
+        <input type="hidden" name="id_user" :value="id_user" />
+        <input type="hidden" name="id_story" :value="id_story" />
 
         <TitleMain :title_main="values.title_main" :status="status" @formUpdate="formUpdate" />
         <AutherName :auther_name="values.auther_name" :status="status" @formUpdate="formUpdate" />
@@ -151,6 +151,7 @@ export default {
     return {
       values: this.$store.getters.story || {},
       status: 0,
+      id_user: "00001",
       id_story: this.$route.params.id_story,
       linkObject: {
         name: "writing-room-view",
@@ -176,12 +177,10 @@ export default {
     formUpdate(type, e, name, val) {
       e.preventDefault();
       if (type === 1) {
-        console.log(name);
-        console.log(typeof val);
         this.$set(this.values, name, val);
       } else if (type === 2) {
         const name = e.target.name;
-        const val = Boolean(e.target.value);
+        let val = e.target.value === "true" ? true : false;
         this.$set(this.values, name, val);
       } else {
         const name = e.target.name;
@@ -199,12 +198,22 @@ export default {
       this.$store.dispatch("updateStory", thisFormData);
       this.values = this.$store.getters.story;
     },
+    idMaker() {
+      if (this.id_story === "new" || this.id_story === undefined) {
+        const d = new Date();
+        const new_id_story = this.id_user + d.toString();
+        return new_id_story;
+      }
+    },
+
     submitFormData() {
       //   e.preventDefault();
       //   const thisFrom = document.forms.formStory;
       console.log(this.id_story);
       if (this.id_story === "new") {
         console.log("pass insert");
+        const new_id_story = this.idMaker();
+        this.values["id_story"] = new_id_story;
         //insertStory(thisFrom, this.toMutationDispatch);
         insertStory(this.values, this.toMutationDispatch);
       } else {
