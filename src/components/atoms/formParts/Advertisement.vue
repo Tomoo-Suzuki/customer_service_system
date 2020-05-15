@@ -7,7 +7,7 @@
         <input
           type="radio"
           name="accept_advertisement"
-          :value="false"
+          value="false"
           :checked="accept_advertisement === false"
           @change="formUpdate"
         />
@@ -17,7 +17,7 @@
         <input
           type="radio"
           name="accept_advertisement"
-          :value="true"
+          value="true"
           :checked="accept_advertisement === true"
           @change="formUpdate"
         />

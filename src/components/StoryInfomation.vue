@@ -32,6 +32,9 @@
         </dd>
       </dl>
     </section>
+    <div class="btnWrap">
+      <BtnLinkParam btn_style="btn_link9" text="書斎へ戻る" :linkObject="linkObject" />
+    </div>
   </main>
 </template>
 
@@ -42,11 +45,14 @@ import BtnLink from "./atoms/BtnLink.vue";
 
 import { selectPostStory } from "../queries/query/selectPostStory.js";
 
+import BtnLinkParam from "./atoms/BtnLinkParam.vue";
+
 export default {
   components: {
     H2,
     H3,
-    BtnLink
+    BtnLink,
+    BtnLinkParam
   },
   mounted() {
     // const thisForm = document.forms.formStory;
@@ -75,7 +81,14 @@ export default {
       id_story: this.$route.params.id_story,
       values: this.$store.getters.post || {},
       status: 0,
-      btn_style: ""
+      //   btn_style: "",
+      linkObject: {
+        name: "writing-room-view",
+        params: {
+          id_story: this.id_story,
+          id_post: this.id_post
+        }
+      }
     };
   },
 
@@ -136,6 +149,18 @@ export default {
   cursor: pointer;
   &:hover {
     opacity: 0.5;
+  }
+}
+.btnWrap {
+  text-align: center;
+  > span {
+    //TODO:統合
+    box-sizing: border-box;
+    display: inline-block;
+    width: 16rem;
+    height: 3rem;
+    line-height: 2.2rem;
+    font-size: 1.4rem;
   }
 }
 </style>

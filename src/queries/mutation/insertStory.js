@@ -2,6 +2,7 @@
 import request from "../../lib/request";
 
 export const insertStory = (hash, dispatch) => {
+  console.log(JSON.stringify(hash))
   // const hash = formDataToHash(form);
   const query = `mutation{
           insertStory(
