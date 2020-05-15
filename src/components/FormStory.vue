@@ -201,6 +201,7 @@ export default {
       this.values = this.$store.getters.story;
     },
     idMaker() {
+      //TODO:拡張する要リファクタリング
       if (this.id_story === "new" || this.id_story === undefined) {
         const d = new Date();
         const sub_story_id = d.getUTCMilliseconds();
@@ -217,6 +218,7 @@ export default {
       if (this.id_story === "new") {
         console.log("pass insert");
         const new_id_story = this.idMaker();
+        //一次処理
         this.values["id_user"] = this.id_user;
         this.values["id_story"] = new_id_story;
         //insertStory(thisFrom, this.toMutationDispatch);

@@ -5,7 +5,7 @@
     <div v-if="status===0||status===1">
       <form name="formPost">
         <input type="hidden" name="id_story" :value="id_story" />
-        <input type="hidden" name="id_post" :value="idPostMaker" />
+        <input type="hidden" name="id_post" :value="id_post" />
         <TitleChapter
           :title_chapter="values.title_chapter"
           :status="status"
@@ -13,17 +13,18 @@
         />
         <HasChapter :has_chapter="values.has_chapter" :status="status" @formUpdate="formUpdate" />
         <Title :title="values.title" :status="status" @formUpdate="formUpdate" />
+        <!--TODO:改行(マークではなく)をgraphQlは扱えない。対応を考える。-->
         <Story :story="values.story" :status="status" @formUpdate="formUpdate" />
         <!-- <File :file="properties.file" @formUpdate="formUpdate" /> -->
         <LastModifyDate :date_last_modify="values.date_last_modify" @formUpdate="formUpdate" />
         <div class="btnWrap">
           <div v-if="status===0" class="btn">
-            <BtnLinkParam btn_style="btn_link9" text="bookに戻る" :linkObject="linkObject" />
+            <BtnLinkParam btn_style="btn_link9" text="小説情報に戻る" :linkObject="linkObject" />
             <span @click="progressStatus(1),setFormDataToState">確認する</span>
           </div>
           <div v-if="status===1" class="btn">
             <span @click="progressStatus(0)">戻る</span>
-            <span @click="submitFormData, progressStatus(2)">送信する</span>
+            <span @click="submitFormData(), progressStatus(2)">送信する</span>
           </div>
         </div>
       </form>
@@ -64,26 +65,13 @@ export default {
     // File,
   },
   mounted() {
-    // console.log(this.id_story);
-    // console.log(this.id_post);
     if (!this.id_post) return;
     const promise = selectPost(this.id_post, this.toMutationDispatch);
     promise.then(() => {
       this.values = this.$store.getters.post || {};
     });
   },
-  computed: {
-    idPostMaker() {
-      if (this.id_post === "new" || this.id_post === undefined) {
-        const d = new Date();
-        const new_id_post = this.id_story + d.toString;
-        return new_id_post;
-      } else {
-        return this.id_post;
-      }
-    }
-  },
-
+  computed: {},
   data() {
     return {
       id_story: this.$route.params.id_story,
@@ -105,18 +93,17 @@ export default {
     formUpdate(type, e, name, val) {
       e.preventDefault();
       if (type === 1) {
-        console.log(name);
-        console.log(typeof val);
         this.$set(this.values, name, val);
       } else if (type === 2) {
         const name = e.target.name;
-        const val = Boolean(e.target.value);
+        let val = e.target.value === "true" ? true : false;
         this.$set(this.values, name, val);
       } else {
         const name = e.target.name;
         const val = e.target.value;
         this.$set(this.values, name, val);
       }
+      this.$store.dispatch("updatePost", this.values);
     },
     progressStatus(num) {
       this.status = num;
@@ -127,15 +114,28 @@ export default {
       this.$store.dispatch("updatePost", thisFormData);
       this.values = this.$store.getters.post;
     },
-    submitFormData(e) {
-      e.preventDefault();
+    idMaker() {
+      //TODO:拡張する要リファクタリング
+      if (this.id_post === "new" || this.id_post === undefined) {
+        const d = new Date();
+        const sub_post_id = d.getUTCMilliseconds();
+        const new_id_post = "dt" + this.id_story + sub_post_id;
+        return new_id_post;
+      }
+    },
+
+    submitFormData() {
       //   const thisFrom = document.forms.formPost;
       if (this.id_post === "new") {
-        console.log("pass insert");
+        console.log("pass insertPost");
+        const new_id_post = this.idMaker();
+        //一次処理
+        this.values["id_story"] = this.id_story;
+        this.values["id_post"] = new_id_post;
         //insertPost(thisFrom, this.toMutationDispatch);
         insertPost(this.values, this.toMutationDispatch);
       } else {
-        console.log("pass update");
+        console.log("pass updatePost");
         //updatePost(thisFrom, this.toMutationDispatch);
         updatePost(this.values, this.toMutationDispatch);
       }

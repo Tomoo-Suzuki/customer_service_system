@@ -1,9 +1,7 @@
 <template>
   <main>
     <H2 text="小説情報" />
-    {{"params"}}
-    {{this.$route.params.id_story}}
-    <BtnLink link="/form-post" btn_style="btn_link" text="storyの追加" />
+    <BtnLinkParam btn_style="btn_link" text="storyの追加" :linkObject="linkObjectNew" />
 
     <BtnLink link="/analysis" btn_style="btn_link4" text="アクセス解析" />
     <BtnLink link="/history" btn_style="btn_link4" text="閲覧履歴" />
@@ -44,10 +42,9 @@
 import H2 from "./atoms/H2.vue";
 import H3 from "./atoms/H3.vue";
 import BtnLink from "./atoms/BtnLink.vue";
+import BtnLinkParam from "./atoms/BtnLinkParam.vue";
 
 import { selectPostStory } from "../queries/query/selectPostStory.js";
-
-import BtnLinkParam from "./atoms/BtnLinkParam.vue";
 
 export default {
   components: {
@@ -85,8 +82,15 @@ export default {
       linkObject: {
         name: "writing-room-view",
         params: {
-          id_story: this.id_story,
+          id_story: this.$route.params.id_story,
           id_post: this.id_post
+        }
+      },
+      linkObjectNew: {
+        name: "post-view",
+        params: {
+          id_story: this.$route.params.id_story,
+          id_post: "new"
         }
       }
     };
