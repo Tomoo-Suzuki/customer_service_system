@@ -11,6 +11,7 @@
         <IsComplete :is_complete="values.is_complete" :status="status" @formUpdate="formUpdate" />
         <Genre :genre="Number(values.genre)" :status="status" @formUpdate="formUpdate" />
         <CatchCopy :catch_copy="values.catch_copy" :status="status" @formUpdate="formUpdate" />
+        <!--TODO 改行対応、コピーがstateに保存されない問題-->
         <Synopsis :synopsis="values.synopsis" :status="status" @formUpdate="formUpdate" />
         <Keywords :keywords="values.keywords" :status="status" @formUpdate="formUpdate" />
 
@@ -187,6 +188,7 @@ export default {
         const val = e.target.value;
         this.$set(this.values, name, val);
       }
+      this.$store.dispatch("updateStory", this.values);
     },
 
     progressStatus(num) {
@@ -201,7 +203,9 @@ export default {
     idMaker() {
       if (this.id_story === "new" || this.id_story === undefined) {
         const d = new Date();
-        const new_id_story = this.id_user + d.toString();
+        const sub_story_id = d.getUTCMilliseconds();
+        console.log();
+        const new_id_story = "dt" + this.id_user + sub_story_id;
         return new_id_story;
       }
     },
@@ -213,6 +217,7 @@ export default {
       if (this.id_story === "new") {
         console.log("pass insert");
         const new_id_story = this.idMaker();
+        this.values["id_user"] = this.id_user;
         this.values["id_story"] = new_id_story;
         //insertStory(thisFrom, this.toMutationDispatch);
         insertStory(this.values, this.toMutationDispatch);
