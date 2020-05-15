@@ -67,7 +67,7 @@
         />
         <div class="btnWrap">
           <div v-if="status===0" class="btn">
-            <BtnLinkParam btn_style="btn_link9" text="戻る" :linkObject="linkObject" />
+            <BtnLinkParam btn_style="btn_link9" text="書斎へ戻る" :linkObject="linkObject" />
             <span @click="progressStatus(1),setFormDataToState">確認する</span>
           </div>
           <div v-if="status===1" class="btn">

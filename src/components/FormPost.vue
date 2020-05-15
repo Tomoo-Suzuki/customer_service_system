@@ -1,7 +1,7 @@
 <template>
   <main class="form-book">
     {{this.$route.params}}
-    <H2 text="小説の投稿" />
+    <H2 text="storyの投稿" />
     <div v-if="status===0||status===1">
       <form name="formPost">
         <input type="hidden" name="id_story" value="sf00001" />
@@ -24,7 +24,7 @@
           </div>
           <div v-if="status===1" class="btn">
             <span @click="progressStatus(0)">戻る</span>
-            <button @click="submitFormData, progressStatus(2)">送信する</button>
+            <span @click="submitFormData, progressStatus(2)">送信する</span>
           </div>
         </div>
       </form>
@@ -98,11 +98,17 @@ export default {
     formUpdate(type, e, name, val) {
       e.preventDefault();
       if (type === 1) {
-        this.$set(this.properties, name, val);
+        console.log(name);
+        console.log(typeof val);
+        this.$set(this.values, name, val);
+      } else if (type === 2) {
+        const name = e.target.name;
+        const val = Boolean(e.target.value);
+        this.$set(this.values, name, val);
       } else {
         const name = e.target.name;
         const val = e.target.value;
-        this.$set(this.properties, name, val);
+        this.$set(this.values, name, val);
       }
     },
     progressStatus(num) {
