@@ -1,5 +1,6 @@
 <template>
   <main class="form-book">
+    <ProgressTracker :txtArray="txtArray" :status="status" />
     <H2 text="新規ユーザー登録" />
     <div v-if="status===0||status===1">
       <form name="formRegistry">
@@ -41,6 +42,7 @@ import Magazine from "./atoms/formParts/Magazine.vue";
 import AgreeToTerms from "./atoms/formParts/AgreeToTerms.vue";
 
 import H2 from "./atoms/H2.vue";
+import ProgressTracker from "./atoms/ProgressTracker.vue";
 
 import formDataToHash from "../lib/formDataToHash";
 
@@ -53,7 +55,8 @@ export default {
     Password,
     Magazine,
     AgreeToTerms,
-    H2
+    H2,
+    ProgressTracker
   },
   computed: {
     today() {
@@ -64,7 +67,8 @@ export default {
   data() {
     return {
       values: this.$store.getters.story || {},
-      status: 0
+      status: 0,
+      txtArray: ["入力・編集", "確認", "完了"]
     };
   },
   props: {

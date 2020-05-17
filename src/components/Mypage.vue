@@ -1,7 +1,7 @@
 <template>
   <main>
     <H2 text="マイページ" />
-    <BtnLink link="/form-account" text="アカウントの更新" />
+    <BtnLink link="/form-account" btn_style="btn_link4" text="アカウントの更新" />
 
     <!-- <button @click="toEachPage('/form-user')">User</button>
     <button @click="toEachPage('/form-post')">Story Upload</button>
