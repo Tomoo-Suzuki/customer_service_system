@@ -1,7 +1,11 @@
 <template>
   <nav class="nav_siteSwicher">
-    <Logo :logoType="'0'" />
-    <Logo :logoType="'2'" />
+    <a href="http://localhost:8888/" class="logoWrap">
+      <Logo :logoType="'0'" />
+    </a>
+    <router-link to="/" tag="div" class="logoWrap" active-class="active" exact>
+      <Logo :logoType="'2'" />
+    </router-link>
   </nav>
 </template>
 <script>
@@ -20,12 +24,14 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  > .logo {
-    width: 11rem;
-    margin-right: 0;
-  }
-  > .logo:nth-of-type(1) {
-    margin-right: 1.5rem;
+  > .logoWrap {
+    > .logo {
+      width: 11rem;
+      margin-right: 0;
+    }
+    > .logo:nth-of-type(1) {
+      margin-right: 1.5rem;
+    }
   }
 }
 @media screen and (max-width: 1024px) {

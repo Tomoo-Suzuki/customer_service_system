@@ -1,12 +1,16 @@
 <template>
-  <div class="logo">
-    <div class="imgWrap">
-      <img :src="require(`../../assets/img/logo_${logoTxt}.svg`)" :alt="'bookma logo '+logoTxt" />
-    </div>
-  </div>
+  <router-link to="/" tag="h1" class="logoWrap" active-class="active" exact>
+    <Logo :logoType="'1'" />
+  </router-link>
 </template>
 <script>
+import Logo from "../atoms/Logo.vue";
+
 export default {
+  components: {
+    Logo
+  },
+
   props: {
     logoType: {
       type: String,
@@ -36,14 +40,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.logo {
-  display: block;
-  margin-right: 1rem;
-
-  .imgWrap {
-    > img {
-      width: 100%;
-    }
+.logoWrap {
+  /deep/.logo {
+    display: block;
+    margin-right: 1rem;
+    width: 15rem;
   }
 }
 </style>

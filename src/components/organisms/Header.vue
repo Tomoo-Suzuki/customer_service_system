@@ -2,7 +2,7 @@
   <header class="headerBook">
     <div class="headerBook_inner">
       <div class="headerBook_inner_upper">
-        <Logo :logoType="'1'" />
+        <LogoHeader :logoType="'1'" />
         <div>
           <MenuHeader />
           <SearchBox />
@@ -17,7 +17,7 @@
   </header>
 </template>
 <script>
-import Logo from "../atoms/Logo.vue";
+import LogoHeader from "../molecules/LogoHeader.vue";
 import SearchBox from "../atoms/SearchBox.vue";
 import SiteSwitcher from "../molecules/SiteSwitcher.vue";
 import MenuHeader from "../atoms/MenuHeader.vue";
@@ -26,7 +26,7 @@ import BtnPriority from "../atoms/BtnPriority.vue";
 
 export default {
   components: {
-    Logo,
+    LogoHeader,
     SearchBox,
     SiteSwitcher,
     MenuHeader,
