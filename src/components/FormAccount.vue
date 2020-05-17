@@ -1,5 +1,6 @@
 <template>
   <main class="form-book">
+    <ProgressTracker :txtArray="txtArray" :status="status" />
     <H2 text="アカウント設定" />
     <div v-if="status===0||status===1">
       <form name="formAccount">
@@ -48,6 +49,7 @@ import Birthday from "./atoms/formParts/Birthday.vue";
 import Email from "./atoms/formParts/Email.vue";
 
 import H2 from "./atoms/H2.vue";
+import ProgressTracker from "./atoms/ProgressTracker.vue";
 
 import formDataToHash from "../lib/formDataToHash";
 
@@ -61,7 +63,8 @@ export default {
     Gender,
     Email,
     Birthday,
-    H2
+    H2,
+    ProgressTracker
   },
   mounted() {
     const thisForm = document.forms.formAccount;
@@ -75,7 +78,8 @@ export default {
   data() {
     return {
       values: this.$store.getters.account || {},
-      status: 0
+      status: 0,
+      txtArray: ["入力・編集", "確認", "完了"]
     };
   },
   methods: {
