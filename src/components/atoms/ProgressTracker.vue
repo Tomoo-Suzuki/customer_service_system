@@ -45,6 +45,7 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  margin-bottom: 7rem;
 
   .progressTracker {
     position: relative;
@@ -54,14 +55,14 @@ export default {
     // border: solid 1px #cfcfcf;
 
     .text {
-      color: $sell_green_dark;
+      color: $upload_blue_dark;
     }
 
     .progressPointer {
       position: absolute;
       top: 45%;
       left: calc(50% - 0.65rem);
-      background: $sell_green_dark;
+      background: $upload_blue_dark;
       border-radius: 50%;
       width: 1.3rem;
       height: 1.3rem;
@@ -84,12 +85,12 @@ export default {
         width: 14rem;
         height: 0.2rem;
         border-radius: 0;
-        background: $sell_green_dark;
+        background: $upload_blue_dark;
       }
 
       &.current {
         background: #ffffff;
-        border: solid 2px $sell_green_dark;
+        border: solid 2px $upload_blue_dark;
         width: 0.9rem;
         height: 0.9rem;
 

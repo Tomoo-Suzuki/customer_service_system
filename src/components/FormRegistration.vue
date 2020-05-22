@@ -9,10 +9,24 @@
           :email="values.email"
           :emailConfirm="values.email_confirm"
           :status="status"
+          :error="error"
           @formUpdate="formUpdate"
+          @blur="formValidator"
         />
-        <UserId :id_user="values.id_user" :status="status" @formUpdate="formUpdate" />
-        <Password :password="values.password" :status="status" @formUpdate="formUpdate" />
+        <UserId
+          :id_user="values.id_user"
+          :status="status"
+          :error="error"
+          @formUpdate="formUpdate"
+          @blur="formValidator"
+        />
+        <Password
+          :password="values.password"
+          :status="status"
+          :error="error"
+          @formUpdate="formUpdate"
+          @blur="formValidator"
+        />
         <p>
           ユーザー登録を行うには「利用規約」および「ガイドライン」へ同意いただく必要があります。
           ユーザー登録を完了するためのメールを、登録いただいたメールアドレスへ送信します。
@@ -67,16 +81,17 @@ export default {
   data() {
     return {
       values: this.$store.getters.story || {},
+      error: this.$store.getters.error,
       status: 0,
       txtArray: ["入力・編集", "確認", "完了"]
     };
   },
-  props: {
-    properties: {
-      type: Object,
-      default: () => ({})
-    }
-  },
+  //   props: {
+  //     properties: {
+  //       type: Object,
+  //       default: () => ({})
+  //     }
+  //   },
   methods: {
     toMutationDispatch(res) {
       this.$store.dispatch("updateAccount", res);

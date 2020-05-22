@@ -19,5 +19,21 @@ export default {
     commit
   }, fromData) {
     commit("memoryForm", fromData);
+  },
+  initErrorMsg({
+    commit
+  }, initErrorMsg) {
+    commit("initErrorMsg", initErrorMsg);
+  },
+  updateflagValidate({
+    commit
+  }, flagValidate) {
+
+    commit("updateflagValidate", flagValidate);
+  },
+  updateErrorMsg({
+    commit
+  }, error) {
+    commit("updateErrorMsg", error);
   }
 };

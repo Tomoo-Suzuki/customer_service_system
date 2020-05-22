@@ -10,7 +10,9 @@
         placeholder="09021334566"
         pattern="\d{2,4}-?\d{3,4}-?\d{3,4}"
         @change="formUpdate"
+        @blur="formValidator"
       />
+      <span class="msg">{error.gender}</span>
     </dd>
   </dl>
 </template>
@@ -24,11 +26,18 @@ export default {
     status: {
       type: Number,
       default: null
+    },
+    error: {
+      type: Object,
+      default: () => ({})
     }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
+    },
+    formValidator(e) {
+      this.$emit("formValidator", e);
     }
   }
 };

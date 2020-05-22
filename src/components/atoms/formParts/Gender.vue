@@ -22,6 +22,7 @@
           :value="1"
           :checked="gender === 1"
           @change="formUpdate"
+          @blur="formValidator"
         />
       </label>
       <label>
@@ -33,8 +34,10 @@
           :value="2"
           :checked="gender === 2"
           @change="formUpdate"
+          @blur="formValidator"
         />
       </label>
+      <span class="msg">{{error.gender}}</span>
     </dd>
     <dd v-if="status===1">
       <span>{{gender}}</span>
@@ -51,6 +54,10 @@ export default {
     status: {
       type: Number,
       default: null
+    },
+    error: {
+      type: Object,
+      default: () => ({})
     }
   },
   methods: {
@@ -58,6 +65,9 @@ export default {
       this.genderData = Number(e.target.value);
       console.log(this.genderData);
       this.$emit("formUpdate", 1, e, e.target.name, this.genderData);
+    },
+    formValidator(e) {
+      this.$emit("formValidator", e);
     }
   }
 };

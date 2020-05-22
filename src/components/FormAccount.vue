@@ -1,5 +1,6 @@
 <template>
   <main class="form-book">
+    {{error}}
     <ProgressTracker :txtArray="txtArray" :status="status" />
     <H2 text="アカウント設定" />
     <div v-if="status===0||status===1">
@@ -9,21 +10,39 @@
           :last_name="values.last_name"
           :first_name="values.first_name"
           :status="status"
+          :error="error"
           @formUpdate="formUpdate"
+          @formValidator="formValidator"
         />
         <NameKana
           :last_name_kana="values.last_name_kana"
           :first_name_kana="values.first_name_kana"
           :status="status"
+          :error="error"
           @formUpdate="formUpdate"
+          @formValidator="formValidator"
         />
-        <Gender :gender="values.gender" :status="status" @formUpdate="formUpdate" />
-        <Birthday :birthday="values.birthday" :status="status" @formUpdate="formUpdate" />
+        <Gender
+          :gender="values.gender"
+          :status="status"
+          :error="error"
+          @formUpdate="formUpdate"
+          @formValidator="formValidator"
+        />
+        <Birthday
+          :birthday="values.birthday"
+          :status="status"
+          :error="error"
+          @formUpdate="formUpdate"
+          @formValidator="formValidator"
+        />
         <Email
           :email="values.email"
           :email_confirm="values.email_confirm"
           :status="status"
+          :error="error"
           @formUpdate="formUpdate"
+          @formValidator="formValidator"
         />
         <div class="btnWrap">
           <div v-if="status===0" class="btn">
@@ -56,6 +75,8 @@ import formDataToHash from "../lib/formDataToHash";
 import { selectAccountU } from "../queries/query/selectAccountU.js";
 import { insertAccountU } from "../queries/mutation/insertAccountU.js";
 
+import validatator from "../lib/validate/";
+
 export default {
   components: {
     Name,
@@ -66,10 +87,28 @@ export default {
     H2,
     ProgressTracker
   },
+  created() {
+    const initErrorHash = {
+      last_name: "",
+      first_name: "",
+      last_name_kana: "",
+      first_name_kana: "",
+      tel: "",
+      email: "",
+      email_confirm: "",
+      zip: "",
+      prefecture: "",
+      city: "",
+      address3: "",
+      gender: "",
+      birthday: ""
+    };
+    this.$store.dispatch("initErrorMsg", initErrorHash);
+  },
   mounted() {
     const thisForm = document.forms.formAccount;
     const email = thisForm.email_id.value;
-    if (!email) return;
+    if (email) return;
     const promise = selectAccountU(email, this.toMutationDispatch);
     promise.then(() => {
       this.values = this.$store.getters.account || {};
@@ -79,10 +118,19 @@ export default {
     return {
       values: this.$store.getters.account || {},
       status: 0,
+      //   error: this.upddateError,
       txtArray: ["入力・編集", "確認", "完了"]
     };
   },
+  computed: {
+    error() {
+      return this.$store.getters.error;
+    }
+  },
   methods: {
+    formValidator(e) {
+      validatator(e, this.$store.dispatch);
+    },
     toMutationDispatch(res) {
       this.$store.dispatch("updateAccount", res);
     },

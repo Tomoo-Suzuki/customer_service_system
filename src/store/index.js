@@ -12,7 +12,9 @@ export default new Vuex.Store({
     account: {},
     story: {},
     post: {},
-    formData: {}
+    formData: {},
+    flagValidate: {},
+    error: {}
   },
   getters,
   mutations,

@@ -31,16 +31,18 @@ textarea {
 
         dd {
             width: 59.6rem;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: start;
 
-            >div,
-            >span,
-            >div>span {
-                margin-right: 1.6rem;
+            >div>span,
+            >div>div {
+                margin-right: 3.2rem;
             }
 
-            >div {
-                margin-bottom: 1.6rem;
-            }
+            // >div {
+            //     margin-bottom: 1.6rem;
+            // }
 
             input[type='text'],
             input[type='email'],
@@ -63,6 +65,35 @@ textarea {
 
     }
 }
+
+%msg {
+    color: $read_orange_dark;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 1rem;
+}
+
+/deep/.msg {
+    @extend %msg;
+    display: inline-block;
+    margin-left: 1rem;
+    height: 3rem;
+    line-height: 3rem;
+}
+
+/deep/.form_horizontal {
+    >span {
+        display: block;
+        margin-bottom: .8rem;
+    }
+
+    >span>.msg {
+        @extend %msg;
+        margin-left: 0;
+    }
+}
+
+
 
 .radioAndCheckbox {
     display: inline-flex;

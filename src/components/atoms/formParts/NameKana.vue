@@ -2,34 +2,47 @@
   <dl>
     <dt>フリガナ</dt>
     <dd v-if="status===0">
-      <span>
-        <input
-          type="text"
-          name="last_name_kana"
-          :value="last_name_kana"
-          required
-          pattern="[ァ-ヴー/s ]+"
-          placeholder="ヤマダ"
-          title="カタカナを入力してください"
-          @change="formUpdate"
-        />
-      </span>
-      <span>
-        <input
-          type="text"
-          name="first_name_kana"
-          :value="first_name_kana"
-          required
-          pattern="[ァ-ヴー/s ]+"
-          placeholder="キョウコ"
-          title="カタカナを入力してください"
-          @change="formUpdate"
-        />
-      </span>
+      <div class="form_horizontal">
+        <span>
+          <input
+            type="text"
+            name="last_name_kana"
+            :value="last_name_kana"
+            required
+            pattern="[ァ-ヴー/s ]+"
+            placeholder="ヤマダ"
+            title="カタカナを入力してください"
+            @change="formUpdate"
+            @blur="formValidator"
+          />
+        </span>
+        <span class="msg">{{error.last_name_kana}}</span>
+      </div>
+
+      <div class="form_horizontal">
+        <span>
+          <input
+            type="text"
+            name="first_name_kana"
+            :value="first_name_kana"
+            required
+            pattern="[ァ-ヴー/s ]+"
+            placeholder="キョウコ"
+            title="カタカナを入力してください"
+            @change="formUpdate"
+            @blur="formValidator"
+          />
+        </span>
+        <span class="msg">{{error.first_name_kana}}</span>
+      </div>
     </dd>
     <dd v-if="status===1">
-      <span>{{last_name_kana}}</span>
-      <span>{{first_name_kana}}</span>
+      <div class="form_horizontal">
+        <span>{{last_name_kana}}</span>
+      </div>
+      <div class="form_horizontal">
+        <span>{{first_name_kana}}</span>
+      </div>
     </dd>
   </dl>
 </template>
@@ -47,11 +60,18 @@ export default {
     status: {
       type: Number,
       default: null
+    },
+    error: {
+      type: Object,
+      default: () => ({})
     }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", 0, e);
+    },
+    formValidator(e) {
+      this.$emit("formValidator", e);
     }
   }
 };
