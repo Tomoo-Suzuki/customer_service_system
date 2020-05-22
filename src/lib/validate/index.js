@@ -3,7 +3,7 @@
 //   form_controll
 // } from '_redux/actions/action';
 
-// import * as regs from './regularExpressions'
+import * as regs from './regularExpressions'
 import * as logics from './logics'
 
 const text_error = {
@@ -47,49 +47,34 @@ const validator = (e, dispatch) => {
       dispatch("updateErrorMsg", tempHash);
     }
   }
-  // tempHash.val = value;
-  // // dispatch(form_controll(tempHash));
-  // if (value) {
+  tempHash.val = value;
+  dispatch("updateFormAccount", tempHash);
+  if (value) {
 
-  //   if (name === 'last_name_kana' || name === 'first_name_kana') {
-  //     const is_kana = regs.katakana_all.test(value);
-  //     if (!is_kana) {
-  //       tempHash.val = 'カタカナのご入力をお願いいたします。';
-  //       // dispatch(form_validate(tempHash));
-  //     }
-  //   }
-  //   if (name === 'tel') {
-  //     const is_tel = regs.tel.test(value);
-  //     if (!is_tel) {
-  //       tempHash.val = '数字9桁か10桁でご入力ください。';
-  //       // dispatch(form_validate(tempHash));
-  //     }
-  //   }
-  //   if (name === 'email') {
-  //     const is_email = regs.email.test(value);
-  //     if (!is_email) {
-  //       tempHash.val = 'emailアドレスをご入力ください。';
-  //       // dispatch(form_validate(tempHash));
-  //     }
-  //   }
-  //   if (name === 'email_confirm') {
-  //     const is_email = regs.email.test(value);
-  //     if (!is_email) {
-  //       tempHash.val = 'emailアドレスをご入力ください。';
-  //       // dispatch(form_validate(tempHash));
-  //     }
-  //   }
+    if (name === 'last_name_kana' || name === 'first_name_kana') {
+      const is_kana = regs.katakana_all.test(value);
+      if (!is_kana) {
+        tempHash.val = 'カタカナのご入力をお願いいたします。';
+        dispatch("updateErrorMsg", tempHash);
+      }
+    }
+    if (name === 'email') {
+      const is_email = regs.email.test(value);
+      if (!is_email) {
+        tempHash.val = 'emailアドレスをご入力ください。';
+        dispatch("updateErrorMsg", tempHash);
+      }
+    }
+    if (name === 'email_confirm') {
+      const is_email = regs.email.test(value);
+      if (!is_email) {
+        tempHash.val = 'emailアドレスをご入力ください。';
+        dispatch("updateErrorMsg", tempHash);
+      }
+    }
 
-  //   if (name === 'zip') {
-  //     value = logics.num_conversion(value)
-  //     const is_zip = regs.zip.test(value);
-  //     if (!is_zip) {
-  //       tempHash.val = '郵便番号を数字７桁でご入力ください。';
-  //       // dispatch(form_validate(tempHash));
-  //     }
-  //   }
 
-  // }
+  }
 
 
 }

@@ -2,6 +2,11 @@ export default {
   updateAccount(context, newAccount) {
     context.commit("updateAccount", newAccount);
   },
+  updateFormAccount({
+    commit
+  }, eachForm) {
+    commit("updateFormAccount", eachForm);
+  },
   updateLogin(context, newLogin) {
     context.commit("updateLogin", newLogin);
   },
@@ -20,20 +25,20 @@ export default {
   }, fromData) {
     commit("memoryForm", fromData);
   },
-  initErrorMsg({
+  initErrorAndFlag({
     commit
-  }, initErrorMsg) {
-    commit("initErrorMsg", initErrorMsg);
+  }, initErrorAndFlag) {
+    commit("initErrorAndFlag", initErrorAndFlag);
   },
-  updateflagValidate({
-    commit
-  }, flagValidate) {
-
-    commit("updateflagValidate", flagValidate);
-  },
+  // updateflagValidate({
+  //   commit
+  // }, flagValidate) {
+  //   commit("updateflagValidate", flagValidate);
+  // },
   updateErrorMsg({
     commit
   }, error) {
     commit("updateErrorMsg", error);
   }
+
 };
