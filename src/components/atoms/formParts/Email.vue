@@ -12,7 +12,9 @@
           placeholder="xxxx@aaa.co.jp"
           title="メールアドレス"
           @change="formUpdate"
+          @blur="formValidator"
         />
+        <span class="msg">{{error.email}}</span>
       </dd>
       <dd v-if="status===1">
         <span>{{email}}</span>
@@ -30,7 +32,10 @@
           placeholder="xxxx@aaa.co.jp"
           title="メールアドレス確認"
           @change="formUpdate"
+          @blur="formValidator"
         />
+        <span class="msg">{{error.email_confirm}}</span>
+
         <span class="tooltip">
           運営よりメールでご連絡する場合があります。普段利用されているメールアドレスを入力してください。
           確実にメールを受信するために、携帯電話でのみ受信可能なメールアドレスを避け、パソコン等でも受信できるメールアドレスをお使いいただくことをお勧めします。
@@ -56,11 +61,18 @@ export default {
     status: {
       type: Number,
       default: null
+    },
+    error: {
+      type: Object,
+      default: () => ({})
     }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", 0, e);
+    },
+    formValidator(e) {
+      this.$emit("formValidator", e);
     }
   }
 };

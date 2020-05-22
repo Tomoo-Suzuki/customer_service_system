@@ -7,5 +7,11 @@ export default {
   },
   formData: function (state) {
     return state.formData;
+  },
+  flagValidate: function (state) {
+    return state.flagValidate;
+  },
+  error: function (state) {
+    return state.error;
   }
 };
