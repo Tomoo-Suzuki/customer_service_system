@@ -1,6 +1,5 @@
 <template>
   <main class="form-book">
-    {{error}}
     <ProgressTracker :txtArray="txtArray" :status="status" />
     <H2 text="アカウント設定" />
     <div v-if="status===0||status===1">
@@ -46,7 +45,7 @@
         />
         <div class="btnWrap">
           <div v-if="status===0" class="btn">
-            <span @click="progressStatus(1),setFormDataToState">確認する</span>
+            <span @click="allValidateConfirm()">確認する</span>
           </div>
           <div v-if="status===1" class="btn">
             <span @click="progressStatus(0)">戻る</span>
@@ -88,22 +87,29 @@ export default {
     ProgressTracker
   },
   created() {
-    const initErrorHash = {
-      last_name: "",
-      first_name: "",
-      last_name_kana: "",
-      first_name_kana: "",
-      tel: "",
-      email: "",
-      email_confirm: "",
-      zip: "",
-      prefecture: "",
-      city: "",
-      address3: "",
-      gender: "",
-      birthday: ""
+    const initErrorAndFlag = {
+      error: {
+        last_name: "",
+        first_name: "",
+        last_name_kana: "",
+        first_name_kana: "",
+        email: "",
+        email_confirm: "",
+        gender: "",
+        birthday: ""
+      },
+      flagValidate: {
+        last_name: false,
+        first_name: false,
+        last_name_kana: false,
+        first_name_kana: false,
+        birthday: false,
+        email: false,
+        email_confirm: false,
+        gender: false
+      }
     };
-    this.$store.dispatch("initErrorMsg", initErrorHash);
+    this.$store.dispatch("initErrorAndFlag", initErrorAndFlag);
   },
   mounted() {
     const thisForm = document.forms.formAccount;
@@ -150,6 +156,26 @@ export default {
     },
     progressStatus(num) {
       this.status = num;
+    },
+    allValidateConfirm() {
+      const flags = this.$store.getters.flagValidate;
+      // const user = this.props.account.user;
+      let allflags = null;
+      Object.keys(flags).map(key => {
+        if (!flags[key]) {
+          allflags -= 1;
+          const tempHash = {};
+          tempHash.key = key;
+          tempHash.val = "ご選択・ご入力をお願いいたします。";
+          this.$store.dispatch("updateErrorMsg", tempHash);
+        } else {
+          allflags = 0;
+        }
+      });
+      if (allflags === 0) {
+        this.setFormDataToState();
+        this.progressStatus(1);
+      }
     },
     setFormDataToState() {
       const thisForm = document.forms.formAccount;
