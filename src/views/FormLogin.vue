@@ -43,12 +43,12 @@
 </template>
 
 <script lang="ts">
-import UserId from "../components/atoms/formParts/UserId";
-import Password from "../components/atoms/formParts/Password";
+import UserId from "@/components/atoms/formParts/UserId";
+import Password from "@/components/atoms/formParts/Password";
 
-import { selectUser } from "../queries/query/selectUser";
-import { insertUser } from "../queries/mutation/insertUser";
-import request from "../lib/request";
+import { selectUser } from "@/queries/query/selectUser";
+import { insertUser } from "@/queries/mutation/insertUser";
+import request from "@/lib/request";
 
 export default {
   components: {

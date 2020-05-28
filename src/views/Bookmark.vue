@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts">
-import H2 from "../components/atoms/H2";
-import H3 from "../components/atoms/H3";
+import H2 from "@/components/atoms/H2";
+import H3 from "@/components/atoms/H3";
 
 export default {
   components: {

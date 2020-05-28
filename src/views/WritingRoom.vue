@@ -60,11 +60,11 @@
 </template>
 
 <script lang="ts">
-import H2 from "../components/atoms/H2";
-import H3 from "../components/atoms/H3";
-import BtnLink from "../components/atoms/BtnLink";
+import H2 from "@/components/atoms/H2";
+import H3 from "@/components/atoms/H3";
+import BtnLink from "@/components/atoms/BtnLink";
 
-import { selectStoryUser } from "../queries/query/selectStoryUser";
+import { selectStoryUser } from "@/queries/query/selectStoryUser";
 
 export default {
   components: {

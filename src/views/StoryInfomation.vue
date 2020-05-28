@@ -46,12 +46,12 @@
 </template>
 
 <script lang="ts">
-import H2 from "../components/atoms/H2";
-import H3 from "../components/atoms/H3";
-import BtnLink from "../components/atoms/BtnLink";
-import BtnLinkParam from "../components/atoms/BtnLinkParam";
+import H2 from "@/components/atoms/H2";
+import H3 from "@/components/atoms/H3";
+import BtnLink from "@/components/atoms/BtnLink";
+import BtnLinkParam from "@/components/atoms/BtnLinkParam";
 
-import { selectPostStory } from "../queries/query/selectPostStory";
+import { selectPostStory } from "@/queries/query/selectPostStory";
 
 export default {
   components: {

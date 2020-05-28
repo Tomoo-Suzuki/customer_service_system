@@ -17,12 +17,12 @@
   </header>
 </template>
 <script lang="ts">
-import LogoHeader from "../molecules/LogoHeader.vue";
-import SearchBox from "../atoms/SearchBox.vue";
-import SiteSwitcher from "../molecules/SiteSwitcher.vue";
-import MenuHeader from "../atoms/MenuHeader.vue";
-import NavHeader from "../atoms/NavHeader.vue";
-import BtnPriority from "../atoms/BtnPriority.vue";
+import LogoHeader from "@/components/molecules/LogoHeader.vue";
+import SearchBox from "@/components/atoms/SearchBox.vue";
+import SiteSwitcher from "@/components/molecules/SiteSwitcher.vue";
+import MenuHeader from "@/components/atoms/MenuHeader.vue";
+import NavHeader from "@/components/atoms/NavHeader.vue";
+import BtnPriority from "@/components/atoms/BtnPriority.vue";
 
 export default {
   components: {

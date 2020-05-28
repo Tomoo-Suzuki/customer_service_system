@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import H2 from "../components/atoms/H2";
+import H2 from "@/components/atoms/H2";
 
 export default {
   components: {

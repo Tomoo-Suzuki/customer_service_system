@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts">
-import H2 from "../components/atoms/H2";
-import BtnLink from "../components/atoms/BtnLink";
+import H2 from "@/components/atoms/H2";
+import BtnLink from "@/components/atoms/BtnLink";
 
 export default {
   components: {

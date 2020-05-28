@@ -57,20 +57,20 @@
 </template>
 
 <script lang="ts">
-import Email from "../components/atoms/formParts/Email";
-import UserId from "../components/atoms/formParts/UserId";
-import Password from "../components/atoms/formParts/Password";
-import Magazine from "../components/atoms/formParts/Magazine";
-import AgreeToTerms from "../components/atoms/formParts/AgreeToTerms";
+import Email from "@/components/atoms/formParts/Email";
+import UserId from "@/components/atoms/formParts/UserId";
+import Password from "@/components/atoms/formParts/Password";
+import Magazine from "@/components/atoms/formParts/Magazine";
+import AgreeToTerms from "@/components/atoms/formParts/AgreeToTerms";
 
-import H2 from "../components/atoms/H2";
-import ProgressTracker from "../components/atoms/ProgressTracker";
+import H2 from "@/components/atoms/H2";
+import ProgressTracker from "@/components/atoms/ProgressTracker";
 
-import formDataToHash from "../lib/formDataToHash";
+import formDataToHash from "@/lib/formDataToHash";
 
-import validatator from "../lib/validate/";
+import validatator from "@/lib/validate/";
 
-import { insertRegistry } from "../queries/mutation/insertRegistry";
+import { insertRegistry } from "@/queries/mutation/insertRegistry";
 
 export default {
   components: {

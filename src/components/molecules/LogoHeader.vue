@@ -4,7 +4,7 @@
   </router-link>
 </template>
 <script lang="ts">
-import Logo from "../atoms/Logo.vue";
+import Logo from "@/components/atoms/Logo.vue";
 
 export default {
   components: {
