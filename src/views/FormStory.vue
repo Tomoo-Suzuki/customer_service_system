@@ -116,35 +116,35 @@
   </main>
 </template>
 
-<script>
-import TitleMain from "../components/atoms/formParts/TitleMain";
-import AutherName from "../components/atoms/formParts/AutherName";
-import IsComplete from "../components/atoms/formParts/IsComplete";
-import Genre from "../components/atoms/formParts/Genre";
-import CatchCopy from "../components/atoms/formParts/CatchCopy";
-import Synopsis from "../components/atoms/formParts/Synopsis";
-import Advertisement from "../components/atoms/formParts/Advertisement";
-import ReceptionDate from "../components/atoms/formParts/ReceptionDate";
-import LastModifyDate from "../components/atoms/formParts/LastModifyDate";
+<script lang="ts">
+import TitleMain from "@/components/atoms/formParts/TitleMain";
+import AutherName from "@/components/atoms/formParts/AutherName";
+import IsComplete from "@/components/atoms/formParts/IsComplete";
+import Genre from "@/components/atoms/formParts/Genre";
+import CatchCopy from "@/components/atoms/formParts/CatchCopy";
+import Synopsis from "@/components/atoms/formParts/Synopsis";
+import Advertisement from "@/components/atoms/formParts/Advertisement";
+import ReceptionDate from "@/components/atoms/formParts/ReceptionDate";
+import LastModifyDate from "@/components/atoms/formParts/LastModifyDate";
 
-import ExtremeDepiction from "../components/atoms/formParts/ExtremeDepiction";
-import ColorType from "../components/atoms/formParts/ColorType";
-import Keywords from "../components/atoms/formParts/Keywords";
-import AcceptRating from "../components/atoms/formParts/AcceptRating";
-import AcceptImpressions from "../components/atoms/formParts/AcceptImpressions";
-import AcceptReviews from "../components/atoms/formParts/AcceptReviews";
-import PublishEvaluation from "../components/atoms/formParts/PublishEvaluation";
-import AcceptTypoReports from "../components/atoms/formParts/AcceptTypoReports";
+import ExtremeDepiction from "@/components/atoms/formParts/ExtremeDepiction";
+import ColorType from "@/components/atoms/formParts/ColorType";
+import Keywords from "@/components/atoms/formParts/Keywords";
+import AcceptRating from "@/components/atoms/formParts/AcceptRating";
+import AcceptImpressions from "@/components/atoms/formParts/AcceptImpressions";
+import AcceptReviews from "@/components/atoms/formParts/AcceptReviews";
+import PublishEvaluation from "@/components/atoms/formParts/PublishEvaluation";
+import AcceptTypoReports from "@/components/atoms/formParts/AcceptTypoReports";
 
-import BtnLinkParam from "../components/atoms/BtnLinkParam";
+import BtnLinkParam from "@/components/atoms/BtnLinkParam";
 
-import H2 from "../components/atoms/H2";
+import H2 from "@/components/atoms/H2";
 
-import formDataToHash from "../lib/formDataToHash";
+import formDataToHash from "@/lib/formDataToHash";
 
-import { selectStory } from "../queries/query/selectStory";
-import { insertStory } from "../queries/mutation/insertStory";
-import { updateStory } from "../queries/mutation/updateStory";
+import { selectStory } from "@/queries/query/selectStory";
+import { insertStory } from "@/queries/mutation/insertStory";
+import { updateStory } from "@/queries/mutation/updateStory";
 
 import "../scss/_form.scss";
 

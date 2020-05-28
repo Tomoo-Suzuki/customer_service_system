@@ -1,7 +1,7 @@
 <template>
   <div class="toTop">Topへ戻る</div>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {},
   methods: {}

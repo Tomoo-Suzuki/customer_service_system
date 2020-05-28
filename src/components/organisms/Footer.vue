@@ -8,11 +8,11 @@
     </div>
   </footer>
 </template>
-<script>
-import ToTop from "../atoms/ToTop.vue";
-import SiteSwitcherFooter from "../molecules/SiteSwitcherFooter.vue";
-import MenuFooter from "../atoms/MenuFooter.vue";
-import Copyright from "../atoms/Copyright.vue";
+<script lang="ts">
+import ToTop from "@/components/atoms/ToTop.vue";
+import SiteSwitcherFooter from "@/components/molecules/SiteSwitcherFooter.vue";
+import MenuFooter from "@/components/atoms/MenuFooter.vue";
+import Copyright from "@/components/atoms/Copyright.vue";
 export default {
   components: {
     ToTop,

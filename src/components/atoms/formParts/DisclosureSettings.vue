@@ -23,19 +23,19 @@
     </dd>
   </dl>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     customerType: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     formUpdate(e) {
       this.$emit("formUpdate", e);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped></style>

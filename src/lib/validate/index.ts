@@ -30,7 +30,7 @@ const validator = (e, dispatch) => {
   const name = e.target.name;
   // console.log(name)
   let value = e.target.value;
-  const tempHash = {};
+  const tempHash = { key: "", val: "" };
   tempHash.key = name;
   if (value) {
     value = logics.trimSpace(value);
@@ -51,7 +51,7 @@ const validator = (e, dispatch) => {
   dispatch("updateFormAccount", tempHash);
   if (value) {
     if (name === "last_name_kana" || name === "first_name_kana") {
-      const isKana = regs.katakana_all.test(value);
+      const isKana = regs.katakanaAll.test(value);
       if (!isKana) {
         tempHash.val = "カタカナのご入力をお願いいたします。";
         dispatch("updateErrorMsg", tempHash);

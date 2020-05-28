@@ -2,7 +2,7 @@
   <div>
     <dl class="require has_tooltip">
       <dt>パスワード</dt>
-      <dd v-if="status===0">
+      <dd v-if="status === 0">
         <input
           :type="pwType"
           name="password"
@@ -14,14 +14,14 @@
         />
         <span class="tooltip">8文字以上。半角英数字、半角記号が使えます。</span>
       </dd>
-      <dd v-if="status===1">
-        <span>{{password}}</span>
+      <dd v-if="status === 1">
+        <span>{{ password }}</span>
       </dd>
     </dl>
     <button @click="togglePwDesplay" class="btn_password">表示</button>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   data: function() {
     return {

@@ -22,9 +22,9 @@
   </div>
 </template>
 
-<script>
-import Header from "./components/organisms/Header";
-import Footer from "./components/organisms/Footer";
+<script lang="ts">
+import Header from "@/components/organisms/Header";
+import Footer from "@/components/organisms/Footer";
 
 export default {
   components: {
