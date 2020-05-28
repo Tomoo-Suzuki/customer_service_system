@@ -1,8 +1,11 @@
 import request from "../../lib/request";
 
-export const selectPostStory = (id_story, dispatch) => {
-  const query = `query{
-    selectPostStory(id_story:"` + id_story + `"){
+export const selectPostStory = (idStory, dispatch) => {
+  const query =
+    `query{
+    selectPostStory(id_story:"` +
+    idStory +
+    `"){
     id_story,
     id_post,
     has_chapter,
@@ -12,10 +15,8 @@ export const selectPostStory = (id_story, dispatch) => {
     date_last_modify
     }
   }`;
-  return request(query, 'selectPostStory').then(
-    (res) => {
-      console.log(res)
-      dispatch(res)
-    }
-  );
+  return request(query, "selectPostStory").then(res => {
+    console.log(res);
+    dispatch(res);
+  });
 };

@@ -1,51 +1,70 @@
 <template>
   <main class="form-book">
-    {{this.$route.params}}
+    {{ this.$route.params }}
     <H2 text="storyの投稿" />
-    <div v-if="status===0||status===1">
+    <div v-if="status === 0 || status === 1">
       <form name="formPost">
-        <input type="hidden" name="id_story" :value="id_story" />
-        <input type="hidden" name="id_post" :value="id_post" />
+        <input type="hidden" name="id_story" :value="idStory" />
+        <input type="hidden" name="id_post" :value="idPost" />
         <TitleChapter
-          :title_chapter="values.title_chapter"
+          :titleChapter="values.title_chapter"
           :status="status"
           @formUpdate="formUpdate"
         />
-        <HasChapter :has_chapter="values.has_chapter" :status="status" @formUpdate="formUpdate" />
-        <Title :title="values.title" :status="status" @formUpdate="formUpdate" />
+        <HasChapter
+          :hasChapter="values.has_chapter"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <Title
+          :title="values.title"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
         <!--TODO:改行(マークではなく)をgraphQlは扱えない。対応を考える。-->
-        <Story :story="values.story" :status="status" @formUpdate="formUpdate" />
+        <Story
+          :story="values.story"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
         <!-- <File :file="properties.file" @formUpdate="formUpdate" /> -->
-        <LastModifyDate :date_last_modify="values.date_last_modify" @formUpdate="formUpdate" />
+        <LastModifyDate
+          :dateLastModify="values.date_last_modify"
+          @formUpdate="formUpdate"
+        />
         <div class="btnWrap">
-          <div v-if="status===0" class="btn">
-            <BtnLinkParam btn_style="btn_link9" text="小説情報に戻る" :linkObject="linkObject" />
-            <span @click="progressStatus(1),setFormDataToState">確認する</span>
+          <div v-if="status === 0" class="btn">
+            <BtnLinkParam
+              btnStyle="btn_link9"
+              text="小説情報に戻る"
+              :linkObject="linkObject"
+            />
+            <span @click="progressStatus(1), setFormDataToState">確認する</span>
           </div>
-          <div v-if="status===1" class="btn">
+          <div v-if="status === 1" class="btn">
             <span @click="progressStatus(0)">戻る</span>
             <span @click="submitFormData(), progressStatus(2)">送信する</span>
           </div>
         </div>
       </form>
     </div>
-    <div v-if="status===2">
+    <div v-if="status === 2">
       <div>ご登録ありがとうございました。</div>
     </div>
   </main>
 </template>
 
 <script>
-import TitleChapter from "./atoms/formParts/TitleChapter.vue";
-import HasChapter from "./atoms/formParts/HasChapter.vue";
-import Title from "./atoms/formParts/Title.vue";
-import LastModifyDate from "./atoms/formParts/LastModifyDate.vue";
-// import File from "./atoms/formParts/File.vue";
-import Story from "./atoms/formParts/Story.vue";
+import TitleChapter from "../components/atoms/formParts/TitleChapter.vue";
+import HasChapter from "../components/atoms/formParts/HasChapter.vue";
+import Title from "../components/atoms/formParts/Title.vue";
+import LastModifyDate from "../components/atoms/formParts/LastModifyDate.vue";
+// import File from "../components/atoms/formParts/File.vue";
+import Story from "../components/atoms/formParts/Story.vue";
 
-import H2 from "./atoms/H2.vue";
+import H2 from "../components/atoms/H2.vue";
 
-import BtnLinkParam from "./atoms/BtnLinkParam.vue";
+import BtnLinkParam from "../components/atoms/BtnLinkParam.vue";
 
 import formDataToHash from "../lib/formDataToHash";
 
@@ -74,14 +93,14 @@ export default {
   computed: {},
   data() {
     return {
-      id_story: this.$route.params.id_story,
-      id_post: this.$route.params.id_post,
+      idStory: this.$route.params.id_story,
+      idPost: this.$route.params.id_post,
       values: this.$store.getters.post || {},
       status: 0,
       linkObject: {
         name: "view-story-information",
         params: {
-          id_story: this.$route.params.id_story
+          idStory: this.$route.params.id_story
         }
       }
     };
@@ -96,7 +115,7 @@ export default {
         this.$set(this.values, name, val);
       } else if (type === 2) {
         const name = e.target.name;
-        let val = e.target.value === "true" ? true : false;
+        const val = e.target.value === "true" ? true : false;
         this.$set(this.values, name, val);
       } else {
         const name = e.target.name;
@@ -118,9 +137,9 @@ export default {
       //TODO:拡張する要リファクタリング
       if (this.id_post === "new" || this.id_post === undefined) {
         const d = new Date();
-        const sub_post_id = d.getUTCMilliseconds();
-        const new_id_post = "dt" + this.id_story + sub_post_id;
-        return new_id_post;
+        const subPostId = d.getUTCMilliseconds();
+        const newIdPost = "dt" + this.id_story + subPostId;
+        return newIdPost;
       }
     },
 
@@ -128,10 +147,10 @@ export default {
       //   const thisFrom = document.forms.formPost;
       if (this.id_post === "new") {
         console.log("pass insertPost");
-        const new_id_post = this.idMaker();
+        const newIdPost = this.idMaker();
         //一次処理
         this.values["id_story"] = this.id_story;
-        this.values["id_post"] = new_id_post;
+        this.values["id_post"] = newIdPost;
         //insertPost(thisFrom, this.toMutationDispatch);
         insertPost(this.values, this.toMutationDispatch);
       } else {

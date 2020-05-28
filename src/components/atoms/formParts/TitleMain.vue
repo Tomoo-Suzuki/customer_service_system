@@ -1,25 +1,25 @@
 <template>
   <dl class="require">
     <dt>小説名</dt>
-    <dd v-if="status==0">
+    <dd v-if="status == 0">
       <input
         type="text"
         name="title_main"
-        :value="title_main"
+        :value="titleMain"
         required
         placeholder="トリスタンの皇帝"
         @change="formUpdate"
       />
     </dd>
-    <dd v-if="status===1">
-      <span>{{title_main}}</span>
+    <dd v-if="status === 1">
+      <span>{{ titleMain }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    title_main: {
+    titleMain: {
       type: String,
       default: null
     },

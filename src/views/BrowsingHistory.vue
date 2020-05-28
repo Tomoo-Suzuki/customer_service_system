@@ -1,6 +1,6 @@
 <template>
   <main>
-    <H2 text="アクセス解析" />
+    <H2 text="閲覧履歴" />
     <!-- <button @click="toEachPage('/form-user')">User</button>
     <button @click="toEachPage('/form-post')">Story Upload</button>
     <button @click="toEachPage('/form-story')">Story Detail</button>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import H2 from "./atoms/H2.vue";
+import H2 from "../components/atoms/H2.vue";
 
 export default {
   components: {

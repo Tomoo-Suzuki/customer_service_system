@@ -1,25 +1,25 @@
 <template>
   <dl class="require">
     <dt>作者名</dt>
-    <dd v-if="status==0">
+    <dd v-if="status == 0">
       <input
         type="text"
         name="auther_name"
-        :value="auther_name"
+        :value="autherName"
         @change="formUpdate"
         required
         placeholder="jota(イオタ)"
       />
     </dd>
-    <dd v-if="status===1">
-      <span>{{auther_name}}</span>
+    <dd v-if="status === 1">
+      <span>{{ autherName }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    auther_name: {
+    autherName: {
       type: String,
       default: null
     },

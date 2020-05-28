@@ -1,7 +1,7 @@
 <template>
   <dl>
     <dt>章の設定</dt>
-    <dd v-if="status==0" class="radioAndCheckbox">
+    <dd v-if="status == 0" class="radioAndCheckbox">
       <label>
         <span>あり</span>
         <input
@@ -9,7 +9,7 @@
           name="has_chapter"
           :value="true"
           @change="formUpdate"
-          :checked="has_chapter==true"
+          :checked="hasChapter == true"
         />
       </label>
       <label>
@@ -19,19 +19,19 @@
           name="has_chapter"
           :value="false"
           @change="formUpdate"
-          :checked="has_chapter==false"
+          :checked="hasChapter == false"
         />
       </label>
     </dd>
-    <dd v-if="status===1">
-      <span>{{has_chapter}}</span>
+    <dd v-if="status === 1">
+      <span>{{ has_chapter }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    has_chapter: {
+    hasChapter: {
       type: Boolean,
       default: null
     },
