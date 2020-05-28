@@ -3,6 +3,14 @@ const path = require("path");
 
 module.exports = {
   configureWebpack: {
+    // module: {
+    //   rules: [
+    //     {
+    //       test: [/\.jpe?g/, /\.png/, /\.svg/, /\.gif/, /\.ico/],
+    //       use: "file-loader"
+    //     }
+    //   ]
+    // },
     resolve: {
       extensions: [".ts", ".js", ".vue", ".scss", ".css", ".json", ".txt"],
       alias: {
