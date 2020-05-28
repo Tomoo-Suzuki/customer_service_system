@@ -43,8 +43,8 @@
 </template>
 
 <script>
-import UserId from "../components/atoms/formParts/UserId.vue";
-import Password from "../components/atoms/formParts/Password.vue";
+import UserId from "../components/atoms/formParts/UserId";
+import Password from "../components/atoms/formParts/Password";
 
 import { selectUser } from "../queries/query/selectUser";
 import { insertUser } from "../queries/mutation/insertUser";

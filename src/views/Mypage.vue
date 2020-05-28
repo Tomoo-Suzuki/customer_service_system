@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import H2 from "../components/atoms/H2.vue";
-import BtnLink from "../components/atoms/BtnLink.vue";
+import H2 from "../components/atoms/H2";
+import BtnLink from "../components/atoms/BtnLink";
 
 export default {
   components: {

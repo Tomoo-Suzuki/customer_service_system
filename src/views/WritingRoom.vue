@@ -60,11 +60,11 @@
 </template>
 
 <script>
-import H2 from "../components/atoms/H2.vue";
-import H3 from "../components/atoms/H3.vue";
-import BtnLink from "../components/atoms/BtnLink.vue";
+import H2 from "../components/atoms/H2";
+import H3 from "../components/atoms/H3";
+import BtnLink from "../components/atoms/BtnLink";
 
-import { selectStoryUser } from "../queries/query/selectStoryUser.js";
+import { selectStoryUser } from "../queries/query/selectStoryUser";
 
 export default {
   components: {

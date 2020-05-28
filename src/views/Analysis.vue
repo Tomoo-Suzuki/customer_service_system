@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import H2 from "../components/atoms/H2.vue";
+import H2 from "../components/atoms/H2";
 
 export default {
   components: {
