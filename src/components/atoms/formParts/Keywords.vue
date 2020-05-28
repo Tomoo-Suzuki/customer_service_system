@@ -1,8 +1,13 @@
 <template>
   <dl>
     <dt>キーワード</dt>
-    <dd v-if="status==0">
-      <input type="text" name="keywords" :value="keywords" @change="formUpdate" />
+    <dd v-if="status == 0">
+      <input
+        type="text"
+        name="keywords"
+        :value="keywords"
+        @change="formUpdate"
+      />
       <!-- <input type="text" name="keywords0" value @change="formUpdate" />
       <input type="text" name="keywords1" value @change="formUpdate" />
       <input type="text" name="keywords2" value @change="formUpdate" />
@@ -14,12 +19,12 @@
       <input type="text" name="keywords8" value @change="formUpdate" />
       <input type="text" name="keywords9" value @change="formUpdate" />-->
     </dd>
-    <dd v-if="status===1">
-      <span>{{keywords}}</span>
+    <dd v-if="status === 1">
+      <span>{{ keywords }}</span>
     </dd>
   </dl>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     keywords: {

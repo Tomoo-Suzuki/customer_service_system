@@ -1,7 +1,7 @@
 <template>
   <dl class="require">
     <dt>タイトル</dt>
-    <dd v-if="status==0">
+    <dd v-if="status == 0">
       <div>
         <input
           type="text"
@@ -14,12 +14,12 @@
         />
       </div>
     </dd>
-    <dd v-if="status===1">
-      <span>{{title}}</span>
+    <dd v-if="status === 1">
+      <span>{{ title }}</span>
     </dd>
   </dl>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     title: {

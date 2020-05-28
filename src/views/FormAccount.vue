@@ -59,22 +59,22 @@
     </div>
   </main>
 </template>
-<script>
-import Name from "../components/atoms/formParts/Name";
-import NameKana from "../components/atoms/formParts/NameKana";
-import Gender from "../components/atoms/formParts/Gender";
-import Birthday from "../components/atoms/formParts/Birthday";
-import Email from "../components/atoms/formParts/Email";
+<script lang="ts">
+import Name from "@/components/atoms/formParts/Name";
+import NameKana from "@/components/atoms/formParts/NameKana";
+import Gender from "@/components/atoms/formParts/Gender";
+import Birthday from "@/components/atoms/formParts/Birthday";
+import Email from "@/components/atoms/formParts/Email";
 
-import H2 from "../components/atoms/H2";
-import ProgressTracker from "../components/atoms/ProgressTracker";
+import H2 from "@/components/atoms/H2";
+import ProgressTracker from "@/components/atoms/ProgressTracker";
 
-import formDataToHash from "../lib/formDataToHash";
+import formDataToHash from "@/lib/formDataToHash";
 
-import { selectAccountU } from "../queries/query/selectAccountU";
-import { insertAccountU } from "../queries/mutation/insertAccountU";
+import { selectAccountU } from "@/queries/query/selectAccountU";
+import { insertAccountU } from "@/queries/mutation/insertAccountU";
 
-import validatator from "../lib/validate/";
+import validatator from "@/lib/validate/";
 
 export default {
   components: {

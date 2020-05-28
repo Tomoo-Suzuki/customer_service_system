@@ -2,12 +2,17 @@
   <dl>
     <dt>配信日</dt>
     <dd>
-      <input type="date" name="uploadedDate" :value="uploadedDate" @change="formUpdate" />
+      <input
+        type="date"
+        name="uploadedDate"
+        :value="uploadedDate"
+        @change="formUpdate"
+      />
       <p>{{ uploadedDate }}</p>
     </dd>
   </dl>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     uploadedDate: {

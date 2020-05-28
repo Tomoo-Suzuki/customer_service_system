@@ -54,23 +54,23 @@
   </main>
 </template>
 
-<script>
-import TitleChapter from "../components/atoms/formParts/TitleChapter";
-import HasChapter from "../components/atoms/formParts/HasChapter";
-import Title from "../components/atoms/formParts/Title";
-import LastModifyDate from "../components/atoms/formParts/LastModifyDate";
-// import File from "../components/atoms/formParts/File";
-import Story from "../components/atoms/formParts/Story";
+<script lang="ts">
+import TitleChapter from "@/components/atoms/formParts/TitleChapter";
+import HasChapter from "@/components/atoms/formParts/HasChapter";
+import Title from "@/components/atoms/formParts/Title";
+import LastModifyDate from "@/components/atoms/formParts/LastModifyDate";
+// import File from "@/components/atoms/formParts/File";
+import Story from "@/components/atoms/formParts/Story";
 
-import H2 from "../components/atoms/H2";
+import H2 from "@/components/atoms/H2";
 
-import BtnLinkParam from "../components/atoms/BtnLinkParam";
+import BtnLinkParam from "@/components/atoms/BtnLinkParam";
 
-import formDataToHash from "../lib/formDataToHash";
+import formDataToHash from "@/lib/formDataToHash";
 
-import { selectPost } from "../queries/query/selectPost";
-import { insertPost } from "../queries/mutation/insertPost";
-import { updatePost } from "../queries/mutation/updatePost";
+import { selectPost } from "@/queries/query/selectPost";
+import { insertPost } from "@/queries/mutation/insertPost";
+import { updatePost } from "@/queries/mutation/updatePost";
 
 export default {
   components: {

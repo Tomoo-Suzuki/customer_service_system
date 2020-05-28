@@ -1,7 +1,7 @@
 <template>
-  <h4 class="ttl_h2">{{text}}</h4>
+  <h4 class="ttl_h2">{{ text }}</h4>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     text: {

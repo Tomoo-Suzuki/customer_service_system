@@ -4,7 +4,7 @@
     <input type="hidden" name="date_last_modify" :value="today" />
   </span>
 </template>
-<script>
+<script lang="ts">
 export default {
   computed: {
     today() {

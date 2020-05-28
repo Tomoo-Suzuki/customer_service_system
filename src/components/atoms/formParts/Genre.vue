@@ -1,18 +1,24 @@
 <template>
   <dl class="require">
     <dt>ジャンル</dt>
-    <dd v-if="status==0" class="radioAndCheckbox">
+    <dd v-if="status == 0" class="radioAndCheckbox">
       <label v-for="(genreName, i) in allGenre" :key="i">
         <span>{{ genreName }}</span>
-        <input type="radio" name="genre" :value="i" @change="formUpdate" :checked="genre == i" />
+        <input
+          type="radio"
+          name="genre"
+          :value="i"
+          @change="formUpdate"
+          :checked="genre == i"
+        />
       </label>
     </dd>
-    <dd v-if="status===1">
-      <span>{{genre}}</span>
+    <dd v-if="status === 1">
+      <span>{{ genre }}</span>
     </dd>
   </dl>
 </template>
-<script>
+<script lang="ts">
 export default {
   data: function() {
     return {

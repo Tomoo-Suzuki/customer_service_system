@@ -1,11 +1,14 @@
 <template>
   <div class="logo">
     <div class="imgWrap">
-      <img :src="require(`../../assets/img/logo_${logoTxt}.svg`)" :alt="'bookma logo '+logoTxt" />
+      <img
+        :src="require(`../../assets/img/logo_${logoTxt}.svg`)"
+        :alt="'bookma logo ' + logoTxt"
+      />
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     logoType: {

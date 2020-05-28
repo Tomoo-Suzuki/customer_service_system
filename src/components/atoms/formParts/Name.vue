@@ -43,7 +43,7 @@
     </dd>
   </dl>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     lastName: {
