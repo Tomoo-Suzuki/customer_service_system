@@ -55,20 +55,20 @@
 </template>
 
 <script>
-import TitleChapter from "../components/atoms/formParts/TitleChapter.vue";
-import HasChapter from "../components/atoms/formParts/HasChapter.vue";
-import Title from "../components/atoms/formParts/Title.vue";
-import LastModifyDate from "../components/atoms/formParts/LastModifyDate.vue";
-// import File from "../components/atoms/formParts/File.vue";
-import Story from "../components/atoms/formParts/Story.vue";
+import TitleChapter from "../components/atoms/formParts/TitleChapter";
+import HasChapter from "../components/atoms/formParts/HasChapter";
+import Title from "../components/atoms/formParts/Title";
+import LastModifyDate from "../components/atoms/formParts/LastModifyDate";
+// import File from "../components/atoms/formParts/File";
+import Story from "../components/atoms/formParts/Story";
 
-import H2 from "../components/atoms/H2.vue";
+import H2 from "../components/atoms/H2";
 
-import BtnLinkParam from "../components/atoms/BtnLinkParam.vue";
+import BtnLinkParam from "../components/atoms/BtnLinkParam";
 
 import formDataToHash from "../lib/formDataToHash";
 
-import { selectPost } from "../queries/query/selectPost.js";
+import { selectPost } from "../queries/query/selectPost";
 import { insertPost } from "../queries/mutation/insertPost";
 import { updatePost } from "../queries/mutation/updatePost";
 

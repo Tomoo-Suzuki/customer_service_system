@@ -1,9 +1,11 @@
 import request from "../../lib/request";
 
 export const selectAccountU = (email, dispatch) => {
-
-  const query = `{
-    selectAccountU(email:"` + email + `") {
+  const query =
+    `{
+    selectAccountU(email:"` +
+    email +
+    `") {
         last_name,
         first_name,
         last_name_kana,
@@ -14,9 +16,7 @@ export const selectAccountU = (email, dispatch) => {
         birthday,
     }
   }`;
-  return request(query, 'selectAccountU').then(
-    (res) => {
-      dispatch(res)
-    }
-  );
+  return request(query, "selectAccountU").then(res => {
+    dispatch(res);
+  });
 };

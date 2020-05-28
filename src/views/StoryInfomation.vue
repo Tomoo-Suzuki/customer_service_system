@@ -46,12 +46,12 @@
 </template>
 
 <script>
-import H2 from "../components/atoms/H2.vue";
-import H3 from "../components/atoms/H3.vue";
-import BtnLink from "../components/atoms/BtnLink.vue";
-import BtnLinkParam from "../components/atoms/BtnLinkParam.vue";
+import H2 from "../components/atoms/H2";
+import H3 from "../components/atoms/H3";
+import BtnLink from "../components/atoms/BtnLink";
+import BtnLinkParam from "../components/atoms/BtnLinkParam";
 
-import { selectPostStory } from "../queries/query/selectPostStory.js";
+import { selectPostStory } from "../queries/query/selectPostStory";
 
 export default {
   components: {

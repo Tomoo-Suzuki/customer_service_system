@@ -1,34 +1,34 @@
 export default {
-  updateAccount(state, newAccount) {
+  updateAccount(state:any ,newAccount:any) {
     state.account = newAccount;
   },
-  updateFormAccount(state, hash) {
+  updateFormAccount(state:any, hash:any) {
     const key = hash.key;
     const val = hash.val;
     state.account[key] = val;
   },
-  updateLogin(state, newLogin) {
+  updateLogin(state:any ,newLogin:any) {
     state.login = newLogin;
   },
-  updateStory(state, newStory) {
+  updateStory(state:any ,newStory:any) {
     state.story = newStory;
   },
-  updatePost(state, newPost) {
+  updatePost(state:any ,newPost:any) {
     state.post = newPost;
   },
-  memoryForm(state, fromData) {
+  memoryForm(state:any, fromData:any) {
     state.formData = fromData;
   },
   initErrorAndFlag(
-    state, initErrorAndFlag) {
+    state:any ,initErrorAndFlag:any) {
     console.log(initErrorAndFlag)
     state.error = initErrorAndFlag.error;
     state.flagValidate = initErrorAndFlag.flagValidate;
   },
-  // updateflagValidate(state, newflagValidate) {
+  // updateflagValidate(state:any newflagValidate) {
   //   state.flagValidate = newflagValidate;
   // },
-  updateErrorMsg(state, hash) {
+  updateErrorMsg(state:any ,hash:any) {
     const key = hash.key;
     const val = hash.val;
     state.error[key] = val;
