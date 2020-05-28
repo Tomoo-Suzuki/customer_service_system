@@ -1,27 +1,27 @@
 <template>
   <dl>
     <dt>キャッチコピー</dt>
-    <dd v-if="status==0">
+    <dd v-if="status == 0">
       <span>
         <input
           type="text"
           name="catch_copy"
-          :value="catch_copy"
+          :value="catchCopy"
           @change="formUpdate"
           required
           placeholder="前には夢が、隣には仲間が。"
         />
       </span>
     </dd>
-    <dd v-if="status===1">
-      <span>{{catch_copy}}</span>
+    <dd v-if="status === 1">
+      <span>{{ catchCopy }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    catch_copy: {
+    catchCopy: {
       type: String,
       default: null
     },

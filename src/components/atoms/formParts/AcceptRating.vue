@@ -1,14 +1,14 @@
 <template>
   <dl class="require">
     <dt>評価の受付</dt>
-    <dd v-if="status==0" class="radioAndCheckbox">
+    <dd v-if="status == 0" class="radioAndCheckbox">
       <label>
         <span>受け付ける</span>
         <input
           type="radio"
           name="accept_rating"
           :value="true"
-          :checked="accept_rating === true"
+          :checked="acceptRating === true"
           @change="formUpdate"
         />
       </label>
@@ -18,20 +18,20 @@
           type="radio"
           name="accept_rating"
           :value="false"
-          :checked="accept_rating === false"
+          :checked="acceptRating === false"
           @change="formUpdate"
         />
       </label>
     </dd>
-    <dd v-if="status===1">
-      <span>{{accept_rating}}</span>
+    <dd v-if="status === 1">
+      <span>{{ acceptRating }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    accept_rating: {
+    acceptRating: {
       type: Boolean,
       default: null
     },

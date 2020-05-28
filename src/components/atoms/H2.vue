@@ -1,5 +1,5 @@
 <template>
-  <h2 class="ttl_h2">{{text}}</h2>
+  <h2 class="ttl_h2">{{ text }}</h2>
 </template>
 <script>
 export default {

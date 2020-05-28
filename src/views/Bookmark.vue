@@ -1,6 +1,8 @@
 <template>
   <main>
-    <H2 text="閲覧履歴" />
+    <H2 text="ブックマーク" />
+    <H3 text="あなたのブックマーク" />
+    <H3 text="読者のブックマーク" />
     <!-- <button @click="toEachPage('/form-user')">User</button>
     <button @click="toEachPage('/form-post')">Story Upload</button>
     <button @click="toEachPage('/form-story')">Story Detail</button>
@@ -9,11 +11,13 @@
 </template>
 
 <script>
-import H2 from "./atoms/H2.vue";
+import H2 from "../components/atoms/H2.vue";
+import H3 from "../components/atoms/H3.vue";
 
 export default {
   components: {
-    H2
+    H2,
+    H3
   },
   methods: {
     toEachPage(path) {

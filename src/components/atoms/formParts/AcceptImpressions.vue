@@ -1,14 +1,14 @@
 <template>
   <dl class="require">
     <dt>感想の受付</dt>
-    <dd v-if="status==0" class="radioAndCheckbox">
+    <dd v-if="status == 0" class="radioAndCheckbox">
       <label>
         <span>受け付ける</span>
         <input
           type="radio"
-          name="accept_impression"
+          name="acceptImpression"
           :value="true"
-          :checked="accept_impression === true"
+          :checked="acceptImpression === true"
           @change="formUpdate"
         />
       </label>
@@ -16,22 +16,22 @@
         <span>受け付けない</span>
         <input
           type="radio"
-          name="accept_impression"
+          name="acceptImpression"
           :value="false"
-          :checked="accept_impression === false"
+          :checked="acceptImpression === false"
           @change="formUpdate"
         />
       </label>
     </dd>
-    <dd v-if="status===1">
-      <span>{{accept_impression}}</span>
+    <dd v-if="status === 1">
+      <span>{{ acceptImpression }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    accept_impression: {
+    acceptImpression: {
       type: Boolean,
       default: null
     },

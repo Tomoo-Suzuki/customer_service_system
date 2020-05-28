@@ -1,112 +1,144 @@
 <template>
   <main class="form-book">
     <H2 text="小説の設定" />
-    <div v-if="status===0||status===1">
+    <div v-if="status === 0 || status === 1">
       <form name="formStory">
-        <input type="hidden" name="id_user" :value="id_user" />
-        <input type="hidden" name="id_story" :value="id_story" />
+        <input type="hidden" name="id_user" :value="idUser" />
+        <input type="hidden" name="id_story" :value="idStory" />
 
-        <TitleMain :title_main="values.title_main" :status="status" @formUpdate="formUpdate" />
-        <AutherName :auther_name="values.auther_name" :status="status" @formUpdate="formUpdate" />
-        <IsComplete :is_complete="values.is_complete" :status="status" @formUpdate="formUpdate" />
-        <Genre :genre="Number(values.genre)" :status="status" @formUpdate="formUpdate" />
-        <CatchCopy :catch_copy="values.catch_copy" :status="status" @formUpdate="formUpdate" />
+        <TitleMain
+          :titleMain="values.title_main"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <AutherName
+          :autherName="values.auther_name"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <IsComplete
+          :isComplete="values.is_complete"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <Genre
+          :genre="Number(values.genre)"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <CatchCopy
+          :catchCopy="values.catch_copy"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
         <!--TODO 改行対応、コピーがstateに保存されない問題-->
-        <Synopsis :synopsis="values.synopsis" :status="status" @formUpdate="formUpdate" />
-        <Keywords :keywords="values.keywords" :status="status" @formUpdate="formUpdate" />
+        <Synopsis
+          :synopsis="values.synopsis"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
+        <Keywords
+          :keywords="values.keywords"
+          :status="status"
+          @formUpdate="formUpdate"
+        />
 
         <ExtremeDepiction
-          :extreme_depiction="parse_props(values.extreme_depiction)"
+          :extremeDepiction="parseProps(values.extreme_depiction)"
           :status="status"
           @formUpdate="formUpdate"
         />
 
         <ColorType
-          :color_type="Number(values.color_type)"
+          :colorType="Number(values.color_type)"
           :status="status"
           @formUpdate="formUpdate"
         />
         <ReceptionDate
-          :reception_date="values.reception_date"
+          :receptionDate="values.reception_date"
           :status="status"
           @formUpdate="formUpdate"
         />
         <LastModifyDate
-          :last_modify_date="values.last_modify_date"
+          :lastModifyDate="values.last_modify_date"
           :status="status"
           @formUpdate="formUpdate"
         />
         <Advertisement
-          :accept_advertisement="values.accept_advertisement"
+          :acceptAdvertisement="values.accept_advertisement"
           :status="status"
           @formUpdate="formUpdate"
         />
         <AcceptRating
-          :accept_rating="values.accept_rating"
+          :acceptRating="values.accept_rating"
           :status="status"
           @formUpdate="formUpdate"
         />
         <AcceptReviews
-          :accept_reviews="values.accept_reviews"
+          :acceptReviews="values.accept_reviews"
           :status="status"
           @formUpdate="formUpdate"
         />
         <AcceptImpressions
-          :accept_impression="values.accept_impression"
+          :acceptImpression="values.accept_impression"
           :status="status"
           @formUpdate="formUpdate"
         />
         <PublishEvaluation
-          :publish_evaluation="values.publish_evaluation"
+          :publishEvaluation="values.publish_evaluation"
           :status="status"
           @formUpdate="formUpdate"
         />
         <AcceptTypoReports
-          :accept_typo_reports="values.accept_typo_reports"
+          :acceptTypoReports="values.accept_typo_reports"
           :status="status"
           @formUpdate="formUpdate"
         />
         <div class="btnWrap">
-          <div v-if="status===0" class="btn">
-            <BtnLinkParam btn_style="btn_link9" text="書斎へ戻る" :linkObject="linkObject" />
-            <span @click="progressStatus(1),setFormDataToState">確認する</span>
+          <div v-if="status === 0" class="btn">
+            <BtnLinkParam
+              btnStyle="btn_link9"
+              text="書斎へ戻る"
+              :linkObject="linkObject"
+            />
+            <span @click="progressStatus(1), setFormDataToState">確認する</span>
           </div>
-          <div v-if="status===1" class="btn">
+          <div v-if="status === 1" class="btn">
             <span @click="progressStatus(0)">戻る</span>
             <span @click="submitFormData(), progressStatus(2)">送信する</span>
           </div>
         </div>
       </form>
     </div>
-    <div v-if="status===2">
+    <div v-if="status === 2">
       <div>ご登録ありがとうございました。</div>
     </div>
   </main>
 </template>
 
 <script>
-import TitleMain from "./atoms/formParts/TitleMain.vue";
-import AutherName from "./atoms/formParts/AutherName.vue";
-import IsComplete from "./atoms/formParts/IsComplete.vue";
-import Genre from "./atoms/formParts/Genre.vue";
-import CatchCopy from "./atoms/formParts/CatchCopy.vue";
-import Synopsis from "./atoms/formParts/Synopsis.vue";
-import Advertisement from "./atoms/formParts/Advertisement.vue";
-import ReceptionDate from "./atoms/formParts/ReceptionDate.vue";
-import LastModifyDate from "./atoms/formParts/LastModifyDate.vue";
+import TitleMain from "../components/atoms/formParts/TitleMain.vue";
+import AutherName from "../components/atoms/formParts/AutherName.vue";
+import IsComplete from "../components/atoms/formParts/IsComplete.vue";
+import Genre from "../components/atoms/formParts/Genre.vue";
+import CatchCopy from "../components/atoms/formParts/CatchCopy.vue";
+import Synopsis from "../components/atoms/formParts/Synopsis.vue";
+import Advertisement from "../components/atoms/formParts/Advertisement.vue";
+import ReceptionDate from "../components/atoms/formParts/ReceptionDate.vue";
+import LastModifyDate from "../components/atoms/formParts/LastModifyDate.vue";
 
-import ExtremeDepiction from "./atoms/formParts/ExtremeDepiction.vue";
-import ColorType from "./atoms/formParts/ColorType.vue";
-import Keywords from "./atoms/formParts/Keywords.vue";
-import AcceptRating from "./atoms/formParts/AcceptRating.vue";
-import AcceptImpressions from "./atoms/formParts/AcceptImpressions.vue";
-import AcceptReviews from "./atoms/formParts/AcceptReviews.vue";
-import PublishEvaluation from "./atoms/formParts/PublishEvaluation.vue";
-import AcceptTypoReports from "./atoms/formParts/AcceptTypoReports.vue";
+import ExtremeDepiction from "../components/atoms/formParts/ExtremeDepiction.vue";
+import ColorType from "../components/atoms/formParts/ColorType.vue";
+import Keywords from "../components/atoms/formParts/Keywords.vue";
+import AcceptRating from "../components/atoms/formParts/AcceptRating.vue";
+import AcceptImpressions from "../components/atoms/formParts/AcceptImpressions.vue";
+import AcceptReviews from "../components/atoms/formParts/AcceptReviews.vue";
+import PublishEvaluation from "../components/atoms/formParts/PublishEvaluation.vue";
+import AcceptTypoReports from "../components/atoms/formParts/AcceptTypoReports.vue";
 
-import BtnLinkParam from "./atoms/BtnLinkParam.vue";
+import BtnLinkParam from "../components/atoms/BtnLinkParam.vue";
 
-import H2 from "./atoms/H2.vue";
+import H2 from "../components/atoms/H2.vue";
 
 import formDataToHash from "../lib/formDataToHash";
 
@@ -139,11 +171,10 @@ export default {
     BtnLinkParam
   },
   mounted() {
-    const id_story = this.id_story;
-    console.log(id_story);
-    if (!id_story) return;
-    if (id_story === "new") return;
-    const promise = selectStory(id_story, this.toMutationDispatch);
+    const idStory = this.id_story;
+    if (!idStory) return;
+    if (idStory === "new") return;
+    const promise = selectStory(idStory, this.toMutationDispatch);
     promise.then(() => {
       this.values = this.$store.getters.story || {};
     });
@@ -152,19 +183,19 @@ export default {
     return {
       values: this.$store.getters.story || {},
       status: 0,
-      id_user: "00001",
-      id_story: this.$route.params.id_story,
+      idUser: "00001",
+      idStory: this.$route.params.id_story,
       linkObject: {
         name: "writing-room-view",
         params: {
-          id_story: this.id_story,
-          id_post: "new"
+          idStory: this.id_story,
+          idPost: "new"
         }
       }
     };
   },
   computed: {
-    parse_props() {
+    parseProps() {
       return item => {
         if (!item) return;
         return item.split(",");
@@ -181,7 +212,7 @@ export default {
         this.$set(this.values, name, val);
       } else if (type === 2) {
         const name = e.target.name;
-        let val = e.target.value === "true" ? true : false;
+        const val = e.target.value === "true" ? true : false;
         this.$set(this.values, name, val);
       } else {
         const name = e.target.name;
@@ -204,10 +235,10 @@ export default {
       //TODO:拡張する要リファクタリング
       if (this.id_story === "new" || this.id_story === undefined) {
         const d = new Date();
-        const sub_story_id = d.getUTCMilliseconds();
+        const subStoryId = d.getUTCMilliseconds();
         console.log();
-        const new_id_story = "dt" + this.id_user + sub_story_id;
-        return new_id_story;
+        const newIdStory = "dt" + this.id_user + subStoryId;
+        return newIdStory;
       }
     },
 
@@ -217,10 +248,10 @@ export default {
       console.log(this.id_story);
       if (this.id_story === "new") {
         console.log("pass insert");
-        const new_id_story = this.idMaker();
+        const newIdStory = this.idMaker();
         //一次処理
         this.values["id_user"] = this.id_user;
-        this.values["id_story"] = new_id_story;
+        this.values["id_story"] = newIdStory;
         //insertStory(thisFrom, this.toMutationDispatch);
         insertStory(this.values, this.toMutationDispatch);
       } else {

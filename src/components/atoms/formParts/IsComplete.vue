@@ -1,7 +1,7 @@
 <template>
   <dl class="require">
     <dt>完結</dt>
-    <dd v-if="status==0" class="radioAndCheckbox">
+    <dd v-if="status == 0" class="radioAndCheckbox">
       <label>
         <span>完結</span>
         <input
@@ -9,7 +9,7 @@
           name="is_complete"
           :value="true"
           @change="formUpdate"
-          :checked="is_complete === true"
+          :checked="isComplete === true"
         />
       </label>
       <label>
@@ -19,19 +19,19 @@
           name="is_complete"
           :value="false"
           @change="formUpdate"
-          :checked="is_complete === false"
+          :checked="isComplete === false"
         />
       </label>
     </dd>
-    <dd v-if="status===1">
-      <span>{{is_complete}}</span>
+    <dd v-if="status === 1">
+      <span>{{ isComplete }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    is_complete: {
+    isComplete: {
       type: Boolean,
       default: null
     },

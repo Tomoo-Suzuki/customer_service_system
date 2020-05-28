@@ -1,14 +1,14 @@
 <template>
   <dl class="require">
     <dt>誤字の報告</dt>
-    <dd v-if="status==0" class="radioAndCheckbox">
+    <dd v-if="status == 0" class="radioAndCheckbox">
       <label>
         <span>受け付ける</span>
         <input
           type="radio"
           name="accept_typo_reports"
           :value="true"
-          :checked="accept_typo_reports === true"
+          :checked="acceptTypoReports === true"
           @change="formUpdate"
         />
       </label>
@@ -18,20 +18,20 @@
           type="radio"
           name="accept_typo_reports"
           :value="false"
-          :checked="accept_typo_reports === false"
+          :checked="acceptTypoReports === false"
           @change="formUpdate"
         />
       </label>
     </dd>
-    <dd v-if="status===1">
-      <span>{{accept_typo_reports}}</span>
+    <dd v-if="status === 1">
+      <span>{{ acceptTypoReports }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    accept_typo_reports: {
+    acceptTypoReports: {
       type: Boolean,
       default: null
     },

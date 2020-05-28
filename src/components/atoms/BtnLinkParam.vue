@@ -2,10 +2,11 @@
   <router-link
     :to="linkObject"
     tag="span"
-    :class="btn_style"
+    :class="btnStyle"
     active-class="link_active"
     exact
-  >{{text}}</router-link>
+    >{{ text }}</router-link
+  >
 </template>
 <script>
 export default {
@@ -18,7 +19,7 @@ export default {
       type: Object,
       default: () => ({})
     },
-    btn_style: {
+    btnStyle: {
       type: String,
       default: null
     }

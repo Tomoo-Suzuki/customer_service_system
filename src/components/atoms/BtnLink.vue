@@ -1,5 +1,12 @@
 <template>
-  <router-link :to="link" tag="span" :class="btn_style" active-class="link_active" exact>{{text}}</router-link>
+  <router-link
+    :to="link"
+    tag="span"
+    :class="btnStyle"
+    active-class="link_active"
+    exact
+    >{{ text }}</router-link
+  >
 </template>
 <script>
 export default {
@@ -12,7 +19,7 @@ export default {
       type: String,
       default: null
     },
-    btn_style: {
+    btnStyle: {
       type: String,
       default: null
     }

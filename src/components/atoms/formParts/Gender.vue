@@ -1,7 +1,7 @@
 <template>
   <dl class="require">
     <dt>ジェンダー</dt>
-    <dd v-if="status==0" class="radioAndCheckbox">
+    <dd v-if="status == 0" class="radioAndCheckbox">
       <label>
         <span>男性</span>
         <input
@@ -37,10 +37,10 @@
           @blur="formValidator"
         />
       </label>
-      <span class="msg">{{error.gender}}</span>
+      <span class="msg">{{ error.gender }}</span>
     </dd>
-    <dd v-if="status===1">
-      <span>{{gender}}</span>
+    <dd v-if="status === 1">
+      <span>{{ gender }}</span>
     </dd>
   </dl>
 </template>
