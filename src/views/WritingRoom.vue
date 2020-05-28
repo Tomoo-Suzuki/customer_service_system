@@ -1,52 +1,58 @@
 <template>
   <main>
     <H2 text="書斎" />
-    <BtnLink link="/form-story/new" btn_style="btn_link" text="新規book作成" />
-    <BtnLink link="/form-post" btn_style="btn_link" text="storyの追加" />
+    <BtnLink link="/form-story/new" btnStyle="btn_link" text="新規book作成" />
+    <BtnLink link="/form-post" btnStyle="btn_link" text="storyの追加" />
 
-    <BtnLink link="/analysis" btn_style="btn_link4" text="アクセス解析" />
-    <BtnLink link="/history" btn_style="btn_link4" text="閲覧履歴" />
-    <BtnLink link="/bookmark" btn_style="btn_link4" text="ブックマーク" />
-    <BtnLink link="/" btn_style="btn_link4" text="評価・コメント" />
+    <BtnLink link="/analysis" btnStyle="btn_link4" text="アクセス解析" />
+    <BtnLink link="/history" btnStyle="btn_link4" text="閲覧履歴" />
+    <BtnLink link="/bookmark" btnStyle="btn_link4" text="ブックマーク" />
+    <BtnLink link="/" btnStyle="btn_link4" text="評価・コメント" />
 
     <section class="section_writingroom">
       <H3 text="小説一覧" />
-      <dl v-for="(item,index) in values" :key="index">
-        <dt>{{index+1}}</dt>
-        <dd>{{item.id_story }}</dd>
+      <dl v-for="(item, index) in values" :key="index">
+        <dt>{{ index + 1 }}</dt>
+        <dd>{{ item.id_story }}</dd>
         <dd>
           <router-link
-            :to="{name: 'view-story-information', params: {id_story: item.id_story}}"
+            :to="{
+              name: 'view-story-information',
+              params: { id_story: item.id_story }
+            }"
             tag="div"
             class="link_story"
             active-class="link_active"
             exact
-          >{{item.title_main }}</router-link>
+            >{{ item.title_main }}</router-link
+          >
         </dd>
-        <dd>{{isComplete(item.is_complete)}}</dd>
+        <dd>{{ isComplete(item.is_complete) }}</dd>
         <dd>
           <router-link
             :to="{
-                name:'post-view',
-                params:{
-                    id_story:item.id_story,
-                    id_post:'new'
-                }
+              name: 'post-view',
+              params: {
+                id_story: item.id_story,
+                id_post: 'new'
+              }
             }"
             tag="div"
             class="btn_edit"
             active-class="link_active"
             exact
-          >story追加</router-link>
+            >story追加</router-link
+          >
         </dd>
         <dd>
           <router-link
-            :to="`/form-story/`+item.id_story"
+            :to="`/form-story/` + item.id_story"
             tag="div"
             class="btn_edit"
             active-class="link_active"
             exact
-          >book編集</router-link>
+            >book編集</router-link
+          >
         </dd>
       </dl>
     </section>
@@ -54,9 +60,9 @@
 </template>
 
 <script>
-import H2 from "./atoms/H2.vue";
-import H3 from "./atoms/H3.vue";
-import BtnLink from "./atoms/BtnLink.vue";
+import H2 from "../components/atoms/H2.vue";
+import H3 from "../components/atoms/H3.vue";
+import BtnLink from "../components/atoms/BtnLink.vue";
 
 import { selectStoryUser } from "../queries/query/selectStoryUser.js";
 
@@ -69,9 +75,9 @@ export default {
   mounted() {
     // const thisForm = document.forms.formStory;
     // const id_story = thisForm.id_user.value;
-    const id_user = "00001";
-    if (!id_user) return;
-    const promise = selectStoryUser(id_user, this.toMutationDispatch);
+    const idUser = "00001";
+    if (!idUser) return;
+    const promise = selectStoryUser(idUser, this.toMutationDispatch);
     promise.then(() => {
       this.values = this.$store.getters.story || {};
     });

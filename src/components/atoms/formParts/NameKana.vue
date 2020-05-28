@@ -1,13 +1,13 @@
 <template>
   <dl>
     <dt>フリガナ</dt>
-    <dd v-if="status===0">
+    <dd v-if="status === 0">
       <div class="form_horizontal">
         <span>
           <input
             type="text"
             name="last_name_kana"
-            :value="last_name_kana"
+            :value="lastNameKana"
             required
             pattern="[ァ-ヴー/s ]+"
             placeholder="ヤマダ"
@@ -16,7 +16,7 @@
             @blur="formValidator"
           />
         </span>
-        <span class="msg">{{error.last_name_kana}}</span>
+        <span class="msg">{{ error.last_name_kana }}</span>
       </div>
 
       <div class="form_horizontal">
@@ -24,7 +24,7 @@
           <input
             type="text"
             name="first_name_kana"
-            :value="first_name_kana"
+            :value="firstNameKana"
             required
             pattern="[ァ-ヴー/s ]+"
             placeholder="キョウコ"
@@ -33,15 +33,15 @@
             @blur="formValidator"
           />
         </span>
-        <span class="msg">{{error.first_name_kana}}</span>
+        <span class="msg">{{ error.first_name_kana }}</span>
       </div>
     </dd>
-    <dd v-if="status===1">
+    <dd v-if="status === 1">
       <div class="form_horizontal">
-        <span>{{last_name_kana}}</span>
+        <span>{{ last_name_kana }}</span>
       </div>
       <div class="form_horizontal">
-        <span>{{first_name_kana}}</span>
+        <span>{{ first_name_kana }}</span>
       </div>
     </dd>
   </dl>
@@ -49,11 +49,11 @@
 <script>
 export default {
   props: {
-    last_name_kana: {
+    lastNameKana: {
       type: String,
       default: null
     },
-    first_name_kana: {
+    firstNameKana: {
       type: String,
       default: null
     },

@@ -1,18 +1,23 @@
 <template>
   <dl>
     <dt>配信開始日</dt>
-    <dd v-if="status==0">
-      <input type="date" name="reception_date" :value="reception_date" @change="formUpdate" />
+    <dd v-if="status == 0">
+      <input
+        type="date"
+        name="reception_date"
+        :value="receptionDate"
+        @change="formUpdate"
+      />
     </dd>
-    <dd v-if="status===1">
-      <span>{{reception_date}}</span>
+    <dd v-if="status === 1">
+      <span>{{ receptionDate }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    reception_date: {
+    receptionDate: {
       type: String,
       default: null
     },

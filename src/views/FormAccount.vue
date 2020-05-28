@@ -2,20 +2,20 @@
   <main class="form-book">
     <ProgressTracker :txtArray="txtArray" :status="status" />
     <H2 text="アカウント設定" />
-    <div v-if="status===0||status===1">
+    <div v-if="status === 0 || status === 1">
       <form name="formAccount">
         <input type="hidden" name="email_id" value="ryuusei_y@gmail.com" />
         <Name
-          :last_name="values.last_name"
-          :first_name="values.first_name"
+          :lastName="values.last_name"
+          :firstName="values.first_name"
           :status="status"
           :error="error"
           @formUpdate="formUpdate"
           @formValidator="formValidator"
         />
         <NameKana
-          :last_name_kana="values.last_name_kana"
-          :first_name_kana="values.first_name_kana"
+          :lastNameKana="values.last_name_kana"
+          :firstNameKana="values.first_name_kana"
           :status="status"
           :error="error"
           @formUpdate="formUpdate"
@@ -37,37 +37,37 @@
         />
         <Email
           :email="values.email"
-          :email_confirm="values.email_confirm"
+          :emailConfirm="values.email_confirm"
           :status="status"
           :error="error"
           @formUpdate="formUpdate"
           @formValidator="formValidator"
         />
         <div class="btnWrap">
-          <div v-if="status===0" class="btn">
+          <div v-if="status === 0" class="btn">
             <span @click="allValidateConfirm()">確認する</span>
           </div>
-          <div v-if="status===1" class="btn">
+          <div v-if="status === 1" class="btn">
             <span @click="progressStatus(0)">戻る</span>
             <button @click="submitFormData, progressStatus(2)">送信する</button>
           </div>
         </div>
       </form>
     </div>
-    <div v-if="status===2">
+    <div v-if="status === 2">
       <div>ご登録ありがとうございました。</div>
     </div>
   </main>
 </template>
 <script>
-import Name from "./atoms/formParts/Name.vue";
-import NameKana from "./atoms/formParts/NameKana.vue";
-import Gender from "./atoms/formParts/Gender.vue";
-import Birthday from "./atoms/formParts/Birthday.vue";
-import Email from "./atoms/formParts/Email.vue";
+import Name from "../components/atoms/formParts/Name.vue";
+import NameKana from "../components/atoms/formParts/NameKana.vue";
+import Gender from "../components/atoms/formParts/Gender.vue";
+import Birthday from "../components/atoms/formParts/Birthday.vue";
+import Email from "../components/atoms/formParts/Email.vue";
 
-import H2 from "./atoms/H2.vue";
-import ProgressTracker from "./atoms/ProgressTracker.vue";
+import H2 from "../components/atoms/H2.vue";
+import ProgressTracker from "../components/atoms/ProgressTracker.vue";
 
 import formDataToHash from "../lib/formDataToHash";
 
@@ -89,23 +89,23 @@ export default {
   created() {
     const initErrorAndFlag = {
       error: {
-        last_name: "",
-        first_name: "",
-        last_name_kana: "",
-        first_name_kana: "",
+        lastName: "",
+        firstName: "",
+        lastNameKana: "",
+        firstNameKana: "",
         email: "",
-        email_confirm: "",
+        emailConfirm: "",
         gender: "",
         birthday: ""
       },
       flagValidate: {
-        last_name: false,
-        first_name: false,
-        last_name_kana: false,
-        first_name_kana: false,
+        lastName: false,
+        firstName: false,
+        lastNameKana: false,
+        firstNameKana: false,
         birthday: false,
         email: false,
-        email_confirm: false,
+        emailConfirm: false,
         gender: false
       }
     };
@@ -204,7 +204,7 @@ export default {
   width: 75.6rem;
   margin: 7.2rem auto;
   font-size: 1.4rem;
-  /deep/ > dl {
+  > dl {
     margin-bottom: 2.4rem;
     display: table;
     /deep/ dt,

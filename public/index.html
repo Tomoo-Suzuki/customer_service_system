@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>story_upload</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
     <style>
         html {
             font-size: 62.5%;
@@ -19,15 +18,12 @@
             line-height: 1;
         }
     </style>
-</head>
-
-<body>
+  </head>
+  <body>
     <noscript>
-        <strong>We're sorry but story_upload_system doesn't work properly without JavaScript enabled. Please enable
-            it to continue.</strong>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-</body>
-
+  </body>
 </html>

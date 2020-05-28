@@ -3,8 +3,16 @@
     <form name="formUser">
       <h2 class="ttl_h2">ログイン</h2>
       <input type="hidden" name="id" value="00003" />
-      <UserId :user_id="values.user_id" :status="status" @formUpdate="formUpdate" />
-      <Password :password="values.password" :status="status" @formUpdate="formUpdate" />
+      <UserId
+        :idUser="values.id_user"
+        :status="status"
+        @formUpdate="formUpdate"
+      />
+      <Password
+        :password="values.password"
+        :status="status"
+        @formUpdate="formUpdate"
+      />
       <div>
         <router-link
           to="/form-registration"
@@ -12,7 +20,8 @@
           class="link_login"
           active-class="link_active"
           exact
-        >ご登録がお済みでない方はこちら。</router-link>
+          >ご登録がお済みでない方はこちら。</router-link
+        >
       </div>
       <div>
         <router-link
@@ -21,7 +30,8 @@
           class="link_login"
           active-class="link_active"
           exact
-        >パスワードの再発行はこちら。</router-link>
+          >パスワードの再発行はこちら。</router-link
+        >
       </div>
       <div class="btnWrap">
         <div class="btn">
@@ -33,8 +43,8 @@
 </template>
 
 <script>
-import UserId from "./atoms/formParts/UserId.vue";
-import Password from "./atoms/formParts/Password.vue";
+import UserId from "../components/atoms/formParts/UserId.vue";
+import Password from "../components/atoms/formParts/Password.vue";
 
 import { selectUser } from "../queries/query/selectUser";
 import { insertUser } from "../queries/mutation/insertUser";

@@ -2,7 +2,7 @@ export const hiragana = /^[ぁ-ん]+$/;
 
 export const katakana = /^([ァ-ン]|ー)+$/;
 
-export const katakana_all = /^[ァ-ンｧ-ﾝﾞﾟ]+$/;
+export const katakanaAll = /^[ァ-ンｧ-ﾝﾞﾟ]+$/;
 
 export const tel = /^0\d{9,10}$/;
 

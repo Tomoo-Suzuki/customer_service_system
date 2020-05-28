@@ -1,47 +1,55 @@
 <template>
   <main>
     <H2 text="小説情報" />
-    <BtnLinkParam btn_style="btn_link" text="storyの追加" :linkObject="linkObjectNew" />
-
-    <BtnLink link="/analysis" btn_style="btn_link4" text="アクセス解析" />
-    <BtnLink link="/history" btn_style="btn_link4" text="閲覧履歴" />
-    <BtnLink link="/bookmark" btn_style="btn_link4" text="ブックマーク" />
-    <BtnLink link="/" btn_style="btn_link4" text="評価・コメント" />
+    <BtnLinkParam
+      btnStyle="btn_link"
+      text="storyの追加"
+      :linkObject="linkObjectNew"
+    />
+    <BtnLink link="/analysis" btnStyle="btn_link4" text="アクセス解析" />
+    <BtnLink link="/history" btnStyle="btn_link4" text="閲覧履歴" />
+    <BtnLink link="/bookmark" btnStyle="btn_link4" text="ブックマーク" />
+    <BtnLink link="/" btnStyle="btn_link4" text="評価・コメント" />
 
     <section class="section_writingroom">
       <H3 text="投稿一覧" />
-      <dl v-for="(item,index) in values" :key="index">
-        <dt>{{index+1}}</dt>
-        <dd>{{item.id_post }}</dd>
-        <dd>{{item.title }}</dd>
+      <dl v-for="(item, index) in values" :key="index">
+        <dt>{{ index + 1 }}</dt>
+        <dd>{{ item.id_post }}</dd>
+        <dd>{{ item.title }}</dd>
         <dd>
           <router-link
             :to="{
-                name:'post-view',
-                params:{
-                    id_story:item.id_story,
-                    id_post:item.id_post
-                }
+              name: 'post-view',
+              params: {
+                id_story: item.id_story,
+                id_post: item.id_post
+              }
             }"
             tag="div"
             class="btn_edit"
             active-class="link_active"
             exact
-          >編集</router-link>
+            >編集</router-link
+          >
         </dd>
       </dl>
     </section>
     <div class="btnWrap">
-      <BtnLinkParam btn_style="btn_link9" text="書斎へ戻る" :linkObject="linkObject" />
+      <BtnLinkParam
+        btnStyle="btn_link9"
+        text="書斎へ戻る"
+        :linkObject="linkObject"
+      />
     </div>
   </main>
 </template>
 
 <script>
-import H2 from "./atoms/H2.vue";
-import H3 from "./atoms/H3.vue";
-import BtnLink from "./atoms/BtnLink.vue";
-import BtnLinkParam from "./atoms/BtnLinkParam.vue";
+import H2 from "../components/atoms/H2.vue";
+import H3 from "../components/atoms/H3.vue";
+import BtnLink from "../components/atoms/BtnLink.vue";
+import BtnLinkParam from "../components/atoms/BtnLinkParam.vue";
 
 import { selectPostStory } from "../queries/query/selectPostStory.js";
 
@@ -54,9 +62,9 @@ export default {
   },
   mounted() {
     console.log("mounted");
-    if (!this.id_story) return;
-    console.log(this.id_story);
-    const promise = selectPostStory(this.id_story, this.toMutationDispatch);
+    if (!this.idStory) return;
+    console.log(this.idStory);
+    const promise = selectPostStory(this.idStory, this.toMutationDispatch);
     promise.then(() => {
       this.values = this.$store.getters.post || {};
     });
@@ -74,22 +82,22 @@ export default {
   },
   data() {
     return {
-      id_story: this.$route.params.id_story,
+      idStory: this.$route.params.id_story,
       values: this.$store.getters.post || {},
       status: 0,
       //   btn_style: "",
       linkObject: {
         name: "writing-room-view",
         params: {
-          id_story: this.$route.params.id_story,
-          id_post: this.id_post
+          idStory: this.$route.params.idStory,
+          idPost: this.idPost
         }
       },
       linkObjectNew: {
         name: "post-view",
         params: {
-          id_story: this.$route.params.id_story,
-          id_post: "new"
+          idStory: this.$route.params.id_story,
+          idPost: "new"
         }
       }
     };

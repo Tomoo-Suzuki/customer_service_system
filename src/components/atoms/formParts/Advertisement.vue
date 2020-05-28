@@ -1,14 +1,14 @@
 <template>
   <dl class="require">
     <dt>広告の表示</dt>
-    <dd v-if="status==0" class="radioAndCheckbox">
+    <dd v-if="status == 0" class="radioAndCheckbox">
       <label>
         <span>表示しない</span>
         <input
           type="radio"
           name="accept_advertisement"
           value="false"
-          :checked="accept_advertisement === false"
+          :checked="acceptAdvertisement === false"
           @change="formUpdate"
         />
       </label>
@@ -18,20 +18,20 @@
           type="radio"
           name="accept_advertisement"
           value="true"
-          :checked="accept_advertisement === true"
+          :checked="acceptAdvertisement === true"
           @change="formUpdate"
         />
       </label>
     </dd>
-    <dd v-if="status===1">
-      <span>{{accept_advertisement}}</span>
+    <dd v-if="status === 1">
+      <span>{{ acceptAdvertisement }}</span>
     </dd>
   </dl>
 </template>
 <script>
 export default {
   props: {
-    accept_advertisement: {
+    acceptAdvertisement: {
       type: Boolean,
       default: null
     },

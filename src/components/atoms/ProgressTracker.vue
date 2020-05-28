@@ -1,8 +1,12 @@
 <template>
   <div class="progressTrackerBox">
-    <div v-for="(text,index) in txtArray" class="progressTracker" :key="`pt`+index">
-      <span class="text">{{text}}</span>
-      <span :class="`progressPointer `+tracker_status(index)">
+    <div
+      v-for="(text, index) in txtArray"
+      class="progressTracker"
+      :key="`pt` + index"
+    >
+      <span class="text">{{ text }}</span>
+      <span :class="`progressPointer ` + trackerStatus(index)">
         <span class="pointerInner"></span>
         <span class="progressBar"></span>
       </span>
@@ -13,7 +17,7 @@
 <script>
 export default {
   computed: {
-    tracker_status() {
+    trackerStatus() {
       return index => {
         if (index === this.status) {
           return "current";
