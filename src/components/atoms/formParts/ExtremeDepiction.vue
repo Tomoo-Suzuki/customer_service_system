@@ -45,9 +45,9 @@ export default {
   },
   computed: {
     thisChecked() {
-      if (!this.extreme_depiction) return;
+      if (!this.extremeDepiction) return;
       return function(i) {
-        this.extreme_depiction.map(select => {
+        this.extremeDepiction.map(select => {
           return select === i;
         });
       };
@@ -57,8 +57,8 @@ export default {
     joinProps(array) {
       return array.join(",");
     },
-    formUpdate(e) {
-      const value = this.joinProps(this.extreme_depiction_data);
+    formUpdate(e: Event) {
+      const value = this.joinProps(this.extremeDepictionData);
       this.$emit("formUpdate", 1, e, e.target.name, value);
     }
   }

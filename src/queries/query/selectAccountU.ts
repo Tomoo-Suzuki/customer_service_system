@@ -1,4 +1,4 @@
-import request from "../../lib/request";
+import request from "@/lib/request";
 
 export const selectAccountU = (email, dispatch) => {
   const query =

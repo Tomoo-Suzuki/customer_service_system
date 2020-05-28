@@ -78,7 +78,7 @@ export default {
     }
   },
   methods: {
-    formUpdate(e) {
+    formUpdate(e: Event) {
       this.$emit("formUpdate", e);
     }
   }

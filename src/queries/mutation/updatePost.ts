@@ -1,5 +1,5 @@
-// import formDataToHash from "../../lib/formDataToHash";
-import request from "../../lib/request";
+// import formDataToHash from "@/lib/formDataToHash";
+import request from "@/lib/request";
 
 export const updatePost = (hash, dispatch) => {
   //console.log(JSON.stringify(hash))

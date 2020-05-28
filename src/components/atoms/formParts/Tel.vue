@@ -33,10 +33,10 @@ export default {
     }
   },
   methods: {
-    formUpdate(e) {
+    formUpdate(e: Event) {
       this.$emit("formUpdate", e);
     },
-    formValidator(e) {
+    formValidator(e: Event) {
       this.$emit("formValidator", e);
     }
   }

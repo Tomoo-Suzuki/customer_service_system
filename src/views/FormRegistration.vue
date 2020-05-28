@@ -103,7 +103,7 @@ export default {
   //     }
   //   },
   methods: {
-    formValidator(e) {
+    formValidator(e: Event) {
       validatator(e, this.$store.dispatch);
     },
     toMutationDispatch(res) {

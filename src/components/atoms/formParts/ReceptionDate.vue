@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     //type, e, name, val
-    formUpdate(e) {
+    formUpdate(e: Event) {
       this.$emit("formUpdate", 0, e);
     }
   }
