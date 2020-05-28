@@ -57,14 +57,14 @@
 </template>
 
 <script>
-import Email from "../components/atoms/formParts/Email.vue";
-import UserId from "../components/atoms/formParts/UserId.vue";
-import Password from "../components/atoms/formParts/Password.vue";
-import Magazine from "../components/atoms/formParts/Magazine.vue";
-import AgreeToTerms from "../components/atoms/formParts/AgreeToTerms.vue";
+import Email from "../components/atoms/formParts/Email";
+import UserId from "../components/atoms/formParts/UserId";
+import Password from "../components/atoms/formParts/Password";
+import Magazine from "../components/atoms/formParts/Magazine";
+import AgreeToTerms from "../components/atoms/formParts/AgreeToTerms";
 
-import H2 from "../components/atoms/H2.vue";
-import ProgressTracker from "../components/atoms/ProgressTracker.vue";
+import H2 from "../components/atoms/H2";
+import ProgressTracker from "../components/atoms/ProgressTracker";
 
 import formDataToHash from "../lib/formDataToHash";
 

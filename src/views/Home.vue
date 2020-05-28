@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import H2 from "../components/atoms/H2.vue";
-import H3 from "../components/atoms/H3.vue";
+import H2 from "../components/atoms/H2";
+import H3 from "../components/atoms/H3";
 
 export default {
   components: {

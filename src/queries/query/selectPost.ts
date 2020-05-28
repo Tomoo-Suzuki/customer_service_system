@@ -1,10 +1,10 @@
 import request from "../../lib/request";
-
-export const selectPostStory = (idStory, dispatch) => {
+//selectPostとselectPostStory は重複してる
+export const selectPost = (idPost, dispatch) => {
   const query =
     `query{
-    selectPostStory(id_story:"` +
-    idStory +
+    selectPost(id_post:"` +
+    idPost +
     `"){
     id_story,
     id_post,
@@ -15,8 +15,7 @@ export const selectPostStory = (idStory, dispatch) => {
     date_last_modify
     }
   }`;
-  return request(query, "selectPostStory").then(res => {
-    console.log(res);
+  return request(query, "selectPost").then(res => {
     dispatch(res);
   });
 };
