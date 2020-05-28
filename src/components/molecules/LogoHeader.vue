@@ -3,7 +3,7 @@
     <Logo :logoType="'1'" />
   </router-link>
 </template>
-<script>
+<script lang="ts">
 import Logo from "../atoms/Logo.vue";
 
 export default {

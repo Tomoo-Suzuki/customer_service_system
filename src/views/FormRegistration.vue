@@ -56,7 +56,7 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
 import Email from "../components/atoms/formParts/Email";
 import UserId from "../components/atoms/formParts/UserId";
 import Password from "../components/atoms/formParts/Password";

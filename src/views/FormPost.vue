@@ -54,7 +54,7 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
 import TitleChapter from "../components/atoms/formParts/TitleChapter";
 import HasChapter from "../components/atoms/formParts/HasChapter";
 import Title from "../components/atoms/formParts/Title";

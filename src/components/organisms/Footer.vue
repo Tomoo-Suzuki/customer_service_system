@@ -8,7 +8,7 @@
     </div>
   </footer>
 </template>
-<script>
+<script lang="ts">
 import ToTop from "../atoms/ToTop.vue";
 import SiteSwitcherFooter from "../molecules/SiteSwitcherFooter.vue";
 import MenuFooter from "../atoms/MenuFooter.vue";

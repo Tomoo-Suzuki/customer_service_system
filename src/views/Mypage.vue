@@ -15,7 +15,7 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
 import H2 from "../components/atoms/H2";
 import BtnLink from "../components/atoms/BtnLink";
 

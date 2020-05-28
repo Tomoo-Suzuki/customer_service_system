@@ -6,13 +6,13 @@
           <span>
             <span></span>
           </span>
-          {{item.text}}
+          {{ item.text }}
         </router-link>
       </li>
     </ul>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {},
   data() {

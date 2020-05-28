@@ -42,7 +42,7 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
 import UserId from "../components/atoms/formParts/UserId";
 import Password from "../components/atoms/formParts/Password";
 

@@ -1,7 +1,7 @@
 <template>
   <div class="copyright">©1996-2020, BookMa.com</div>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {},
   methods: {}

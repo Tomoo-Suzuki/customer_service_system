@@ -19,7 +19,7 @@
     </dd>
   </dl>
 </template>
-<script>
+<script lang="ts">
 export default {
   //   mounted() {
   //     console.log(this.extreme_depiction);

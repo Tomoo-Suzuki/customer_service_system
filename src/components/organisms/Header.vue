@@ -16,7 +16,7 @@
     </div>
   </header>
 </template>
-<script>
+<script lang="ts">
 import LogoHeader from "../molecules/LogoHeader.vue";
 import SearchBox from "../atoms/SearchBox.vue";
 import SiteSwitcher from "../molecules/SiteSwitcher.vue";

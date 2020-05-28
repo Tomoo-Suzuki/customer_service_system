@@ -8,7 +8,7 @@
     </router-link>
   </nav>
 </template>
-<script>
+<script lang="ts">
 import Logo from "../atoms/Logo.vue";
 
 export default {

@@ -59,7 +59,7 @@
     </div>
   </main>
 </template>
-<script>
+<script lang="ts">
 import Name from "../components/atoms/formParts/Name";
 import NameKana from "../components/atoms/formParts/NameKana";
 import Gender from "../components/atoms/formParts/Gender";

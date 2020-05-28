@@ -5,10 +5,11 @@
     class="btn_priority"
     active-class="link_active"
     exact
-  >書 斎</router-link>
+    >書 斎</router-link
+  >
 </template>
 
-<script></script>
+<script lang="ts"></script>
 
 <style lang="scss" scoped>
 @import "../../scss/_color";

@@ -116,7 +116,7 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
 import TitleMain from "../components/atoms/formParts/TitleMain";
 import AutherName from "../components/atoms/formParts/AutherName";
 import IsComplete from "../components/atoms/formParts/IsComplete";

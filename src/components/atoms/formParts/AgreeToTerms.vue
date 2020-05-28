@@ -2,7 +2,13 @@
   <div class="radioAndCheckbox">
     <label>
       <span>規約に同意する</span>
-      <input type="checkbox" name="agreement" id="agreement" val="1" @change="formUpdate" />
+      <input
+        type="checkbox"
+        name="agreement"
+        id="agreement"
+        val="1"
+        @change="formUpdate"
+      />
     </label>
 
     <a href="/legal/tos" target="_blank">
@@ -17,7 +23,7 @@
     に同意する
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   props: {
     agreement: {
