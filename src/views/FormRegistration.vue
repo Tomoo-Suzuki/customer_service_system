@@ -68,6 +68,8 @@ import ProgressTracker from "../components/atoms/ProgressTracker.vue";
 
 import formDataToHash from "../lib/formDataToHash";
 
+import validatator from "../lib/validate/";
+
 import { insertRegistry } from "../queries/mutation/insertRegistry";
 
 export default {
@@ -101,6 +103,9 @@ export default {
   //     }
   //   },
   methods: {
+    formValidator(e) {
+      validatator(e, this.$store.dispatch);
+    },
     toMutationDispatch(res) {
       this.$store.dispatch("updateAccount", res);
     },
