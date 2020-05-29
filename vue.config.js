@@ -12,7 +12,10 @@ module.exports = {
     //   ]
     // },
     resolve: {
-      extensions: [".ts", ".js", ".vue", ".scss", ".css", ".json", ".txt"]
+      extensions: [".ts", ".js", ".vue", ".scss", ".css", ".json", ".txt"],
+      alias: {
+        "@/": path.resolve(__dirname, "src/*")
+      }
       // alias: {
       //   _container: path.resolve(__dirname, "src/container"),
       //   _components: path.resolve(__dirname, "src/components"),

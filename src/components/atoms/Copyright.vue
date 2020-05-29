@@ -2,10 +2,11 @@
   <div class="copyright">©1996-2020, BookMa.com</div>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {},
   methods: {}
-};
+});
 </script>
 <style lang="scss" scoped>
 .copyright {

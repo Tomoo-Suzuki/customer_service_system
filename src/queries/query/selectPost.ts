@@ -1,4 +1,4 @@
-import request from "../../lib/request";
+import request from "@/lib/request";
 //selectPostとselectPostStory は重複してる
 export const selectPost = (idPost, dispatch) => {
   const query =

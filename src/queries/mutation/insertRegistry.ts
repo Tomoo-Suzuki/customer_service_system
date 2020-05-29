@@ -1,6 +1,6 @@
-import formDataToHash from "../../lib/formDataToHash";
-import request from "../../lib/request";
-export const insertRegistry = (form, dispatch) => {
+import formDataToHash from "@/lib/formDataToHash";
+import request from "@/lib/request";
+export const insertRegistry = (form:any, dispatch:any) => {
   const hash = formDataToHash(form);
   const query =
     `mutation{
@@ -28,5 +28,5 @@ export const insertRegistry = (form, dispatch) => {
         date_reception
     }
 }`;
-  request(query, "insertRegistry", dispatch);
+  request(query, "insertRegistry");
 };

@@ -1,4 +1,4 @@
-import request from "../../lib/request";
+import request from "@/lib/request";
 
 export const selectStoryUser = (idUser, dispatch) => {
   const query =

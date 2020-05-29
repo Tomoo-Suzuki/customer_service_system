@@ -72,7 +72,8 @@ import { selectPost } from "@/queries/query/selectPost";
 import { insertPost } from "@/queries/mutation/insertPost";
 import { updatePost } from "@/queries/mutation/updatePost";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     TitleChapter,
     HasChapter,
@@ -138,7 +139,7 @@ export default {
       if (this.id_post === "new" || this.id_post === undefined) {
         const d = new Date();
         const subPostId = d.getUTCMilliseconds();
-        const newIdPost = "dt" + this.id_story + subPostId;
+        const newIdPost: string = "dt" + this.id_story + subPostId;
         return newIdPost;
       }
     },
@@ -160,7 +161,7 @@ export default {
       }
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

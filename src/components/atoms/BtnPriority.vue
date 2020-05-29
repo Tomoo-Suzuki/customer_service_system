@@ -9,7 +9,10 @@
   >
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+import Vue from "vue";
+export default Vue.extend({});
+</script>
 
 <style lang="scss" scoped>
 @import "../../scss/_color";

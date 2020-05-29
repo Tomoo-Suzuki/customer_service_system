@@ -1,5 +1,5 @@
 export default {
-  updateAccount(state:any ,newAccount:any) {
+  updateAccount(state:any ,newAccount:account) {
     state.account = newAccount;
   },
   updateFormAccount(state:any, hash:any) {
@@ -7,13 +7,13 @@ export default {
     const val = hash.val;
     state.account[key] = val;
   },
-  updateLogin(state:any ,newLogin:any) {
+  updateLogin(state:any ,newLogin:user) {
     state.login = newLogin;
   },
-  updateStory(state:any ,newStory:any) {
+  updateStory(state:any ,newStory:story) {
     state.story = newStory;
   },
-  updatePost(state:any ,newPost:any) {
+  updatePost(state:any ,newPost:post) {
     state.post = newPost;
   },
   memoryForm(state:any, fromData:any) {
@@ -25,9 +25,6 @@ export default {
     state.error = initErrorAndFlag.error;
     state.flagValidate = initErrorAndFlag.flagValidate;
   },
-  // updateflagValidate(state:any newflagValidate) {
-  //   state.flagValidate = newflagValidate;
-  // },
   updateErrorMsg(state:any ,hash:any) {
     const key = hash.key;
     const val = hash.val;

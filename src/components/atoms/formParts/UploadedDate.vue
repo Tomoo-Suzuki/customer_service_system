@@ -13,7 +13,8 @@
   </dl>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     uploadedDate: {
       type: String,
@@ -21,10 +22,10 @@ export default {
     }
   },
   methods: {
-    formUpdate(e) {
+    formUpdate(e: Event) {
       this.$emit("formUpdate", e);
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped></style>

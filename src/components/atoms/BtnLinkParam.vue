@@ -9,7 +9,8 @@
   >
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     text: {
       type: String,
@@ -29,7 +30,7 @@ export default {
   },
   methods: {},
   computed: {}
-};
+});
 </script>
 
 <style lang="scss" scoped>

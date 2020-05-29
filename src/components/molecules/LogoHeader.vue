@@ -6,7 +6,8 @@
 <script lang="ts">
 import Logo from "@/components/atoms/Logo.vue";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     Logo
   },
@@ -37,7 +38,7 @@ export default {
       return "";
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped>
 .logoWrap {
