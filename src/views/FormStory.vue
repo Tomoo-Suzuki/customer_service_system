@@ -148,7 +148,8 @@ import { updateStory } from "@/queries/mutation/updateStory";
 
 import "../scss/_form.scss";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     TitleMain,
     AutherName,
@@ -261,7 +262,7 @@ export default {
       }
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -39,7 +39,8 @@
   </dl>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     colorType: {
       type: Number,
@@ -55,6 +56,6 @@ export default {
       this.$emit("formUpdate", 0, e);
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped></style>

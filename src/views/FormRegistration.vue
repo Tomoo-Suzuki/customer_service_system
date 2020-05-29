@@ -72,7 +72,8 @@ import validatator from "@/lib/validate/";
 
 import { insertRegistry } from "@/queries/mutation/insertRegistry";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     Email,
     UserId,
@@ -138,7 +139,7 @@ export default {
       insertRegistry(thisFrom, this.toMutationDispatch);
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

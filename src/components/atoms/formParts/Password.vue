@@ -22,7 +22,8 @@
   </div>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   data: function() {
     return {
       pwType: "password",
@@ -43,7 +44,7 @@ export default {
     formUpdate(e: Event) {
       this.$emit("formUpdate", 0, e);
     },
-    togglePwDesplay(e) {
+    togglePwDesplay(e: Event) {
       e.preventDefault();
       if (this.pwDisplay === false) {
         this.pwType = "text";
@@ -54,7 +55,7 @@ export default {
       }
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped>
 @import "../../../scss/atoms/tooltip";

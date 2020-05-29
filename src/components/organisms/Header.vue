@@ -24,7 +24,8 @@ import MenuHeader from "@/components/atoms/MenuHeader.vue";
 import NavHeader from "@/components/atoms/NavHeader.vue";
 import BtnPriority from "@/components/atoms/BtnPriority.vue";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     LogoHeader,
     SearchBox,
@@ -34,7 +35,7 @@ export default {
     BtnPriority
   },
   props: {}
-};
+});
 </script>
 <style lang="scss" scoped>
 .headerBook {

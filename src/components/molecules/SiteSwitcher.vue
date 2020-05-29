@@ -11,13 +11,14 @@
 <script lang="ts">
 import Logo from "@/components/atoms/Logo.vue";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     Logo
   },
   props: {},
   methods: {}
-};
+});
 </script>
 <style lang="scss" scoped>
 .nav_siteSwicher {

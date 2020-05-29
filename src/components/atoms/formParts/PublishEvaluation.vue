@@ -31,7 +31,8 @@
   </dl>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     publishEvaluation: {
       type: Boolean,
@@ -47,6 +48,6 @@ export default {
       this.$emit("formUpdate", 2, e);
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped></style>

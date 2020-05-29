@@ -20,7 +20,8 @@
   </dl>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   //   mounted() {
   //     console.log(this.extreme_depiction);
   //     if (this.extreme_depiction) {
@@ -62,6 +63,6 @@ export default {
       this.$emit("formUpdate", 1, e, e.target.name, value);
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped></style>

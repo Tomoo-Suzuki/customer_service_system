@@ -19,7 +19,8 @@
 import H2 from "@/components/atoms/H2";
 import BtnLink from "@/components/atoms/BtnLink";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     H2,
     BtnLink
@@ -29,5 +30,5 @@ export default {
       this.$router.push(path);
     }
   }
-};
+});
 </script>

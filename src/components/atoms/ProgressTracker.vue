@@ -15,10 +15,11 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   computed: {
     trackerStatus() {
-      return index => {
+      return (index: number) => {
         if (index === this.status) {
           return "current";
         } else if (index < this.status) {
@@ -39,7 +40,7 @@ export default {
       default: null
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

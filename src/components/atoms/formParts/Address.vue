@@ -58,7 +58,8 @@
   </dl>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     zip: {
       type: String,
@@ -82,7 +83,7 @@ export default {
       this.$emit("formUpdate", e);
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped>
 .adress-data-wrap {

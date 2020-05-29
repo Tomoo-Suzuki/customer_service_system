@@ -76,7 +76,8 @@ import { insertAccountU } from "@/queries/mutation/insertAccountU";
 
 import validatator from "@/lib/validate/";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     Name,
     NameKana,
@@ -189,7 +190,7 @@ export default {
       insertAccountU(thisFrom, this.toMutationDispatch);
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

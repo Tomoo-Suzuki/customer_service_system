@@ -53,7 +53,8 @@ import BtnLinkParam from "@/components/atoms/BtnLinkParam";
 
 import { selectPostStory } from "@/queries/query/selectPostStory";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     H2,
     H3,
@@ -111,7 +112,7 @@ export default {
       this.$router.push(path);
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped>
 @import "../scss/_color.scss";

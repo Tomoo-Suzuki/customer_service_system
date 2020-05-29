@@ -17,7 +17,8 @@
   </dl>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     birthday: {
       type: String,
@@ -40,6 +41,6 @@ export default {
       this.$emit("formValidator", e);
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped></style>

@@ -13,7 +13,8 @@
   </nav>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   data() {
     return {
       navHeaderLists: [
@@ -34,7 +35,7 @@ export default {
 
   props: {},
   methods: {}
-};
+});
 </script>
 
 <style lang="scss" scoped>
