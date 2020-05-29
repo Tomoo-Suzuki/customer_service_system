@@ -7,10 +7,11 @@
   </div>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {},
   methods: {}
-};
+});
 </script>
 <style lang="scss" scoped>
 @import "../../scss/_color.scss";

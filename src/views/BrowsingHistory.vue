@@ -11,7 +11,8 @@
 <script lang="ts">
 import H2 from "@/components/atoms/H2";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     H2
   },
@@ -20,5 +21,5 @@ export default {
       this.$router.push(path);
     }
   }
-};
+});
 </script>

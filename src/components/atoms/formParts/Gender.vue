@@ -45,7 +45,8 @@
   </dl>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     gender: {
       type: Number,
@@ -61,15 +62,15 @@ export default {
     }
   },
   methods: {
-    formUpdate(e) {
-      this.genderData = Number(e.target.value);
-      console.log(this.genderData);
-      this.$emit("formUpdate", 1, e, e.target.name, this.genderData);
+    formUpdate(e: Event) {
+      //this.genderData = Number(e.target.value);
+      this.gender = Number(e.target.value);
+      this.$emit("formUpdate", 1, e, e.target.name, this.gender);
     },
-    formValidator(e) {
+    formValidator(e: Event) {
       this.$emit("formValidator", e);
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped></style>

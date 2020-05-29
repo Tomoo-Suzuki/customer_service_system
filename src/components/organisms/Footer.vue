@@ -13,7 +13,8 @@ import ToTop from "@/components/atoms/ToTop.vue";
 import SiteSwitcherFooter from "@/components/molecules/SiteSwitcherFooter.vue";
 import MenuFooter from "@/components/atoms/MenuFooter.vue";
 import Copyright from "@/components/atoms/Copyright.vue";
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     ToTop,
     SiteSwitcherFooter,
@@ -21,7 +22,7 @@ export default {
     Copyright
   },
   props: {}
-};
+});
 </script>
 <style lang="scss" scoped>
 @import "../../scss/_color.scss";

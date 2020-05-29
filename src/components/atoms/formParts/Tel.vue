@@ -17,7 +17,8 @@
   </dl>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     tel: {
       type: String,
@@ -33,13 +34,13 @@ export default {
     }
   },
   methods: {
-    formUpdate(e) {
+    formUpdate(e: Event) {
       this.$emit("formUpdate", e);
     },
-    formValidator(e) {
+    formValidator(e: Event) {
       this.$emit("formValidator", e);
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped></style>

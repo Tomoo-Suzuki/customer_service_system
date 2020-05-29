@@ -5,7 +5,8 @@
   </span>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   computed: {
     today() {
       const d = new Date();
@@ -13,7 +14,7 @@ export default {
     }
   },
   methods: {
-    formUpdate(e) {
+    formUpdate(e: Event) {
       this.$emit("formUpdate", 0, e);
     }
   }
@@ -22,6 +23,6 @@ export default {
   //       return moment(value).format(format);
   //     },
   //   },
-};
+});
 </script>
 <style lang="scss" scoped></style>

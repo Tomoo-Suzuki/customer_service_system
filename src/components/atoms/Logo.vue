@@ -9,7 +9,8 @@
   </div>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     logoType: {
       type: String,
@@ -36,7 +37,7 @@ export default {
       return "";
     }
   }
-};
+});
 </script>
 <style lang="scss" scoped>
 .logo {

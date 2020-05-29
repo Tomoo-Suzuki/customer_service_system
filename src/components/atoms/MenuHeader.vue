@@ -13,7 +13,8 @@
   </div>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {},
   data() {
     return {
@@ -29,7 +30,7 @@ export default {
     };
   },
   methods: {}
-};
+});
 </script>
 <style lang="scss" scoped>
 @import "../../scss/index.scss";

@@ -2,7 +2,8 @@
   <h2 class="ttl_h2">{{ text }}</h2>
 </template>
 <script lang="ts">
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: {
     text: {
       type: String,
@@ -14,7 +15,7 @@ export default {
   },
   methods: {},
   computed: {}
-};
+});
 </script>
 <style lang="scss" scoped>
 // @import "../../scss/_color.scss";

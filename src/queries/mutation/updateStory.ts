@@ -1,5 +1,5 @@
-// import formDataToHash from "../../lib/formDataToHash";
-import request from "../../lib/request";
+// import formDataToHash from "@/lib/formDataToHash";
+import request from "@/lib/request";
 
 export const updateStory = (hash, dispatch) => {
   // const hash = formDataToHash(form);

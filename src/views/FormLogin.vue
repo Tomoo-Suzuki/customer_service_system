@@ -50,7 +50,8 @@ import { selectUser } from "@/queries/query/selectUser";
 import { insertUser } from "@/queries/mutation/insertUser";
 import request from "@/lib/request";
 
-export default {
+import Vue from "vue";
+export default Vue.extend({
   components: {
     UserId,
     Password
@@ -80,7 +81,12 @@ export default {
     toMutationDispatch(res) {
       this.$state.dispatch("updateUser", res);
     },
-    formUpdate(type, e, name, val) {
+    formUpdate(
+      type: number,
+      e: Event,
+      name: string,
+      val: string | number | boolean
+    ) {
       e.preventDefault();
       if (type === 1) {
         this.$set(this.values, name, val);
@@ -94,13 +100,13 @@ export default {
         this.$set(this.values, name, val);
       }
     },
-    submitFormData(e) {
+    submitFormData(e: Event) {
       e.preventDefault();
       const thisFrom = document.forms.formUser;
       insertUser(thisFrom, this.toMutationDispatch);
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
