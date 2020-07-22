@@ -24,6 +24,7 @@ export default Vue.extend({
   props: {}
 });
 </script>
+
 <style lang="scss" scoped>
 @import "../../scss/_color.scss";
 

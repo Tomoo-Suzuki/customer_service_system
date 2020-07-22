@@ -47,15 +47,15 @@ export default Vue.extend({
   computed: {
     thisChecked() {
       if (!this.extremeDepiction) return;
-      return function(i) {
-        this.extremeDepiction.map(select => {
+      return function(i: number) {
+        this.extremeDepiction.map((select: number) => {
           return select === i;
         });
       };
     }
   },
   methods: {
-    joinProps(array) {
+    joinProps(array: []) {
       return array.join(",");
     },
     formUpdate(e: Event) {
