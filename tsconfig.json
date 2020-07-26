@@ -1,32 +1,40 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "importHelpers": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "types": [
-      "webpack-env",
-      "mocha",
-      "chai"
-    ],
-    "paths": {
-      "@/*": [
-        "src/*"
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+        "esnext",
+        "dom",
+        "dom.iterable",
+        "scripthost"
       ]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  },
+    "jsx": "preserve",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "strict": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+        "@/*": [
+          "src/*"
+        ]
+      },
+    "types": [
+    "webpack-env",
+    "mocha",
+    "chai"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
