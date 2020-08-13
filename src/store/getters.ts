@@ -1,17 +1,19 @@
+import { InterfaceState } from "../types/InterfaceState";
+
 export default {
-  login: (state:any) => state.login,
-  account: (state:any) => state.account,
-  story: (state:any) => state.story,
-  post: function (state:any) {
+  login: (state: InterfaceState) => state.login,
+  account: (state: InterfaceState) => state.account,
+  story: (state: InterfaceState) => state.story,
+  post: function(state: InterfaceState) {
     return state.post;
   },
-  formData: function (state:any) {
+  formData: function(state: InterfaceState) {
     return state.formData;
   },
-  flagValidate: function (state:any) {
+  flagValidate: function(state: InterfaceState) {
     return state.flagValidate;
   },
-  error: function (state:any) {
+  error: function(state: InterfaceState) {
     return state.error;
-  }
+  },
 };

@@ -1,38 +1,49 @@
+import { InterfaceAccount } from "../types/InterfaceAccount";
+import { InterfaceUser } from "../types/InterfaceUser";
+import { InterfacePost } from "../types/InterfacePost";
+import { InterfaceStory } from "../types/InterfaceStory";
+import { InterfaceState } from "../types/InterfaceState";
+
 export default {
-  updateAccount(state:any ,newAccount:account) {
+  updateAccount(state: InterfaceState, newAccount: InterfaceAccount) {
     state.account = newAccount;
   },
-  updateFormAccount(state:any, hash:any) {
+  updateFormAccount(
+    state: InterfaceState,
+    hash: { key: string | number; val: string | number }
+  ) {
     const key = hash.key;
     const val = hash.val;
     state.account[key] = val;
   },
-  updateLogin(state:any ,newLogin:user) {
+  updateLogin(state: InterfaceState, newLogin: InterfaceUser) {
     state.login = newLogin;
   },
-  updateStory(state:any ,newStory:story) {
+  updateStory(state: InterfaceState, newStory: InterfaceStory) {
     state.story = newStory;
   },
-  updatePost(state:any ,newPost:post) {
+  updatePost(state: InterfaceState, newPost: InterfacePost) {
     state.post = newPost;
   },
-  memoryForm(state:any, fromData:any) {
+  memoryForm(state: InterfaceState, fromData: any) {
     state.formData = fromData;
   },
-  initErrorAndFlag(
-    state:any ,initErrorAndFlag:any) {
-    console.log(initErrorAndFlag)
+  initErrorAndFlag(state: InterfaceState, initErrorAndFlag: any) {
+    console.log(initErrorAndFlag);
     state.error = initErrorAndFlag.error;
     state.flagValidate = initErrorAndFlag.flagValidate;
   },
-  updateErrorMsg(state:any ,hash:any) {
+  updateErrorMsg(
+    state: InterfaceState,
+    hash: { key: string | number; val: string | number }
+  ) {
     const key = hash.key;
     const val = hash.val;
     state.error[key] = val;
-    if (val === '') {
+    if (val === "") {
       state.flagValidate[key] = true;
     } else {
       state.flagValidate[key] = false;
     }
-  }
+  },
 };
